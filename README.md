@@ -1,7 +1,7 @@
 # The Go History
 
-This document includes all interesting issues, discussions, proposals, CLs, and talks in the Go development history, which intents to offer 
-a comprehensive reference of Go history.
+This document includes many interesting issues, discussions, proposals, CLs, and talks in the Go development history, which intents to offer 
+a comprehensive reference of the Go history.
 
 ## Sources
 
@@ -68,6 +68,7 @@ a comprehensive reference of Go history.
 - [design/go11func](https://golang.org/s/go11func) Russ Cox. Go 1.1 Function Calls.
 - [design/go12nil](https://golang.org/s/go12nil) Russ Cox. Go 1.2 Field Selectors and Nil Checks.
 - [design/go12slice](https://golang.org/s/go12slice) Russ Cox. Go Slice with Cap.
+- golang.org/s/go13todo
 - [doc/goatgoogle](https://talks.golang.org/2012/splash.article#TOC_12.) Rob Pike. Go at Google - Language Semantics.
 - [doc/makego](https://talks.golang.org/2015/how-go-was-made.slide) How Go was Made. Andrew Gerrand
 - [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Go 1 Preview. Russ Cox
@@ -156,15 +157,16 @@ with Robert Griesemer and Ian Lance Taylor
 - [talk/generics-cppcast](https://cppcast.com/ian-taylor-go) CppCast. Go with Ian Lance Taylor
 - [paper/featherweight-go](https://arxiv.org/abs/2005.11710) Griesemer, Robert, et al. "Featherweight Go." arXiv preprint arXiv:2005.11710 (2020).
 
-## Compiler Tool Chain
+## Compiler Toolchain
 
 ### Compiler
 
-- C to Go bootstraping, https://www.youtube.com/watch?v=QIE5nV5fDwA
+
 - https://golang.org/s/go12symtab
 - https://golang.org/s/go13compiler
 - https://golang.org/s/go1.4-generate
 - https://golang.org/s/go15bootstrap
+  - C to Go bootstraping, https://www.youtube.com/watch?v=QIE5nV5fDwA
 - https://golang.org/s/execmodes
 - https://golang.org/s/go17ssa
 - all: binaries too big and growing. [issue/6853](https://golang.org/issue/6853)
@@ -178,8 +180,8 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Linker
 
-- https://golang.org/s/go13linker
-- [Clements 2019] Austin Clements. Building a better Go linker. 2019-09-12. [Link](https://golang.org/s/better-linker)
+- [design/go13linker](https://golang.org/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. November 2013.
+- [design/go116linker](https://golang.org/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
 
 ### Debugger
 
@@ -188,9 +190,10 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Builder
 
-- Go support for Android. [design/go14android](https://golang.org/s/go14android)
-- Go build https://github.com/golang/proposal/blob/master/design/draft-gobuild.md
-- Embedded files - Russ & Braid https://github.oom/golang/proposal/blob/master/design/draft-embed.md
+- [design/go13nacl](golang.org/s/go13nacl) Go 1.3 Native Client Support
+- [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
+- [design/go116build](https://github.com/golang/proposal/blob/master/design/draft-gobuild.md) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
+- [design/go116embed](https://github.oom/golang/proposal/blob/master/design/draft-embed.md) Embedded files - Russ & Braid
 
 ### Modules
 
@@ -216,9 +219,9 @@ with Robert Griesemer and Ian Lance Taylor
 
 ## Runtime Core
 
-### Metrics
+### Statistics
 
-- Runtime Metric https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md
+- [design/go116runtime-metric](https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md) Michael Knyszek. Proposal: API for unstable runtime metrics
 
 ### Scheduler
 
