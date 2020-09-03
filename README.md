@@ -5,27 +5,17 @@ a comprehensive reference of Go history.
 
 ## Sources
 
-- Basic documents
-  + golang.org/doc
-  + blog.golang.org
-  + golang.org/pkg
-- Advanced endpoints
-  + dev.golang.org
-  + github.com/golang/go
-  + github.com/golang/proposal
-  + github.com/golang/go/wiki
-  + go-review.googlesource.com
-  + groups.google.com/g/golang-nuts
-  + groups.google.com/g/golang-dev
-  + groups.google.com/g/golang-tools
-  + twitter.com/home
-  + reddit.com/r/golang
-- Research
-  + www.sigplan.org
-  + dl.acm.org
-  + arxiv.org/list/cs.PL/recent
-  + scholar.google.de
-
+- [golang.org/doc](golang.org/doc)
+- [blog.golang.org](blog.golang.org)
+- [golang.org/pkg](golang.org/pkg)
+- [dev.golang.org](dev.golang.org)
+- [github.com/golang/go](github.com/golang/go)
+- [github.com/golang/proposal](github.com/golang/proposal)
+- [github.com/golang/go/wiki](github.com/golang/go/wiki)
+- [go-review.googlesource.com](go-review.googlesource.com)
+- [groups.google.com/g/golang-nuts](groups.google.com/g/golang-nuts)
+- [groups.google.com/g/golang-dev](groups.google.com/g/golang-dev)
+- [groups.google.com/g/golang-tools](groups.google.com/g/golang-tools)
 
 ## Committers
 
@@ -172,7 +162,6 @@ with Robert Griesemer and Ian Lance Taylor
 
 - C to Go bootstraping, https://www.youtube.com/watch?v=QIE5nV5fDwA
 - https://golang.org/s/go12symtab
-- https://golang.org/s/go13linker
 - https://golang.org/s/go13compiler
 - https://golang.org/s/go1.4-generate
 - https://golang.org/s/go15bootstrap
@@ -189,11 +178,12 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Linker
 
+- https://golang.org/s/go13linker
 - [Clements 2019] Austin Clements. Building a better Go linker. 2019-09-12. [Link](https://golang.org/s/better-linker)
 
-## Debugger
+### Debugger
 
-- Dmitry Vyukov. Go Execution Tracer. [design/go15trace]. https://golang.org/s/go15trace
+- [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov. Go Execution Tracer.
 - https://github.com/golang/go/wiki/heapdump15-through-heapdump17
 
 ### Builder
@@ -219,7 +209,7 @@ with Robert Griesemer and Ian Lance Taylor
 - https://research.swtch.com/deps
 - Lazy module load - Bryan https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md
 
-## Testing
+### Testing
 
 - Tool chain, benchseries/benchstat
 - Fuzzing https://go.googlesource.com/proposal/+/master/design/draft-fuzzing.md
