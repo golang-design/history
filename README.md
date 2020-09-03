@@ -38,6 +38,8 @@ a comprehensive reference of Go history.
 
 ## Language Design
 
+### Before Go 1
+
 - Rob Pike, Robert Griesemer, Ken Thompson. [design/initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec)
 - Rob Pike. Semicolons in Go. [design/semicolon](https://golang.org/s/semicolon-proposal)
 - Russ Cox. Go “Return at End of Function” Requirements. [design/go11return](https://golang.org/s/go11return)
@@ -48,28 +50,36 @@ a comprehensive reference of Go history.
 - https://talks.golang.org/2015/how-go-was-made.slide
 - Go 1 Preview. [discuss/go1](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE)
 
-### Type alias
+### Package (1.4, 1.5)
+
+- https://golang.org/s/go14internal
+- https://golang.org/s/go14nopkg
+- https://golang.org/s/go14customimport
+- https://golang.org/s/go15vendor
+
+
+### Type alias (1.9)
 
 - https://golang.org/issue/16339
 - https://www.youtube.com/watch?v=h6Cw9iCDVcU
 - https://talks.golang.org/2016/refactor.article
 - https://golang.org/issue/18130
 
-### Error handling
+### Error values (1.13)
 
-- Error Handling — Problem Overview, https://github.com/golang/proposal/blob/master/design/go2draft-error-handling-overview.md
-- Error Values — Problem Overview, https://github.com/golang/proposal/blob/master/design/go2draft-error-values-overview.md
-- Error Handling — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-handling.md
-- Error Inspection — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-inspection.md
-- Error Printing — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-printing.md
-- language: Go 2: error handling meta issue [#40432](https://golang.org/issue/40432)
-- proposal: Go 2 error values [#29934](https://golang.org/issue/29934)
-- errors: performance regression in New. [#30468](https://golang.org/issue/30468)
-- Proposal: A built-in Go error check function, "try". [Response](https://golang.org/issue/32437#issuecomment-512035919)
+- language: Go 2: error handling meta issue [issue/40432](https://golang.org/issue/40432)
+- Error Handling — Problem Overview. [design/err-handling-overview](https://github.com/golang/proposal/blob/master/design/go2draft-error-handling-overview.md)
+- Error Values — Problem Overview. [design/err-values-overview](https://github.com/golang/proposal/blob/master/design/go2draft-error-values-overview.md)
+- Error Handling — Draft Design. [design/err-handle-check](https://github.com/golang/proposal/blob/master/design/go2draft-error-handling.md)
+  - proposal: A built-in Go error check function, "try". [issue/32437](https://golang.org/issue/32437#issuecomment-512035919)
+- Error Inspection — Draft Design. [design/err-inspect](https://github.com/golang/proposal/blob/master/design/go2draft-error-inspection.md)
+  - proposal: Go 2 error values. [issue/29934](https://golang.org/issue/29934)
+- Error Printing — Draft Design. [design/err-print](https://github.com/golang/proposal/blob/master/design/go2draft-error-printing.md)
+  - errors: performance regression in New. [issue/30468](https://golang.org/issue/30468)
 #32437
-- proposal: errors: add ErrUnimplemented as standard way for interface method to fail, https://github.com/golang/go/issues/41198
+- proposal: errors: add ErrUnimplemented as standard way for interface method to fail. [issue/41198](https://golang.org/issue/41198)
 
-### Defer
+### Defer (1.13)
 
 - https://golang.org/issue/6980: cmd/compile: allocate some defers in stack frames #6980
 - https://golang.org/issue/14939: runtime: defer is slow #14939
@@ -81,22 +91,11 @@ a comprehensive reference of Go history.
   - https://golang.org/issue/34530
   - https://golang.org/issue/26275
 
-### Channel
+### Channel/Select
 
-- runtime: make chan-based generators faster, https://golang.org/issue/8903
-- runtime: optimization to reduce P churn, https://golang.org/issue/32113
-- https://golang.org/issue/20352
-
-### Select
-
-- Fairness in select statement: golang/go#21806
-
-### Package
-
-- https://golang.org/s/go14internal
-- https://golang.org/s/go14nopkg
-- https://golang.org/s/go14customimport
-- https://golang.org/s/go15vendor
+- fairness in select statement. [issue/21806](https://golang.org/issue/21806)
+- runtime: make chan-based generators faster. [issue/8903](https://golang.org/issue/8903)
+- runtime: optimization to reduce P churn. [issue/32113](https://golang.org/issue/32113)
 
 ### Generics
 
@@ -135,7 +134,7 @@ a comprehensive reference of Go history.
 - proposal: add GOEXPERIMENT=checkptr [issue/22218](https://golang.org/issue/22218), [issue/34964](https://golang.org/issue/34964), [issue/34972](https://golang.org/issue/34972), [discuss/checkptr](https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ)
 - runtime: consider adding 24-byte size class. [issue/8885](https://golang.org/issue/8885)
 - proposal: cmd/compile: add tail call optimization for self-recursion only. [issue/16798](https://golang.org/issue/16798)
-- alignment. [issue/599](https://golang.org/issue/599), [issue/36606](https://github.com/golang/go/issues/36606), [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md)
+- alignment. [issue/599](https://golang.org/issue/599), [issue/36606](https://golang.org/issue/36606), [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md)
 
 ### Linker
 
@@ -143,7 +142,7 @@ a comprehensive reference of Go history.
 
 ## Debugger
 
-- https://golang.org/s/go15trace
+- Dmitry Vyukov. Go Execution Tracer. [design/go15trace]. https://golang.org/s/go15trace
 - https://github.com/golang/go/wiki/heapdump15-through-heapdump17
 
 ### Builder
