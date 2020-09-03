@@ -162,22 +162,28 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Compiler
 
-
-- https://golang.org/s/go12symtab
-- https://golang.org/s/go13compiler
-- https://golang.org/s/go1.4-generate
-- https://golang.org/s/go15bootstrap
-  - C to Go bootstraping, https://www.youtube.com/watch?v=QIE5nV5fDwA
-- https://golang.org/s/execmodes
-- https://golang.org/s/go17ssa
-- all: binaries too big and growing. [issue/6853](https://golang.org/issue/6853)
-- cmd/compile: enable mid-stack inlining. [issue/19348](https://golang.org/issue/19348)
-- cmd/compile: rewrite escape analysis. [issue/23109](https://golang.org/issue/23109)
-- proposal: runtime: make the ABI undefined as a step toward changing it. [issue/27539](https://golang.org/issue/27539)
-- proposal: add GOEXPERIMENT=checkptr [issue/22218](https://golang.org/issue/22218), [issue/34964](https://golang.org/issue/34964), [issue/34972](https://golang.org/issue/34972), [discuss/checkptr](https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ)
-- runtime: consider adding 24-byte size class. [issue/8885](https://golang.org/issue/8885)
-- proposal: cmd/compile: add tail call optimization for self-recursion only. [issue/16798](https://golang.org/issue/16798)
-- alignment. [issue/599](https://golang.org/issue/599), [issue/36606](https://golang.org/issue/36606), [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md)
+- [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
+- [design/go13compiler](https://golang.org/s/go13compiler) Russ Cox. Go 1.3+ Compiler Overhaul. December 2013
+- [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
+- [design/go15bootstrap](https://golang.org/s/go15bootstrap) Russ Cox. Go 1.5 Bootstrap Plan. January 2015.
+- [talk/gobootstrap](https://www.youtube.com/watch?v=QIE5nV5fDwA) GopherCon 2014 Go from C to Go by Russ Cox.
+- [design/execmodes](https://golang.org/s/execmodes) Ian Lance Taylor.  Go Execution Modes. August, 2014 (updated January 2016)
+- [design/go17ssa](https://golang.org/s/go17ssa) Keith Randall. New SSA Backend for the Go Compiler. 2/10/2015.
+- [issue/6853](https://golang.org/issue/6853) all: binaries too big and growing.
+- [issue/19348](https://golang.org/issue/19348) cmd/compile: enable mid-stack inlining.
+- [issue/23109](https://golang.org/issue/23109) cmd/compile: rewrite escape analysis.
+- [issue/27539](https://golang.org/issue/27539) proposal: runtime: make the ABI undefined as a step toward changing it.
+- proposal: add GOEXPERIMENT=checkptr
+  + [issue/22218](https://golang.org/issue/22218) proposal: add GOEXPERIMENT=checkptr
+  + [issue/34964](https://golang.org/issue/34964) cmd/compile: enable -d=checkptr as part of -race and/or -msan?
+  + [issue/34972](https://golang.org/issue/34972) all: get standard library building with -d=checkptr
+  + [discuss/checkptr](https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ)
+- [issue/8885](https://golang.org/issue/8885) runtime: consider adding 24-byte size class. 
+- [issue/16798](https://golang.org/issue/16798) proposal: cmd/compile: add tail call optimization for self-recursion only. 
+- alignment
+  + [issue/599](https://golang.org/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
+  + [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
+  + [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
 
 ### Linker
 
@@ -210,27 +216,33 @@ with Robert Griesemer and Ian Lance Taylor
 - https://twitter.com/_rsc/status/1022588240501661696
 - https://changelog.com/gotime/77
 - https://groups.google.com/forum/#!msg/golang-dev/a5PqQuBljF4/scQU-TfXBwAJ
-- https://research.swtch.com/deps
-- Lazy module load - Bryan https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md
+- [doc/deps](https://research.swtch.com/deps) Russ Cox. Our Software Dependency Problem. January 23, 2019.
+- [design/lazy-mod](https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
 
 ### Testing
 
 - Tool chain, benchseries/benchstat
-- Fuzzing https://go.googlesource.com/proposal/+/master/design/draft-fuzzing.md
+- [design/fuzzing](https://go.googlesource.com/proposal/+/master/design/draft-fuzzing.md) Katie Hockman. Design Draft: First Class Fuzzing 
 
 ## Runtime Core
 
 ### Statistics
 
+- [issue/29696](https://github.com/golang/go/issues/29696) proposal: runtime: add way for applications to respond to GC backpressure
+- [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
+- [cl/setmaxheap](https://go-review.googlesource.com/c/go/+/46751/) Austin Clements. runtime/debug: add SetMaxHeap API. Jun 26 2017.
+- [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
 - [design/go116runtime-metric](https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md) Michael Knyszek. Proposal: API for unstable runtime metrics
 
 ### Scheduler
 
-- [VYUKOV, 2012] [Vyukov, Dmitry. Scalable Go Scheduler Design Doc, 2012](https://golang.org/s/go11sched)
-- [VYUKOV, 2013] [Vyukov, Dmitry. Go Preemptive Scheduler Design Doc, 2013](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h)
-- Go 1.5 GOMAXPROCS Default, https://golang.org/s/go15gomaxprocs
-- runtime: tight loops should be preemptible, [#10958](https://golang.org/issue/10958)
-- runtime: non-cooperative goroutine preemption, [#24543](https://golang.org/issue/24543)
+- [design/go11sched](https://golang.org/s/go11sched) Dmitry Vyukov. Scalable Go Scheduler Design Doc, 2012]
+- [design/preempt-sched](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h) Dmitry Vyukov. Go Preemptive Scheduler Design Doc, 2013
+- [design/go15gomaxprocs](https://golang.org/s/go15gomaxprocs) Russ Cox. Go 1.5 GOMAXPROCS Default. May 2015.
+- [design/preempt-sched2](https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
+  + [issue/10958](https://golang.org/issue/10958) runtime: tight loops should be preemptible
+  + [issue/24543](https://golang.org/issue/24543) runtime: non-cooperative goroutine preemption
+  + [issue/36365](https://github.com/golang/go/issues/36365) runtime: clean up async preemption loose ends
 - [issue/18237](https://golang.org/issue/18237) runtime: scheduler is slow when goroutines are frequently woken
 - [issue/27345](https://golang.org/issue/27345) runtime: use parent goroutine's stack for new goroutines
 - [issue/32113](https://golang.org/issue/32113) runtime: optimization to reduce P churn.
@@ -238,85 +250,92 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Execution Stack
 
-- Contiguous stacks, https://golang.org/s/contigstacks
+- [design/contigstack](https://golang.org/s/contigstacks) Contiguous stacks
+- [issue/26061](https://github.com/golang/go/issues/26061) runtime: g0 stack.lo is sometimes too low
 
 ### Memory Allocator
 
-- runtime: smarter scavenging, [#30333](https://golang.org/issue/30333)
-- runtime: scavenger pacing fails to account for fragmentation [#34048](https://golang.org/issue/34048)
-- runtime: potential deadlock cycle caused by scavenge.lock [#34047](https://golang.org/issue/34047)
-- runtime: make the page allocator scale [#35112](https://golang.org/issue/35112)
-- runtime: scavenger not as effective as in previous releases [#35788](https://golang.org/issue/35788)
-- runtime: mechanism for monitoring heap size [#16843](https://golang.org/issue/16843)
-- Scavenging https://go.googlesource.com/proposal/+/aa701aae530695d32916b779e048a3e18311a2e3/design/30333-smarter-scavenging.md
-- Page allocator https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md
-- Mcentral https://golang.org/issue/37487, https://golang.org/cl/221182
+- [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
+- [issue/34047](https://golang.org/issue/34047) runtime: potential deadlock cycle caused by scavenge.lock
+- [issue/34048](https://golang.org/issue/34048) runtime: scavenger pacing fails to account for fragmentation
+- [issue/35112](https://golang.org/issue/35112) runtime: make the page allocator scale
+- [issue/35788](https://golang.org/issue/35788) runtime: scavenger not as effective as in previous releases
+- [design/go13scavenge](https://go.googlesource.com/proposal/+/aa701aae530695d32916b779e048a3e18311a2e3/design/30333-smarter-scavenging.md) Michael Knyszek. Proposal: Smarter Scavenging. 2019-05-09.
+- [design/go14pagealloc](https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md) Michael Knyszek, Austin Clements. Proposal: Scaling the Go page allocator. 2019-10-18.
+- [issue/37487](https://golang.org/issue/37487) runtime: improve mcentral scalability
+- [cl/221182](https://golang.org/cl/221182) runtime: add new mcentral implementation
 
 ### Garbage Collector
 
-- https://golang.org/s/go14gc
-- https://golang.org/s/go15gcpacing
-- runtime: eliminate stack rescanning, [#17503](https://golang.org/issue/17503)
-- cmd/compile: compiler can unexpectedly preserve memory, [#22350](https://golang.org/issue/22350)
-    + Proposal: [GC scanning of stacks](https://docs.google.com/document/d/1un-Jn47yByHL7I0aVIP_uVCMxjdM5mpelJhiKlIqxkE/edit#)
-- runtime: simplify mark termination and eliminate mark 2, [#26903](https://golang.org/issue/26903)
-- runtime: error message: P has cached GC work at end of mark termination [#27993](https://golang.org/issue/27993)
-- runtime: cannot ReadMemStats during GC [#19812](https://golang.org/issue/19812)
-- https://blog.golang.org/ismmkeynote
-- https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns
-- generational gc: https://golang.org/cl/137482
-- ROC: https://golang.org/cl/25058
+- [design/go14gc](https://golang.org/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
+- [design/go15gcpacing](https://golang.org/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. 2015-03-10.
+- [talk/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
+- [discuss/ismm-gc](https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns) Garbage Collection Slides and Transcript now available
+- [cl/generational-gc](https://golang.org/cl/137482) runtime: trigger generational GC
+- [cl/roc](https://golang.org/cl/25058) runtime: ROC write barrier code
+- [issue/17503](https://golang.org/issue/17503) runtime: eliminate stack rescanning
+- [issue/22350](https://golang.org/issue/22350) cmd/compile: compiler can unexpectedly preserve memory, 
+- [design/gcscan](https://docs.google.com/document/d/1un-Jn47yByHL7I0aVIP_uVCMxjdM5mpelJhiKlIqxkE/edit#) Proposal: GC scanning of stacks
+- [issue/26903](https://golang.org/issue/26903) runtime: simplify mark termination and eliminate mark 2
+- [issue/27993](https://golang.org/issue/27993) runtime: error message: P has cached GC work at end of mark termination
 
 ### Memory model
 
 Go memory model is not properly defined.
 
-- https://golang.org/issue/5045
-- https://golang.org/issue/9442
-- https://golang.org/issue/7948
-- https://golang.org/issue/28306
-- https://golang.org/issue/33815
-- http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf
-- https://research.swtch.com/go2017#memory
-- https://golang.org/pkg/sync/atomic/#pkg-note-BUG
-- https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ
+- [issue/5045](https://golang.org/issue/5045) doc: define how sync/atomic interacts with memory model
+- [issue/9442](https://golang.org/issue/9442) doc: define how finalizers interact with memory model
+- [issue/7948](https://golang.org/issue/7948) doc: define how sync interacts with memory model
+- [issue/33815](https://golang.org/issue/33815) doc/go_mem: "hello, world" will not always be printed twice
+- [talk/gomem](http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf) Russ Cox. Go’s Memory Model. February 25, 2016.
+- [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017 - Memory model. January 18, 2017.
+- [doc/atomic-bug](https://golang.org/pkg/sync/atomic/#pkg-note-BUG) Package atomic
+- [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
 
 ### ABI
 
-- register based ABI - Austin - Late call - david chase https://github.com/golang/proposal/blob/master/design/40724-register-calling.md
+- [design/register-call](https://github.com/golang/proposal/blob/master/design/40724-register-calling.md ) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
+- [issue/18597](https://github.com/golang/go/issues/18597) proposal: cmd/compile: define register-based calling convention
+- [issue/40724](https://github.com/golang/go/issues/40724) proposal: switch to a register-based calling convention for Go functions
+
+<!-- ?Late call - david chase  -->
 
 ## Standard Library
 
 ### encoding
 
-- Go 1.2 encoding.TextMarshaler and TextUnmarshaler. [design/go12encoding](https://golang.org/s/go12encoding)
+- [design/go12encoding](https://golang.org/s/go12encoding) Russ Cox. Go 1.2 encoding.TextMarshaler and TextUnmarshaler. July 2013.
 
 ### syscall
 
-- The syscall package. [design/go14syscall](https://golang.org/s/go1.4-syscall)
+- [design/go14syscall](https://golang.org/s/go1.4-syscall) The syscall package.
 
 ### go/types
 
-- go/types: The Go Type Checker. [doc/types](https://golang.org/s/types-tutorial)
+- [doc/gotypes](https://golang.org/s/types-tutorial) Alan Donovan. go/types: The Go Type Checker.
+- [talk/gotypes](https://docs.google.com/presentation/d/13OvHYozAUBeISPRoLgG7kMBuja1NsU1D_mMlmbaYojk/view) Alan Donovan. Using go/types for
+Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ### sync
 
-- sync: avoid clearing the full Pool on every GC. [issue/22950](https://golang.org/issue/22950)
-- runtime: replace Semacquire/Semrelease implementation. [cl/4631059-97c00f](https://github.com/golang/go/commit/997c00f)
-- runtime: fall back to fair locks after repeated sleep-acquire failures. [issue/13086](https://golang.org/issue/13086)
+- [issue/22950](https://golang.org/issue/22950) sync: avoid clearing the full Pool on every GC.
+- [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
+- [issue/13086](https://golang.org/issue/13086) runtime: fall back to fair locks after repeated sleep-acquire failures. 
+- [issue/21035](https://github.com/golang/go/issues/21035) sync: reduce contention between Map operations with new-but-disjoint keys
 
 ### time
 
-- runtime: make timers faster. [issue/6239](https://golang.org/issue/6239)
-- time: excessive CPU usage when using Ticker and Sleep. [issue/27707](https://golang.org/issue/27707)
+- [issue/6239](https://golang.org/issue/6239) runtime: make timers faster.
+- [issue/27707](https://golang.org/issue/27707) time: excessive CPU usage when using Ticker and Sleep.
 
 ### io
 
-- io/fs abstraction, Russ & Rob. [design/draft-iofs](https://github.com/golang/proposal/blob/master/design/draft-iofs.md)
+- [design/draft-iofs](https://github.com/golang/proposal/blob/master/design/draft-iofs.md) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design
+. July 2020.
 
 ### context
 
-- Go Concurrency Patterns: Context. [doc/context](https://blog.golang.org/context)
+- [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
 
 ## Contributing
 
