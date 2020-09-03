@@ -1,2 +1,277 @@
-# go-history
-A comprehensive reference of the history of Go.
+# The Go History
+
+This document includes all interesting issues, discussions, proposals,
+and CLs in the Go development history, which intents to offer 
+a comprehensive reference of Go history.
+
+## Authors
+
+### Core Founders
+
+- Rob Pike
+- Robert Griesemer
+- Ken Thompson
+- Russ Cox
+- Ian Lance Taylor
+
+### Compiler/Runtime Team
+
+- Dmitry Vyukov
+- Austin Clements
+- Than McIntosh
+- Keith Randall
+- David Chase
+- Michael Knyszek
+- Richard L. Hudson
+- Cherry Zhang
+
+### Library/Tools/Security/Community
+
+- Bryan C. Mills
+- Brad Fitzpatrick
+- Daniel Martí
+- Nigel Tao
+- Filippo Valsorda
+- Michael Matloob
+- Dave Cheney
+- ...
+
+## Language Design
+
+- Rob Pike, Robert Griesemer, Ken Thompson. [design/initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec)
+- Rob Pike. Semicolons in Go. [design/semicolon](https://golang.org/s/semicolon-proposal)
+- Russ Cox. Go “Return at End of Function” Requirements. [design/go11return](https://golang.org/s/go11return)
+- Russ Cox. Go 1.1 Function Calls. [design/go11func](https://golang.org/s/go11func)
+- Russ Cox. Go 1.2 Field Selectors and Nil Checks. [design/go12nil](https://golang.org/s/go12nil)
+- Russ Cox. Go Slice with Cap. [design/go12slice](https://golang.org/s/go12slice)
+- Rob Pike. Go at Google: Language Design in the Service of Software Engineering - Language Semantics. [doc/goatgoogle](https://talks.golang.org/2012/splash.article#TOC_12.)
+- https://talks.golang.org/2015/how-go-was-made.slide
+- Go 1 Preview. [discuss/go1](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE)
+
+### Type alias
+
+- https://golang.org/issue/16339
+- https://www.youtube.com/watch?v=h6Cw9iCDVcU
+- https://talks.golang.org/2016/refactor.article
+- https://golang.org/issue/18130
+
+### Error handling
+
+- Error Handling — Problem Overview, https://github.com/golang/proposal/blob/master/design/go2draft-error-handling-overview.md
+- Error Values — Problem Overview, https://github.com/golang/proposal/blob/master/design/go2draft-error-values-overview.md
+- Error Handling — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-handling.md
+- Error Inspection — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-inspection.md
+- Error Printing — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-error-printing.md
+- language: Go 2: error handling meta issue [#40432](https://golang.org/issue/40432)
+- proposal: Go 2 error values [#29934](https://golang.org/issue/29934)
+- errors: performance regression in New. [#30468](https://golang.org/issue/30468)
+- Proposal: A built-in Go error check function, "try". [Response](https://golang.org/issue/32437#issuecomment-512035919)
+#32437
+- proposal: errors: add ErrUnimplemented as standard way for interface method to fail, https://github.com/golang/go/issues/41198
+
+### Defer
+
+- https://golang.org/issue/6980: cmd/compile: allocate some defers in stack frames #6980
+- https://golang.org/issue/14939: runtime: defer is slow #14939
+- opencoded defer: https://github.com/golang/proposal/blob/master/design/34481-opencoded-defers.md
+- `defer recover()` edge cases.
+  - https://golang.org/issue/10458
+  - https://golang.org/issue/23531
+  - https://go-review.googlesource.com/c/go/+/189377
+  - https://golang.org/issue/34530
+  - https://golang.org/issue/26275
+
+### Channel
+
+- runtime: make chan-based generators faster, https://golang.org/issue/8903
+- runtime: optimization to reduce P churn, https://golang.org/issue/32113
+- https://golang.org/issue/20352
+
+### Select
+
+- Fairness in select statement: golang/go#21806
+
+### Package
+
+- https://golang.org/s/go14internal
+- https://golang.org/s/go14nopkg
+- https://golang.org/s/go14customimport
+- https://golang.org/s/go15vendor
+
+### Generics
+
+- Generics — Problem Overview, https://github.com/golang/proposal/blob/master/design/go2draft-generics-overview.md
+- Contracts — Draft Design, https://github.com/golang/proposal/blob/master/design/go2draft-contracts.md
+- https://golang.org/issue/15292
+- https://github.com/golang/proposal/blob/master/design/15292-generics.md
+- [Type functions](https://github.com/golang/proposal/blob/master/design/15292/2010-06-type-functions.md) (June 2010)
+- [Generalized types](https://github.com/golang/proposal/blob/master/design/15292/2011-03-gen.md) (March 2011)
+- [Generalized types](https://github.com/golang/proposal/blob/master/design/15292/2013-10-gen.md) (October 2013)
+- [Type parameters](https://github.com/golang/proposal/blob/master/design/15292/2013-12-type-params.md) (December 2013)
+- https://docs.google.com/document/d/1vrAy9gMpMoS3uaVphB32uVXX4pi-HnNjkMEgyAHX4N4/edit
+- https://go-review.googlesource.com/c/go/+/187317/
+- https://research.swtch.com/generic
+- Type parameters (2020) - https://github.com/golang/proposal/blob/c024b226e094dd510e72126d0a7d245afadb1f5e/design/go2draft-type-parameters.md
+- github.com/changkun/go2generics
+- Generics and parenthesis, Robert, https://groups.google.com/g/golang-nuts/c/7t-Q2vt60J8
+- Moving forward with the generics design, Ian, https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw
+
+## Compiler Tool Chain
+
+### Compiler
+
+- C to Go bootstraping, https://www.youtube.com/watch?v=QIE5nV5fDwA
+- https://golang.org/s/go12symtab
+- https://golang.org/s/go13linker
+- https://golang.org/s/go13compiler
+- https://golang.org/s/go1.4-generate
+- https://golang.org/s/go15bootstrap
+- https://golang.org/s/execmodes
+- https://golang.org/s/go17ssa
+- all: binaries too big and growing. [issue/6853](https://golang.org/issue/6853)
+- cmd/compile: enable mid-stack inlining. [issue/19348](https://golang.org/issue/19348)
+- cmd/compile: rewrite escape analysis. [issue/23109](https://golang.org/issue/23109)
+- proposal: runtime: make the ABI undefined as a step toward changing it. [issue/27539](https://golang.org/issue/27539)
+- proposal: add GOEXPERIMENT=checkptr [issue/22218](https://golang.org/issue/22218), [issue/34964](https://golang.org/issue/34964), [issue/34972](https://golang.org/issue/34972), [discuss/checkptr](https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ)
+- runtime: consider adding 24-byte size class. [issue/8885](https://golang.org/issue/8885)
+- proposal: cmd/compile: add tail call optimization for self-recursion only. [issue/16798](https://golang.org/issue/16798)
+- alignment. [issue/599](https://golang.org/issue/599), [issue/36606](https://github.com/golang/go/issues/36606), [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md)
+
+### Linker
+
+- [Clements 2019] Austin Clements. Building a better Go linker. 2019-09-12. [Link](https://golang.org/s/better-linker)
+
+## Debugger
+
+- https://golang.org/s/go15trace
+- https://github.com/golang/go/wiki/heapdump15-through-heapdump17
+
+### Builder
+
+- Go support for Android. [design/go14android](https://golang.org/s/go14android)
+- Go build https://github.com/golang/proposal/blob/master/design/draft-gobuild.md
+- Embedded files - Russ & Braid https://github.oom/golang/proposal/blob/master/design/draft-embed.md
+
+### Modules
+
+- https://semver.org/
+- https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/
+- https://www.youtube.com/watch?v=5LtMb090AZI
+- https://www.youtube.com/watch?v=wBTGd_dvnO8
+- https://www.youtube.com/watch?v=sbrZfPgNmfw
+- https://zhuanlan.zhihu.com/p/41627929
+- https://peter.bourgon.org/blog/2018/07/27/a-response-about-dep-and-vgo.html
+- https://news.ycombinator.com/item?id=17628311
+- https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/
+- https://twitter.com/_rsc/status/1022588240501661696
+- https://changelog.com/gotime/77
+- https://groups.google.com/forum/#!msg/golang-dev/a5PqQuBljF4/scQU-TfXBwAJ
+- https://research.swtch.com/deps
+- Lazy module load - Bryan https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md
+
+## Testing
+
+- Tool chain, benchseries/benchstat
+- Fuzzing https://go.googlesource.com/proposal/+/master/design/draft-fuzzing.md
+
+## Runtime Core
+
+### Metrics
+
+- Runtime Metric https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md
+
+### Scheduler
+
+- [VYUKOV, 2012] [Vyukov, Dmitry. Scalable Go Scheduler Design Doc, 2012](https://golang.org/s/go11sched)
+- [VYUKOV, 2013] [Vyukov, Dmitry. Go Preemptive Scheduler Design Doc, 2013](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h)
+- Go 1.5 GOMAXPROCS Default, https://golang.org/s/go15gomaxprocs
+- runtime: tight loops should be preemptible, [#10958](https://golang.org/issue/10958)
+- runtime: non-cooperative goroutine preemption, [#24543](https://golang.org/issue/24543)
+- runtime: scheduler is slow when goroutines are frequently woken [#18237](https://golang.org/issue/18237)
+- runtime: optimization to reduce P churn [#32113](https://golang.org/issue/32113)
+
+### Execution Stack
+
+- Contiguous stacks, https://golang.org/s/contigstacks
+
+### Memory Allocator
+
+- runtime: smarter scavenging, [#30333](https://golang.org/issue/30333)
+- runtime: scavenger pacing fails to account for fragmentation [#34048](https://golang.org/issue/34048)
+- runtime: potential deadlock cycle caused by scavenge.lock [#34047](https://golang.org/issue/34047)
+- runtime: make the page allocator scale [#35112](https://golang.org/issue/35112)
+- runtime: scavenger not as effective as in previous releases [#35788](https://golang.org/issue/35788)
+- runtime: mechanism for monitoring heap size [#16843](https://golang.org/issue/16843)
+- Scavenging https://go.googlesource.com/proposal/+/aa701aae530695d32916b779e048a3e18311a2e3/design/30333-smarter-scavenging.md
+- Page allocator https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md
+- Mcentral https://golang.org/issue/37487, https://go-review.googlesource.com/c/go/+/221182
+
+### Garbage Collector
+
+- https://golang.org/s/go14gc
+- https://golang.org/s/go15gcpacing
+- runtime: eliminate stack rescanning, [#17503](https://golang.org/issue/17503)
+- cmd/compile: compiler can unexpectedly preserve memory, [#22350](https://golang.org/issue/22350)
+    + Proposal: [GC scanning of stacks](https://docs.google.com/document/d/1un-Jn47yByHL7I0aVIP_uVCMxjdM5mpelJhiKlIqxkE/edit#)
+- runtime: simplify mark termination and eliminate mark 2, [#26903](https://golang.org/issue/26903)
+- runtime: error message: P has cached GC work at end of mark termination [#27993](https://golang.org/issue/27993)
+- runtime: cannot ReadMemStats during GC [#19812](https://golang.org/issue/19812)
+- https://blog.golang.org/ismmkeynote
+- https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns
+- generational gc: https://go-review.googlesource.com/c/go/+/137482
+- ROC: https://go-review.googlesource.com/c/go/+/25058
+
+### Memory model
+
+Go memory model is not properly defined.
+
+- https://golang.org/issue/5045
+- https://golang.org/issue/9442
+- https://golang.org/issue/7948
+- https://golang.org/issue/28306
+- https://golang.org/issue/33815
+- http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf
+- https://research.swtch.com/go2017#memory
+- https://golang.org/pkg/sync/atomic/#pkg-note-BUG
+- https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ
+
+### ABI
+
+- register based ABI - Austin - Late call - david chase https://github.com/golang/proposal/blob/master/design/40724-register-calling.md
+
+## Standard Library
+
+### encoding
+
+- Go 1.2 encoding.TextMarshaler and TextUnmarshaler. [design/go12encoding](https://golang.org/s/go12encoding)
+
+### syscall
+
+- The syscall package. [design/go14syscall](https://golang.org/s/go1.4-syscall)
+
+### go/types
+
+- go/types: The Go Type Checker. [doc/types](https://golang.org/s/types-tutorial)
+
+### sync
+
+- sync: avoid clearing the full Pool on every GC. [issue/22950](https://golang.org/issue/22950)
+- runtime: replace Semacquire/Semrelease implementation. [cl/4631059-97c00f](https://github.com/golang/go/commit/997c00f)
+- runtime: fall back to fair locks after repeated sleep-acquire failures. [issue/13086](https://golang.org/issue/13086)
+
+### time
+
+- runtime: make timers faster. [issue/6239](https://golang.org/issue/6239)
+- time: excessive CPU usage when using Ticker and Sleep. [issue/27707](https://golang.org/issue/27707)
+
+### io
+
+- io/fs abstraction, Russ & Rob. [design/draft-iofs](https://github.com/golang/proposal/blob/master/design/draft-iofs.md)
+
+### context
+
+- Go Concurrency Patterns: Context. [doc/context](https://blog.golang.org/context)
+
+## License
+
+[go-history](https://github.com/changkun/go-history) | CC-BY-NC-ND 4.0 & MIT &copy; [changkun](https://changkun.de)
