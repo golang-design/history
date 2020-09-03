@@ -45,9 +45,9 @@ a comprehensive reference of the Go history.
 - Brad Fitzpatrick. GitHub, Twitter
 - Daniel Martí. GitHub, Twitter
 - Nigel Tao. GitHub, Twitter
-- Filippo Valsorda
-- Michael Matloob
-- Dave Cheney
+- Filippo Valsorda. GitHub,
+- Michael Matloob. GitHub,
+- Dave Cheney. Website, GitHub,
 - ...etc
 
 ## Interviews
@@ -156,6 +156,7 @@ with Ian Lance Taylor
 with Robert Griesemer and Ian Lance Taylor
 - [talk/generics-cppcast](https://cppcast.com/ian-taylor-go) CppCast. Go with Ian Lance Taylor
 - [paper/featherweight-go](https://arxiv.org/abs/2005.11710) Griesemer, Robert, et al. "Featherweight Go." arXiv preprint arXiv:2005.11710 (2020).
+- [talk/featherweight-go](https://www.youtube.com/watch?v=Dq0WFigax_c) Phil Wadler: Featherweight Go. Jun 8, 2020.
 
 ## Compiler Toolchain
 
@@ -197,9 +198,9 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Modules
 
-- https://semver.org/
-- https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/
-- https://www.youtube.com/watch?v=5LtMb090AZI
+- [doc/go-dep](6https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer. The Saga of Go Dependency Management. Dec 13, 201
+- [talk/go-dep](https://www.youtube.com/watch?v=5LtMb090AZI&ab_channel=GopherAcademy) GopherCon 2017: Sam Boyer - The New Era of Go Package Management. Jul 24, 2017
+ https://www.youtube.com/watch?v=5LtMb090AZI
 - https://www.youtube.com/watch?v=wBTGd_dvnO8
 - https://www.youtube.com/watch?v=sbrZfPgNmfw
 - https://zhuanlan.zhihu.com/p/41627929
