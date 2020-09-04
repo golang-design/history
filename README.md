@@ -77,8 +77,34 @@ Now, he is leading the Compiler/Runtime team for Go.
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
 - ...etc
 
-## Interviews
+## Timeline
 
+Timeline helps you identify the point in time about a document that reflected in Go versions.
+
+| Version | Duration |
+|:--|:--|
+| Go 1    | 2012.03.28 |
+| Go 1.1  | 2013.05.13 |
+| Go 1.2  | 2013.12.01 |
+| Go 1.3  | 2014.06.18 |
+| Go 1.4  | 2014.12.10 |
+| Go 1.5  | 2015.08.19 |
+| Go 1.6  | 2016.02.17 |
+| Go 1.7  | 2016.08.15 |
+| Go 1.8  | 2017.02.16 |
+| Go 1.9  | 2017.08.24 |
+| Go 1.10 | 2018.02.16 |
+| Go 1.11 | 2018.08.24 |
+| Go 1.12 | 2019.02.25 |
+| Go 1.13 | 2019.09.03 |
+| Go 1.14 | 2020.02.25 |
+| Go 1.15 | 2020.08.11 |
+
+- Go Release History: https://golang.org/doc/devel/release.html
+- Pre-Go 1 Release History: https://golang.org/doc/devel/pre_go1.html
+- Before Go 1: https://golang.org/doc/devel/weekly.html
+
+## Interviews
 
 - [talk/goborn](https://changelog.com/podcast/3) The Go Programming Language from Google with Rob Pike, Principal Engineer at Google and Co-creator of Go
 - [talk/goborn2](https://changelog.com/podcast/100) Go Programming with Rob Pike and Andrew Gerrand
@@ -87,7 +113,7 @@ Now, he is leading the Compiler/Runtime team for Go.
 
 ## Language Design
 
-### Before Go 1
+### Go 1
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification.
 - [design/go0semicolon](https://golang.org/s/semicolon-proposal) Rob Pike. Semicolons in Go.
@@ -188,6 +214,10 @@ with Robert Griesemer and Ian Lance Taylor
 - [paper/featherweight-go](https://arxiv.org/abs/2005.11710) Griesemer, Robert, et al. "Featherweight Go." arXiv preprint arXiv:2005.11710 (2020).
 - [talk/featherweight-go](https://www.youtube.com/watch?v=Dq0WFigax_c) Phil Wadler: Featherweight Go. Jun 8, 2020.
 
+## Go 2
+
+- [talk/go2spec](https://www.youtube.com/watch?v=RIvL2ONhFBI) Sydney Golang Meetup - Rob Pike - Go 2 Draft Specifications
+
 ## Compiler Toolchain
 
 ### Compiler
@@ -223,23 +253,30 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Debugger
 
-- [design/go13heapdump](http://golang.org/s/go13heapdump) heapdump13
+- [design/go13heapdump](https://golang.org/s/go13heapdump) heapdump13
 - [design/go14heapdump](https://github.com/golang/go/wiki/heapdump14) heapdump14
 - [design/go15heapdump](https://github.com/golang/go/wiki/heapdump15-through-heapdump17) heapdump15 through heapdump17
 - [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov. Go Execution Tracer.
 - https://github.com/golang/go/wiki/heapdump15-through-heapdump17
 
+### Tracer
+
+- [design/tracer](https://docs.google.com/document/u/1/d/1FP5apqzBgr7ahCCgFO-yoVhk4YZrNIDNf9RybngBc14/pub) Dmitry Vyukov. Go Execution Tracer. Oct 2014.
+- [design/trace](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
+
 ### Builder
 
 - [design/go13nacl](golang.org/s/go13nacl) Go 1.3 Native Client Support
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
-- [design/go-generate](http://golang.org/s/go1.4-generate) Rob Pike. "Go Generate." January 2014.
+- [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. "Go Generate." January 2014.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
 - [discuss/generatedcode](golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
-  + [discuss/win2000-golang-nuts](http://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
+  + [discuss/win2000-golang-nuts](https://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
+- [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol. WebAssembly architecture for Go. 28th February 2018.
+- [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly assembly files
 
 ### Modules
 
@@ -296,6 +333,9 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Memory Allocator
 
+A quick history about the Go's memory allocator: Russ Cox first implements the memory allocator based on`tcmalloc` for Go 1, `mcache` are cached on M. Then he revised the allocator to allow
+user code use 16GB memory and later allows 128GB.
+
 - [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
 - [issue/34047](https://golang.org/issue/34047) runtime: potential deadlock cycle caused by scavenge.lock
 - [issue/34048](https://golang.org/issue/34048) runtime: scavenger pacing fails to account for fragmentation
@@ -305,9 +345,32 @@ with Robert Griesemer and Ian Lance Taylor
 - [design/go14pagealloc](https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md) Michael Knyszek, Austin Clements. Proposal: Scaling the Go page allocator. 2019-10-18.
 - [issue/37487](https://golang.org/issue/37487) runtime: improve mcentral scalability
 - [cl/221182](https://golang.org/cl/221182) runtime: add new mcentral implementation
+- [issue/18155](https://golang.org/issue/18155) runtime: latency in sweep assists when there's no garbage
+- [issue/19112](https://golang.org/issue/19112) runtime: deadlock involving gcControllerState.enlistWorker
+- [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
+- [issue/29707](https://golang.org/issue/29707) cmd/trace: "failed to parse trace: no consistent ordering of events possible"
+- [issue/35788](https://golang.org/issue/35788) runtime: scavenger not as effective as in previous releases
+- [issue/35954](https://golang.org/issue/35954) runtime: handle hitting the top of the address space in the allocator more gracefully
+- [issue/37112](https://golang.org/issue/37112) runtime: API for unstable metrics
+- [issue/37487](https://golang.org/issue/37487) runtime: improve mcentral scalability
+- [issue/37927](https://golang.org/issue/37927) runtime: GC pacing exhibits strange behavior with a low GOGC
+- [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
+- [issue/38130](https://golang.org/issue/38130) runtime: incorrect sanity checks in the page allocator
+- [issue/38404](https://golang.org/issue/38404) runtime: STW GC stops working on arm64/mips64le
+- [issue/38605](https://golang.org/issue/38605) runtime: pageAlloc.allocToCache updates pageAlloc.searchAddr in an invalid way
+- [issue/38617](https://golang.org/issue/38617) runtime: scavenger freezes up in Go 1.14 in Windows due to coarse time granularity
+- [issue/38712](https://golang.org/issue/38712) runtime: TestMemStats is flaky
+- [issue/38966](https://golang.org/issue/38966) runtime: aix-ppc64 builder is failing with "bad prune", "addr range base and limit are not in the same memory segment" fatal errors
+- [issue/39128](https://golang.org/issue/39128) runtime: linux-mips-rtrk builder consistently failing with "bad prune" as of CL 233497
+- [issue/40191](https://golang.org/issue/40191) runtime: pageAlloc.searchAddr may point to unmapped memory in discontiguous heaps, violating its invariant
+- [issue/40457](https://golang.org/issue/40457) runtime: runqputbatch does not protect its call to globrunqputbatch
+- [issue/40459](https://golang.org/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
+- [issue/40641](https://golang.org/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
 
 ### Garbage Collector
 
+- [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
+  + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
 - [design/go14gc](https://golang.org/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
 - [design/go15gcpacing](https://golang.org/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. 2015-03-10.
 - [talk/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
@@ -345,6 +408,7 @@ Go memory model is not properly defined.
 ### encoding
 
 - [design/go12encoding](https://golang.org/s/go12encoding) Russ Cox. Go 1.2 encoding.TextMarshaler and TextUnmarshaler. July 2013.
+- [design/go12xml](https://docs.google.com/document/d/1G-AMeUPoyTnbZDkuCJA89DjJwTjdWFctIZ_N9NgA9RM/pub) Russ Cox. Go 1.2 xml.Marshaler and Unmarshaler. July 2013.
 
 ### syscall
 
@@ -379,17 +443,20 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ## Unclassified yet
 
-- http://golang.org/s/using-guru
+- https://golang.org/s/using-guru
 - https://golang.org/s/gogetcmd
 - https://golang.org/s/stdwhy
-- http://golang.org/s/oracle-design
-- http://golang.org/s/oracle-user-manual
+- https://golang.org/s/oracle-design
+- https://golang.org/s/oracle-user-manual
 - https://golang.org/s/cgihttpproxy
 - golang.org/s/sqldrivers
 - https://golang.org/s/sometext
 - https://www.cflee.com/posts/golang-org-url-redirector/
 - https://golang.org/s/go2designs
 - https://golang.org/s/http2bug
+- https://docs.google.com/document/d/19_ExiylD9MRfeAjKIfEsMU1_RGhuxB9sA0b5Zv7byVI/edit
+- https://docs.google.com/spreadsheets/d/1VLxi-ac0BAtf735HyH3c1xRulbkYYUkFecKdLPH7NIQ/edit#gid=166102500
+
 
 <!-- ?Late call - david chase  -->
 
