@@ -1,8 +1,21 @@
 # A Documentary of Go
 
+**Author: Changkun Ou <_changkun.de_>**
+
 This document collects many interesting (publiclly observable) issues,
 discussions, proposals, CLs, and talks in the Go development history,
 which intents to offer a comprehensive reference of the Go history.
+
+## Disclaimer
+
+- Most of the text are written as my _personal_ understanding based on public sources
+
+- **Factual and typo errors may occur.** 
+Referring to the original link if some text conflicts to your understanding
+
+- [PR](https://github.com/changkun/go-history/pulls)s are welcome for bug and typo fixes
+
+- Use [issue](https://github.com/changkun/go-history) for discussions
 
 ## Sources
 
@@ -24,16 +37,16 @@ historical design. There are some of the official sources:
 
 ## Committers
 
-Go is a big project that driven by a tiny group. Here are some
-core committers to the project that you might interest in follow their
-excellent work.
+Go is a big project that driven by a tiny group of people and massive
+crowd of wisdom from community. Here are some core committers to
+the project that you might interest in follow their excellent work.
 
 ### Core Authors
 
-The Go was created by Rob, Robert, and Ken initially because 
+The Go was created by Rob, Robert, and Ken initially because
 they were suffered by the slow C++ compiling time.
 Later on, Ian joined the project
-later because he showed huge interests and wrote the [gccgo](https://github.com/golang/gofrontend).
+because he showed huge interests and wrote the [gccgo](https://github.com/golang/gofrontend).
 Russ is also one of the core authors of the project in the early state.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining the Go team
 since he knew Russ from way back because of the [Plan 9](http://plan9.bell-labs.com/plan9) project.
@@ -67,15 +80,15 @@ Now, he is leading the Compiler/Runtime team for Go.
 ### Library/Tools/Security/Community
 
 - Andrew Gerrand. GitHub, [Twitter](https://twitter.com/enneff)
-- Bryan C. Mills. GitHub
 - Brad Fitzpatrick. GitHub, Twitter
+- Bryan C. Mills. GitHub
 - Daniel Martí. GitHub, Twitter
 - Nigel Tao. GitHub, Twitter
 - Filippo Valsorda. GitHub,
 - Michael Matloob. GitHub,
 - Dave Cheney. Website, GitHub,
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
-- ...etc
+- more to be added...
 
 ## Timeline
 
@@ -99,6 +112,8 @@ Timeline helps you identify the point in time about a document that reflected in
 | Go 1.13 | 2019.09.03 |
 | Go 1.14 | 2020.02.25 |
 | Go 1.15 | 2020.08.11 |
+
+The historical release notes may helpful for general informations:
 
 - Go Release History: https://golang.org/doc/devel/release.html
 - Pre-Go 1 Release History: https://golang.org/doc/devel/pre_go1.html
@@ -267,6 +282,8 @@ with Robert Griesemer and Ian Lance Taylor
 ### Builder
 
 - [design/go13nacl](golang.org/s/go13nacl) Go 1.3 Native Client Support
+- [design/gobuilder](http://golang.org/s/builderplan) Brad Fitzpatrick. Go Builder Plan. 2014-09-03.
+  + [discuss/gobuilder](https://groups.google.com/g/golang-dev/c/sdFD0-2Ed8k) Changing how builders run
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
 - [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. "Go Generate." January 2014.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
@@ -444,6 +461,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 ## Unclassified yet
 
 - https://golang.org/s/using-guru
+- https://docs.google.com/document/d/1UErU12vR7jTedYvKHVNRzGPmXqdMASZ6PfE7B-p6sIg/edit
 - https://golang.org/s/gogetcmd
 - https://golang.org/s/stdwhy
 - https://golang.org/s/oracle-design
@@ -456,13 +474,13 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - https://golang.org/s/http2bug
 - https://docs.google.com/document/d/19_ExiylD9MRfeAjKIfEsMU1_RGhuxB9sA0b5Zv7byVI/edit
 - https://docs.google.com/spreadsheets/d/1VLxi-ac0BAtf735HyH3c1xRulbkYYUkFecKdLPH7NIQ/edit#gid=166102500
+- https://docs.google.com/document/d/1-azPLXaLgTCKeKDNg0HVMq2ovMlD-e7n1ZHzZVzOlJk/edit
 
+## Fun Facts
+
+- [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language
 
 <!-- ?Late call - david chase  -->
-
-## Contributing
-
-PRs are welcome.
 
 ## License
 
