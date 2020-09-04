@@ -1,15 +1,20 @@
-# The Go History
+# A Documentary of Go
 
-This document includes many interesting issues, discussions, proposals, CLs, and talks in the Go development history, which intents to offer 
+This document includes many interesting issues, discussions, proposals,
+CLs, and talks in the Go development history, which intents to offer
 a comprehensive reference of the Go history.
 
 ## Sources
+
+There are many sources for digging the documents that relate to Go's
+historical design. There are some of the official sources:
 
 - [golang.org/doc](golang.org/doc)
 - [blog.golang.org](blog.golang.org)
 - [golang.org/pkg](golang.org/pkg)
 - [dev.golang.org](dev.golang.org)
 - [github.com/golang/go](github.com/golang/go)
+- [github.com/golang/talks](github.com/golang/talks)
 - [github.com/golang/proposal](github.com/golang/proposal)
 - [github.com/golang/go/wiki](github.com/golang/go/wiki)
 - [go-review.googlesource.com](go-review.googlesource.com)
@@ -19,15 +24,36 @@ a comprehensive reference of the Go history.
 
 ## Committers
 
+Go is a big project that driven by a tiny group. Here are some
+core committers to the project that you might interest in follow their
+excellent work.
+
 ### Core Authors
+
+The Go was created by Rob, Robert, and Ken initially because 
+they were suffered by the slow C++ compiling time.
+Later on, Ian joined the project
+later because he showed huge interests and wrote the [gccgo](https://github.com/golang/gofrontend).
+Russ is also one of the core authors of the project in the early state.
+Back then, he was a newcomer at Google, and Rob invited Russ for joining the Go team
+since he knew Russ from way back because of the [Plan 9](http://plan9.bell-labs.com/plan9) project.
+Now, Russ is the tech leader of the whole Go team.
 
 - Rob Pike. [Cat-V](http://genius.cat-v.org/rob-pike/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike)
 - Robert Griesemer. [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
 - Ken Thompson
-- Russ Cox. GitHub, Twitter, Reddit
 - Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor)
+- Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), Twitter, Reddit
 
 ### Compiler/Runtime Team
+
+Dmitry is not from the Go team but on the dynamic testing tools team from Google.
+He wrote the scalable goroutine scheduler, many other performance improvements,
+synchronization primitives, race detector, and blocking profiler that
+related to the Go runtime.
+Austin was an intern at Google who worked on the Go project in the early days
+while pursuing a Ph. D. Later, he joined the Go team after his academic career.
+Now, he is leading the Compiler/Runtime team for Go.
 
 - Dmitry Vyukov. GitHub, Twitter
 - Austin Clements. GitHub,
@@ -48,6 +74,7 @@ a comprehensive reference of the Go history.
 - Filippo Valsorda. GitHub,
 - Michael Matloob. GitHub,
 - Dave Cheney. Website, GitHub,
+- Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
 - ...etc
 
 ## Interviews
@@ -83,7 +110,7 @@ a comprehensive reference of the Go history.
 
 ### Type alias (1.9)
 
-- [design/type-alias](https://go.googlesource.com/proposal/+/master/design/18130-type-alias.md) Russ Cox, Robert Griesemer. Proposal: Type Aliases
+- [design/type-alias](https://golang.org/design/18130-type-alias) Russ Cox, Robert Griesemer. Proposal: Type Aliases
 - [issue/16339](https://golang.org/issue/16339) proposal: Alias declarations for Go
 - [issue/18130](https://golang.org/issue/18130) all: support gradual code repair while moving a type between packages
 - [talk/type-alias](https://www.youtube.com/watch?v=t-w6MyI2qlU) GopherCon 2016 - Lightning Talk: Robert Griesemer - Alias Declarations for Go, A proposal
@@ -94,7 +121,7 @@ a comprehensive reference of the Go history.
 
 - [issue/6980](https://golang.org/issue/6980) cmd/compile: allocate some defers in stack frames
 - [issue/14939](https://golang.org/issue/14939) runtime: defer is slow #14939
-- [design/open-defer](https://github.com/golang/proposal/blob/master/design/34481-opencoded-defers.md) Dan Scales, Keith Randall, and Austin Clements. Proposal: Low-cost defers through inline code, and extra funcdata to manage the panic case
+- [design/open-defer](https://golang.org/design/34481-opencoded-defers) Dan Scales, Keith Randall, and Austin Clements. Proposal: Low-cost defers through inline code, and extra funcdata to manage the panic case
 - Unsolved `defer recover()` edge cases.
   - [issue/10458](https://golang.org/issue/10458) spec: panicking corner-case semantics
   - [issue/23531](https://golang.org/issue/23531) spec: recover() in nested defer
@@ -105,16 +132,20 @@ a comprehensive reference of the Go history.
 ### Error values (1.13)
 
 - [issue/40432](https://golang.org/issue/40432) language: Go 2: error handling meta issue
-- [design/err-handling-overview](https://github.com/golang/proposal/blob/master/design/go2draft-error-handling-overview.md) Russ Cox. Error Handling — Problem Overview.
-- [design/err-values-overview](https://github.com/golang/proposal/blob/master/design/go2draft-error-values-overview.md) Russ Cox. Error Values — Problem Overview. 
-- [design/err-handle-check](https://github.com/golang/proposal/blob/master/design/go2draft-error-handling.md) Marcel van Lohuizen. Error Handling — Draft Design.
-  - [design/err-try](https://github.com/golang/proposal/blob/master/design/32437-try-builtin.md) Proposal: A built-in Go error check function, "try"
+- [design/err-handling-overview](https://golang.org/design/go2draft-error-handling-overview) Russ Cox. Error Handling — Problem Overview.
+- [design/err-values-overview](https://golang.org/design/go2draft-error-values-overview) Russ Cox. Error Values — Problem Overview. 
+- [design/err-handle-check](https://golang.org/design/go2draft-error-handling) Marcel van Lohuizen. Error Handling — Draft Design.
+  - [design/err-try](https://golang.org/design/32437-try-builtin) Proposal: A built-in Go error check function, "try"
   - [issue/32437](https://golang.org/issue/32437#issuecomment-512035919) Proposal: A built-in Go error check function, "try". Decision response.
-- [design/err-inspect](https://github.com/golang/proposal/blob/master/design/go2draft-error-inspection.md) Error Inspection — Draft Design.
+- [design/err-inspect](https://golang.org/design/go2draft-error-inspection) Error Inspection — Draft Design.
   - [issue/29934](https://golang.org/issue/29934) proposal: Go 2 error values.
-- [design/err-print](https://github.com/golang/proposal/blob/master/design/go2draft-error-printing.md) Error Printing — Draft Design.
+- [design/err-print](https://golang.org/design/go2draft-error-printing) Error Printing — Draft Design.
   - [issue/30468](https://golang.org/issue/30468) errors: performance regression in New.
-- [issue/41198](https://golang.org/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail. 
+- [issue/41198](https://golang.org/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
+
+### Map
+
+- [talk/map](https://www.youtube.com/watch?v=Tl7mi9QmLns) GopherCon 2016: Keith Randall - Inside the Map Implementation
 
 ### Channel/Select
 
@@ -132,17 +163,16 @@ a comprehensive reference of the Go history.
 - [issue/15292](https://golang.org/issue/15292) proposal: spec: generic programming facilities
 - [doc/generics-discuss](https://docs.google.com/document/d/1vrAy9gMpMoS3uaVphB32uVXX4pi-HnNjkMEgyAHX4N4/edit#heading=h.vuko0u3txoew) Summary of Go Generics Discussions
 - [doc/generics-dilemma](https://research.swtch.com/generic) Russ Cox. The Generic Dilemma. December 3, 2009.
-- [design/type-functions](https://github.com/golang/proposal/blob/master/design/15292/2010-06-type-functions.md) Ian Lance Taylor. "Type Functions." golang/proposals, June 2010.
-- [design/generalized-types](https://github.com/golang/proposal/blob/master/design/15292/2011-03-gen.md) Ian Lance Taylor. "Generalized Types."golang/proposals, March 2011.
+- [design/type-functions](https://golang.org/design/15292/2010-06-type-functions) Ian Lance Taylor. "Type Functions." golang/proposals, June 2010.
+- [design/generalized-types](https://golang.org/design/15292/2011-03-gen) Ian Lance Taylor. "Generalized Types."golang/proposals, March 2011.
 - [design/code-gen](https://docs.google.com/document/pub?id=1IXHI5Jr9k4zDdmUhcZImH59bOUK0G325J1FY6hdelcM) Russ Cox. "Alternatives to Dynamic Code Generation in Go." September 2012.
-- [design/generalized-types2](https://github.com/golang/proposal/blob/master/design/15292/2013-10-gen.md) Ian Lance Taylor. "Generalized Types In Go." golang/proposals, October 2013.
-- [design/type-parameters](https://github.com/golang/proposal/blob/master/design/15292/2013-12-type-params.md) Ian Lance Taylor. "Type Parameters in Go." golang/proposals, December 2013.
-- [design/go-generate](http://golang.org/s/go1.4-generate) Rob Pike. "Go Generate." January 2014.
-- [design/compile-time-function](https://github.com/golang/proposal/blob/master/design/15292/2016-09-compile-time-functions.md) Bryan C. Mills. "Compile-time Functions and First Class Types." golang/proposals, September 2016.
-- [design/should-generics](https://github.com/golang/proposal/blob/b571c3273d2c6988d24a22dd1c529387ff05962a/design/15292-generics.md) Ian Lance Taylor. "Go should have generics." golang/proposals, January 2011.
-- [design/should-generics2](https://github.com/golang/proposal/blob/master/design/15292-generics.md) Ian Lance Taylor. "Go should have generics." golang/proposals, Updated: April 2016. 
-- [design/generics-overview](https://github.com/golang/proposal/blob/master/design/go2draft-generics-overview.md) Russ Cox. "Generics — Problem Overview." golang/proposals, August 27, 2018. 
-- [design/contracts](https://github.com/golang/proposal/blob/master/design/go2draft-contracts.md) Ian Lance Taylor, Robert Griesemer. "Contracts — Draft Design." golang/proposals, August 27, 2018, Updated: July 31, 2019.
+- [design/generalized-types2](https://golang.org/design/15292/2013-10-gen) Ian Lance Taylor. "Generalized Types In Go." golang/proposals, October 2013.
+- [design/type-parameters](https://golang.org/design/15292/2013-12-type-params) Ian Lance Taylor. "Type Parameters in Go." golang/proposals, December 2013.
+- [design/compile-time-function](https://golang.org/design/15292/2016-09-compile-time-functions) Bryan C. Mills. "Compile-time Functions and First Class Types." golang/proposals, September 2016.
+- [design/should-generics](https://github.com/golang/proposal/blob/b571c3273d2c6988d24a22dd1c529387ff05962a/design/15292-generics) Ian Lance Taylor. "Go should have generics." golang/proposals, January 2011.
+- [design/should-generics2](https://golang.org/design/15292-generics) Ian Lance Taylor. "Go should have generics." golang/proposals, Updated: April 2016. 
+- [design/generics-overview](https://golang.org/design/go2draft-generics-overview) Russ Cox. "Generics — Problem Overview." golang/proposals, August 27, 2018. 
+- [design/contracts](https://golang.org/design/go2draft-contracts) Ian Lance Taylor, Robert Griesemer. "Contracts — Draft Design." golang/proposals, August 27, 2018, Updated: July 31, 2019.
   + [cl/187317](https://golang.org/cl/187317/) Implementation prototype.
 - [design/type-parameters2](https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md) Ian Lance Taylor, Robert Griesemer. "Type Parameters - Draft Design ." golang/proposals, June 16, 2020, Updated: August 28, 2020.
   + [cl/dev.go2go](https://github.com/golang/go/blob/dev.go2go/README.go2go.md) dev.go2go branch
@@ -165,9 +195,10 @@ with Robert Griesemer and Ian Lance Taylor
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
 - [design/go13compiler](https://golang.org/s/go13compiler) Russ Cox. Go 1.3+ Compiler Overhaul. December 2013
 - [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
-- [design/go15bootstrap](https://golang.org/s/go15bootstrap) Russ Cox. Go 1.5 Bootstrap Plan. January 2015.
+- [design/dev.cc](https://golang.org/s/dev.cc)  Russ Cox. dev.cc branch plan. November 2014
 - [talk/gobootstrap](https://www.youtube.com/watch?v=QIE5nV5fDwA) GopherCon 2014 Go from C to Go by Russ Cox.
-- [design/execmodes](https://golang.org/s/execmodes) Ian Lance Taylor.  Go Execution Modes. August, 2014 (updated January 2016)
+- [design/go15bootstrap](https://golang.org/s/go15bootstrap) Russ Cox. Go 1.5 Bootstrap Plan. January 2015.
+- [design/execmodes](https://golang.org/s/execmodes) Ian Lance Taylor. Go Execution Modes. August, 2014 (updated January 2016)
 - [design/go17ssa](https://golang.org/s/go17ssa) Keith Randall. New SSA Backend for the Go Compiler. 2/10/2015.
 - [issue/6853](https://golang.org/issue/6853) all: binaries too big and growing.
 - [issue/19348](https://golang.org/issue/19348) cmd/compile: enable mid-stack inlining.
@@ -183,7 +214,7 @@ with Robert Griesemer and Ian Lance Taylor
 - alignment
   + [issue/599](https://golang.org/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
-  + [design/64align](https://github.com/golang/proposal/blob/master/design/36606-64-bit-field-alignment.md) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
+  + [design/64align](https://golang.org/design/36606-64-bit-field-alignment) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
 
 ### Linker
 
@@ -192,6 +223,9 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Debugger
 
+- [design/go13heapdump](http://golang.org/s/go13heapdump) heapdump13
+- [design/go14heapdump](https://github.com/golang/go/wiki/heapdump14) heapdump14
+- [design/go15heapdump](https://github.com/golang/go/wiki/heapdump15-through-heapdump17) heapdump15 through heapdump17
 - [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov. Go Execution Tracer.
 - https://github.com/golang/go/wiki/heapdump15-through-heapdump17
 
@@ -199,8 +233,13 @@ with Robert Griesemer and Ian Lance Taylor
 
 - [design/go13nacl](golang.org/s/go13nacl) Go 1.3 Native Client Support
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
-- [design/go116build](https://github.com/golang/proposal/blob/master/design/draft-gobuild.md) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
-- [design/go116embed](https://github.oom/golang/proposal/blob/master/design/draft-embed.md) Embedded files - Russ & Braid
+- [design/go-generate](http://golang.org/s/go1.4-generate) Rob Pike. "Go Generate." January 2014.
+- [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
+- [discuss/generatedcode](golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
+- [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
+- [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
+- Windows
+  + [discuss/win2000-golang-nuts](http://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
 
 ### Modules
 
@@ -219,12 +258,12 @@ with Robert Griesemer and Ian Lance Taylor
 - [doc/deps](https://research.swtch.com/deps) Russ Cox. Our Software Dependency Problem. January 23, 2019.
 - [doc/vgo](https://research.swtch.com/vgo) Russ Cox. Go & Versioning
 - [issue/24301](https://golang.org/issue/24301) cmd/go: add package version support to Go toolchain
-- [design/lazy-gomod](https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
+- [design/lazy-gomod](https://golang.org/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
 
 ### Testing
 
 - Tool chain, benchseries/benchstat
-- [design/fuzzing](https://go.googlesource.com/proposal/+/master/design/draft-fuzzing.md) Katie Hockman. Design Draft: First Class Fuzzing 
+- [design/fuzzing](https://golang.org/design/draft-fuzzing) Katie Hockman. Design Draft: First Class Fuzzing
 
 ## Runtime Core
 
@@ -241,7 +280,7 @@ with Robert Griesemer and Ian Lance Taylor
 - [design/go11sched](https://golang.org/s/go11sched) Dmitry Vyukov. Scalable Go Scheduler Design Doc, 2012]
 - [design/preempt-sched](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h) Dmitry Vyukov. Go Preemptive Scheduler Design Doc, 2013
 - [design/go15gomaxprocs](https://golang.org/s/go15gomaxprocs) Russ Cox. Go 1.5 GOMAXPROCS Default. May 2015.
-- [design/preempt-sched2](https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
+- [design/preempt-sched2](https://golang.org/design/24543-non-cooperative-preemption) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
   + [issue/10958](https://golang.org/issue/10958) runtime: tight loops should be preemptible
   + [issue/24543](https://golang.org/issue/24543) runtime: non-cooperative goroutine preemption
   + [issue/36365](https://github.com/golang/go/issues/36365) runtime: clean up async preemption loose ends
@@ -274,6 +313,7 @@ with Robert Griesemer and Ian Lance Taylor
 - [talk/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
 - [discuss/ismm-gc](https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns) Garbage Collection Slides and Transcript now available
 - [cl/generational-gc](https://golang.org/cl/137482) runtime: trigger generational GC
+- [design/roc](https://golang.org/s/gctoc) Request Oriented Collector (ROC) Algorithm
 - [cl/roc](https://golang.org/cl/25058) runtime: ROC write barrier code
 - [issue/17503](https://golang.org/issue/17503) runtime: eliminate stack rescanning
 - [issue/22350](https://golang.org/issue/22350) cmd/compile: compiler can unexpectedly preserve memory, 
@@ -296,11 +336,9 @@ Go memory model is not properly defined.
 
 ### ABI
 
-- [design/register-call](https://github.com/golang/proposal/blob/master/design/40724-register-calling.md ) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
+- [design/register-call](https://golang.org/design/40724-register-calling) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
 - [issue/18597](https://github.com/golang/go/issues/18597) proposal: cmd/compile: define register-based calling convention
 - [issue/40724](https://github.com/golang/go/issues/40724) proposal: switch to a register-based calling convention for Go functions
-
-<!-- ?Late call - david chase  -->
 
 ## Standard Library
 
@@ -332,12 +370,28 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ### io
 
-- [design/draft-iofs](https://github.com/golang/proposal/blob/master/design/draft-iofs.md) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design
+- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design
 . July 2020.
 
 ### context
 
 - [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
+
+## Unclassified yet
+
+- http://golang.org/s/using-guru
+- https://golang.org/s/gogetcmd
+- https://golang.org/s/stdwhy
+- http://golang.org/s/oracle-design
+- http://golang.org/s/oracle-user-manual
+- https://golang.org/s/cgihttpproxy
+- golang.org/s/sqldrivers
+- https://golang.org/s/sometext
+- https://www.cflee.com/posts/golang-org-url-redirector/
+- https://golang.org/s/go2designs
+- https://golang.org/s/http2bug
+
+<!-- ?Late call - david chase  -->
 
 ## Contributing
 
