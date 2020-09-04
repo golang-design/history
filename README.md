@@ -1,8 +1,8 @@
 # A Documentary of Go
 
-This document includes many interesting issues, discussions, proposals,
-CLs, and talks in the Go development history, which intents to offer
-a comprehensive reference of the Go history.
+This document collects many interesting (publiclly observable) issues,
+discussions, proposals, CLs, and talks in the Go development history,
+which intents to offer a comprehensive reference of the Go history.
 
 ## Sources
 
