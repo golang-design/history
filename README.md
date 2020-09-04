@@ -204,20 +204,22 @@ with Robert Griesemer and Ian Lance Taylor
 
 ### Modules
 
+- [design/go-dep](https://docs.google.com/document/d/18tNd8r5DV0yluCR7tPvkMTsWD_lYcRO7NhpNSDymRr8) Go Packaging Proposal Process
+- [design/go-dep2](https://docs.google.com/document/d/1qnmjwfMmvSCDaY4jxPmLAccaaUI5FfySNE90gB0pTKQ/edit) Dependency Management Tool
 - [doc/go-dep](6https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer. The Saga of Go Dependency Management. Dec 13, 201
-- [talk/go-dep](https://www.youtube.com/watch?v=5LtMb090AZI&ab_channel=GopherAcademy) GopherCon 2017: Sam Boyer - The New Era of Go Package Management. Jul 24, 2017
- https://www.youtube.com/watch?v=5LtMb090AZI
-- https://www.youtube.com/watch?v=wBTGd_dvnO8
-- https://www.youtube.com/watch?v=sbrZfPgNmfw
-- https://zhuanlan.zhihu.com/p/41627929
-- https://peter.bourgon.org/blog/2018/07/27/a-response-about-dep-and-vgo.html
-- https://news.ycombinator.com/item?id=17628311
-- https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/
-- https://twitter.com/_rsc/status/1022588240501661696
-- https://changelog.com/gotime/77
-- https://groups.google.com/forum/#!msg/golang-dev/a5PqQuBljF4/scQU-TfXBwAJ
+- [talk/go-dep](https://www.youtube.com/watch?v=5LtMb090AZI) GopherCon 2017: Sam Boyer - The New Era of Go Package Management. Jul 24, 2017
+- [talk/go-dep-design](https://www.youtube.com/watch?v=wBTGd_dvnO8) dotGo 2017 - sam boyer - The Functional Design of Dep. Dec 8, 2017
+- [discuss/go-dep](https://www.youtube.com/watch?v=sbrZfPgNmfw) Building Predictability into Your Pipeline :: Russ Cox; Jess Frazelle, Sam Boyer, Pete Garcin. Feb 22, 2018
+- [doc/go-dep-response](https://peter.bourgon.org/blog/2018/07/27/a-response-about-dep-and-vgo.html) Peter Bourgon. A response about dep and vgo. 2018-07-27.
+- [discuss/go-dep-response](https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/) Reddit discussion.
+- [discuss/go-dep-response2](https://news.ycombinator.com/item?id=17628311) Hacker News discussion.
+- [discuss/go-dep-twitter](https://twitter.com/_rsc/status/1022588240501661696) Russ Cox's Twitter Storm
+- [talk/gotime-gomod](https://changelog.com/gotime/77) Dependencies and the future of Go with Russ Cox
+- [discuss/groups-gomod](https://groups.google.com/g/golang-dev/c/a5PqQuBljF4) go modules have landed
 - [doc/deps](https://research.swtch.com/deps) Russ Cox. Our Software Dependency Problem. January 23, 2019.
-- [design/lazy-mod](https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
+- [doc/vgo](https://research.swtch.com/vgo) Russ Cox. Go & Versioning
+- [issue/24301](https://golang.org/issue/24301) cmd/go: add package version support to Go toolchain
+- [design/lazy-gomod](https://github.com/golang/proposal/blob/master/design/36460-lazy-module-loading.md) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
 
 ### Testing
 
