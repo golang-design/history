@@ -85,7 +85,7 @@ By hearing talks by these people, you could learn more about their oral history 
   + [talk/robert2017](https://www.youtube.com/watch?v=KPk1UPihWtY) Opening Keynote: Exporting Go - GopherCon SG 2017. May 29, 2017.
   + [talk/robert2017](https://www.youtube.com/watch?v=UmwJsQTSEP8) A brief overview of Go. Aug 28. 2017.
   + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) "Go is 10! Now What?" by Robert Griesemer – Gopherpalooza 2019. Dec 2, 2019.
-
+  + [talk/robert2020](https://changelog.com/gotime/140) The latest on Generics with Robert Griesemer and Ian Lance Taylor. Jul 21, 2020.
 - Ken Thompson
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
   + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX: Making Computers Easier To Use. 
@@ -99,8 +99,9 @@ By hearing talks by these people, you could learn more about their oral history 
 - Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor)
   + [talk/ian2007](https://www.youtube.com/watch?v=gc78olyguqA) GCC: Current Topics and Future Directions. February 27, 2007.
   + [talk/ian2018](https://www.youtube.com/watch?v=LqKOY_pH8u0) Gopherpalooza 2018. Transition to Go 2. Oct 24, 2018
-  + [talk/ian2019](https://www.youtube.com/watch?v=WzgLqE-3IhY) GopherCon 2019. Generics in Go. Aug 27, 2019
-  + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) CppCast. Go with Ian Lance Taylor
+  + [talk/ian2019a](https://www.youtube.com/watch?v=WzgLqE-3IhY) GopherCon 2019. Generics in Go. Aug 27, 2019
+  - [talk/ian2019b](https://changelog.com/gotime/98) Generics in Go. Aug 27, 2019.
+  + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) CppCast. Go with Ian Lance Taylor. Aug 9, 2020.
 
 - Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), Twitter, Reddit
   + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) The Go Programming Language Promo. Nov 10, 2009.
@@ -110,14 +111,14 @@ By hearing talks by these people, you could learn more about their oral history 
   + [talk/russ2015](https://www.youtube.com/watch?v=XvZOdpd_9tc) GopherCon 2015 Keynote. Go, Open Source, Community. Jul 28, 2015.
   + [talk/russ2016](https://www.youtube.com/watch?v=h6Cw9iCDVcU) Russ Cox. Codebase Refactoring (with help from Go). Dec 5, 2016.
   + [talk/russ2017](https://www.youtube.com/watch?v=0Zbh_vmAKvk) GopherCon 2017. The Future of Go. Jul 24, 2017.
-  + [talk/russ2018](https://www.youtube.com/watch?v=F8nrpe0XWRg) GopherConSG 2018. Opening keynote: Go with Versions. May 5, 2018
-  + [talk/russ2018b](https://www.youtube.com/watch?v=6wIP3rO6On8) Go 2 Drafts Announcement. Aug 28, 2018.
+  + [talk/russ2018a](https://changelog.com/gotime/77) Dependencies and the future of Go with Russ Cox. Apr 19, 2018.
+  + [talk/russ2018b](https://changelog.com/gotime/bonus-77) Go and WebAssembly (Wasm). Apr 19, 2018
+  + [talk/russ2018c](https://www.youtube.com/watch?v=F8nrpe0XWRg) GopherConSG 2018. Opening keynote: Go with Versions. May 5, 2018
+  + [talk/russ2018d](https://www.youtube.com/watch?v=6wIP3rO6On8) Go 2 Drafts Announcement. Aug 28, 2018.
   + [talk/russ2019](https://www.youtube.com/watch?v=kNHo788oO5Y) GopherCon 2019: Russ Cox - On the Path to Go 2. Aug 27, 2019.
   + [talk/russ2020a](https://www.youtube.com/watch?v=AgR_mdC4Rs4) go:build design draft. Jun 30, 2020.
   + [talk/russ2020b](https://www.youtube.com/watch?v=yx7lmuwUNv8) io/fs draft design. Jul 21, 2020.
   + [talk/russ2020c](https://www.youtube.com/watch?v=rmS-oWcBZaI) //go:embed draft design. Jul 21, 2020.
-
-
 
 ### Compiler/Runtime Team
 
@@ -287,16 +288,8 @@ The historical release notes may helpful for general informations:
   + [doc/type-check-notes](https://github.com/golang/go/blob/dev.go2go/src/go/types/NOTES) This file serves as a notebook/implementation log.
 - [discuss/generics-parenthesis](https://groups.google.com/g/golang-nuts/c/7t-Q2vt60J8) Robert. Generics and parenthesis.
 - [discuss/generics-move](https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw) Ian, Moving forward with the generics design.
-- [talk/generics-gotime](https://changelog.com/gotime/98) Generics in Go
-with Ian Lance Taylor
-- [talk/generics-gotime2](https://changelog.com/gotime/140) The latest on Generics
-with Robert Griesemer and Ian Lance Taylor
 - [paper/featherweight-go](https://arxiv.org/abs/2005.11710) Griesemer, Robert, et al. "Featherweight Go." arXiv preprint arXiv:2005.11710 (2020).
 - [talk/featherweight-go](https://www.youtube.com/watch?v=Dq0WFigax_c) Phil Wadler: Featherweight Go. Jun 8, 2020.
-
-## Go 2
-
-- [talk/go2spec](https://www.youtube.com/watch?v=RIvL2ONhFBI) Sydney Golang Meetup - Rob Pike - Go 2 Draft Specifications
 
 ## Compiler Toolchain
 
@@ -372,7 +365,6 @@ with Robert Griesemer and Ian Lance Taylor
 - [discuss/go-dep-response](https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/) Reddit discussion.
 - [discuss/go-dep-response2](https://news.ycombinator.com/item?id=17628311) Hacker News discussion.
 - [discuss/go-dep-twitter](https://twitter.com/_rsc/status/1022588240501661696) Russ Cox's Twitter Storm
-- [talk/gotime-gomod](https://changelog.com/gotime/77) Dependencies and the future of Go with Russ Cox
 - [discuss/groups-gomod](https://groups.google.com/g/golang-dev/c/a5PqQuBljF4) go modules have landed
 - [doc/deps](https://research.swtch.com/deps) Russ Cox. Our Software Dependency Problem. January 23, 2019.
 - [doc/vgo](https://research.swtch.com/vgo) Russ Cox. Go & Versioning
@@ -455,7 +447,7 @@ user code use 16GB memory and later allows 128GB.
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
 - [design/go14gc](https://golang.org/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
 - [design/go15gcpacing](https://golang.org/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. 2015-03-10.
-- [talk/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
+- [doc/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
 - [discuss/ismm-gc](https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns) Garbage Collection Slides and Transcript now available
 - [cl/generational-gc](https://golang.org/cl/137482) runtime: trigger generational GC
 - [design/roc](https://golang.org/s/gctoc) Request Oriented Collector (ROC) Algorithm
@@ -474,7 +466,7 @@ Go memory model is not properly defined.
 - [issue/9442](https://golang.org/issue/9442) doc: define how finalizers interact with memory model
 - [issue/7948](https://golang.org/issue/7948) doc: define how sync interacts with memory model
 - [issue/33815](https://golang.org/issue/33815) doc/go_mem: "hello, world" will not always be printed twice
-- [talk/gomem](http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf) Russ Cox. Go’s Memory Model. February 25, 2016.
+- [doc/gomem](http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf) Russ Cox. Go’s Memory Model. February 25, 2016.
 - [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017 - Memory model. January 18, 2017.
 - [doc/atomic-bug](https://golang.org/pkg/sync/atomic/#pkg-note-BUG) Package atomic
 - [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
