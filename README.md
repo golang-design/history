@@ -60,10 +60,13 @@ By hearing talks by these people, you could learn more about their oral history 
   + [talk/rob2010c](https://www.youtube.com/watch?v=5kj5ApnhPAE) OSCON 2010: Rob Pike, "Public Static Void". Jul 22, 2010.
   + [talk/rob2010d](https://www.youtube.com/watch?v=3DtUzH3zoFo) Origins of Go Concurrency style by Rob Pike. Jul 22, 2010.
   + [talk/rob2010e](https://www.youtube.com/watch?v=7VcArS4Wpqk) Another Go at Language Design. Aug 27, 2010
-  + [talk/rob2011](https://www.youtube.com/watch?v=HxaD_trXwRE) Lexical Scanning in Go - Rob Pike. Aug 30, 2011
+  + [talk/rob2011a](https://www.infoq.com/interviews/pike-concurrency/) Rob Pike on Parallelism and Concurrency in Programming Languages. Feb 17, 2011.
+  + [talk/rob2011b](https://www.infoq.com/interviews/pike-google-go/) Rob Pike on Google Go: Concurrency, Type System, Memory Management and GC. Feb 25, 2011.
+  + [talk/rob2011c](https://www.youtube.com/watch?v=HxaD_trXwRE) Lexical Scanning in Go - Rob Pike. Aug 30, 2011
   + [talk/rob2012](https://www.youtube.com/watch?v=FTl0tl9BGdc) Why Learn Go?. Sep 12, 2012.
   + [talk/rob2013a](https://www.youtube.com/watch?v=bj9T2c2Xk_s) The path to Go 1. Mar 14, 2013.
-  + [talk/rob2013b](https://www.youtube.com/watch?v=cN_DpYBzKso) Rob Pike - 'Concurrency Is Not Parallelism' Oct 20, 2013
+  + [talk/rob2013b](https://www.infoq.com/presentations/Go-Google/) Go at Google. APR 13, 2013.
+  + [talk/rob2013c](https://www.youtube.com/watch?v=cN_DpYBzKso) Rob Pike - 'Concurrency Is Not Parallelism' Oct 20, 2013
   + [talk/rob2014a](https://www.youtube.com/watch?v=VoS7DsT1rdM) GopherCon 2014 Opening Keynote by Rob Pike. May 8, 2014
   + [talk/rob2014b](https://www.youtube.com/watch?v=PXoG0WX0r_E) Implementing a bignum calculator - Rob Pike - golang-syd November 2014.
   + [talk/rob2015a](https://www.youtube.com/watch?v=cF1zJYkBW4A) GopherFest 2015: Rob Pike on the move from C to Go in the toolchain. Jun 10, 2015.
@@ -142,7 +145,9 @@ Now, he is leading the Compiler/Runtime team for Go.
   + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) BlueHat IL 2020 - Dmitry Vyukov - syzkaller: Adventures in Continuous Coverage-guided Kernel Fuzzing. Feb 13, 2020.
 
 - Austin Clements. [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+
 - Than McIntosh. [GitHub](https://github.com/thanm)
+
 - Keith Randall. [GitHub](https://github.com/randall77)
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) GopherCon 2016: Keith Randall - Inside the Map Implementation
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) GopherCon 2017. Generating Better Machine Code with SSA. Jul 24, 2017.
@@ -154,7 +159,8 @@ Now, he is leading the Compiler/Runtime team for Go.
 - Richard L. Hudson. [GitHub](https://github.com/RLH)
   + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) GopherCon 2015. Go GC: Solving the Latency Problem. Jul 8, 2015.
   + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
-- Cherry Zhang. GitHub
+
+- Cherry Zhang. [GitHub](https://github.com/cherrymui)
 
 ### Library/Tools/Security/Community
 
@@ -215,7 +221,7 @@ Now, he is leading the Compiler/Runtime team for Go.
 
 Timeline helps you identify the point in time about a document that reflected in Go versions.
 
-| Version | Duration |
+| Version | Release Date |
 |:--|:--|
 | Go 1    | 2012.03.28 |
 | Go 1.1  | 2013.05.13 |
