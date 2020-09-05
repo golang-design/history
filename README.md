@@ -41,20 +41,21 @@ Go is a big project that driven by a tiny group of people and massive
 crowd of wisdom from community. Here are some core committers to
 the project that you might interest in follow their excellent work.
 
+By listening to the talks held by these people, you could learn more about
+their oral history and fun stories behind the great work.
+
 ### Core Authors
 
 The Go was created by Rob, Robert, and Ken initially because
 they were suffered by the slow C++ compiling time.
-Later on, Ian joined the project
-because he showed huge interests and wrote the [gccgo](https://github.com/golang/gofrontend).
-Russ is also one of the core authors of the project in the early state.
+Later on, Ian joined the project since he showed huge interests and 
+wrote the [gccgo](https://github.com/golang/gofrontend).
+Russ is also one of the core authors of the project in the early stage.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining the Go team
 since he knew Russ from way back because of the [Plan 9](http://plan9.bell-labs.com/plan9) project.
-Now, Russ is the tech leader of the whole Go team.
+Now, Russ is the tech leader of the Go team.
 
-By hearing talks by these people, you could learn more about their oral history and fun stories behind the great work.
-
-- Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike)
+- Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
   + [talk/rob2010a](https://www.youtube.com/watch?v=PTZqkyivnHk) Emerging Languages Camp 2010 - Go by Rob Pike. Feb 10, 2015.
   + [talk/rob2010b](https://www.youtube.com/watch?v=jgVhBThJdXc) Google I/O 2010 - Go Programming. May 28, 2010
   + [talk/rob2010c](https://www.youtube.com/watch?v=5kj5ApnhPAE) OSCON 2010: Rob Pike, "Public Static Void". Jul 22, 2010.
@@ -89,7 +90,7 @@ By hearing talks by these people, you could learn more about their oral history 
   + [talk/robert2017](https://www.youtube.com/watch?v=UmwJsQTSEP8) A brief overview of Go. Aug 28. 2017.
   + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) "Go is 10! Now What?" by Robert Griesemer – Gopherpalooza 2019. Dec 2, 2019.
   + [talk/robert2020](https://changelog.com/gotime/140) The latest on Generics with Robert Griesemer and Ian Lance Taylor. Jul 21, 2020.
-- Ken Thompson
+- Ken Thompson (Retired)
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
   + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX: Making Computers Easier To Use. 
   + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson and Dennis Ritchie Explain UNIX (Bell Labs).
@@ -130,8 +131,12 @@ He wrote the scalable goroutine scheduler, many other performance improvements,
 synchronization primitives, race detector, and blocking profiler that
 related to the Go runtime.
 Austin was an intern at Google who worked on the Go project in the early days
-while pursuing a Ph. D. Later, he joined the Go team after his academic career.
-Now, he is leading the Compiler/Runtime team for Go.
+while pursuing a Ph. D. Later, he joined the Go team after his academic career
+and work together with Rick Hudson for the Go's concurrent GC and the current Go linker.
+Now, he is leading the Compiler/Runtime team for Go. 
+Keith and David together focus on the Go's compiler backend, 
+notably the current SSA backend. Michael is a recent new comer to the Go team, 
+his work mainly in the runtime memory system such as memory allocator and runtime metrics.
 
 - Dmitry Vyukov (Дмитрий Вьюков). [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) Writing a functional, reliable and fast web application in Go. Sep 25, 2014.
@@ -146,7 +151,9 @@ Now, he is leading the Compiler/Runtime team for Go.
 
 - Austin Clements. [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
 
-- Than McIntosh. [GitHub](https://github.com/thanm)
+- Richard L. Hudson. [GitHub](https://github.com/RLH) (Retired)
+  + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) GopherCon 2015. Go GC: Solving the Latency Problem. Jul 8, 2015.
+  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
 
 - Keith Randall. [GitHub](https://github.com/randall77)
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) GopherCon 2016: Keith Randall - Inside the Map Implementation
@@ -155,10 +162,11 @@ Now, he is leading the Compiler/Runtime team for Go.
 - David Chase. [Website](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
   + [talk/david2017](https://changelog.com/gotime/52) All About The Go Compiler. Jul 20, 2017.
 
+- Dan Scales.
+
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
-- Richard L. Hudson. [GitHub](https://github.com/RLH)
-  + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) GopherCon 2015. Go GC: Solving the Latency Problem. Jul 8, 2015.
-  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
+
+- Than McIntosh. [GitHub](https://github.com/thanm)
 
 - Cherry Zhang. [GitHub](https://github.com/cherrymui)
 
@@ -261,13 +269,12 @@ The historical release notes may helpful for general informations:
 - [doc/makego](https://talks.golang.org/2015/how-go-was-made.slide) How Go was Made. Andrew Gerrand
 - [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Go 1 Preview. Russ Cox
 
-### Package (1.4, 1.5)
+### Package Management (1.4, 1.5)
 
 - [design/go14internal](https://golang.org/s/go14internal) Russ Cox. Go 1.4 “Internal” Packages.
 - [design/go14nopkg](https://golang.org/s/go14nopkg) Russ Cox. Go 1.4 src/pkg → src.
 - [design/go14customimport](https://golang.org/s/go14customimport) Russ Cox. Go 1.4 Custom Import Path Checking.
 - [design/go15vendor](https://golang.org/s/go15vendor) Russ Cox. Go 1.5 Vendor Experiment.
-
 
 ### Type alias (1.9)
 
@@ -370,6 +377,10 @@ The historical release notes may helpful for general informations:
 
 ### Linker
 
+The Go Linker was written by Ken Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
+Cheery and many other brilliant brains, which was landed
+in Go 1.15 and Go 1.16. 
+
 - [design/go13linker](https://golang.org/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. November 2013.
 - [design/go116linker](https://golang.org/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
 
@@ -422,8 +433,8 @@ The historical release notes may helpful for general informations:
 
 ### Testing
 
-- Tool chain, benchseries/benchstat
 - [design/fuzzing](https://golang.org/design/draft-fuzzing) Katie Hockman. Design Draft: First Class Fuzzing
+<!-- - Tool chain, benchseries/benchstat -->
 
 ## Runtime Core
 
@@ -437,7 +448,7 @@ The historical release notes may helpful for general informations:
 
 ### Scheduler
 
-- [design/go11sched](https://golang.org/s/go11sched) Dmitry Vyukov. Scalable Go Scheduler Design Doc, 2012]
+- [design/go11sched](https://golang.org/s/go11sched) Dmitry Vyukov. Scalable Go Scheduler Design Doc, 2012
 - [design/preempt-sched](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h) Dmitry Vyukov. Go Preemptive Scheduler Design Doc, 2013
 - [design/go15gomaxprocs](https://golang.org/s/go15gomaxprocs) Russ Cox. Go 1.5 GOMAXPROCS Default. May 2015.
 - [design/preempt-sched2](https://golang.org/design/24543-non-cooperative-preemption) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
@@ -574,7 +585,6 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - https://golang.org/s/oracle-user-manual
 - https://golang.org/s/cgihttpproxy
 - golang.org/s/sqldrivers
-- https://golang.org/s/sometext
 - https://www.cflee.com/posts/golang-org-url-redirector/
 - https://golang.org/s/go2designs
 - https://golang.org/s/http2bug
