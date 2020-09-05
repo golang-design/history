@@ -103,7 +103,7 @@ By hearing talks by these people, you could learn more about their oral history 
   - [talk/ian2019b](https://changelog.com/gotime/98) Generics in Go. Aug 27, 2019.
   + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) CppCast. Go with Ian Lance Taylor. Aug 9, 2020.
 
-- Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), Twitter, Reddit
+- Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc)
   + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) The Go Programming Language Promo. Nov 10, 2009.
   + [talk/russ2012](https://www.youtube.com/watch?v=MzYZhh6gpI0) A Tour of the Go Programming Language with Russ Cox. Jun 24, 2012.
   + [talk/russ2012b](https://www.youtube.com/watch?v=dP1xVpMPn8M) A Tour of the Acme Editor. Sep 17, 2012.
@@ -130,7 +130,7 @@ Austin was an intern at Google who worked on the Go project in the early days
 while pursuing a Ph. D. Later, he joined the Go team after his academic career.
 Now, he is leading the Compiler/Runtime team for Go.
 
-- Dmitry Vyukov (Дмитрий Вьюков). GitHub, Twitter
+- Dmitry Vyukov (Дмитрий Вьюков). [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) Writing a functional, reliable and fast web application in Go. Sep 25, 2014.
   + [talk/dmitry2015a](https://www.youtube.com/watch?v=Ef7TtSZlmlk) Chat with Dmitry Vyukov on go-fuzz, golang and IT security. Jul 3, 2015
   + [talk/dmitry2015b](https://www.youtube.com/watch?v=a9xrxRsIbSU) GopherCon 2015: Dmitry Vyukov - Go Dynamic Tools. Jul 28, 2015.
@@ -579,8 +579,6 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 ## Fun Facts
 
 - [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language
-
-<!-- ?Late call - david chase  -->
 
 ## License
 
