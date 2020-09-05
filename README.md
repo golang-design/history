@@ -52,11 +52,72 @@ Back then, he was a newcomer at Google, and Rob invited Russ for joining the Go 
 since he knew Russ from way back because of the [Plan 9](http://plan9.bell-labs.com/plan9) project.
 Now, Russ is the tech leader of the whole Go team.
 
-- Rob Pike. [Cat-V](http://genius.cat-v.org/rob-pike/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike)
+By hearing talks by these people, you could learn more about their oral history and fun stories behind the great work.
+
+- Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike)
+  + [talk/rob2010a](https://www.youtube.com/watch?v=PTZqkyivnHk) Emerging Languages Camp 2010 - Go by Rob Pike. Feb 10, 2015.
+  + [talk/rob2010b](https://www.youtube.com/watch?v=jgVhBThJdXc) Google I/O 2010 - Go Programming. May 28, 2010
+  + [talk/rob2010c](https://www.youtube.com/watch?v=5kj5ApnhPAE) OSCON 2010: Rob Pike, "Public Static Void". Jul 22, 2010.
+  + [talk/rob2010d](https://www.youtube.com/watch?v=3DtUzH3zoFo) Origins of Go Concurrency style by Rob Pike. Jul 22, 2010.
+  + [talk/rob2010e](https://www.youtube.com/watch?v=7VcArS4Wpqk) Another Go at Language Design. Aug 27, 2010
+  + [talk/rob2011](https://www.youtube.com/watch?v=HxaD_trXwRE) Lexical Scanning in Go - Rob Pike. Aug 30, 2011
+  + [talk/rob2012](https://www.youtube.com/watch?v=FTl0tl9BGdc) Why Learn Go?. Sep 12, 2012.
+  + [talk/rob2013a](https://www.youtube.com/watch?v=bj9T2c2Xk_s) The path to Go 1. Mar 14, 2013.
+  + [talk/rob2013b](https://www.youtube.com/watch?v=cN_DpYBzKso) Rob Pike - 'Concurrency Is Not Parallelism' Oct 20, 2013
+  + [talk/rob2014a](https://www.youtube.com/watch?v=VoS7DsT1rdM) GopherCon 2014 Opening Keynote by Rob Pike. May 8, 2014
+  + [talk/rob2014b](https://www.youtube.com/watch?v=PXoG0WX0r_E) Implementing a bignum calculator - Rob Pike - golang-syd November 2014.
+  + [talk/rob2015a](https://www.youtube.com/watch?v=cF1zJYkBW4A) GopherFest 2015: Rob Pike on the move from C to Go in the toolchain. Jun 10, 2015.
+  + [talk/rob2015b](https://www.youtube.com/watch?v=PAAkCSZUG1c) Go Proverbs - Rob Pike - Gopherfest - November 18, 2015
+  + [talk/rob2015c](https://www.youtube.com/watch?v=rFejpH_tAHM) dotGo 2015 - Rob Pike - Simplicity is Complicated. Dec 2, 2015
+  + [talk/rob2016a](https://www.youtube.com/watch?v=KINIAgRpkDA) GopherCon 2016: Rob Pike - The Design of the Go Assembler. Aug 18, 2016.
+  + [talk/rob2016b](https://www.youtube.com/watch?v=sDTGhIqyMjo) Stacks of Tokens, A study in interfaces - Sydney Go Meetup, September 2016.
+  + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Gopherfest 2017: Upspin. Jun 22, 2017.
+  + [talk/rob2018a](https://www.youtube.com/watch?v=_2NI6t2r_Hs) The History of Unix. Nov 7, 2018.
+  + [talk/rob2018b](https://www.youtube.com/watch?v=RIvL2ONhFBI) Sydney Golang Meetup - Rob Pike - Go 2 Draft Specifications. Nov 13, 2018
+
 - Robert Griesemer. [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
+  + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer - Going Go. 
+  + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go In Three Easy Pieces. Mar 19, 2012.
+  + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
+  + [talk/robert2015](https://www.youtube.com/watch?v=0ReKdcpNyQg) GopherCon 2015: Robert Griesemer - The Evolution of Go. Jul 28, 2015.
+  + [talk/robert2016a](https://www.youtube.com/watch?v=t-w6MyI2qlU) GopherCon 2016 - Lightning Talk: Alias Declarations for Gom: A proposal. Oct 9, 2016.
+  + [talk/robert2016b](https://www.youtube.com/watch?v=vLxX3yZmw5Q) dotGo 2016 - Robert Griesemer - Prototype your design!. Nov 29, 2016.
+  + [talk/robert2017](https://www.youtube.com/watch?v=KPk1UPihWtY) Opening Keynote: Exporting Go - GopherCon SG 2017. May 29, 2017.
+  + [talk/robert2017](https://www.youtube.com/watch?v=UmwJsQTSEP8) A brief overview of Go. Aug 28. 2017.
+  + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) "Go is 10! Now What?" by Robert Griesemer – Gopherpalooza 2019. Dec 2, 2019.
+
 - Ken Thompson
+  + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
+  + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX: Making Computers Easier To Use. 
+  + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson and Dennis Ritchie Explain UNIX (Bell Labs).
+  + [talk/ken1983](https://www.youtube.com/watch?v=LXZ1OL2U3lY) Ken Thompson and Dennis Ritchie. National Medal of Technology Awards. 1996.
+  + [talk/ken2013](https://www.youtube.com/watch?v=dsMKJKTOte0) Systems Architecture, Design, Engineering, and Verification. Jan 17, 2013.
+  + [talk/ken2019a](https://www.youtube.com/watch?v=g3jOJfrOknA) The Thompson and Ritchie Story. Feb 18, 2019.
+  + [talk/ken2019b](https://www.youtube.com/watch?v=EY6q5dv_B-o) VCF East 2019. Brian Kernighan interviews Ken Thompson. May 4, 2019.
+
+
 - Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor)
+  + [talk/ian2007](https://www.youtube.com/watch?v=gc78olyguqA) GCC: Current Topics and Future Directions. February 27, 2007.
+  + [talk/ian2018](https://www.youtube.com/watch?v=LqKOY_pH8u0) Gopherpalooza 2018. Transition to Go 2. Oct 24, 2018
+  + [talk/ian2019](https://www.youtube.com/watch?v=WzgLqE-3IhY) GopherCon 2019. Generics in Go. Aug 27, 2019
+  + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) CppCast. Go with Ian Lance Taylor
+
 - Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), Twitter, Reddit
+  + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) The Go Programming Language Promo. Nov 10, 2009.
+  + [talk/russ2012](https://www.youtube.com/watch?v=MzYZhh6gpI0) A Tour of the Go Programming Language with Russ Cox. Jun 24, 2012.
+  + [talk/russ2012b](https://www.youtube.com/watch?v=dP1xVpMPn8M) A Tour of the Acme Editor. Sep 17, 2012.
+  + [talk/russ2014](https://www.youtube.com/watch?v=QIE5nV5fDwA) GopherCon 2014. Go from C to Go. May 18, 2014
+  + [talk/russ2015](https://www.youtube.com/watch?v=XvZOdpd_9tc) GopherCon 2015 Keynote. Go, Open Source, Community. Jul 28, 2015.
+  + [talk/russ2016](https://www.youtube.com/watch?v=h6Cw9iCDVcU) Russ Cox. Codebase Refactoring (with help from Go). Dec 5, 2016.
+  + [talk/russ2017](https://www.youtube.com/watch?v=0Zbh_vmAKvk) GopherCon 2017. The Future of Go. Jul 24, 2017.
+  + [talk/russ2018](https://www.youtube.com/watch?v=F8nrpe0XWRg) GopherConSG 2018. Opening keynote: Go with Versions. May 5, 2018
+  + [talk/russ2018b](https://www.youtube.com/watch?v=6wIP3rO6On8) Go 2 Drafts Announcement. Aug 28, 2018.
+  + [talk/russ2019](https://www.youtube.com/watch?v=kNHo788oO5Y) GopherCon 2019: Russ Cox - On the Path to Go 2. Aug 27, 2019.
+  + [talk/russ2020a](https://www.youtube.com/watch?v=AgR_mdC4Rs4) go:build design draft. Jun 30, 2020.
+  + [talk/russ2020b](https://www.youtube.com/watch?v=yx7lmuwUNv8) io/fs draft design. Jul 21, 2020.
+  + [talk/russ2020c](https://www.youtube.com/watch?v=rmS-oWcBZaI) //go:embed draft design. Jul 21, 2020.
+
+
 
 ### Compiler/Runtime Team
 
@@ -82,13 +143,25 @@ Now, he is leading the Compiler/Runtime team for Go.
 - Andrew Gerrand. GitHub, [Twitter](https://twitter.com/enneff)
 - Brad Fitzpatrick. GitHub, Twitter
 - Bryan C. Mills. GitHub
+  + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) GopherCon 2018. Rethinking Classical Concurrency Patterns. Sep 14, 2018
 - Daniel Martí. GitHub, Twitter
 - Nigel Tao. GitHub, Twitter
 - Filippo Valsorda. GitHub,
 - Michael Matloob. GitHub,
-- Dave Cheney. Website, GitHub,
+- Dave Cheney. [Website](https://dave.cheney.net/), GitHub,
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
 - more to be added...
+
+### Group Interviews
+
+- [talk/goteam2012](https://www.youtube.com/watch?v=sln-gJaURzk) Google I/O 2012 - Meet the Go Team. Jul 2, 2012.
+- [talk/goteam2013](https://www.youtube.com/watch?v=p9VUCp98ay4) Google I/O 2013 - Fireside Chat with the Go Team. May 18, 2013.
+- [talk/goteam2014](https://www.youtube.com/watch?v=u-kkf76TDHE) GopherCon 2014 Inside the Gophers Studio with Blake Mizerany. May 21, 2014
+- [talk/goteam2019](https://www.youtube.com/watch?v=3yghHvvZQmA) Meet the Authors – Go Language (Cloud Next '19).
+- [talk/goborn](https://changelog.com/podcast/3) The Go Programming Language from Google with Rob Pike, Principal Engineer at Google and Co-creator of Go
+- [talk/goborn2](https://changelog.com/podcast/100) Go Programming with Rob Pike and Andrew Gerrand
+- [talk/goborn3](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer
+- [talk/goborn4](https://evrone.com/rob-pike-interview) Rob Pike Interview
 
 ## Timeline
 
@@ -118,13 +191,6 @@ The historical release notes may helpful for general informations:
 - Go Release History: https://golang.org/doc/devel/release.html
 - Pre-Go 1 Release History: https://golang.org/doc/devel/pre_go1.html
 - Before Go 1: https://golang.org/doc/devel/weekly.html
-
-## Interviews
-
-- [talk/goborn](https://changelog.com/podcast/3) The Go Programming Language from Google with Rob Pike, Principal Engineer at Google and Co-creator of Go
-- [talk/goborn2](https://changelog.com/podcast/100) Go Programming with Rob Pike and Andrew Gerrand
-- [talk/goborn3](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer
-- [talk/goborn4](https://evrone.com/rob-pike-interview) Rob Pike Interview
 
 ## Language Design
 
@@ -225,7 +291,6 @@ The historical release notes may helpful for general informations:
 with Ian Lance Taylor
 - [talk/generics-gotime2](https://changelog.com/gotime/140) The latest on Generics
 with Robert Griesemer and Ian Lance Taylor
-- [talk/generics-cppcast](https://cppcast.com/ian-taylor-go) CppCast. Go with Ian Lance Taylor
 - [paper/featherweight-go](https://arxiv.org/abs/2005.11710) Griesemer, Robert, et al. "Featherweight Go." arXiv preprint arXiv:2005.11710 (2020).
 - [talk/featherweight-go](https://www.youtube.com/watch?v=Dq0WFigax_c) Phil Wadler: Featherweight Go. Jun 8, 2020.
 
@@ -241,7 +306,6 @@ with Robert Griesemer and Ian Lance Taylor
 - [design/go13compiler](https://golang.org/s/go13compiler) Russ Cox. Go 1.3+ Compiler Overhaul. December 2013
 - [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
 - [design/dev.cc](https://golang.org/s/dev.cc)  Russ Cox. dev.cc branch plan. November 2014
-- [talk/gobootstrap](https://www.youtube.com/watch?v=QIE5nV5fDwA) GopherCon 2014 Go from C to Go by Russ Cox.
 - [design/go15bootstrap](https://golang.org/s/go15bootstrap) Russ Cox. Go 1.5 Bootstrap Plan. January 2015.
 - [design/execmodes](https://golang.org/s/execmodes) Ian Lance Taylor. Go Execution Modes. August, 2014 (updated January 2016)
 - [design/go17ssa](https://golang.org/s/go17ssa) Keith Randall. New SSA Backend for the Go Compiler. 2/10/2015.
@@ -260,6 +324,7 @@ with Robert Griesemer and Ian Lance Taylor
   + [issue/599](https://golang.org/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
   + [design/64align](https://golang.org/design/36606-64-bit-field-alignment) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
+- [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
 
 ### Linker
 
