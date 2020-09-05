@@ -1,6 +1,6 @@
 # A Documentary of Go
 
-**Author: Changkun Ou <_changkun.de_>**
+**Author**: Changkun Ou <_[changkun.de](https://changkun.de)_>
 
 This document collects many interesting (publiclly observable) issues,
 discussions, proposals, CLs, and talks in the Go development history,
@@ -9,31 +9,28 @@ which intents to offer a comprehensive reference of the Go history.
 ## Disclaimer
 
 - Most of the text are written as my _personal_ understanding based on public sources
-
 - **Factual and typo errors may occur.** 
 Referring to the original link if some text conflicts to your understanding
-
 - [PR](https://github.com/changkun/go-history/pulls)s are welcome for bug and typo fixes
-
-- Use [issue](https://github.com/changkun/go-history) for discussions
+- Use [Issues](https://github.com/changkun/go-history) for discussions
 
 ## Sources
 
 There are many sources for digging the documents that relate to Go's
 historical design. There are some of the official sources:
 
-- [golang.org/doc](golang.org/doc)
-- [blog.golang.org](blog.golang.org)
-- [golang.org/pkg](golang.org/pkg)
-- [dev.golang.org](dev.golang.org)
-- [github.com/golang/go](github.com/golang/go)
-- [github.com/golang/talks](github.com/golang/talks)
-- [github.com/golang/proposal](github.com/golang/proposal)
-- [github.com/golang/go/wiki](github.com/golang/go/wiki)
-- [go-review.googlesource.com](go-review.googlesource.com)
-- [groups.google.com/g/golang-nuts](groups.google.com/g/golang-nuts)
-- [groups.google.com/g/golang-dev](groups.google.com/g/golang-dev)
-- [groups.google.com/g/golang-tools](groups.google.com/g/golang-tools)
+- [golang.org/doc](https://golang.org/doc)
+- [blog.golang.org](https://blog.golang.org)
+- [golang.org/pkg](https://golang.org/pkg)
+- [dev.golang.org](https://dev.golang.org)
+- [github.com/golang/go](https://github.com/golang/go)
+- [github.com/golang/talks](https://github.com/golang/talks)
+- [github.com/golang/proposal](https://github.com/golang/proposal)
+- [github.com/golang/go/wiki](https://github.com/golang/go/wiki)
+- [go-review.googlesource.com](https://go-review.googlesource.com)
+- [groups.google.com/g/golang-nuts](https://groups.google.com/g/golang-nuts)
+- [groups.google.com/g/golang-dev](https://groups.google.com/g/golang-dev)
+- [groups.google.com/g/golang-tools](https://groups.google.com/g/golang-tools)
 
 ## Committers
 
@@ -50,9 +47,13 @@ The Go was created by Rob, Robert, and Ken initially because
 they were suffered by the slow C++ compiling time.
 Later on, Ian joined the project since he showed huge interests and 
 wrote the [gccgo](https://github.com/golang/gofrontend).
-Russ is also one of the core authors of the project in the early stage.
-Back then, he was a newcomer at Google, and Rob invited Russ for joining the Go team
-since he knew Russ from way back because of the [Plan 9](http://plan9.bell-labs.com/plan9) project.
+Rob and Ken are retired. Robert and Ian currently work on adding generics
+to Go. Russ is also one of the core authors of the project in the early stage.
+Back then, he was a newcomer at Google, and Rob invited Russ for joining 
+the Go team since he knew Russ from way back because of the 
+[Plan 9](http://plan9.bell-labs.com/plan9) project. Russ did many 
+fundamental work for the early Go compiler, runtime, as well as the leap of
+Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
 - Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
@@ -78,6 +79,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Gopherfest 2017: Upspin. Jun 22, 2017.
   + [talk/rob2018a](https://www.youtube.com/watch?v=_2NI6t2r_Hs) The History of Unix. Nov 7, 2018.
   + [talk/rob2018b](https://www.youtube.com/watch?v=RIvL2ONhFBI) Sydney Golang Meetup - Rob Pike - Go 2 Draft Specifications. Nov 13, 2018
+  + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview
 
 - Robert Griesemer. [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer - Going Go. 
@@ -100,7 +102,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/ken2019b](https://www.youtube.com/watch?v=EY6q5dv_B-o) VCF East 2019. Brian Kernighan interviews Ken Thompson. May 4, 2019.
 
 
-- Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor)
+- Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor), [Quora](https://www.quora.com/profile/Ian-Lance-Taylor)
   + [talk/ian2007](https://www.youtube.com/watch?v=gc78olyguqA) GCC: Current Topics and Future Directions. February 27, 2007.
   + [talk/ian2018](https://www.youtube.com/watch?v=LqKOY_pH8u0) Gopherpalooza 2018. Transition to Go 2. Oct 24, 2018
   + [talk/ian2019a](https://www.youtube.com/watch?v=WzgLqE-3IhY) GopherCon 2019. Generics in Go. Aug 27, 2019
@@ -132,11 +134,11 @@ synchronization primitives, race detector, and blocking profiler that
 related to the Go runtime.
 Austin was an intern at Google who worked on the Go project in the early days
 while pursuing a Ph. D. Later, he joined the Go team after his academic career
-and work together with Rick Hudson for the Go's concurrent GC and the current Go linker.
+and work together with Rick for the Go's concurrent GC. He also the worked on the current preemptive scheduler and linker.
 Now, he is leading the Compiler/Runtime team for Go. 
 Keith and David together focus on the Go's compiler backend, 
 notably the current SSA backend. Michael is a recent new comer to the Go team, 
-his work mainly in the runtime memory system such as memory allocator and runtime metrics.
+his work mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
 
 - Dmitry Vyukov (Дмитрий Вьюков). [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) Writing a functional, reliable and fast web application in Go. Sep 25, 2014.
@@ -223,7 +225,6 @@ his work mainly in the runtime memory system such as memory allocator and runtim
 - [talk/goborn](https://changelog.com/podcast/3) The Go Programming Language from Google with Rob Pike, Principal Engineer at Google and Co-creator of Go
 - [talk/goborn2](https://changelog.com/podcast/100) Go Programming with Rob Pike and Andrew Gerrand
 - [talk/goborn3](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer
-- [talk/goborn4](https://evrone.com/rob-pike-interview) Rob Pike Interview
 
 ## Timeline
 
@@ -250,9 +251,9 @@ Timeline helps you identify the point in time about a document that reflected in
 
 The historical release notes may helpful for general informations:
 
-- Go Release History: https://golang.org/doc/devel/release.html
-- Pre-Go 1 Release History: https://golang.org/doc/devel/pre_go1.html
-- Before Go 1: https://golang.org/doc/devel/weekly.html
+- [doc/go1release](https://golang.org/doc/devel/release.html) Go Release History
+- [doc/go1prerelease](https://golang.org/doc/devel/pre_go1.html) Pre-Go 1 Release History
+- [doc/go0release](https://golang.org/doc/devel/weekly.html) Weekly Release History (Before Go 1)
 
 ## Language Design
 
@@ -263,11 +264,16 @@ The historical release notes may helpful for general informations:
 - [design/go11return](https://golang.org/s/go11return) Go “Return at End of Function” Requirements. Russ Cox
 - [design/go11func](https://golang.org/s/go11func) Russ Cox. Go 1.1 Function Calls.
 - [design/go12nil](https://golang.org/s/go12nil) Russ Cox. Go 1.2 Field Selectors and Nil Checks.
-- [design/go12slice](https://golang.org/s/go12slice) Russ Cox. Go Slice with Cap.
 - golang.org/s/go13todo
 - [doc/goatgoogle](https://talks.golang.org/2012/splash.article#TOC_12.) Rob Pike. Go at Google - Language Semantics.
 - [doc/makego](https://talks.golang.org/2015/how-go-was-made.slide) How Go was Made. Andrew Gerrand
 - [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Go 1 Preview. Russ Cox
+
+### Slice
+
+- [design/read-only-slices](https://docs.google.com/document/d/1UKu_do3FRvfeN5Bb1RxLohV-zBOJWTzX0E8ZU1bkqX0/edit#heading=h.2wzvdd6vdi83) Brad Fitzpatrick. Read-only slices. May 13, 2013
+- [design/read-only-slices-russ](https://docs.google.com/document/d/1-NzIYu0qnnsshMBpMPmuO21qd8unlimHgKjRD9qwp2A/edit) Russ Cox. Evaluation of read-only slices. May 2013.
+- [design/go12slice](https://golang.org/s/go12slice) Russ Cox. Go Slice with Cap. June 2013.
 
 ### Package Management (1.4, 1.5)
 
@@ -314,11 +320,11 @@ The historical release notes may helpful for general informations:
 ### Channel/Select
 
 - [design/lockfree-channels](https://docs.google.com/a/google.com/document/d/1yIAYmbvL3JxOKOjuCyon7JhW4cSv1wy5hC0ApeGMV9s/pub) Dmitry Vyukov. Go channels on steroids. Jan 28, 2014
-  + [issue/8899](https://github.com/golang/go/issues/8899) runtime: lock-free channels
+  + [issue/8899](https://golang.org/issue/8899) runtime: lock-free channels
   + [discuss/lockfree-channels](https://groups.google.com/g/golang-dev/c/0IElw_BbTrk/m/cGHMdNoHGQEJ) update on "lock-free channels"
   + [cl/112990043](https://codereview.appspot.com/112990043/) runtime: fine-grained locking in select
   + [cl/110580043](https://codereview.appspot.com/110580043/) runtime: add fast paths to non-blocking channel operations
-- [issue/8898](https://github.com/golang/go/issues/8898) runtime: special case timer channels
+- [issue/8898](https://golang.org/issue/8898) runtime: special case timer channels
 - [issue/8903](https://golang.org/issue/8903) runtime: make chan-based generators faster. 
 - [issue/21806](https://golang.org/issue/21806) fairness in select statement.
 
@@ -356,8 +362,10 @@ The historical release notes may helpful for general informations:
 - [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
 - [design/dev.cc](https://golang.org/s/dev.cc)  Russ Cox. dev.cc branch plan. November 2014
 - [design/go15bootstrap](https://golang.org/s/go15bootstrap) Russ Cox. Go 1.5 Bootstrap Plan. January 2015.
+- [doc/escape-analysis](https://docs.google.com/document/d/1CxgUBPlx9iJzkz9JWkb6tIpTe5q32QDmz8l0BouG0Cw/edit#) Dmitry Vyukov. Go Escape Analysis Flaws. Feb 10, 2015.
 - [design/execmodes](https://golang.org/s/execmodes) Ian Lance Taylor. Go Execution Modes. August, 2014 (updated January 2016)
 - [design/go17ssa](https://golang.org/s/go17ssa) Keith Randall. New SSA Backend for the Go Compiler. 2/10/2015.
+- [doc/compiler-optimization](https://github.com/golang/go/wiki/CompilerOptimizations) Compiler And Runtime Optimizations.
 - [issue/6853](https://golang.org/issue/6853) all: binaries too big and growing.
 - [issue/19348](https://golang.org/issue/19348) cmd/compile: enable mid-stack inlining.
 - [issue/23109](https://golang.org/issue/23109) cmd/compile: rewrite escape analysis.
@@ -440,7 +448,7 @@ in Go 1.15 and Go 1.16.
 
 ### Statistics
 
-- [issue/29696](https://github.com/golang/go/issues/29696) proposal: runtime: add way for applications to respond to GC backpressure
+- [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
 - [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
 - [cl/setmaxheap](https://go-review.googlesource.com/c/go/+/46751/) Austin Clements. runtime/debug: add SetMaxHeap API. Jun 26 2017.
 - [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
@@ -451,10 +459,11 @@ in Go 1.15 and Go 1.16.
 - [design/go11sched](https://golang.org/s/go11sched) Dmitry Vyukov. Scalable Go Scheduler Design Doc, 2012
 - [design/preempt-sched](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h) Dmitry Vyukov. Go Preemptive Scheduler Design Doc, 2013
 - [design/go15gomaxprocs](https://golang.org/s/go15gomaxprocs) Russ Cox. Go 1.5 GOMAXPROCS Default. May 2015.
-- [design/preempt-sched2](https://golang.org/design/24543-non-cooperative-preemption) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
+- [doc/go17sched](https://www.quora.com/How-does-the-golang-scheduler-work/answer/Ian-Lance-Taylor) Ian Lance Taylor. How does the golang scheduler work? July 16, 2016. 
+- [design/preempt-sched](https://golang.org/design/24543-non-cooperative-preemption) Austin Clements. Proposal: Non-cooperative goroutine preemption. 2019-01-18.
   + [issue/10958](https://golang.org/issue/10958) runtime: tight loops should be preemptible
   + [issue/24543](https://golang.org/issue/24543) runtime: non-cooperative goroutine preemption
-  + [issue/36365](https://github.com/golang/go/issues/36365) runtime: clean up async preemption loose ends
+  + [issue/36365](https://golang.org/issue/36365) runtime: clean up async preemption loose ends
 - [issue/18237](https://golang.org/issue/18237) runtime: scheduler is slow when goroutines are frequently woken
 - [issue/27345](https://golang.org/issue/27345) runtime: use parent goroutine's stack for new goroutines
 - [issue/32113](https://golang.org/issue/32113) runtime: optimization to reduce P churn.
@@ -463,7 +472,8 @@ in Go 1.15 and Go 1.16.
 ### Execution Stack
 
 - [design/contigstack](https://golang.org/s/contigstacks) Contiguous stacks
-- [issue/26061](https://github.com/golang/go/issues/26061) runtime: g0 stack.lo is sometimes too low
+- [issue/17007](https://golang.org/issue/17007) runtime: fatal error: bad g->status in ready
+- [issue/26061](https://golang.org/issue/26061) runtime: g0 stack.lo is sometimes too low
 
 ### Memory Allocator
 
@@ -534,8 +544,8 @@ Go memory model is not properly defined.
 ### ABI
 
 - [design/register-call](https://golang.org/design/40724-register-calling) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
-- [issue/18597](https://github.com/golang/go/issues/18597) proposal: cmd/compile: define register-based calling convention
-- [issue/40724](https://github.com/golang/go/issues/40724) proposal: switch to a register-based calling convention for Go functions
+- [issue/18597](https://golang.org/issue/18597) proposal: cmd/compile: define register-based calling convention
+- [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
 
 ## Standard Library
 
@@ -559,7 +569,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/22950](https://golang.org/issue/22950) sync: avoid clearing the full Pool on every GC.
 - [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
 - [issue/13086](https://golang.org/issue/13086) runtime: fall back to fair locks after repeated sleep-acquire failures. 
-- [issue/21035](https://github.com/golang/go/issues/21035) sync: reduce contention between Map operations with new-but-disjoint keys
+- [issue/21035](https://golang.org/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
 
 ### time
 
@@ -575,7 +585,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 - [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
 
-## Unclassified yet
+## Unclassified But Relevant Links
 
 - https://golang.org/s/using-guru
 - https://docs.google.com/document/d/1UErU12vR7jTedYvKHVNRzGPmXqdMASZ6PfE7B-p6sIg/edit
@@ -591,6 +601,16 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - https://docs.google.com/document/d/19_ExiylD9MRfeAjKIfEsMU1_RGhuxB9sA0b5Zv7byVI/edit
 - https://docs.google.com/spreadsheets/d/1VLxi-ac0BAtf735HyH3c1xRulbkYYUkFecKdLPH7NIQ/edit#gid=166102500
 - https://docs.google.com/document/d/1-azPLXaLgTCKeKDNg0HVMq2ovMlD-e7n1ZHzZVzOlJk/edit
+- [doc/robpike-c](http://doc.cat-v.org/bell_labs/pikestyle) Rob Pike. Notes on Programming in C. February 21, 1989.
+- http://genius.cat-v.org/rob-pike/
+- https://9p.io/plan9/
+- https://www.informit.com/articles/article.aspx?p=1941206 "The Best Programming Advice I Ever Got" with Rob Pike
+- An Interview with Brian Kernighan http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html
+- Language Design with Brian Kernighan Holiday Repeat https://softwareengineeringdaily.com/2017/12/28/language-design-with-brian-kernighan-holiday-repeat/
+- "C" Programming Language: Brian Kernighan - Computerphile. Aug 18, 2015 https://www.youtube.com/watch?feature=youtu.be&v=de2Hsvxaf8M&ab_channel=Computerphile
+- Debugging performance issues in Go* programs. Dmitriy Vyukov, 05/10/2014. https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html
+- https://github.com/dgryski/interesting-papers
+
 
 ## Fun Facts
 
