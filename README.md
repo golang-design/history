@@ -130,26 +130,73 @@ Austin was an intern at Google who worked on the Go project in the early days
 while pursuing a Ph. D. Later, he joined the Go team after his academic career.
 Now, he is leading the Compiler/Runtime team for Go.
 
-- Dmitry Vyukov. GitHub, Twitter
-- Austin Clements. GitHub,
-- Than McIntosh. GitHub,
-- Keith Randall. GitHub
-- David Chase. GitHub
-- Michael Knyszek. GitHub
-- Richard L. Hudson. GitHub
+- Dmitry Vyukov (Дмитрий Вьюков). GitHub, Twitter
+  + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) Writing a functional, reliable and fast web application in Go. Sep 25, 2014.
+  + [talk/dmitry2015a](https://www.youtube.com/watch?v=Ef7TtSZlmlk) Chat with Dmitry Vyukov on go-fuzz, golang and IT security. Jul 3, 2015
+  + [talk/dmitry2015b](https://www.youtube.com/watch?v=a9xrxRsIbSU) GopherCon 2015: Dmitry Vyukov - Go Dynamic Tools. Jul 28, 2015.
+  + [talk/dmitry2016](https://www.youtube.com/watch?v=9cpN2r22sLE) Dmitry Vyukov Interview. Jun 1, 2016.
+  + [talk/dmitry2017](https://www.youtube.com/watch?v=FD30Qzd6ylk) C++ Russia 2017. Fuzzing: The New Unit Testing. May 10, 2017.
+  + [talk/dmitry2018a](https://www.youtube.com/watch?v=EJVp13f_aIs) GopherCon Russia. Fuzzing: new unit testing. Google. Apr 2, 2018.
+  + [talk/dmitry2018b](https://www.youtube.com/watch?v=qrBVXxZDVQY) Syzbot and the Tale of Thousand Kernel Bugs - Dmitry Vyukov, Google. Sep 1, 2018.
+  + [talk/dmitry2019](https://www.youtube.com/watch?v=-K11rY57K7k) Go scheduler: Implementing language with lightweight concurrency. Oct 14, 2019.
+  + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) BlueHat IL 2020 - Dmitry Vyukov - syzkaller: Adventures in Continuous Coverage-guided Kernel Fuzzing. Feb 13, 2020.
+
+- Austin Clements. [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+- Than McIntosh. [GitHub](https://github.com/thanm)
+- Keith Randall. [GitHub](https://github.com/randall77)
+  + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) GopherCon 2016: Keith Randall - Inside the Map Implementation
+  + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) GopherCon 2017. Generating Better Machine Code with SSA. Jul 24, 2017.
+
+- David Chase. [Website](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
+  + [talk/david2017](https://changelog.com/gotime/52) All About The Go Compiler. Jul 20, 2017.
+
+- Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
+- Richard L. Hudson. [GitHub](https://github.com/RLH)
+  + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) GopherCon 2015. Go GC: Solving the Latency Problem. Jul 8, 2015.
+  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
 - Cherry Zhang. GitHub
 
 ### Library/Tools/Security/Community
 
-- Andrew Gerrand. GitHub, [Twitter](https://twitter.com/enneff)
-- Brad Fitzpatrick. GitHub, Twitter
-- Bryan C. Mills. GitHub
+- Andrew Gerrand. [GitHub](https://github.com/adg), [Twitter](https://twitter.com/enneff)
+- Brad Fitzpatrick. [Website](https://bradfitz.com/), [GitHub](https://github.com/bradfitz), [Twitter](https://twitter.com/bradfitz)
+  + [talk/brad2010](https://www.youtube.com/watch?v=c4znvD-7VDA) Google I/O 2010 - Writing zippy Android apps. May 27, 2010.
+  + [talk/brad2011](https://www.youtube.com/watch?v=OExxMUVVjRM) Palestra Brad FitzPatrick - Perl Workshop - Parte 1. May 12, 2011.
+  + [talk/brad2012](https://www.youtube.com/watch?v=zHXoDB07Iwg) Brad Fitzpatrick - Behind the Scenes at LiveJournal: Scaling Storytime. May 21, 2012.
+  + [talk/brad2013a](https://www.youtube.com/watch?v=sYukPc0y_Ro) dotScale 2013. Software I'm excited about. Jul 30, 2013.
+  + [talk/brad2013b](https://www.youtube.com/watch?v=kJ68OWnlycQ) Brad Fitzpatrick in LiveJournal's Moscow office. Dec 15, 2013.
+  + [talk/brad2014a](https://www.youtube.com/watch?v=Ds0KXj8ohR8) Camlistore - Brad Fitzpatrick, Google - Go meetup Jan 2014.
+  + [talk/brad2014b](https://www.youtube.com/watch?v=D6okO8Qzusk) GopherCon 2014 Camlistore & The Standard Library. May 18, 2014.
+  + [talk/brad2014c](https://www.youtube.com/watch?v=4KFTacxqkcQ) dotGo 2014. The State of the Gopher. October 10, 2014.
+  + [talk/brad2014d](https://www.youtube.com/watch?v=VLciNxKAKyc) dotGo 2014 - Brad Fitzpatrick - Interview. Nov 6, 2014.
+  + [talk/brad2015a](https://www.youtube.com/watch?v=yG-UaBJXZ80) Hacking with Andrew and Brad: an HTTP/2 client. Feb 25, 2015.
+  + [talk/brad2015b](https://www.youtube.com/watch?v=gukAZO1fqZQ) HTTP/2 and Go. London Go Gathering 2015. Mar 4, 2015.
+  + [talk/brad2015c](https://www.youtube.com/watch?v=gAfoLwog_MA) HTTP/2 for Go. Go Devroom FOSDEM 2015. Mar 4, 2015.
+  + [talk/brad2015d](https://www.youtube.com/watch?v=rHBbqjWCGq8) The state of the Gopher. Munich Gophers. Apr 18, 2015
+  + [talk/brad2015e](https://www.youtube.com/watch?v=stram5J144s) The Go Language. devoxx poland 2015. June, 2015
+  + [talk/brad2015f](https://www.youtube.com/watch?v=1rZ-JorHJEY) Hacking with Andrew and Brad: tip.golang.org. Jan 8, 2015.
+  + [talk/brad2015g](https://www.youtube.com/watch?v=mj-1wscEQO8) GopherCon 2015 - Lightning Talk: HTTP/2 in Go. Aug 19, 2015.
+  + [talk/brad2015h](https://www.youtube.com/watch?v=xxDZuPEgbBU) Profiling & Optimizing in Go. Aug 27, 2015.
+  + [talk/brad2016a](https://www.youtube.com/watch?v=4Dr8FXs9aJM) Gophercon India 2016 - Introducing Go 1.6: asymptotically approaching boring. Mar 29, 2016.
+  + [talk/brad2016b](https://www.youtube.com/watch?v=4yFb-b5GYWc) GopherCon 2016 - Lightning Talk: My video & security system. July, 2016.
+  + [talk/brad2016c](https://www.youtube.com/watch?v=8cQcPnzfkLk) Go 1.7 - Brad Fitzpatrick - Seattle Go Meetup. Aug 25, 2016.
+  + [talk/brad2016d](https://www.youtube.com/watch?v=18kmlJvR6Bk) GothamGo 2016 - The Go Open Source Project's Innards. Dec 15, 2016.
+  + [talk/brad2017](https://www.youtube.com/watch?v=4fWqcOubYQ0) Half my life spent in open source. May 19, 2017.
+  + [talk/brad2018a](https://www.youtube.com/watch?v=ZCB-g2B4Y5A) Go: looking back and looking forward. Brad Fitzpatrick, Google. Apr 2, 2018.
+  + [talk/brad2018b](https://www.youtube.com/watch?v=rWJHbh6qO_Y) Go 1 11 and beyond. Aug 26, 2018.
+  + [talk/brad2018c](https://www.youtube.com/watch?v=69Zy77O-BUM) GopherCon 2018 Lightning Talk: The nuclear option, go test -run=InQemu. Sep 11, 2018.
+  + [talk/brad2019](https://www.youtube.com/watch?v=BRSam0xQJKY) Brad Fitzpatrick likes Go better than C, C++, Rust, Perl, Python, Ruby, JavaScript and Java. Nov 28, 2019.
+
+- Bryan C. Mills. [GitHub](https://github.com/bcmills)
+  + [talk/bryan2017](https://www.youtube.com/watch?v=C1EtfDnsdDs) GopherCon 2017 - Lightning Talk: An overview of sync.Map.
   + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) GopherCon 2018. Rethinking Classical Concurrency Patterns. Sep 14, 2018
-- Daniel Martí. GitHub, Twitter
-- Nigel Tao. GitHub, Twitter
+
+- Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
+- Nigel Tao. [GitHub](https://github.com/nigeltao), Twitter
 - Filippo Valsorda. GitHub,
-- Michael Matloob. GitHub,
-- Dave Cheney. [Website](https://dave.cheney.net/), GitHub,
+- Michael Matloob. [GitHub](https://github.com/matloob), [Twitter](https://twitter.com/matloob)
+- Jay Conrod. [Website](https://jayconrod.com/), [Twitter](https://twitter.com/jayconrod)
+- Dave Cheney. [Website](https://dave.cheney.net/), [GitHub](https://github.com/davecheney), [Twitter](https://twitter.com/davecheney)
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
 - more to be added...
 
@@ -250,10 +297,6 @@ The historical release notes may helpful for general informations:
 - [design/err-print](https://golang.org/design/go2draft-error-printing) Error Printing — Draft Design.
   - [issue/30468](https://golang.org/issue/30468) errors: performance regression in New.
 - [issue/41198](https://golang.org/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
-
-### Map
-
-- [talk/map](https://www.youtube.com/watch?v=Tl7mi9QmLns) GopherCon 2016: Keith Randall - Inside the Map Implementation
 
 ### Channel/Select
 
