@@ -639,6 +639,10 @@ guarantee sequential consistency.
 
 - [design/go14syscall](https://golang.org/s/go1.4-syscall) The syscall package.
 
+### io
+
+- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
+
 ### go/*
 
 - [doc/gotypes](https://golang.org/s/types-tutorial) Alan Donovan. go/types: The Go Type Checker.
@@ -687,11 +691,6 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/27707](https://golang.org/issue/27707) time: excessive CPU usage when using Ticker and Sleep.
 - [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
 
-### io
-
-- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design
-. July 2020.
-
 ### context
 
 - [issue/8082](https://golang.org/issue/8082) proposal: spec: represent interfaces by their definition and not by package and name
@@ -707,7 +706,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
 - [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
 
-### misc
+### encoding
 
 - [design/go12encoding](https://golang.org/s/go12encoding) Russ Cox. Go 1.2 encoding.TextMarshaler and TextUnmarshaler. July 2013.
 - [design/go12xml](https://docs.google.com/document/d/1G-AMeUPoyTnbZDkuCJA89DjJwTjdWFctIZ_N9NgA9RM/pub) Russ Cox. Go 1.2 xml.Marshaler and Unmarshaler. July 2013.
@@ -719,6 +718,8 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/19480](https://golang.org/issue/19480) encoding/xml: add decode from TokenReader, to enable stream transformers
 - [design/raw-xml](https://golang.org/design/26756-rawxml-token) Sam Whited. Proposal: Raw XML Token. 2018-09-01
   + [issue/26756](https://golang.org/issue/26756) proposal: encoding/xml: add RawXML token
+
+### misc
 
 - [design/mobile-audio](https://golang.org/design/13432-mobile-audio) Jaana Burcu Dogan. Proposal: Audio for Mobile. November 30, 2015.
   + [issue/13432](https://golang.org/issue/13432) proposal: x/mobile audio
