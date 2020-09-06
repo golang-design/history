@@ -3,7 +3,7 @@
 **Author**: Changkun Ou <_[changkun.de](https://changkun.de)_>
 
 This document collects many interesting (publiclly observable) issues,
-discussions, proposals, CLs, and talks in the Go development history,
+discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
 ## Disclaimer
@@ -383,6 +383,7 @@ The historical release notes may helpful for general informations:
   + [doc/type-check-readme](https://github.com/golang/go/tree/dev.go2go/src/go/types) type checking.
   + [doc/type-check-notes](https://github.com/golang/go/blob/dev.go2go/src/go/types/NOTES) This file serves as a notebook/implementation log.
 - [discuss/generics-parenthesis](https://groups.google.com/g/golang-nuts/c/7t-Q2vt60J8) Robert. Generics and parenthesis.
+- [issue/33232](https://golang.org/issue/33232) proposal: Go 2: add alias for interface {} as any
 - [discuss/generics-move](https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw) Ian, Moving forward with the generics design.
 
 ## Compiler Toolchain
@@ -693,9 +694,18 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ### context
 
+- [issue/8082](https://golang.org/issue/8082) proposal: spec: represent interfaces by their definition and not by package and name
 - [issue/14660](https://golang.org/issue/14660) proposal: context: new package for standard library
-- [doc/context-remove](https://faiface.github.io/post/context-should-go-away-go2/)
+- [issue/16209](https://golang.org/issue/16209) Proposal: relaxed rules for assignability with differently-named but identical interfaces
+- [issue/20280](https://golang.org/issue/20280) proposal: io: add Context parameter to Reader, etc.
+- [issue/21355](https://golang.org/issue/21355) proposal: Replace Context with goroutine-local storage
+- [issue/24050](https://golang.org/issue/24050) testing: test with child process sometimes hangs on 1.10; -timeout not respected
+- [issue/27982] proposal: Go 2: bake a cooperative goroutine cancellation mechanism into the language
+- [issue/28342](https://golang.org/issue/28342) proposal: Go 2: update context package for Go 2
+- [issue/29011](https://golang.org/issue/29011) proposal: Go 2: use structured concurrency
+- [doc/context-go-away](https://faiface.github.io/post/context-should-go-away-go2/) Michal Štrba. Context should go away for Go 2. 2017/08/06
 - [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
+- [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
 
 ### misc
 
