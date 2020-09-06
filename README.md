@@ -58,16 +58,17 @@ Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
 - Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
-  - [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
-  + [talk/rob2010a](https://www.youtube.com/watch?v=PTZqkyivnHk) Go. Emerging Languages Camp 2010. Feb 10, 2015.
-  + [talk/rob2010b](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 28, 2010
+  + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) Advanced Topics in Programming Languages: Concurrency/message passing Newsqueak. May 9, 2007
+  + [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
+  + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 20, 2010
+  + [talk/rob2010b](https://www.youtube.com/watch?v=-_DKfAn4pFA) Origins of Go Concurrency style. Emerging Languages Camp 2010. July 21, 2010.
   + [talk/rob2010c](https://www.youtube.com/watch?v=5kj5ApnhPAE) Public Static Void. OSCON 2010. Jul 22, 2010.
-  + [talk/rob2010d](https://www.youtube.com/watch?v=3DtUzH3zoFo) Origins of Go Concurrency style. Jul 22, 2010.
-  + [talk/rob2010e](https://www.youtube.com/watch?v=7VcArS4Wpqk) Another Go at Language Design. Aug 27, 2010
+  + [talk/rob2010d](https://www.youtube.com/watch?v=7VcArS4Wpqk) Another Go at Language Design. Aug 27, 2010
   + [talk/rob2011a](https://www.infoq.com/interviews/pike-concurrency/) Parallelism and Concurrency in Programming Languages. Feb 17, 2011.
   + [talk/rob2011b](https://www.infoq.com/interviews/pike-google-go/) Google Go: Concurrency, Type System, Memory Management and GC. Feb 25, 2011.
   + [talk/rob2011c](https://www.youtube.com/watch?v=HxaD_trXwRE) Lexical Scanning in Go. Aug 30, 2011
-  + [talk/rob2012](https://www.youtube.com/watch?v=FTl0tl9BGdc) Why Learn Go?. Sep 12, 2012.
+  + [talk/rob2012a](https://www.youtube.com/watch?v=f6kdp27TYZs) Go Concurrency Patterns. Google I/O 2012. Jul 2, 2012.
+  + [talk/rob2012b](https://www.youtube.com/watch?v=FTl0tl9BGdc) Why Learn Go?. Sep 12, 2012.
   + [talk/rob2013a](https://www.youtube.com/watch?v=bj9T2c2Xk_s) The path to Go 1. Mar 14, 2013.
   + [talk/rob2013b](https://www.infoq.com/presentations/Go-Google/) Go at Google. Apr 13, 2013.
   + [talk/rob2013c](https://changelog.com/podcast/100) Go Programming with Rob Pike and Andrew Gerrand. Aug 14, 2013.
