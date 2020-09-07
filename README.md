@@ -720,6 +720,15 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [design/raw-xml](https://golang.org/design/26756-rawxml-token) Sam Whited. Proposal: Raw XML Token. 2018-09-01
   + [issue/26756](https://golang.org/issue/26756) proposal: encoding/xml: add RawXML token
 
+### image, x/image
+
+- [issue/11420](https://golang.org/issue/11420) x/image/draw: color space-correct interpolation
+- [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
+- [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
+- [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
+  - [cl/208559](https://golang.org/cl/208559) 
+  - [cl/216799](https://golang.org/cl/216799)
+
 ### misc
 
 - [design/mobile-audio](https://golang.org/design/13432-mobile-audio) Jaana Burcu Dogan. Proposal: Audio for Mobile. November 30, 2015.
