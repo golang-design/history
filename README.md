@@ -2,13 +2,13 @@
 
 **Author**: Changkun Ou <_[changkun.de](https://changkun.de)_>
 
-This document collects many interesting (publiclly observable) issues,
+This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
 ## Disclaimer
 
-- Most of the text are written as my _personal_ understanding based on public sources
+- Most of the texts are written as my _personal_ understanding based on public sources
 - **Factual and typo errors may occur.**
 Referring to the original link if some text conflicts to your understanding
 - [PR](https://github.com/changkun/go-history/pulls)s are very welcome for new content, bug and typo fixes
@@ -41,6 +41,8 @@ the project that you might interest in follow their excellent work.
 By listening to the talks held by these people, you could learn more about
 their oral history and fun stories behind the great work.
 
+[![](./assets/images/go_committers.png)](./assets/images/go_committers.png)
+
 ### Core Authors
 
 The Go was created by Rob, Robert, and Ken initially because
@@ -57,7 +59,7 @@ fundamental work for the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
-- Rob Pike. [Website](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
+- Rob Pike. [Website](http://herpolhode.com/rob/ )[Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
   + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) Advanced Topics in Programming Languages: Concurrency/message passing Newsqueak. May 9, 2007
   + [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
   + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 20, 2010
@@ -262,6 +264,8 @@ The historical release notes may helpful for general informations:
 
 ## Language Design
 
+[![](./assets/images/language_design.png)](./assets/images/language_design.png)
+
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
@@ -389,6 +393,8 @@ The historical release notes may helpful for general informations:
 
 ## Compiler Toolchain
 
+[![](./assets/images/compiler_toolchain.png)](./assets/images/compiler_toolchain.png)
+
 ### Compiler
 
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
@@ -501,6 +507,8 @@ in Go 1.15 and Go 1.16.
 <!-- - Tool chain, benchseries/benchstat -->
 
 ## Runtime Core
+
+[![](./assets/images/runtime_core.png)](./assets/images/runtime_core.png)
 
 ### Statistics
 
@@ -636,6 +644,8 @@ guarantee sequential consistency.
 
 ## Standard Library
 
+[![](./assets/images/standard_library.png)](./assets/images/standard_library.png)
+
 ### syscall
 
 - [design/go14syscall](https://golang.org/s/go1.4-syscall) The syscall package.
@@ -728,6 +738,84 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
   - [cl/208559](https://golang.org/cl/208559) 
   - [cl/216799](https://golang.org/cl/216799)
+
+<!--
+TODO: read all of these!
+
+image:
+
+- [issue/8055](golang.org/issue/8055) image: decode / resize into an existing buffer
+- [issue/11793](golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
+- [issue/15759](golang.org/issue/15759) image: optimize Image.At().RGBA()
+- [issue/20851](golang.org/issue/20851) image: Decode drops interfaces
+- [issue/22535](golang.org/issue/22535) image: support LJPEG
+- [issue/27830](golang.org/issue/27830) proposal: image: decoding options
+- [issue/30979](golang.org/issue/30979) image: add sample fuzz tests for prototype of "fuzzing as a first class citizen"
+- [issue/37188](golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
+
+
+- [issue/18098](golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
+- [issue/2362](golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
+- [issue/4341](golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
+- [issue/10447](golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
+- [issue/12202](golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
+- [issue/13614](golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
+- [issue/22170](golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
+- [issue/23936](golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
+- [issue/24499](golang.org/issue/24499) image/jpeg: Decode is slow
+- [issue/29512](golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
+- [issue/40130](golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
+- [issue/18365](golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
+- [issue/20613](golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
+- [issue/20899](golang.org/issue/20899) image/png: Decode failing on bitmap
+- [issue/6635](golang.org/issue/6635) image/gif: encoder does not honor image bounds.
+- [issue/5050](golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
+- [issue/26108](golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
+- [issue/20694](golang.org/issue/20694) image/gif: Mention the uselessness of BackgroundIndex in the docs Documentation
+- [issue/20804](golang.org/issue/20804) image/gif: decoding gif returns `unknown block type: 0x01` error
+- [issue/20856](golang.org/issue/20856) image/gif: decoding gif returns `frame bounds larger than image bounds` error
+- [issue/33748](golang.org/issue/33748) image/gif: generated image cannot be opened in xv and crashes OmniWeb 3.x web browser
+- [issue/35166](golang.org/issue/35166) image/gif: TestDecodeMemoryConsumption flake on dragonfly-amd64
+- [issue/35503](golang.org/issue/35503) image/gif: decode fails with "gif: too much image data"
+- [issue/38958](golang.org/issue/38958) image/gif: "not enough image data" on gif that works in browser
+- [issue/38853](golang.org/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
+- [issue/41142](golang.org/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
+
+x/image:
+
+- [issue/40173](golang.org/issue/40173) x/image: WebP decode contrast issue
+- [issue/39705](golang.org/issue/39705) x/image: CCITT reader EOF error for tiff image
+- [issue/25657](golang.org/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
+- [issue/39900](golang.org/issue/39900) x/image/tiff: Missing raw stream read/write
+- [issue/38252](golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
+- [issue/36121](golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
+- [issue/33708](golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
+- [issue/30827](golang.org/issue/30827) x/image/tiff: unexpected EOF ExpertNeeded WaitingForInfo
+- [issue/26450](golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
+- [issue/26360](golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
+- [issue/23115](golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
+- [issue/20742](golang.org/issue/20742) x/image/tiff: package does not support image resolution
+- [issue/11413](golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
+- [issue/11389](golang.org/issue/11389) x/image/tiff: excessive memory consumption
+- [issue/11386](golang.org/issue/11386) x/image/tiff: index out of range
+- [issue/38341](golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
+- [issue/11395](golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
+- [issue/10790](golang.org/issue/10790) x/image/webp: excessive memory consumption
+- [issue/19672](golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
+- [issue/30902](golang.org/issue/30902) x/image/riff: Implement write functionality
+- [issue/29711](golang.org/issue/29711) x/image/bmp: support 1-bit format
+- [issue/37532](golang.org/issue/37532) x/image/font/gofont: Go Mono font readability for users
+- [issue/37441](golang.org/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
+- [issue/30699](golang.org/issue/30699) x/image/font/sfnt: read more glyph metrics
+- [issue/28932](golang.org/issue/28932) x/image/font: wrong rendering of intersecting paths
+- [issue/28380](golang.org/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
+- [issue/27281](golang.org/issue/27281) x/image/font: rendering texts in Arabic
+- [issue/23497](golang.org/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
+- [issue/22451](golang.org/issue/22451) x/image/font/sfnt: implement font.Face
+- [issue/20208](golang.org/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
+- [issue/14436](golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
+- [issue/33990](golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
+- [issue/16904](golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
 
 ### misc
 
