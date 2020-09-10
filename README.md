@@ -41,6 +41,8 @@ the project that you might interest in follow their excellent work.
 By listening to the talks held by these people, you could learn more about
 their oral history and fun stories behind the great work.
 
+![](./assets/images/go_committers.png)
+
 ### Core Authors
 
 The Go was created by Rob, Robert, and Ken initially because
@@ -262,6 +264,8 @@ The historical release notes may helpful for general informations:
 
 ## Language Design
 
+![](./assets/images/language_design.png)
+
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
@@ -389,6 +393,8 @@ The historical release notes may helpful for general informations:
 
 ## Compiler Toolchain
 
+![](./assets/images/compiler_toolchain.png)
+
 ### Compiler
 
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
@@ -501,6 +507,8 @@ in Go 1.15 and Go 1.16.
 <!-- - Tool chain, benchseries/benchstat -->
 
 ## Runtime Core
+
+![](./assets/images/runtime_core.png)
 
 ### Statistics
 
@@ -635,6 +643,8 @@ guarantee sequential consistency.
 - [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
 
 ## Standard Library
+
+![](./assets/images/standard_library.png)
 
 ### syscall
 
