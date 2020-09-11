@@ -11,8 +11,8 @@ which intents to offer a comprehensive reference of the Go history.
 - Most of the texts are written as my _personal_ understanding based on public sources
 - **Factual and typo errors may occur.**
 Referring to the original link if some text conflicts to your understanding
-- [PR](https://github.com/changkun/go-history/pulls)s are very welcome for new content, bug and typo fixes
-- Use [Issues](https://github.com/changkun/go-history) for discussions
+- [PR](https://github.com/golang-design/history/pulls)s are very welcome for new content, bug and typo fixes
+- Use [Issues](https://github.com/golang-design/history) for discussions
 
 ## Sources
 
@@ -860,4 +860,4 @@ x/image:
 
 ## License
 
-[go-history](https://github.com/changkun/go-history) CC-BY-NC-ND 4.0 &copy; [changkun](https://changkun.de)
+[go-history](https://github.com/golang-design/history) CC-BY-NC-ND 4.0 &copy; [changkun](https://changkun.de)
