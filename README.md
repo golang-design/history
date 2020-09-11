@@ -1,6 +1,6 @@
-# A Documentary of Go
+# [Go: A Documentary](https://golang.design/history)
 
-**Author**: Changkun Ou <_[changkun.de](https://changkun.de)_>
+_by Changkun Ou <[changkun.de](https://changkun.de)>_
 
 This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
@@ -54,7 +54,7 @@ Rob and Ken are retired. Robert and Ian currently work on adding generics
 to Go. Russ is also one of the core authors of the project in the early stage.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining
 the Go team since he knew Russ from way back because of the
-[Plan 9](http://plan9.bell-labs.com/plan9) project. Russ did many
+[Plan 9](https://9p.io/plan9/) project. Russ did many
 fundamental work for the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
@@ -843,7 +843,6 @@ x/image:
 - https://golang.org/s/sqldrivers
 - https://golang.org/s/go2designs
 - http://doc.cat-v.org/bell_labs/pikestyle
-- https://9p.io/plan9/
 - https://www.informit.com/articles/article.aspx?p=1941206
 - http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html
 - https://softwareengineeringdaily.com/2017/12/28/language-design-with-brian-kernighan-holiday-repeat/
@@ -858,6 +857,12 @@ x/image:
 - [cl/1](https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8) Brian Kernighan. Go's first commit. Jul 19, 1972.
 - [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language
 
+## Acknowledgements
+
+The document author would like to first thank the [TalkGo](https://github.com/talkgo) community creator [Mai Yangwen](https://github.com/yangwenmai)'s sponsorship for the [golang.design](https://golang.design) initiative.
+
+It is also important to thank the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy)'s continues inspiring discussion and sharing. The document would not be organized without their support.
+
 ## License
 
-[go-history](https://github.com/golang-design/history) CC-BY-NC-ND 4.0 &copy; [changkun](https://changkun.de)
+[golang.design/history](https://github.com/golang-design/history) | CC-BY-NC-ND 4.0 &copy; [changkun](https://changkun.de)
