@@ -58,7 +58,7 @@ func main() {
 
 	tmpl := template.Must(template.New("index").Parse(indexTemplate))
 	tmpl.Execute(f, a)
-	fmt.Println("changkun/go-history: A Documentary of Go")
+	fmt.Println("golang-design/history: A Documentary of Go")
 }
 
 const indexTemplate = `

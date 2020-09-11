@@ -1,4 +1,4 @@
-module github.com/changkun/go-history
+module github.com/golang-design/history
 
 go 1.15
 
