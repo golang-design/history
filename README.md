@@ -2,13 +2,13 @@
 
 **Author**: Changkun Ou <_[changkun.de](https://changkun.de)_>
 
-This document collects many interesting (publiclly observable) issues,
+This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
 ## Disclaimer
 
-- Most of the text are written as my _personal_ understanding based on public sources
+- Most of the texts are written as my _personal_ understanding based on public sources
 - **Factual and typo errors may occur.**
 Referring to the original link if some text conflicts to your understanding
 - [PR](https://github.com/changkun/go-history/pulls)s are very welcome for new content, bug and typo fixes
@@ -41,7 +41,7 @@ the project that you might interest in follow their excellent work.
 By listening to the talks held by these people, you could learn more about
 their oral history and fun stories behind the great work.
 
-![](./assets/images/go_committers.png)
+[![](./assets/images/go_committers.png)](./assets/images/go_committers.png)
 
 ### Core Authors
 
@@ -264,7 +264,7 @@ The historical release notes may helpful for general informations:
 
 ## Language Design
 
-![](./assets/images/language_design.png)
+[![](./assets/images/language_design.png)](./assets/images/language_design.png)
 
 ### Misc
 
@@ -393,7 +393,7 @@ The historical release notes may helpful for general informations:
 
 ## Compiler Toolchain
 
-![](./assets/images/compiler_toolchain.png)
+[![](./assets/images/compiler_toolchain.png)](./assets/images/compiler_toolchain.png)
 
 ### Compiler
 
@@ -508,7 +508,7 @@ in Go 1.15 and Go 1.16.
 
 ## Runtime Core
 
-![](./assets/images/runtime_core.png)
+[![](./assets/images/runtime_core.png)](./assets/images/runtime_core.png)
 
 ### Statistics
 
@@ -644,7 +644,7 @@ guarantee sequential consistency.
 
 ## Standard Library
 
-![](./assets/images/standard_library.png)
+[![](./assets/images/standard_library.png)](./assets/images/standard_library.png)
 
 ### syscall
 

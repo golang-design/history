@@ -1,0 +1,46 @@
+/* Copyright 2020 Changkun Ou. All rights reserved.
+Use of this source code is governed by a MIT
+license that can be found in the LICENSE file. */
+
+body {
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+}
+:root {
+    --gray-1: #202224;
+    --gray-2: #3e4042;
+    --gray-3: #555759;
+    --gray-4: #6e7072;
+    --gray-5: #848688;
+    --gray-6: #aaacae;
+    --gray-7: #c6c8ca;
+    --gray-8: #dcdee0;
+    --gray-9: #f0f1f2;
+    --gray-10: #fafafa;
+    --turq-light: #5dc9e2;
+    --turq-med: #00add8;
+    --turq-dark: #007d9c;
+    --blue: #92e1f3;
+    --green: #00a29c;
+    --pink: #ce3262;
+    --purple: #542c7d;
+    --slate: #253443;
+    --white: #fff;
+    --yellow: #fddd00;
+    --header-height: 3.5rem;
+}
+a {
+    color: var(--turq-dark);
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#container {
+    width: 60%;
+    margin: 0 auto;
+}
+.doc-content {
+    margin-top: 50px;
+}
