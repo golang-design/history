@@ -287,10 +287,10 @@ The historical release notes may helpful for general information:
 - [design/signed-int-shift](https://golang.org/design/19113-signed-shift-counts) Robert Griesemer. Proposal: Permit Signed Integers as Shift Counts for Go 2. January 17, 2019
   + [issue/19113](https://golang.org/issue/19113) proposal: spec: allow signed shift counts
 - [design/number-literal](https://golang.org/design/19308-number-literals) Russ Cox, Robert Griesemer. Proposal: Go 2 Number Literal Changes. March 6, 2019
-  + [issue/12711](golang.org/issue/12711) proposal: different octal base literal representation
-  + [issue/19308](golang.org/issue/19308) proposal: spec: binary integer literals
-  + [issue/28493](golang.org/issue/28493) proposal: permit blank (_) separator in integer number literals
-  + [issue/29008](golang.org/issue/29008) proposal: Go 2: hexadecimal floats
+  + [issue/12711](https://golang.org/issue/12711) proposal: different octal base literal representation
+  + [issue/19308](https://golang.org/issue/19308) proposal: spec: binary integer literals
+  + [issue/28493](https://golang.org/issue/28493) proposal: permit blank (_) separator in integer number literals
+  + [issue/29008](https://golang.org/issue/29008) proposal: Go 2: hexadecimal floats
 - [issue/33502](https://golang.org/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://golang.org/issue/33892) proposal: Go 2 review meeting minutes
 
@@ -308,7 +308,7 @@ The historical release notes may helpful for general information:
 - [design/go14customimport](https://golang.org/s/go14customimport) Russ Cox. Go 1.4 Custom Import Path Checking. June 2014.
 - [design/go15vendor](https://golang.org/s/go15vendor) Russ Cox. Go 1.5 Vendor Experiment. July 2015
 - [design/go17binarypkg](https://golang.org/design/2775-binary-only-packages) Russ Cox. Proposal: Binary-Only Packages. April 24, 2016
-  + [issue/2775](golang.org/issue/2775) cmd/go: work when binaries are available but source is missing
+  + [issue/2775](https://golang.org/issue/2775) cmd/go: work when binaries are available but source is missing
 
 ### Type alias (1.9)
 
@@ -461,9 +461,9 @@ in Go 1.15 and Go 1.16.
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
 - [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. Go Generate. January 2014.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
-- [discuss/generatedcode](golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
-- [design/goenv](golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
-  + [issue/30411](golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
+- [discuss/generatedcode](https://golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
+- [design/goenv](https://golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
+  + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
@@ -501,7 +501,7 @@ in Go 1.15 and Go 1.16.
 - [design/subtests](https://golang.org/design/12166-subtests) Marcel van Lohuizen. testing: programmatic sub-test and sub-benchmark support. September 2, 2015.
   + [issue/12166](https://golang.org/issue/12166) proposal: testing: programmatic sub-test and sub-benchmark support
 - [design/gotest-bench](https://golang.org/design/14313-benchmark-format) Russ Cox, Austin Clements. Proposal: Go Benchmark Data Format. February 2016.
-  + [issue/14313](golang.org/issue/14313) cmd/go: decide, document standard benchmark data format
+  + [issue/14313](https://golang.org/issue/14313) cmd/go: decide, document standard benchmark data format
 - [design/gotest-json](https://golang.org/design/2981-go-test-json) Nodir Turakulov. Proposal: -json flag in go test. 2016-09-14.
 - [design/testing-helper](https://golang.org/design/4899-testing-helper) Caleb Spare. Proposal: testing: better support test helper functions with TB.Helper. 2016-12-27
   + [issue/4899](https://golang.org/issue/4899) testing: add t.Helper to make file:line results more useful
@@ -759,78 +759,78 @@ TODO: read all of these!
 
 image:
 
-- [issue/8055](golang.org/issue/8055) image: decode / resize into an existing buffer
-- [issue/11793](golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
-- [issue/15759](golang.org/issue/15759) image: optimize Image.At().RGBA()
-- [issue/20851](golang.org/issue/20851) image: Decode drops interfaces
-- [issue/22535](golang.org/issue/22535) image: support LJPEG
-- [issue/27830](golang.org/issue/27830) proposal: image: decoding options
-- [issue/30979](golang.org/issue/30979) image: add sample fuzz tests for prototype of "fuzzing as a first class citizen"
-- [issue/37188](golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
+- [issue/8055](https://golang.org/issue/8055) image: decode / resize into an existing buffer
+- [issue/11793](https://golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
+- [issue/15759](https://golang.org/issue/15759) image: optimize Image.At().RGBA()
+- [issue/20851](https://golang.org/issue/20851) image: Decode drops interfaces
+- [issue/22535](https://golang.org/issue/22535) image: support LJPEG
+- [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
+- [issue/30979](https://golang.org/issue/30979) image: add sample fuzz tests for prototype of "fuzzing as a first class citizen"
+- [issue/37188](https://golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
 
 
-- [issue/18098](golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
-- [issue/2362](golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
-- [issue/4341](golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
-- [issue/10447](golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
-- [issue/12202](golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
-- [issue/13614](golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
-- [issue/22170](golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
-- [issue/23936](golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
-- [issue/24499](golang.org/issue/24499) image/jpeg: Decode is slow
-- [issue/29512](golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
-- [issue/40130](golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
-- [issue/18365](golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
-- [issue/20613](golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
-- [issue/20899](golang.org/issue/20899) image/png: Decode failing on bitmap
-- [issue/6635](golang.org/issue/6635) image/gif: encoder does not honor image bounds.
-- [issue/5050](golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
-- [issue/26108](golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
-- [issue/20694](golang.org/issue/20694) image/gif: Mention the uselessness of BackgroundIndex in the docs Documentation
-- [issue/20804](golang.org/issue/20804) image/gif: decoding gif returns `unknown block type: 0x01` error
-- [issue/20856](golang.org/issue/20856) image/gif: decoding gif returns `frame bounds larger than image bounds` error
-- [issue/33748](golang.org/issue/33748) image/gif: generated image cannot be opened in xv and crashes OmniWeb 3.x web browser
-- [issue/35166](golang.org/issue/35166) image/gif: TestDecodeMemoryConsumption flake on dragonfly-amd64
-- [issue/35503](golang.org/issue/35503) image/gif: decode fails with "gif: too much image data"
-- [issue/38958](golang.org/issue/38958) image/gif: "not enough image data" on gif that works in browser
-- [issue/38853](golang.org/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
-- [issue/41142](golang.org/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
+- [issue/18098](https://golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
+- [issue/2362](https://golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
+- [issue/4341](https://golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
+- [issue/10447](https://golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
+- [issue/12202](https://golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
+- [issue/13614](https://golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
+- [issue/22170](https://golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
+- [issue/23936](https://golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
+- [issue/24499](https://golang.org/issue/24499) image/jpeg: Decode is slow
+- [issue/29512](https://golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
+- [issue/40130](https://golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
+- [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
+- [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
+- [issue/20899](https://golang.org/issue/20899) image/png: Decode failing on bitmap
+- [issue/6635](https://golang.org/issue/6635) image/gif: encoder does not honor image bounds.
+- [issue/5050](https://golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
+- [issue/26108](https://golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
+- [issue/20694](https://golang.org/issue/20694) image/gif: Mention the uselessness of BackgroundIndex in the docs Documentation
+- [issue/20804](https://golang.org/issue/20804) image/gif: decoding gif returns `unknown block type: 0x01` error
+- [issue/20856](https://golang.org/issue/20856) image/gif: decoding gif returns `frame bounds larger than image bounds` error
+- [issue/33748](https://golang.org/issue/33748) image/gif: generated image cannot be opened in xv and crashes OmniWeb 3.x web browser
+- [issue/35166](https://golang.org/issue/35166) image/gif: TestDecodeMemoryConsumption flake on dragonfly-amd64
+- [issue/35503](https://golang.org/issue/35503) image/gif: decode fails with "gif: too much image data"
+- [issue/38958](https://golang.org/issue/38958) image/gif: "not enough image data" on gif that works in browser
+- [issue/38853](https://golang.org/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
+- [issue/41142](https://golang.org/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
 
 x/image:
 
-- [issue/40173](golang.org/issue/40173) x/image: WebP decode contrast issue
-- [issue/39705](golang.org/issue/39705) x/image: CCITT reader EOF error for tiff image
-- [issue/25657](golang.org/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
-- [issue/39900](golang.org/issue/39900) x/image/tiff: Missing raw stream read/write
-- [issue/38252](golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
-- [issue/36121](golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
-- [issue/33708](golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
-- [issue/30827](golang.org/issue/30827) x/image/tiff: unexpected EOF ExpertNeeded WaitingForInfo
-- [issue/26450](golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
-- [issue/26360](golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
-- [issue/23115](golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
-- [issue/20742](golang.org/issue/20742) x/image/tiff: package does not support image resolution
-- [issue/11413](golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
-- [issue/11389](golang.org/issue/11389) x/image/tiff: excessive memory consumption
-- [issue/11386](golang.org/issue/11386) x/image/tiff: index out of range
-- [issue/38341](golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
-- [issue/11395](golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
-- [issue/10790](golang.org/issue/10790) x/image/webp: excessive memory consumption
-- [issue/19672](golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
-- [issue/30902](golang.org/issue/30902) x/image/riff: Implement write functionality
-- [issue/29711](golang.org/issue/29711) x/image/bmp: support 1-bit format
-- [issue/37532](golang.org/issue/37532) x/image/font/gofont: Go Mono font readability for users
-- [issue/37441](golang.org/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
-- [issue/30699](golang.org/issue/30699) x/image/font/sfnt: read more glyph metrics
-- [issue/28932](golang.org/issue/28932) x/image/font: wrong rendering of intersecting paths
-- [issue/28380](golang.org/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
-- [issue/27281](golang.org/issue/27281) x/image/font: rendering texts in Arabic
-- [issue/23497](golang.org/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
-- [issue/22451](golang.org/issue/22451) x/image/font/sfnt: implement font.Face
-- [issue/20208](golang.org/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
-- [issue/14436](golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
-- [issue/33990](golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
-- [issue/16904](golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
+- [issue/40173](https://golang.org/issue/40173) x/image: WebP decode contrast issue
+- [issue/39705](https://golang.org/issue/39705) x/image: CCITT reader EOF error for tiff image
+- [issue/25657](https://golang.org/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
+- [issue/39900](https://golang.org/issue/39900) x/image/tiff: Missing raw stream read/write
+- [issue/38252](https://golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
+- [issue/36121](https://golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
+- [issue/33708](https://golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
+- [issue/30827](https://golang.org/issue/30827) x/image/tiff: unexpected EOF ExpertNeeded WaitingForInfo
+- [issue/26450](https://golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
+- [issue/26360](https://golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
+- [issue/23115](https://golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
+- [issue/20742](https://golang.org/issue/20742) x/image/tiff: package does not support image resolution
+- [issue/11413](https://golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
+- [issue/11389](https://golang.org/issue/11389) x/image/tiff: excessive memory consumption
+- [issue/11386](https://golang.org/issue/11386) x/image/tiff: index out of range
+- [issue/38341](https://golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
+- [issue/11395](https://golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
+- [issue/10790](https://golang.org/issue/10790) x/image/webp: excessive memory consumption
+- [issue/19672](https://golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
+- [issue/30902](https://golang.org/issue/30902) x/image/riff: Implement write functionality
+- [issue/29711](https://golang.org/issue/29711) x/image/bmp: support 1-bit format
+- [issue/37532](https://golang.org/issue/37532) x/image/font/gofont: Go Mono font readability for users
+- [issue/37441](https://golang.org/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
+- [issue/30699](https://golang.org/issue/30699) x/image/font/sfnt: read more glyph metrics
+- [issue/28932](https://golang.org/issue/28932) x/image/font: wrong rendering of intersecting paths
+- [issue/28380](https://golang.org/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
+- [issue/27281](https://golang.org/issue/27281) x/image/font: rendering texts in Arabic
+- [issue/23497](https://golang.org/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
+- [issue/22451](https://golang.org/issue/22451) x/image/font/sfnt: implement font.Face
+- [issue/20208](https://golang.org/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
+- [issue/14436](https://golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
+- [issue/33990](https://golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
+- [issue/16904](https://golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
 
 ### misc
 
