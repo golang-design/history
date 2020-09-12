@@ -1,6 +1,6 @@
 # [Go: A Documentary](https://golang.design/history)
 
-_by Changkun Ou <[changkun.de](https://changkun.de)>_
+_by Changkun Ou <[changkun.de](https://changkun.de)>_ (and many inputs from [contributors](https://github.com/golang-design/history/graphs/contributors))
 
 This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
@@ -8,16 +8,16 @@ which intents to offer a comprehensive reference of the Go history.
 
 ## Disclaimer
 
-- Most of the texts are written as my _personal_ understanding based on public sources
+- Most of the texts are written as _subjective_ understanding based on public sources
 - **Factual and typo errors may occur.**
 Referring to the original link if some text conflicts to your understanding
-- [PR](https://github.com/golang-design/history/pulls)s are very welcome for new content, bug and typo fixes
+- [PR](https://github.com/golang-design/history/pulls)s are very welcome for new content submission, bug fixes, and typo fixes
 - Use [Issues](https://github.com/golang-design/history) for discussions
 
 ## Sources
 
 There are many sources for digging the documents that relate to Go's
-historical design. There are some of the official sources:
+historical design, and here are some of the official sources:
 
 - [blog.golang.org](https://blog.golang.org)
 - [dev.golang.org](https://dev.golang.org)
@@ -34,9 +34,9 @@ historical design. There are some of the official sources:
 
 ## Committers
 
-Go is a big project that driven by a tiny group of people and massive
-crowd of wisdom from community. Here are some core committers to
-the project that you might interest in follow their excellent work.
+Go is a big project that driven by a tiny group of people and the
+crowd of wisdom from the language user community. Here are some core 
+committers to the project that you might interest in follow their excellent work.
 
 By listening to the talks held by these people, you could learn more about
 their oral history and fun stories behind the great work.
@@ -142,10 +142,11 @@ synchronization primitives, race detector, and blocking profiler that
 related to the Go runtime.
 Austin was an intern at Google who worked on the Go project in the early days
 while pursuing a Ph. D. Later, he joined the Go team after his academic career
-and work together with Rick for the Go's concurrent GC. He also the worked on the current preemptive scheduler and linker.
+and work together with Rick for the Go's concurrent GC. He also worked on
+the current preemptive scheduler and linker.
 Now, he is leading the Compiler/Runtime team for Go.
 Keith and David together focus on the Go's compiler backend,
-notably the current SSA backend. Michael is a recent new comer to the Go team,
+notably the current SSA backend. Michael is a recent newcomer to the Go team,
 his work mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
 
 - Dmitry Vyukov (Дмитрий Вьюков). [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
@@ -235,7 +236,8 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 
 ## Timeline
 
-Timeline helps you identify the point in time about a document that reflected in Go versions.
+A timeline helps you identify the point in time about a document that is
+reflected in Go versions.
 
 | Version | Release Date |
 |:--|:--|
@@ -256,7 +258,7 @@ Timeline helps you identify the point in time about a document that reflected in
 | Go 1.14 | 2020.02.25 |
 | Go 1.15 | 2020.08.11 |
 
-The historical release notes may helpful for general informations:
+The historical release notes may helpful for general information:
 
 - [doc/go1release](https://golang.org/doc/devel/release.html) Go Release History
 - [doc/go1prerelease](https://golang.org/doc/devel/pre_go1.html) Pre-Go 1 Release History
@@ -553,8 +555,15 @@ in Go 1.15 and Go 1.16.
 
 ### Memory Allocator
 
-<!-- TODO: A quick history about the Go's memory allocator: Russ Cox first implements the memory allocator based on`tcmalloc` for Go 1, `mcache` are cached on M. Then he revised the allocator to allow
-user code use 16GB memory and later allows 128GB. -->
+A quick history about the Go's memory allocator: Russ Cox first implements
+the memory allocator based on `tcmalloc` for Go 1, `mcache` is cached on M.
+Then he revised the allocator to allow user code to use 16GB memory and later allows 128GB. However, the allocator (including scavenger) was
+suffered from massive lock contentions and does not scale. After Dmitry's scalable runtime
+scheduler, the allocator can allocate directly from P (with much less)
+lock contentions. In the meantime, the scavenger is migrated from an independent
+thread into the system monitor thread. Now, Michael is actively working on
+improving the memory allocator's scalability, such as migrating scavenger
+to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [doc/tcmalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) Sanjay Ghemawat, Paul Menage. TCMalloc : Thread-Caching Malloc. Google Inc., 2009
 - [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
@@ -585,7 +594,7 @@ user code use 16GB memory and later allows 128GB. -->
 
 ### Garbage Collector
 
-- [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: an exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
+- [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
 - [paper/yuasa-barrier](https://doi.org/10.1016/0164-1212(90)90084-Y) T. Yuasa. 1990. Real-time garbage collection on general-purpose machines. J. Syst. Softw. 11, 3 (March 1990), 181-198.
 - [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
@@ -628,7 +637,7 @@ guarantee sequential consistency.
 - [issue/33815](https://golang.org/issue/33815) doc/go_mem: "hello, world" will not always be printed twice
 - [cl/75130045](https://codereview.appspot.com/75130045) doc: allow buffered channel as semaphore without initialization
 - [doc/gomem](http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf) Russ Cox. Go’s Memory Model. February 25, 2016.
-- [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017 - Memory model. January 18, 2017.
+- [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017: Memory model. January 18, 2017.
 - [doc/atomic-bug](https://golang.org/pkg/sync/atomic/#pkg-note-BUG) Package atomic
 - [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
 
@@ -732,12 +741,18 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ### image, x/image
 
+The following issues are surrounding by the color management of the `image` standard library.
+At the moment, Go's `image` library doesn't support encoding and decoding without reading meta
+information from an image therefore the color information, for instance color space, could 
+go wrong while processing an image such as scaling.
+
 - [issue/11420](https://golang.org/issue/11420) x/image/draw: color space-correct interpolation
+  + [cl/253497](https://golang.org/cl/253497) x/image/draw: gamma corrected non linear interpolation
 - [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
 - [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
 - [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
-  - [cl/208559](https://golang.org/cl/208559) 
-  - [cl/216799](https://golang.org/cl/216799)
+  - [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
+  - [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
 
 <!--
 TODO: read all of these!
@@ -859,9 +874,15 @@ x/image:
 
 ## Acknowledgements
 
-The document author would like to first thank the [TalkGo](https://github.com/talkgo) community creator [Mai Yang](https://github.com/yangwenmai)'s sponsorship for the [golang.design](https://golang.design) initiative.
+The document author would like to first thank the [TalkGo](https://github.com/talkgo)
+community creator [Mai Yang](https://github.com/yangwenmai)'s champion sponsorship
+for the [golang.design](https://golang.design) initiative. His creation of
+the TalkGo significantly changed the Go community in China. He is also a great person
+that is actively contributing to all kinds of Go related projects.
 
-It is also important to thank the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy)'s continues inspiring discussion and sharing. The document would not be organized without their support.
+It is also important to thank the continuing, inspiring discussion and sharing with the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy).
+
+The document would not be organized without all of the supports from them.
 
 ## License
 
