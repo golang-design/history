@@ -19,12 +19,12 @@ Referring to the original link if some text conflicts to your understanding
 There are many sources for digging the documents that relate to Go's
 historical design. There are some of the official sources:
 
-- [golang.org/doc](https://golang.org/doc)
 - [blog.golang.org](https://blog.golang.org)
-- [golang.org/pkg](https://golang.org/pkg)
 - [dev.golang.org](https://dev.golang.org)
+- [talks.golang.org](https://talks.golang.org/)
+- [golang.org/doc](https://golang.org/doc)
+- [golang.org/pkg](https://golang.org/pkg)
 - [github.com/golang/go](https://github.com/golang/go)
-- [github.com/golang/talks](https://github.com/golang/talks)
 - [github.com/golang/proposal](https://github.com/golang/proposal)
 - [github.com/golang/go/wiki](https://github.com/golang/go/wiki)
 - [go-review.googlesource.com](https://go-review.googlesource.com)
