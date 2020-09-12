@@ -859,7 +859,7 @@ x/image:
 
 ## Acknowledgements
 
-The document author would like to first thank the [TalkGo](https://github.com/talkgo) community creator [Mai Yangwen](https://github.com/yangwenmai)'s sponsorship for the [golang.design](https://golang.design) initiative.
+The document author would like to first thank the [TalkGo](https://github.com/talkgo) community creator [Mai Yang](https://github.com/yangwenmai)'s sponsorship for the [golang.design](https://golang.design) initiative.
 
 It is also important to thank the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy)'s continues inspiring discussion and sharing. The document would not be organized without their support.
 
