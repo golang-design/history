@@ -1,23 +1,81 @@
 # [Go: A Documentary](https://golang.design/history)
 
-_by Changkun Ou <[changkun.de](https://changkun.de)>_
+_by Changkun Ou <[changkun.de](https://changkun.de)>_ (and many inputs from [contributors](https://github.com/golang-design/history/graphs/contributors))
 
 This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
+<a id="top"></a>
+
+**Table of Contents**
+
+- [Go: A Documentary](#go-a-documentary)
+  - [Disclaimer](#disclaimer)
+  - [Sources](#sources)
+  - [Committers](#committers)
+    - [Core Authors](#core-authors)
+    - [Compiler/Runtime Team](#compilerruntime-team)
+    - [Library/Tools/Security/Community](#librarytoolssecuritycommunity)
+    - [Group Interviews](#group-interviews)
+  - [Timeline](#timeline)
+  - [Language Design](#language-design)
+    - [Misc](#misc)
+    - [Slice (1.2)](#slice-12)
+    - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
+    - [Type alias (1.9)](#type-alias-19)
+    - [Defer (1.13)](#defer-113)
+    - [Error values (1.13)](#error-values-113)
+    - [Channel/Select](#channelselect)
+    - [Generics](#generics)
+  - [Compiler Toolchain](#compiler-toolchain)
+    - [Compiler](#compiler)
+    - [Linker](#linker)
+    - [Debugger](#debugger)
+    - [Tracer](#tracer)
+    - [Builder](#builder)
+    - [Modules](#modules)
+    - [gopls](#gopls)
+    - [Testing](#testing)
+  - [Runtime Core](#runtime-core)
+    - [Statistics](#statistics)
+    - [Scheduler](#scheduler)
+    - [Execution Stack](#execution-stack)
+    - [Memory Allocator](#memory-allocator)
+    - [Garbage Collector](#garbage-collector)
+    - [Memory model](#memory-model)
+    - [ABI](#abi)
+  - [Standard Library](#standard-library)
+    - [syscall](#syscall)
+    - [io](#io)
+    - [go/*](#go)
+    - [sync](#sync)
+      - [Map](#map)
+      - [Pool](#pool)
+      - [Mutex, RWMutex](#mutex-rwmutex)
+      - [atomic](#atomic)
+    - [time](#time)
+    - [context](#context)
+    - [encoding](#encoding)
+    - [image, x/image](#image-ximage)
+    - [misc](#misc-1)
+  - [Unclassified But Relevant Links](#unclassified-but-relevant-links)
+  - [Fun Facts](#fun-facts)
+  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
+
 ## Disclaimer
 
-- Most of the texts are written as my _personal_ understanding based on public sources
+- Most of the texts are written as _subjective_ understanding based on public sources
 - **Factual and typo errors may occur.**
 Referring to the original link if some text conflicts to your understanding
-- [PR](https://github.com/golang-design/history/pulls)s are very welcome for new content, bug and typo fixes
+- [PR](https://github.com/golang-design/history/pulls)s are very welcome for new content submission, bug fixes, and typo fixes
 - Use [Issues](https://github.com/golang-design/history) for discussions
 
 ## Sources
 
 There are many sources for digging the documents that relate to Go's
-historical design. There are some of the official sources:
+historical design, and here are some of the official sources:
 
 - [blog.golang.org](https://blog.golang.org)
 - [dev.golang.org](https://dev.golang.org)
@@ -34,9 +92,9 @@ historical design. There are some of the official sources:
 
 ## Committers
 
-Go is a big project that driven by a tiny group of people and massive
-crowd of wisdom from community. Here are some core committers to
-the project that you might interest in follow their excellent work.
+Go is a big project that driven by a tiny group of people and the
+crowd of wisdom from the language user community. Here are some core 
+committers to the project that you might interest in follow their excellent work.
 
 By listening to the talks held by these people, you could learn more about
 their oral history and fun stories behind the great work.
@@ -59,7 +117,8 @@ fundamental work for the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
-- Rob Pike. [Website](http://herpolhode.com/rob/ ), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
+- Rob Pike. (Robert C. Pike, M. Sc.) [Website](http://herpolhode.com/rob/ ), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
+  + Alma mater: University of Toronto (BS), California Institute of Technology
   + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) Advanced Topics in Programming Languages: Concurrency/message passing Newsqueak. May 9, 2007
   + [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
   + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 20, 2010
@@ -88,7 +147,9 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2019](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer. Sep 10, 2019.
   + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview. (Date Unclear) 2020.
 
-- Robert Griesemer. [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
+- Robert Griesemer. (Dr. Robert Griesemer) [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
+  + Alma mater: ETH Zürich
+  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation.
   + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer. Going Go. Lang.NEXT. 2012.
   + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go In Three Easy Pieces. Mar 19, 2012.
   + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
@@ -100,7 +161,8 @@ Now, Russ is the tech leader of the Go team.
   + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) Go is 10! Now What?. Gopherpalooza 2019. Dec 2, 2019.
   + [talk/robert2020](https://changelog.com/gotime/140) The latest on Generics with Robert Griesemer and Ian Lance Taylor. Jul 21, 2020.
 
-- Ken Thompson (Retired)
+- Ken Thompson. (Kenneth Lane Thompson, M. Sc.) (Retired)
+  + Alma mater: UC Berkeley
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
   + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX: Making Computers Easier To Use.
   + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson and Dennis Ritchie Explain UNIX (Bell Labs).
@@ -110,14 +172,17 @@ Now, Russ is the tech leader of the Go team.
   + [talk/ken2019b](https://www.youtube.com/watch?v=EY6q5dv_B-o) Brian Kernighan interviews Ken Thompson. VCF East 2019. May 4, 2019.
 
 
-- Ian Lance Taylor. [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor), [Quora](https://www.quora.com/profile/Ian-Lance-Taylor)
+- Ian Taylor. (Ian Lance Taylor, B. Sc.) [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor), [Quora](https://www.quora.com/profile/Ian-Lance-Taylor)
+  + Alma mater: Yale University
   + [talk/ian2007](https://www.youtube.com/watch?v=gc78olyguqA) GCC: Current Topics and Future Directions. February 27, 2007.
   + [talk/ian2018](https://www.youtube.com/watch?v=LqKOY_pH8u0) Transition to Go 2. Gopherpalooza 2018. Oct 24, 2018
   + [talk/ian2019a](https://www.youtube.com/watch?v=WzgLqE-3IhY) Generics in Go. GopherCon 2019. Aug 27, 2019
   - [talk/ian2019b](https://changelog.com/gotime/98) Generics in Go. Aug 27, 2019.
   + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) Go with Ian Lance Taylor. CppCast. Aug 9, 2020.
 
-- Russ Cox. [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc)
+- Russ Cox. (Dr. Russell Stensby Cox) [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc)
+  + Alma mater: MIT
+  + [paper/russ2008](https://pdos.csail.mit.edu/~rsc/) An Extension-Oriented Compiler. Doctor Dissertation.
   + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) The Go Programming Language Promo. Nov 10, 2009.
   + [talk/russ2012](https://www.youtube.com/watch?v=MzYZhh6gpI0) A Tour of the Go Programming Language. Jun 24, 2012.
   + [talk/russ2012b](https://www.youtube.com/watch?v=dP1xVpMPn8M) A Tour of the Acme Editor. Sep 17, 2012.
@@ -142,13 +207,15 @@ synchronization primitives, race detector, and blocking profiler that
 related to the Go runtime.
 Austin was an intern at Google who worked on the Go project in the early days
 while pursuing a Ph. D. Later, he joined the Go team after his academic career
-and work together with Rick for the Go's concurrent GC. He also the worked on the current preemptive scheduler and linker.
+and work together with Rick for the Go's concurrent GC. He also worked on
+the current preemptive scheduler and linker.
 Now, he is leading the Compiler/Runtime team for Go.
 Keith and David together focus on the Go's compiler backend,
-notably the current SSA backend. Michael is a recent new comer to the Go team,
+notably the current SSA backend. Michael is a recent newcomer to the Go team,
 his work mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
 
-- Dmitry Vyukov (Дмитрий Вьюков). [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
+- Dmitry Vyukov. (Дмитрий Вьюков, M. Sc.) [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
+  + Alma mater: Bauman Moscow State Technical University
   + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) Writing a functional, reliable and fast web application in Go. Sep 25, 2014.
   + [talk/dmitry2015a](https://www.youtube.com/watch?v=Ef7TtSZlmlk) Chat with Dmitry Vyukov on go-fuzz, golang and IT security. Jul 3, 2015
   + [talk/dmitry2015b](https://www.youtube.com/watch?v=a9xrxRsIbSU) Go Dynamic Tools. GopherCon 2015. Jul 28, 2015.
@@ -159,17 +226,25 @@ his work mainly in the runtime memory system such as the refactoring of memory a
   + [talk/dmitry2019](https://www.youtube.com/watch?v=-K11rY57K7k) Go scheduler: Implementing language with lightweight concurrency. Oct 14, 2019.
   + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) syzkaller: Adventures in Continuous Coverage-guided Kernel Fuzzing. BlueHat IL 2020. Feb 13, 2020.
 
-- Austin Clements. [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+- Austin Clements. (Dr. Austin T. Clements) [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+  + Alma mater: MIT
+  + [paper2014austin](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) The Scalable Commutativity Rule: Designing Scalable Software for Multicore Processors. Doctor Dissertation
 
-- Richard L. Hudson. [GitHub](https://github.com/RLH) (Retired)
+- Richard Hudson. (Richard L. Hudson, M. Sc.) [GitHub](https://github.com/RLH) (Retired)
+  + Alma mater: University of Massachusetts Amherst
+  + [paper/rick](https://dl.acm.org/profile/81100566849/publications?Role=author) Research List
   + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) Go GC: Solving the Latency Problem. GopherCon 2015. Jul 8, 2015.
   + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
 
-- Keith Randall. [GitHub](https://github.com/randall77)
+- Keith Randall. (Dr. Keith H. Randall.) [GitHub](https://github.com/randall77)
+  + Alma mater: MIT
+  + [paper1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk: Efficient Multithreaded Computing.  Doctor Dissertation.
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) Inside the Map Implementation. GopherCon 2016. Jul 12, 2016.
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) Generating Better Machine Code with SSA. GopherCon 2017. Jul 24, 2017.
 
-- David Chase. [Website](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
+- David Chase. (Dr. David Chase) [Website](http://chasewoerner.org/resume.html), [Block](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
+  + Alma mater: Rice University
+  + [paper1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation.
   + [talk/david2017](https://changelog.com/gotime/52) All About The Go Compiler. Jul 20, 2017.
 
 - Dan Scales.
@@ -235,7 +310,8 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 
 ## Timeline
 
-Timeline helps you identify the point in time about a document that reflected in Go versions.
+A timeline helps you identify the point in time about a document that is
+reflected in Go versions.
 
 | Version | Release Date |
 |:--|:--|
@@ -256,7 +332,7 @@ Timeline helps you identify the point in time about a document that reflected in
 | Go 1.14 | 2020.02.25 |
 | Go 1.15 | 2020.08.11 |
 
-The historical release notes may helpful for general informations:
+The historical release notes may helpful for general information:
 
 - [doc/go1release](https://golang.org/doc/devel/release.html) Go Release History
 - [doc/go1prerelease](https://golang.org/doc/devel/pre_go1.html) Pre-Go 1 Release History
@@ -285,10 +361,10 @@ The historical release notes may helpful for general informations:
 - [design/signed-int-shift](https://golang.org/design/19113-signed-shift-counts) Robert Griesemer. Proposal: Permit Signed Integers as Shift Counts for Go 2. January 17, 2019
   + [issue/19113](https://golang.org/issue/19113) proposal: spec: allow signed shift counts
 - [design/number-literal](https://golang.org/design/19308-number-literals) Russ Cox, Robert Griesemer. Proposal: Go 2 Number Literal Changes. March 6, 2019
-  + [issue/12711](golang.org/issue/12711) proposal: different octal base literal representation
-  + [issue/19308](golang.org/issue/19308) proposal: spec: binary integer literals
-  + [issue/28493](golang.org/issue/28493) proposal: permit blank (_) separator in integer number literals
-  + [issue/29008](golang.org/issue/29008) proposal: Go 2: hexadecimal floats
+  + [issue/12711](https://golang.org/issue/12711) proposal: different octal base literal representation
+  + [issue/19308](https://golang.org/issue/19308) proposal: spec: binary integer literals
+  + [issue/28493](https://golang.org/issue/28493) proposal: permit blank (_) separator in integer number literals
+  + [issue/29008](https://golang.org/issue/29008) proposal: Go 2: hexadecimal floats
 - [issue/33502](https://golang.org/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://golang.org/issue/33892) proposal: Go 2 review meeting minutes
 
@@ -306,7 +382,7 @@ The historical release notes may helpful for general informations:
 - [design/go14customimport](https://golang.org/s/go14customimport) Russ Cox. Go 1.4 Custom Import Path Checking. June 2014.
 - [design/go15vendor](https://golang.org/s/go15vendor) Russ Cox. Go 1.5 Vendor Experiment. July 2015
 - [design/go17binarypkg](https://golang.org/design/2775-binary-only-packages) Russ Cox. Proposal: Binary-Only Packages. April 24, 2016
-  + [issue/2775](golang.org/issue/2775) cmd/go: work when binaries are available but source is missing
+  + [issue/2775](https://golang.org/issue/2775) cmd/go: work when binaries are available but source is missing
 
 ### Type alias (1.9)
 
@@ -459,12 +535,13 @@ in Go 1.15 and Go 1.16.
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
 - [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. Go Generate. January 2014.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
-- [discuss/generatedcode](golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
-- [design/goenv](golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
-  + [issue/30411](golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
+- [discuss/generatedcode](https://golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
+- [design/goenv](https://golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
+  + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
+  - [issue/41191](https://golang.org/issue/41191#issuecomment-690887303) toolchain directives
   + [discuss/win2000-golang-nuts](https://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
 - [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol. WebAssembly architecture for Go. 28th February 2018.
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly assembly files
@@ -499,7 +576,7 @@ in Go 1.15 and Go 1.16.
 - [design/subtests](https://golang.org/design/12166-subtests) Marcel van Lohuizen. testing: programmatic sub-test and sub-benchmark support. September 2, 2015.
   + [issue/12166](https://golang.org/issue/12166) proposal: testing: programmatic sub-test and sub-benchmark support
 - [design/gotest-bench](https://golang.org/design/14313-benchmark-format) Russ Cox, Austin Clements. Proposal: Go Benchmark Data Format. February 2016.
-  + [issue/14313](golang.org/issue/14313) cmd/go: decide, document standard benchmark data format
+  + [issue/14313](https://golang.org/issue/14313) cmd/go: decide, document standard benchmark data format
 - [design/gotest-json](https://golang.org/design/2981-go-test-json) Nodir Turakulov. Proposal: -json flag in go test. 2016-09-14.
 - [design/testing-helper](https://golang.org/design/4899-testing-helper) Caleb Spare. Proposal: testing: better support test helper functions with TB.Helper. 2016-12-27
   + [issue/4899](https://golang.org/issue/4899) testing: add t.Helper to make file:line results more useful
@@ -553,8 +630,15 @@ in Go 1.15 and Go 1.16.
 
 ### Memory Allocator
 
-<!-- TODO: A quick history about the Go's memory allocator: Russ Cox first implements the memory allocator based on`tcmalloc` for Go 1, `mcache` are cached on M. Then he revised the allocator to allow
-user code use 16GB memory and later allows 128GB. -->
+A quick history about the Go's memory allocator: Russ Cox first implements
+the memory allocator based on `tcmalloc` for Go 1, `mcache` is cached on M.
+Then he revised the allocator to allow user code to use 16GB memory and later allows 128GB. However, the allocator (including scavenger) was
+suffered from massive lock contentions and does not scale. After Dmitry's scalable runtime
+scheduler, the allocator can allocate directly from P (with much less)
+lock contentions. In the meantime, the scavenger is migrated from an independent
+thread into the system monitor thread. Now, Michael is actively working on
+improving the memory allocator's scalability, such as migrating scavenger
+to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [doc/tcmalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) Sanjay Ghemawat, Paul Menage. TCMalloc : Thread-Caching Malloc. Google Inc., 2009
 - [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
@@ -585,7 +669,7 @@ user code use 16GB memory and later allows 128GB. -->
 
 ### Garbage Collector
 
-- [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: an exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
+- [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
 - [paper/yuasa-barrier](https://doi.org/10.1016/0164-1212(90)90084-Y) T. Yuasa. 1990. Real-time garbage collection on general-purpose machines. J. Syst. Softw. 11, 3 (March 1990), 181-198.
 - [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
@@ -628,7 +712,7 @@ guarantee sequential consistency.
 - [issue/33815](https://golang.org/issue/33815) doc/go_mem: "hello, world" will not always be printed twice
 - [cl/75130045](https://codereview.appspot.com/75130045) doc: allow buffered channel as semaphore without initialization
 - [doc/gomem](http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf) Russ Cox. Go’s Memory Model. February 25, 2016.
-- [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017 - Memory model. January 18, 2017.
+- [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017: Memory model. January 18, 2017.
 - [doc/atomic-bug](https://golang.org/pkg/sync/atomic/#pkg-note-BUG) Package atomic
 - [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
 
@@ -666,6 +750,14 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 - [design/percpu-sharded](https://golang.org/design/18802-percpu-sharded) Sanjay Menakuru. Proposal: percpu.Sharded, an API for reducing cache contention. Jun 12, 2018.
   + [issue/18802](https://golang.org/issue/18802) proposal: sync: support for sharded values
+- [issue/37142](https://golang.org/issue/37142) sync: shrink types in sync package
+
+#### Map
+
+- [issue/21031](https://golang.org/issue/21031) sync: reduce pointer overhead in Map
+- [issue/21032](https://golang.org/issue/21032) sync: reduce (*Map).Load penalty for Stores with new keys
+- [issue/21035](https://golang.org/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
+- [issue/37033](https://golang.org/issue/37033) runtime: provide centralized facility for managing (c)go pointer handles
 
 #### Pool
 
@@ -680,14 +772,16 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/22950](https://golang.org/issue/22950) sync: avoid clearing the full Pool on every GC.
   - [cl/166960](https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31) sync: use lock-free structure for Pool stealing.
   - [cl/166961](https://github.com/golang/go/commit/2dcbf8b3691e72d1b04e9376488cef3b6f93b286) 166961: sync: smooth out Pool behavior over GC with a victim cache.
-- [issue/21035](https://golang.org/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
+- [issue/24479](https://golang.org/issue/24479) sync: eliminate global Mutex in Pool operations
 
-#### Mutex
+#### Mutex, RWMutex
 
 - [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
+- [issue/17973](https://golang.org/issue/17973) sync: RWMutex scales poorly with CPU count
 
 #### atomic
 
+- [issue/8739](https://golang.org/issue/8739) runtime,sync/atomic: unify API for runtime/internal/atomic and sync/atomic
 - [issue/20164](https://golang.org/issue/20164) proposal: atomic: add (*Value).Swap
 - [discuss/atomic-value](https://groups.google.com/g/golang-dev/c/SBmIen68ys0/m/WGfYQQSO4nAJ)
 
@@ -732,90 +826,92 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 ### image, x/image
 
+The following issues are surrounding by the color management of the `image` standard library.
+At the moment, Go's `image` library doesn't read or write meta information from an image in
+the encoding or decoding phase. Therefore the color information could go wrong while processing
+an image such as scaling in a non-linear sRGB space. A universal solution is to design image
+metadata APIs to aware the color profile in an encoded image file.
+
 - [issue/11420](https://golang.org/issue/11420) x/image/draw: color space-correct interpolation
-- [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
-- [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
+  + [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
+  + [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
+  + [cl/253497](https://golang.org/cl/253497) x/image/draw: gamma corrected non linear interpolation
+  + [issue/37188](https://golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
 - [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
-  - [cl/208559](https://golang.org/cl/208559) 
-  - [cl/216799](https://golang.org/cl/216799)
+  + [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
+  + [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
+  + [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
 
 <!--
 TODO: read all of these!
+These issues are discussion the current performance issue that exist in the current implementation.
 
-image:
-
-- [issue/8055](golang.org/issue/8055) image: decode / resize into an existing buffer
-- [issue/11793](golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
-- [issue/15759](golang.org/issue/15759) image: optimize Image.At().RGBA()
-- [issue/20851](golang.org/issue/20851) image: Decode drops interfaces
-- [issue/22535](golang.org/issue/22535) image: support LJPEG
-- [issue/27830](golang.org/issue/27830) proposal: image: decoding options
-- [issue/30979](golang.org/issue/30979) image: add sample fuzz tests for prototype of "fuzzing as a first class citizen"
-- [issue/37188](golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
+- [issue/8055](https://golang.org/issue/8055) image: decode / resize into an existing buffer
+- [issue/11793](https://golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
+- [issue/15759](https://golang.org/issue/15759) image: optimize Image.At().RGBA()
+- [issue/20851](https://golang.org/issue/20851) image: Decode drops interfaces
+- [issue/24499](https://golang.org/issue/24499) image/jpeg: Decode is slow
 
 
-- [issue/18098](golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
-- [issue/2362](golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
-- [issue/4341](golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
-- [issue/10447](golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
-- [issue/12202](golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
-- [issue/13614](golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
-- [issue/22170](golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
-- [issue/23936](golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
-- [issue/24499](golang.org/issue/24499) image/jpeg: Decode is slow
-- [issue/29512](golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
-- [issue/40130](golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
-- [issue/18365](golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
-- [issue/20613](golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
-- [issue/20899](golang.org/issue/20899) image/png: Decode failing on bitmap
-- [issue/6635](golang.org/issue/6635) image/gif: encoder does not honor image bounds.
-- [issue/5050](golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
-- [issue/26108](golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
-- [issue/20694](golang.org/issue/20694) image/gif: Mention the uselessness of BackgroundIndex in the docs Documentation
-- [issue/20804](golang.org/issue/20804) image/gif: decoding gif returns `unknown block type: 0x01` error
-- [issue/20856](golang.org/issue/20856) image/gif: decoding gif returns `frame bounds larger than image bounds` error
-- [issue/33748](golang.org/issue/33748) image/gif: generated image cannot be opened in xv and crashes OmniWeb 3.x web browser
-- [issue/35166](golang.org/issue/35166) image/gif: TestDecodeMemoryConsumption flake on dragonfly-amd64
-- [issue/35503](golang.org/issue/35503) image/gif: decode fails with "gif: too much image data"
-- [issue/38958](golang.org/issue/38958) image/gif: "not enough image data" on gif that works in browser
-- [issue/38853](golang.org/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
-- [issue/41142](golang.org/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
+- [issue/22535](https://golang.org/issue/22535) image: support LJPEG
+- [issue/18098](https://golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
+- [issue/2362](https://golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
+- [issue/4341](https://golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
+- [issue/10447](https://golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
+- [issue/12202](https://golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
+- [issue/13614](https://golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
+- [issue/22170](https://golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
+- [issue/23936](https://golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
+- [issue/29512](https://golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
+- [issue/40130](https://golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
+- [issue/6635](https://golang.org/issue/6635) image/gif: encoder does not honor image bounds.
+- [issue/5050](https://golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
+- [issue/26108](https://golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
+- [issue/20694](https://golang.org/issue/20694) image/gif: Mention the uselessness of BackgroundIndex in the docs Documentation
+- [issue/20804](https://golang.org/issue/20804) image/gif: decoding gif returns `unknown block type: 0x01` error
+- [issue/20856](https://golang.org/issue/20856) image/gif: decoding gif returns `frame bounds larger than image bounds` error
+- [issue/33748](https://golang.org/issue/33748) image/gif: generated image cannot be opened in xv and crashes OmniWeb 3.x web browser
+- [issue/35166](https://golang.org/issue/35166) image/gif: TestDecodeMemoryConsumption flake on dragonfly-amd64
+- [issue/35503](https://golang.org/issue/35503) image/gif: decode fails with "gif: too much image data"
+- [issue/38958](https://golang.org/issue/38958) image/gif: "not enough image data" on gif that works in browser
+- [issue/38853](https://golang.org/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
+- [issue/41142](https://golang.org/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
 
 x/image:
 
-- [issue/40173](golang.org/issue/40173) x/image: WebP decode contrast issue
-- [issue/39705](golang.org/issue/39705) x/image: CCITT reader EOF error for tiff image
-- [issue/25657](golang.org/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
-- [issue/39900](golang.org/issue/39900) x/image/tiff: Missing raw stream read/write
-- [issue/38252](golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
-- [issue/36121](golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
-- [issue/33708](golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
-- [issue/30827](golang.org/issue/30827) x/image/tiff: unexpected EOF ExpertNeeded WaitingForInfo
-- [issue/26450](golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
-- [issue/26360](golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
-- [issue/23115](golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
-- [issue/20742](golang.org/issue/20742) x/image/tiff: package does not support image resolution
-- [issue/11413](golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
-- [issue/11389](golang.org/issue/11389) x/image/tiff: excessive memory consumption
-- [issue/11386](golang.org/issue/11386) x/image/tiff: index out of range
-- [issue/38341](golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
-- [issue/11395](golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
-- [issue/10790](golang.org/issue/10790) x/image/webp: excessive memory consumption
-- [issue/19672](golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
-- [issue/30902](golang.org/issue/30902) x/image/riff: Implement write functionality
-- [issue/29711](golang.org/issue/29711) x/image/bmp: support 1-bit format
-- [issue/37532](golang.org/issue/37532) x/image/font/gofont: Go Mono font readability for users
-- [issue/37441](golang.org/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
-- [issue/30699](golang.org/issue/30699) x/image/font/sfnt: read more glyph metrics
-- [issue/28932](golang.org/issue/28932) x/image/font: wrong rendering of intersecting paths
-- [issue/28380](golang.org/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
-- [issue/27281](golang.org/issue/27281) x/image/font: rendering texts in Arabic
-- [issue/23497](golang.org/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
-- [issue/22451](golang.org/issue/22451) x/image/font/sfnt: implement font.Face
-- [issue/20208](golang.org/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
-- [issue/14436](golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
-- [issue/33990](golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
-- [issue/16904](golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
+- [issue/40173](https://golang.org/issue/40173) x/image: WebP decode contrast issue
+- [issue/39705](https://golang.org/issue/39705) x/image: CCITT reader EOF error for tiff image
+- [issue/25657](https://golang.org/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
+- [issue/39900](https://golang.org/issue/39900) x/image/tiff: Missing raw stream read/write
+- [issue/38252](https://golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
+- [issue/36121](https://golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
+- [issue/33708](https://golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
+- [issue/30827](https://golang.org/issue/30827) x/image/tiff: unexpected EOF
+- [issue/26450](https://golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
+- [issue/26360](https://golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
+- [issue/23115](https://golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
+- [issue/20742](https://golang.org/issue/20742) x/image/tiff: package does not support image resolution
+- [issue/11413](https://golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
+- [issue/11389](https://golang.org/issue/11389) x/image/tiff: excessive memory consumption
+- [issue/11386](https://golang.org/issue/11386) x/image/tiff: index out of range
+- [issue/38341](https://golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
+- [issue/11395](https://golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
+- [issue/10790](https://golang.org/issue/10790) x/image/webp: excessive memory consumption
+- [issue/19672](https://golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
+- [issue/30902](https://golang.org/issue/30902) x/image/riff: Implement write functionality
+- [issue/29711](https://golang.org/issue/29711) x/image/bmp: support 1-bit format
+- [issue/37532](https://golang.org/issue/37532) x/image/font/gofont: Go Mono font readability for users
+- [issue/37441](https://golang.org/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
+- [issue/30699](https://golang.org/issue/30699) x/image/font/sfnt: read more glyph metrics
+- [issue/28932](https://golang.org/issue/28932) x/image/font: wrong rendering of intersecting paths
+- [issue/28380](https://golang.org/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
+- [issue/27281](https://golang.org/issue/27281) x/image/font: rendering texts in Arabic
+- [issue/23497](https://golang.org/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
+- [issue/22451](https://golang.org/issue/22451) x/image/font/sfnt: implement font.Face
+- [issue/20208](https://golang.org/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
+- [issue/14436](https://golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
+- [issue/33990](https://golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
+- [issue/16904](https://golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
 
 ### misc
 
@@ -859,9 +955,15 @@ x/image:
 
 ## Acknowledgements
 
-The document author would like to first thank the [TalkGo](https://github.com/talkgo) community creator [Mai Yang](https://github.com/yangwenmai)'s sponsorship for the [golang.design](https://golang.design) initiative.
+The document author would like to first thank the [TalkGo](https://github.com/talkgo)
+community creator [Mai Yang](https://github.com/yangwenmai)'s champion sponsorship
+for the [golang.design](https://golang.design) initiative. His creation of
+the TalkGo significantly changed the Go community in China. He is also a great person
+that is actively contributing to all kinds of Go related projects.
 
-It is also important to thank the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy)'s continues inspiring discussion and sharing. The document would not be organized without their support.
+It is also important to thank the continuing, inspiring discussion and sharing with the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy).
+
+The document would not be organized without all of the supports from them.
 
 ## License
 
