@@ -59,7 +59,7 @@ fundamental work for the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
-- Rob Pike. [Website](http://herpolhode.com/rob/ )[Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
+- Rob Pike. [Website](http://herpolhode.com/rob/ ), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
   + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) Advanced Topics in Programming Languages: Concurrency/message passing Newsqueak. May 9, 2007
   + [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
   + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 20, 2010
