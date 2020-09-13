@@ -742,33 +742,33 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 ### image, x/image
 
 The following issues are surrounding by the color management of the `image` standard library.
-At the moment, Go's `image` library doesn't support encoding and decoding without reading meta
-information from an image therefore the color information, for instance color space, could 
-go wrong while processing an image such as scaling.
+At the moment, Go's `image` library doesn't read or write meta information from an image in
+the encoding or decoding phase. Therefore the color information could go wrong while processing
+an image such as scaling in a non-linear sRGB space. A universal solution is to design image
+metadata APIs to aware the color profile in an encoded image file.
 
 - [issue/11420](https://golang.org/issue/11420) x/image/draw: color space-correct interpolation
+  + [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
+  + [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
   + [cl/253497](https://golang.org/cl/253497) x/image/draw: gamma corrected non linear interpolation
-- [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
-- [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
+  + [issue/37188](https://golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
 - [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
-  - [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
-  - [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
+  + [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
+  + [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
+  + [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
 
 <!--
 TODO: read all of these!
-
-image:
+These issues are discussion the current performance issue that exist in the current implementation.
 
 - [issue/8055](https://golang.org/issue/8055) image: decode / resize into an existing buffer
 - [issue/11793](https://golang.org/issue/11793) image/color: NRGBA(64).RGBA() optimization
 - [issue/15759](https://golang.org/issue/15759) image: optimize Image.At().RGBA()
 - [issue/20851](https://golang.org/issue/20851) image: Decode drops interfaces
+- [issue/24499](https://golang.org/issue/24499) image/jpeg: Decode is slow
+
+
 - [issue/22535](https://golang.org/issue/22535) image: support LJPEG
-- [issue/27830](https://golang.org/issue/27830) proposal: image: decoding options
-- [issue/30979](https://golang.org/issue/30979) image: add sample fuzz tests for prototype of "fuzzing as a first class citizen"
-- [issue/37188](https://golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
-
-
 - [issue/18098](https://golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
 - [issue/2362](https://golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
 - [issue/4341](https://golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
@@ -777,12 +777,8 @@ image:
 - [issue/13614](https://golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
 - [issue/22170](https://golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
 - [issue/23936](https://golang.org/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
-- [issue/24499](https://golang.org/issue/24499) image/jpeg: Decode is slow
 - [issue/29512](https://golang.org/issue/29512) image/jpeg: support for yuvj444p jpeg images
 - [issue/40130](https://golang.org/issue/40130) image/jpeg: "bad RST marker" error when decoding
-- [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
-- [issue/20613](https://golang.org/issue/20613) image/png: don't ignore PNG gAMA chunk
-- [issue/20899](https://golang.org/issue/20899) image/png: Decode failing on bitmap
 - [issue/6635](https://golang.org/issue/6635) image/gif: encoder does not honor image bounds.
 - [issue/5050](https://golang.org/issue/5050) image/gif: decoding untrusted (very large) images can cause huge memory allocations
 - [issue/26108](https://golang.org/issue/26108) image/gif: encoded images incompatible with some viewers
@@ -805,7 +801,7 @@ x/image:
 - [issue/38252](https://golang.org/issue/38252) x/image/tiff: add 32bit float grayscale support
 - [issue/36121](https://golang.org/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
 - [issue/33708](https://golang.org/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
-- [issue/30827](https://golang.org/issue/30827) x/image/tiff: unexpected EOF ExpertNeeded WaitingForInfo
+- [issue/30827](https://golang.org/issue/30827) x/image/tiff: unexpected EOF
 - [issue/26450](https://golang.org/issue/26450) x/image/tiff: implement a generic tiff parser
 - [issue/26360](https://golang.org/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
 - [issue/23115](https://golang.org/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
