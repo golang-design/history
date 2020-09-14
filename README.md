@@ -6,6 +6,9 @@ This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 ## Disclaimer
 
 - Most of the texts are written as _subjective_ understanding based on public sources
