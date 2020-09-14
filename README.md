@@ -483,6 +483,7 @@ in Go 1.15 and Go 1.16.
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
+  - [issue/41191](https://golang.org/issue/41191#issuecomment-690887303) toolchain directives
   + [discuss/win2000-golang-nuts](https://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
 - [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol. WebAssembly architecture for Go. 28th February 2018.
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly assembly files
@@ -691,6 +692,14 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 - [design/percpu-sharded](https://golang.org/design/18802-percpu-sharded) Sanjay Menakuru. Proposal: percpu.Sharded, an API for reducing cache contention. Jun 12, 2018.
   + [issue/18802](https://golang.org/issue/18802) proposal: sync: support for sharded values
+- [issue/37142](https://golang.org/issue/37142) sync: shrink types in sync package
+
+#### Map
+
+- [issue/21031](https://golang.org/issue/21031) sync: reduce pointer overhead in Map
+- [issue/21032](https://golang.org/issue/21032) sync: reduce (*Map).Load penalty for Stores with new keys
+- [issue/21035](https://golang.org/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
+- [issue/37033](https://golang.org/issue/37033) runtime: provide centralized facility for managing (c)go pointer handles
 
 #### Pool
 
@@ -705,14 +714,16 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/22950](https://golang.org/issue/22950) sync: avoid clearing the full Pool on every GC.
   - [cl/166960](https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31) sync: use lock-free structure for Pool stealing.
   - [cl/166961](https://github.com/golang/go/commit/2dcbf8b3691e72d1b04e9376488cef3b6f93b286) 166961: sync: smooth out Pool behavior over GC with a victim cache.
-- [issue/21035](https://golang.org/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
+- [issue/24479](https://golang.org/issue/24479) sync: eliminate global Mutex in Pool operations
 
-#### Mutex
+#### Mutex, RWMutex
 
 - [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
+- [issue/17973](https://golang.org/issue/17973) sync: RWMutex scales poorly with CPU count
 
 #### atomic
 
+- [issue/8739](https://golang.org/issue/8739) runtime,sync/atomic: unify API for runtime/internal/atomic and sync/atomic
 - [issue/20164](https://golang.org/issue/20164) proposal: atomic: add (*Value).Swap
 - [discuss/atomic-value](https://groups.google.com/g/golang-dev/c/SBmIen68ys0/m/WGfYQQSO4nAJ)
 
