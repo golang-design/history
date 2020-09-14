@@ -33,6 +33,7 @@ jobs:
           USER: ${{ secrets.SERVER_USER }}
           TARGET: ${{ secrets.SERVER_PATH }}
           KEY: ${{ secrets.SERVER_KEY }}
+          DOMAIN: ${{ secrets.SERVER_DOMAIN }}
         run: |
           go run doc.go
           mv assets public/
@@ -41,5 +42,5 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
-          ssh-keyscan -H 'golang.design' >> ~/.ssh/known_hosts
-          scp -r public/* $USER@golang.design:$TARGET
+          ssh-keyscan -H $DOMAIN >> ~/.ssh/known_hosts
+          scp -r public/* $USER@$DOMAIN:$TARGET

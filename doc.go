@@ -12,9 +12,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/yuin/goldmark/extension"
-
 	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
 )
 
 type data struct {
@@ -27,7 +27,9 @@ var md goldmark.Markdown
 func init() {
 	md = goldmark.New(
 		goldmark.WithExtensions(extension.Table),
-		goldmark.WithParserOptions(),
+		goldmark.WithParserOptions(
+			parser.WithAutoHeadingID(),
+		),
 		goldmark.WithRendererOptions(
 		// html.WithHardWraps(), // do this someday.
 		),
