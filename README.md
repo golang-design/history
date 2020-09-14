@@ -930,22 +930,22 @@ x/image:
 
 ## Unclassified But Relevant Links
 
-- https://golang.org/s/using-guru
-- [Plan for Go Guru](https://docs.google.com/document/d/1UErU12vR7jTedYvKHVNRzGPmXqdMASZ6PfE7B-p6sIg/edit)
-- https://golang.org/s/stdwhy
-- https://golang.org/s/oracle-design
-- https://golang.org/s/oracle-user-manual
-- https://golang.org/s/cgihttpproxy
-- https://golang.org/s/sqldrivers
-- https://golang.org/s/go2designs
-- http://doc.cat-v.org/bell_labs/pikestyle
-- https://www.informit.com/articles/article.aspx?p=1941206
-- http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html
-- https://softwareengineeringdaily.com/2017/12/28/language-design-with-brian-kernighan-holiday-repeat/
-- https://www.youtube.com/watch?feature=youtu.be&v=de2Hsvxaf8M&ab_channel=Computerphile
-- https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html
-- https://github.com/dgryski/interesting-papers
-- https://github.com/golang/go/wiki/ResearchPapers
+- [Using Go Guru: an editor-integrated tool for navigating Go code By Alan Donovan](https://golang.org/s/using-guru)
+- [Plan for Go Guru (née Oracle) By Alan Donovan](https://docs.google.com/document/d/1UErU12vR7jTedYvKHVNRzGPmXqdMASZ6PfE7B-p6sIg/edit)
+- [(Abandoned WIP) Why is X in the standard library?](https://golang.org/s/stdwhy)
+- [go oracle: design By Alan Donovan](https://golang.org/s/oracle-design)
+- [go oracle: user manual By Alan Donovan](https://golang.org/s/oracle-user-manual)
+- [https://golang.org/s/cgihttpproxy](https://golang.org/s/cgihttpproxy)
+- [https://golang.org/s/sqldrivers](https://golang.org/s/sqldrivers)
+- [https://golang.org/s/go2designs](https://golang.org/s/go2designs)
+- [Notes on Programming in C By Rob Pike](http://doc.cat-v.org/bell_labs/pikestyle)
+- ["The Best Programming Advice I Ever Got" with Rob Pike](https://www.informit.com/articles/article.aspx?p=1941206)
+- [An Interview with Brian Kernighan By Mihai Budiu](http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html)
+- [Language Design with Brian Kernighan Holiday Repeat By SE Daily](https://softwareengineeringdaily.com/2017/12/28/language-design-with-brian-kernighan-holiday-repeat/)
+- ["C" Programming Language: Brian Kernighan - Computerphile](https://youtu.be/de2Hsvxaf8M)
+- [Debugging performance issues in Go* programs By Dmitriy Vyukov](https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html)
+- [Interesting papers I'd like to implement (or at least have implementations of)](https://github.com/dgryski/interesting-papers)
+- [https://github.com/golang/go/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
 
 
 ## Fun Facts
