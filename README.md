@@ -6,8 +6,64 @@ This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
 which intents to offer a comprehensive reference of the Go history.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Disclaimer](#disclaimer)
+- [Sources](#sources)
+- [Committers](#committers)
+  - [Core Authors](#core-authors)
+  - [Compiler/Runtime Team](#compilerruntime-team)
+  - [Library/Tools/Security/Community](#librarytoolssecuritycommunity)
+  - [Group Interviews](#group-interviews)
+- [Timeline](#timeline)
+- [Language Design](#language-design)
+  - [Misc](#misc)
+  - [Slice (1.2)](#slice-12)
+  - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
+  - [Type alias (1.9)](#type-alias-19)
+  - [Defer (1.13)](#defer-113)
+  - [Error values (1.13)](#error-values-113)
+  - [Channel/Select](#channelselect)
+  - [Generics](#generics)
+- [Compiler Toolchain](#compiler-toolchain)
+  - [Compiler](#compiler)
+  - [Linker](#linker)
+  - [Debugger](#debugger)
+  - [Tracer](#tracer)
+  - [Builder](#builder)
+  - [Modules](#modules)
+  - [gopls](#gopls)
+  - [Testing](#testing)
+- [Runtime Core](#runtime-core)
+  - [Statistics](#statistics)
+  - [Scheduler](#scheduler)
+  - [Execution Stack](#execution-stack)
+  - [Memory Allocator](#memory-allocator)
+  - [Garbage Collector](#garbage-collector)
+  - [Memory model](#memory-model)
+  - [ABI](#abi)
+- [Standard Library](#standard-library)
+  - [syscall](#syscall)
+  - [io](#io)
+  - [go/*](#go)
+  - [sync](#sync)
+    - [Map](#map)
+    - [Pool](#pool)
+    - [Mutex, RWMutex](#mutex-rwmutex)
+    - [atomic](#atomic)
+  - [time](#time)
+  - [context](#context)
+  - [encoding](#encoding)
+  - [image, x/image](#image-ximage)
+  - [misc](#misc)
+- [Unclassified But Relevant Links](#unclassified-but-relevant-links)
+- [Fun Facts](#fun-facts)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Disclaimer
 
