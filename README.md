@@ -320,6 +320,8 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 A timeline helps you identify the point in time about a document that is
 reflected in Go versions.
 
+[![](./assets/images/go_timeline.png)](./assets/images/go_timeline.png)
+
 | Version | Release Date |
 |:--|:--|
 | Go 1    | 2012.03.28 |
@@ -993,7 +995,8 @@ x/image:
 ## Fun Facts
 
 - [cl/1](https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8) Brian Kernighan. Go's first commit. Jul 19, 1972.
-- [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language
+- [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language. Nov 11, 2009
+- [doc/gophercount](https://research.swtch.com/gophercount) How Many Go Developers Are There?. November 1, 2019.
 
 ## Acknowledgements
 
