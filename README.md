@@ -989,7 +989,7 @@ x/image:
 - ["C" Programming Language: Brian Kernighan - Computerphile](https://youtu.be/de2Hsvxaf8M)
 - [Debugging performance issues in Go* programs By Dmitriy Vyukov](https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html)
 - [Interesting papers I'd like to implement (or at least have implementations of)](https://github.com/dgryski/interesting-papers)
-- [https://github.com/golang/go/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
+- [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
 
 [Back To Top](#top)
 ## Fun Facts

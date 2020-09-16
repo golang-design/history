@@ -2,10 +2,6 @@
 Use of this source code is governed by a MIT
 license that can be found in the LICENSE file. */
 
-body {
-    margin: 0;
-    font-family: Roboto, Arial, sans-serif;
-}
 :root {
     --gray-1: #202224;
     --gray-2: #3e4042;
@@ -29,6 +25,10 @@ body {
     --yellow: #fddd00;
     --header-height: 3.5rem;
 }
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
 a {
     color: var(--turq-dark);
     text-decoration: none;
@@ -37,9 +37,16 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+.header {
+    background-color: var(--turq-dark);
+    height: 60px;
+    text-align: center;
+}
 #container {
     width: 60%;
     margin: 0 auto;
+    word-wrap: break-all;
+    hyphens: auto;
 }
 @media only screen and (max-width: 600px) {
     #container {
@@ -47,6 +54,49 @@ img {
         margin: 0 auto;
     }
 }
+
 .doc-content {
     margin-top: 50px;
+}
+
+/* dark mode support */
+
+.dark-switch {
+    display: flex;
+    align-items: center;
+}
+.dark-switch:focus {
+    outline: 0;
+}
+.custom-control-label {
+    color: var(--gray-10);
+}
+.custom-switch .custom-control-label::before {
+    background-color: transparent;
+    border: var(--gray-9) solid 1px;
+}
+.custom-switch .custom-control-label::after {
+    background-color: var(--gray-9);
+}
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: var(--turq-dark);
+    background-color: var(--turq-light);
+}
+[data-theme="dark"] {
+    background-color: var(--gray-1) !important;
+    color: var(--gray-6);
+}
+[data-theme="dark"] a {
+    color: var(--turq-med) !important;
+}
+[data-theme="dark"] .header {
+    background-color: var(--turq-dark);
+}
+input[type=checkbox] {
+    outline: 0;
+}
+@media only screen and (max-width: 430px) {
+    .dark-switch {
+        font-size: 10px;
+    }
 }
