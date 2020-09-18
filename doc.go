@@ -12,16 +12,12 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 )
-
-type data struct {
-	Navigation string
-	Content    template.HTML
-}
 
 var md goldmark.Markdown
 
@@ -49,18 +45,32 @@ func main() {
 		log.Fatalf("Convert: cannot convert README from markdown to html, err: %v", err)
 	}
 
-	a := data{
-		Navigation: "",
-		Content:    template.HTML(b.Bytes()),
-	}
-
 	f, err := os.Create("public/index.html")
 	if err != nil {
 		log.Fatalf("Create: cannot create index.html, err: %v", err)
 	}
 
+	// find TOC
+	dom := b.String()
+	tocStart := strings.Index(dom, "<p><strong>Table of Contents</strong></p>")
+	tocEnd := strings.Index(dom, `<h2 id="disclaimer">Disclaimer</h2>`)
+	toc := dom[tocStart:tocEnd]
+	dom = dom[:tocStart] + `<div class="doc-nav-mobile">` +
+		dom[tocStart:tocEnd] + `</div>` + dom[tocEnd:]
+
+	// remove all hard coded all back to top, use back to top button
+	dom = strings.ReplaceAll(dom, `<p><a href="#top">Back To Top</a></p>`, "")
+
+	type data struct {
+		Navigation template.HTML
+		Content    template.HTML
+	}
+
 	tmpl := template.Must(template.New("index").Parse(indexTemplate))
-	tmpl.Execute(f, a)
+	tmpl.Execute(f, data{
+		Navigation: template.HTML(toc),
+		Content:    template.HTML(dom),
+	})
 	fmt.Println("golang-design/history: A Documentary of Go")
 }
 
@@ -84,9 +94,10 @@ const indexTemplate = `
     </div>
     </div>
 </div>
-<div id="container">
-<nav class="doc-nav">{{.Navigation}}</nav>
-<div class="doc-content">{{.Content}}</div>
+<div id="btt"><a href="#top">⬆</a></div>
+<div id="container" class="row">
+<div class="doc-content col-lg-9">{{.Content}}</div>
+<nav class="doc-nav col-lg-3">{{.Navigation}}</nav>
 </div>
 <script src="dark.js"></script>
 </body>

@@ -10,59 +10,60 @@ which intents to offer a comprehensive reference of the Go history.
 
 **Table of Contents**
 
-- [Disclaimer](#disclaimer)
-- [Sources](#sources)
-- [Origin](#origin)
-- [Committers](#committers)
-  - [Core Authors](#core-authors)
-  - [Compiler/Runtime Team](#compilerruntime-team)
-  - [Library/Tools/Security/Community](#librarytoolssecuritycommunity)
-  - [Group Interviews](#group-interviews)
-- [Timeline](#timeline)
-- [Language Design](#language-design)
-  - [Misc](#misc)
-  - [Slice (1.2)](#slice-12)
-  - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
-  - [Type alias (1.9)](#type-alias-19)
-  - [Defer (1.13)](#defer-113)
-  - [Error values (1.13)](#error-values-113)
-  - [Channel/Select](#channelselect)
-  - [Generics](#generics)
-- [Compiler Toolchain](#compiler-toolchain)
-  - [Compiler](#compiler)
-  - [Linker](#linker)
-  - [Debugger](#debugger)
-  - [Tracer](#tracer)
-  - [Builder](#builder)
-  - [Modules](#modules)
-  - [gopls](#gopls)
-  - [Testing](#testing)
-- [Runtime Core](#runtime-core)
-  - [Statistics](#statistics)
-  - [Scheduler](#scheduler)
-  - [Execution Stack](#execution-stack)
-  - [Memory Allocator](#memory-allocator)
-  - [Garbage Collector](#garbage-collector)
-  - [Memory model](#memory-model)
-  - [ABI](#abi)
-- [Standard Library](#standard-library)
-  - [syscall](#syscall)
-  - [io](#io)
-  - [go/*](#go)
-  - [sync](#sync)
-    - [Map](#map)
-    - [Pool](#pool)
-    - [Mutex, RWMutex](#mutex-rwmutex)
-    - [atomic](#atomic)
-  - [time](#time)
-  - [context](#context)
-  - [encoding](#encoding)
-  - [image, x/image](#image-ximage)
-  - [misc](#misc)
-- [Unclassified But Relevant Links](#unclassified-but-relevant-links)
-- [Fun Facts](#fun-facts)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [Go: A Documentary](#go-a-documentary)
+  - [Disclaimer](#disclaimer)
+  - [Sources](#sources)
+  - [Origin](#origin)
+  - [Committers](#committers)
+    - [Core Authors](#core-authors)
+    - [Compiler/Runtime Team](#compilerruntime-team)
+    - [Library/Tools/Security/Community](#librarytoolssecuritycommunity)
+    - [Group Interviews](#group-interviews)
+  - [Timeline](#timeline)
+  - [Language Design](#language-design)
+    - [Misc](#misc)
+    - [Slice (1.2)](#slice-12)
+    - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
+    - [Type alias (1.9)](#type-alias-19)
+    - [Defer (1.13)](#defer-113)
+    - [Error values (1.13)](#error-values-113)
+    - [Channel/Select](#channelselect)
+    - [Generics](#generics)
+  - [Compiler Toolchain](#compiler-toolchain)
+    - [Compiler](#compiler)
+    - [Linker](#linker)
+    - [Debugger](#debugger)
+    - [Tracer](#tracer)
+    - [Builder](#builder)
+    - [Modules](#modules)
+    - [gopls](#gopls)
+    - [Testing](#testing)
+  - [Runtime Core](#runtime-core)
+    - [Statistics](#statistics)
+    - [Scheduler](#scheduler)
+    - [Execution Stack](#execution-stack)
+    - [Memory Allocator](#memory-allocator)
+    - [Garbage Collector](#garbage-collector)
+    - [Memory model](#memory-model)
+    - [ABI](#abi)
+  - [Standard Library](#standard-library)
+    - [syscall](#syscall)
+    - [io](#io)
+    - [go/*](#go)
+    - [sync](#sync)
+      - [Map](#map)
+      - [Pool](#pool)
+      - [Mutex, RWMutex](#mutex-rwmutex)
+      - [atomic](#atomic)
+    - [time](#time)
+    - [context](#context)
+    - [encoding](#encoding)
+    - [image, x/image](#image-ximage)
+    - [misc](#misc-1)
+  - [Unclassified But Relevant Links](#unclassified-but-relevant-links)
+  - [Fun Facts](#fun-facts)
+  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
 
 ## Disclaimer
 
@@ -113,8 +114,6 @@ in Go might be your starting points (as a _subjective_ recommendation):
 [Back To Top](#top)
 
 ## Committers
-
-[![](./assets/images/go_committers.png)](./assets/images/go_committers.png)
 
 ### Core Authors
 
@@ -340,8 +339,6 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 A timeline helps you identify the point in time about a document that is
 reflected in Go versions.
 
-[![](./assets/images/go_timeline.png)](./assets/images/go_timeline.png)
-
 | Version | Release Date |
 |:--|:--|
 | Go 1    | 2012.03.28 |
@@ -370,8 +367,6 @@ The historical release notes may helpful for general information:
 [Back To Top](#top)
 
 ## Language Design
-
-[![](./assets/images/language_design.png)](./assets/images/language_design.png)
 
 ### Misc
 
@@ -520,8 +515,6 @@ The historical release notes may helpful for general information:
 
 ## Compiler Toolchain
 
-[![](./assets/images/compiler_toolchain.png)](./assets/images/compiler_toolchain.png)
-
 ### Compiler
 
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
@@ -590,12 +583,14 @@ in Go 1.15 and Go 1.16.
 
 - [design/go13nacl](https://golang.org/s/go13nacl) Russ Cox. Go 1.3 Native Client Support. October 2013.
 - [design/gobuilder](http://golang.org/s/builderplan) Brad Fitzpatrick. Go Builder Plan. 2014-09-03.
+  
   + [discuss/gobuilder](https://groups.google.com/g/golang-dev/c/sdFD0-2Ed8k) Changing how builders run
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
 - [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. Go Generate. January 2014.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
 - [discuss/generatedcode](https://golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
 - [design/goenv](https://golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
+  
   + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
@@ -651,8 +646,6 @@ in Go 1.15 and Go 1.16.
 [Back To Top](#top)
 
 ## Runtime Core
-
-[![](./assets/images/runtime_core.png)](./assets/images/runtime_core.png)
 
 ### Statistics
 
@@ -808,8 +801,6 @@ guarantee sequential consistency.
 [Back To Top](#top)
 
 ## Standard Library
-
-[![](./assets/images/standard_library.png)](./assets/images/standard_library.png)
 
 ### syscall
 

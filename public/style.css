@@ -24,6 +24,7 @@ license that can be found in the LICENSE file. */
     --white: #fff;
     --yellow: #fddd00;
     --header-height: 3.5rem;
+    --min-best-width: 992px;
 }
 body {
     margin: 0;
@@ -33,31 +34,97 @@ a {
     color: var(--turq-dark);
     text-decoration: none;
 }
+code {
+    color: var(--slate);
+}
 img {
     max-width: 100%;
     max-height: 100%;
 }
 .header {
     background-color: var(--turq-dark);
-    height: 60px;
+    height: var(--header-height);
     text-align: center;
     margin: 0;
 }
 #container {
-    width: 60%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 0 auto 0;
     overflow-wrap: break-word;
     hyphens: auto;
 }
-@media only screen and (max-width: 600px) {
+@media (max-width: 992px) {
     #container {
         width: 90%;
         margin: 0 auto;
     }
 }
 
+/* toc support */
+
 .doc-content {
+    width: 100%;
     margin-top: 50px;
+    padding: 0;
+}
+.doc-nav-mobile {
+    display: none;
+}
+.doc-nav {
+    font-size: .75rem;
+    right: 10%;
+    display: block;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-left: 0.25rem;
+    position: sticky;
+    top: 0;
+}
+.doc-nav ul {
+    width: 16rem;
+    padding: 0 1rem;
+    list-style-type: none;
+}
+@media (max-width: 992px) {
+    .doc-nav-mobile {
+        display: unset;
+        font-size: .75rem;
+    }
+    .doc-nav {
+        display: none;
+    }
+}
+
+/* back to top button */
+#btt {
+    border: 0;
+    padding: 3px;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 30px;
+    left: 5%;
+    z-index: 1050;
+    width: 24px;
+    background: var(--turq-dark);
+    font-size: 12px;
+    /* opacity: 0.6; */
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+#btt a {
+    color: white;
+    text-decoration: none;
+}
+#btt:hover {
+    background-color: var(--turq-med);
+}
+@media (max-width: 992px) {
+    #btt {
+        display: none;
+    }
 }
 
 /* dark mode support */
@@ -88,15 +155,21 @@ img {
     color: var(--gray-6);
 }
 [data-theme="dark"] a {
-    color: var(--turq-med) !important;
+    color: var(--turq-med);
 }
 [data-theme="dark"] .header {
     background-color: var(--turq-dark);
 }
+[data-theme="dark"] code {
+    color: var(--gray-6);
+}
+[data-theme="dark"] #btt a {
+    color: var(--gray-2);
+}
 input[type=checkbox] {
     outline: 0;
 }
-@media only screen and (max-width: 430px) {
+@media (max-width: 430px) {
     .dark-switch {
         font-size: 10px;
     }
