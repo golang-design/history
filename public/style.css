@@ -41,11 +41,12 @@ img {
     background-color: var(--turq-dark);
     height: 60px;
     text-align: center;
+    margin: 0;
 }
 #container {
     width: 60%;
     margin: 0 auto;
-    word-wrap: break-all;
+    overflow-wrap: break-word;
     hyphens: auto;
 }
 @media only screen and (max-width: 600px) {
