@@ -13,6 +13,7 @@ which intents to offer a comprehensive reference of the Go history.
 - [Go: A Documentary](#go-a-documentary)
   - [Disclaimer](#disclaimer)
   - [Sources](#sources)
+  - [Origin](#origin)
   - [Committers](#committers)
     - [Core Authors](#core-authors)
     - [Compiler/Runtime Team](#compilerruntime-team)
@@ -73,6 +74,7 @@ Referring to the original link if some text conflicts to your understanding
 - Use [Issues](https://github.com/golang-design/history) for discussions
 
 [Back To Top](#top)
+
 ## Sources
 
 There are many sources for digging the documents that relate to Go's
@@ -92,18 +94,29 @@ historical design, and here are some of the official sources:
 - [groups.google.com/g/golang-tools](https://groups.google.com/g/golang-tools)
 
 [Back To Top](#top)
+
+## Origin
+
+Go is a big project driven by a tiny group of people and the crowd of
+wisdom from the language user community. Here are some core committers
+to the project that you might interest in following their excellent work.
+
+Go's origin is attractive without doubts. By listening to the talks held
+by these people, you could learn more about their oral history and fun
+stories behind the great work.
+
+For instance, here are some exciting talks regarding the historical feats
+in Go might be your starting points (as a _subjective_ recommendation):
+`talk/rob2007`, `talk/rob2009`, `talk/rob2010b`, `talk/rob2010d`,
+`talk/rob2011a`, `talk/rob2013a`, `talk/rob2019`, `talk/robert2015`,
+`talk/russ2014`, `steve2019b`, etc.
+
+[Back To Top](#top)
+
 ## Committers
-
-Go is a big project that driven by a tiny group of people and the
-crowd of wisdom from the language user community. Here are some core 
-committers to the project that you might interest in follow their excellent work.
-
-By listening to the talks held by these people, you could learn more about
-their oral history and fun stories behind the great work.
 
 [![](./assets/images/go_committers.png)](./assets/images/go_committers.png)
 
-[Back To Top](#top)
 ### Core Authors
 
 The Go was created by Rob, Robert, and Ken initially because
@@ -203,6 +216,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2020c](https://www.youtube.com/watch?v=rmS-oWcBZaI) `//go:embed` draft design. Jul 21, 2020.
 
 [Back To Top](#top)
+
 ### Compiler/Runtime Team
 
 Dmitry is not from the Go team but on the dynamic testing tools team from Google.
@@ -242,13 +256,13 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 
 - Keith Randall. (Dr. Keith H. Randall.) [GitHub](https://github.com/randall77)
   + Alma mater: MIT
-  + [paper1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk: Efficient Multithreaded Computing.  Doctor Dissertation.
+  + [paper/1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk: Efficient Multithreaded Computing.  Doctor Dissertation.
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) Inside the Map Implementation. GopherCon 2016. Jul 12, 2016.
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) Generating Better Machine Code with SSA. GopherCon 2017. Jul 24, 2017.
 
 - David Chase. (Dr. David Chase) [Website](http://chasewoerner.org/resume.html), [Block](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
   + Alma mater: Rice University
-  + [paper1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation.
+  + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation.
   + [talk/david2017](https://changelog.com/gotime/52) All About The Go Compiler. Jul 20, 2017.
 
 - Dan Scales.
@@ -260,6 +274,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - Cherry Zhang. [GitHub](https://github.com/cherrymui)
 
 [Back To Top](#top)
+
 ### Library/Tools/Security/Community
 
 - Andrew Gerrand. [GitHub](https://github.com/adg), [Twitter](https://twitter.com/enneff)
@@ -296,6 +311,10 @@ his work mainly in the runtime memory system such as the refactoring of memory a
   + [talk/bryan2017](https://www.youtube.com/watch?v=C1EtfDnsdDs) Lightning Talk: An overview of sync.Map. GopherCon 2017. Jul 24, 2017.
   + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) Rethinking Classical Concurrency Patterns. GopherCon 2018. Sep 14, 2018
 
+- Steve Francia. [Website](https://spf13.com/) [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
+  + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) What Should A Modern Practical Programming Language Look Like. Landing Festival. April 4, 2019.
+  + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) The Legacy Of Go. Go Lab. Oct 22, 2019.
+
 - Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
 - Nigel Tao. [GitHub](https://github.com/nigeltao), Twitter
 - Filippo Valsorda. GitHub,
@@ -307,6 +326,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 > more people and talks should be added...
 
 [Back To Top](#top)
+
 ### Group Interviews
 
 - [talk/goteam2012](https://www.youtube.com/watch?v=sln-gJaURzk) Meet the Go Team. Google I/O 2012. Jul 2, 2012.
@@ -315,6 +335,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - [talk/goteam2019](https://www.youtube.com/watch?v=3yghHvvZQmA) Meet the Authors: Go Language. Cloud Next '19. Apr 10, 2019.
 
 [Back To Top](#top)
+
 ## Timeline
 
 A timeline helps you identify the point in time about a document that is
@@ -348,11 +369,11 @@ The historical release notes may helpful for general information:
 - [doc/go0release](https://golang.org/doc/devel/weekly.html) Weekly Release History (Before Go 1)
 
 [Back To Top](#top)
+
 ## Language Design
 
 [![](./assets/images/language_design.png)](./assets/images/language_design.png)
 
-[Back To Top](#top)
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
@@ -380,6 +401,7 @@ The historical release notes may helpful for general information:
 - [issue/33892](https://golang.org/issue/33892) proposal: Go 2 review meeting minutes
 
 [Back To Top](#top)
+
 ### Slice (1.2)
 
 - [design/read-only-slices](https://docs.google.com/document/d/1UKu_do3FRvfeN5Bb1RxLohV-zBOJWTzX0E8ZU1bkqX0/edit#heading=h.2wzvdd6vdi83) Brad Fitzpatrick. Read-only slices. May 13, 2013
@@ -388,6 +410,7 @@ The historical release notes may helpful for general information:
 - [design/multidim-slice](https://golang.org/design/6282-table-data) Brendan Tracey. Proposal: Multi-dimensional slices. November 17th, 2016.
 
 [Back To Top](#top)
+
 ### Package Management (1.4, 1.5, 1.7)
 
 - [design/go14internal](https://golang.org/s/go14internal) Russ Cox. Go 1.4 “Internal” Packages. June 2014.
@@ -398,6 +421,7 @@ The historical release notes may helpful for general information:
   + [issue/2775](https://golang.org/issue/2775) cmd/go: work when binaries are available but source is missing
 
 [Back To Top](#top)
+
 ### Type alias (1.9)
 
 - [design/type-alias](https://golang.org/design/18130-type-alias) Russ Cox, Robert Griesemer. Proposal: Type Aliases. December 16, 2016
@@ -408,6 +432,7 @@ The historical release notes may helpful for general information:
   + [doc/refactor](https://talks.golang.org/2016/refactor.article) Russ Cox. Codebase Refactoring (with help from Go).
 
 [Back To Top](#top)
+
 ### Defer (1.13)
 
 - [design/open-defer](https://golang.org/design/34481-opencoded-defers) Dan Scales, Keith Randall, and Austin Clements. Proposal: Low-cost defers through inline code, and extra funcdata to manage the panic case. 2019-09-23
@@ -421,6 +446,7 @@ The historical release notes may helpful for general information:
   - [cl/189377](https://golang.org/cl/189377) spec: specify the behavior of recover and recursive panics in more detail
 
 [Back To Top](#top)
+
 ### Error values (1.13)
 
 - [doc/err2011](https://blog.golang.org/error-handling-and-go) Andrew Gerrand. Error handling in Go. July 2011.
@@ -444,9 +470,11 @@ The historical release notes may helpful for general information:
 - [design/err-print](https://golang.org/design/go2draft-error-printing) Marcel van Lohuizen. Error Printing — Draft Design. August 27, 2018.
   + [issue/30468](https://golang.org/issue/30468) errors: performance regression in New.
 - [issue/40432](https://golang.org/issue/40432) language: Go 2: error handling meta issue
+- [issue/40776](https://golang.org/issue/40776) proposal: dynamic ignored error detector
 - [issue/41198](https://golang.org/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
 
 [Back To Top](#top)
+
 ### Channel/Select
 
 - [design/lockfree-channels](https://docs.google.com/a/google.com/document/d/1yIAYmbvL3JxOKOjuCyon7JhW4cSv1wy5hC0ApeGMV9s/pub) Dmitry Vyukov. Go channels on steroids. Jan 28, 2014
@@ -459,6 +487,7 @@ The historical release notes may helpful for general information:
 - [issue/21806](https://golang.org/issue/21806) fairness in select statement.
 
 [Back To Top](#top)
+
 ### Generics
 
 - [doc/generics-discuss](https://docs.google.com/document/d/1vrAy9gMpMoS3uaVphB32uVXX4pi-HnNjkMEgyAHX4N4/edit#heading=h.vuko0u3txoew) Summary of Go Generics Discussions
@@ -485,11 +514,12 @@ The historical release notes may helpful for general information:
 - [issue/33232](https://golang.org/issue/33232) proposal: Go 2: add alias for interface {} as any
 - [discuss/generics-move](https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw) Ian, Moving forward with the generics design.
 
+[Back To Top](#top)
+
 ## Compiler Toolchain
 
 [![](./assets/images/compiler_toolchain.png)](./assets/images/compiler_toolchain.png)
 
-[Back To Top](#top)
 ### Compiler
 
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
@@ -523,6 +553,7 @@ The historical release notes may helpful for general information:
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.]
 
 [Back To Top](#top)
+
 ### Linker
 
 The Go Linker was written by Ken Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
@@ -533,6 +564,7 @@ in Go 1.15 and Go 1.16.
 - [design/go116linker](https://golang.org/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
 
 [Back To Top](#top)
+
 ### Debugger
 
 - [doc/go13heapdump](https://golang.org/s/go13heapdump) heapdump13
@@ -544,12 +576,14 @@ in Go 1.15 and Go 1.16.
   + [issue/17280](https://golang.org/issue/17280) pprof: add support for profiler labels
 
 [Back To Top](#top)
+
 ### Tracer
 
 - [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov. Go Execution Tracer. Oct 2014
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
 
 [Back To Top](#top)
+
 ### Builder
 
 - [design/go13nacl](https://golang.org/s/go13nacl) Russ Cox. Go 1.3 Native Client Support. October 2013.
@@ -570,6 +604,7 @@ in Go 1.15 and Go 1.16.
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly assembly files
 
 [Back To Top](#top)
+
 ### Modules
 
 - [design/go-dep](https://docs.google.com/document/d/18tNd8r5DV0yluCR7tPvkMTsWD_lYcRO7NhpNSDymRr8) Go Packaging Proposal Process
@@ -592,11 +627,13 @@ in Go 1.15 and Go 1.16.
 - [design/lazy-gomod](https://golang.org/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
 
 [Back To Top](#top)
+
 ### gopls
 
 - [design/gopls-workspace](https://golang.org/design/37720-gopls-workspaces) Heschi Kreinick, Rebecca Stambler. Proposal: Multi-project gopls workspaces. Mar 9, 2020.
 
 [Back To Top](#top)
+
 ### Testing
 
 - [design/subtests](https://golang.org/design/12166-subtests) Marcel van Lohuizen. testing: programmatic sub-test and sub-benchmark support. September 2, 2015.
@@ -609,11 +646,12 @@ in Go 1.15 and Go 1.16.
 - [design/fuzzing](https://golang.org/design/draft-fuzzing) Katie Hockman. Design Draft: First Class Fuzzing
 <!-- - Tool chain, benchseries/benchstat -->
 
+[Back To Top](#top)
+
 ## Runtime Core
 
 [![](./assets/images/runtime_core.png)](./assets/images/runtime_core.png)
 
-[Back To Top](#top)
 ### Statistics
 
 - [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
@@ -625,6 +663,7 @@ in Go 1.15 and Go 1.16.
 - [issue/40459](https://golang.org/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
 
 [Back To Top](#top)
+
 ### Scheduler
 
 - [paper/work-steal](https://dl.acm.org/citation.cfm?id=324234) Robert D. Blumofe and Charles E. Leiserson. 1999. Scheduling multithreaded computations by work stealing. J. ACM 46, 5 (September 1999), 720-748.
@@ -651,6 +690,7 @@ in Go 1.15 and Go 1.16.
 - [issue/32113](https://golang.org/issue/32113) runtime: optimization to reduce P churn.
 
 [Back To Top](#top)
+
 ### Execution Stack
 
 - [design/contigstack](https://golang.org/s/contigstacks) Contiguous stacks
@@ -658,6 +698,7 @@ in Go 1.15 and Go 1.16.
 - [issue/26061](https://golang.org/issue/26061) runtime: g0 stack.lo is sometimes too low
 
 [Back To Top](#top)
+
 ### Memory Allocator
 
 A quick history about the Go's memory allocator: Russ Cox first implements
@@ -698,6 +739,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/40641](https://golang.org/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
 
 [Back To Top](#top)
+
 ### Garbage Collector
 
 - [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
@@ -731,6 +773,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/27993](https://golang.org/issue/27993) runtime: error message: P has cached GC work at end of mark termination
 
 [Back To Top](#top)
+
 ### Memory model
 
 Go memory model is not well defined (yet), but atomic is likely to
@@ -749,6 +792,7 @@ guarantee sequential consistency.
 - [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
 
 [Back To Top](#top)
+
 ### ABI
 
 - [design/cgo-pointers](https://golang.org/design/12416-cgo-pointers) Ian Lance Taylor. Proposal: Rules for passing pointers between Go and C. October, 2015
@@ -759,18 +803,23 @@ guarantee sequential consistency.
 - [issue/18597](https://golang.org/issue/18597) proposal: cmd/compile: define register-based calling convention
 - [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
 
+[Back To Top](#top)
+
 ## Standard Library
 
 [![](./assets/images/standard_library.png)](./assets/images/standard_library.png)
 
-[Back To Top](#top)
 ### syscall
 
 - [design/go14syscall](https://golang.org/s/go1.4-syscall) The syscall package.
 
+[Back To Top](#top)
+
 ### io
 
 - [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
+
+[Back To Top](#top)
 
 ### go/*
 
@@ -781,6 +830,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [cl/134935](https://golang.org/cl/134935) go/analysis: a new API for analysis tools
 
 [Back To Top](#top)
+
 ### sync
 
 - [design/percpu-sharded](https://golang.org/design/18802-percpu-sharded) Sanjay Menakuru. Proposal: percpu.Sharded, an API for reducing cache contention. Jun 12, 2018.
@@ -788,6 +838,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/37142](https://golang.org/issue/37142) sync: shrink types in sync package
 
 [Back To Top](#top)
+
 #### Map
 
 - [issue/21031](https://golang.org/issue/21031) sync: reduce pointer overhead in Map
@@ -796,6 +847,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/37033](https://golang.org/issue/37033) runtime: provide centralized facility for managing (c)go pointer handles
 
 [Back To Top](#top)
+
 #### Pool
 
 - [discuss/add-pool](https://groups.google.com/d/msg/golang-dev/kJ_R6vYVYHU/LjoGriFTYxMJ) gc-aware pool draining policy
@@ -812,18 +864,24 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/24479](https://golang.org/issue/24479) sync: eliminate global Mutex in Pool operations
 
 [Back To Top](#top)
+
 #### Mutex, RWMutex
 
 - [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
 - [issue/17973](https://golang.org/issue/17973) sync: RWMutex scales poorly with CPU count
+
+[Back To Top](#top)
 
 #### atomic
 
 - [issue/8739](https://golang.org/issue/8739) runtime,sync/atomic: unify API for runtime/internal/atomic and sync/atomic
 - [issue/20164](https://golang.org/issue/20164) proposal: atomic: add (*Value).Swap
 - [discuss/atomic-value](https://groups.google.com/g/golang-dev/c/SBmIen68ys0/m/WGfYQQSO4nAJ)
+- [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
+- [issue/37262](https://golang.org/issue/37262) runtime: can't atomic access of first word of tiny-allocated struct on 32-bit architecture
 
 [Back To Top](#top)
+
 ### time
 
 - [design/monotonic-time](https://golang.org/design/12914-monotonic) Russ Cox. Proposal: Monotonic Elapsed Time Measurements in Go. January 26, 2017.
@@ -836,6 +894,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
 
 [Back To Top](#top)
+
 ### context
 
 - [issue/8082](https://golang.org/issue/8082) proposal: spec: represent interfaces by their definition and not by package and name
@@ -852,6 +911,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
 
 [Back To Top](#top)
+
 ### encoding
 
 - [design/go12encoding](https://golang.org/s/go12encoding) Russ Cox. Go 1.2 encoding.TextMarshaler and TextUnmarshaler. July 2013.
@@ -866,6 +926,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/26756](https://golang.org/issue/26756) proposal: encoding/xml: add RawXML token
 
 [Back To Top](#top)
+
 ### image, x/image
 
 The following issues are surrounding by the color management of the `image` standard library.
@@ -880,6 +941,7 @@ metadata APIs to aware the color profile in an encoded image file.
   + [cl/253497](https://golang.org/cl/253497) x/image/draw: gamma corrected non linear interpolation
   + [issue/37188](https://golang.org/issue/37188) image/color: documentation doesn't include links to relevant color theory resources
 - [issue/33457](https://golang.org/issue/33457) proposal: image: add generic metadata support for jpeg, gif, png
+  + [discuss/image-metadata](https://groups.google.com/g/golang-dev/c/aRvnYIcaIaA/m/9GVKL7mIAgAJ) image.Metadata interface type
   + [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
   + [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
   + [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
@@ -956,6 +1018,7 @@ x/image:
 - [issue/16904](https://golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
 
 [Back To Top](#top)
+
 ### misc
 
 - [design/mobile-audio](https://golang.org/design/13432-mobile-audio) Jaana Burcu Dogan. Proposal: Audio for Mobile. November 30, 2015.
@@ -972,6 +1035,7 @@ x/image:
   + [issue/26160](https://golang.org/issue/26160) proposal: use DNS TXT records for vanity import paths
 
 [Back To Top](#top)
+
 ## Unclassified But Relevant Links
 
 - [Using Go Guru: an editor-integrated tool for navigating Go code By Alan Donovan](https://golang.org/s/using-guru)
@@ -979,9 +1043,9 @@ x/image:
 - [(Abandoned WIP) Why is X in the standard library?](https://golang.org/s/stdwhy)
 - [go oracle: design By Alan Donovan](https://golang.org/s/oracle-design)
 - [go oracle: user manual By Alan Donovan](https://golang.org/s/oracle-user-manual)
-- [https://golang.org/s/cgihttpproxy](https://golang.org/s/cgihttpproxy)
-- [https://golang.org/s/sqldrivers](https://golang.org/s/sqldrivers)
-- [https://golang.org/s/go2designs](https://golang.org/s/go2designs)
+- [cgihttpproxy](https://golang.org/s/cgihttpproxy)
+- [sqldrivers](https://golang.org/s/sqldrivers)
+- [go2designs](https://golang.org/s/go2designs)
 - [Notes on Programming in C By Rob Pike](http://doc.cat-v.org/bell_labs/pikestyle)
 - ["The Best Programming Advice I Ever Got" with Rob Pike](https://www.informit.com/articles/article.aspx?p=1941206)
 - [An Interview with Brian Kernighan By Mihai Budiu](http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html)
@@ -992,11 +1056,14 @@ x/image:
 - [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
 
 [Back To Top](#top)
+
 ## Fun Facts
 
 - [cl/1](https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8) Brian Kernighan. Go's first commit. Jul 19, 1972.
 - [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language. Nov 11, 2009
 - [doc/gophercount](https://research.swtch.com/gophercount) How Many Go Developers Are There?. November 1, 2019.
+
+[Back To Top](#top)
 
 ## Acknowledgements
 
@@ -1011,6 +1078,7 @@ It is also important to thank the continuing, inspiring discussion and sharing w
 The document would not be organized without all of the supports from them.
 
 [Back To Top](#top)
+
 ## License
 
 [golang.design/history](https://github.com/golang-design/history) | CC-BY-NC-ND 4.0 &copy; [changkun](https://changkun.de)
