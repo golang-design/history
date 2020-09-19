@@ -34,16 +34,17 @@ which intents to offer a comprehensive reference of the Go history.
     - [Linker](#linker)
     - [Debugger](#debugger)
     - [Tracer](#tracer)
+    - [Lock Analysis](#lock-analysis)
     - [Builder](#builder)
     - [Modules](#modules)
     - [gopls](#gopls)
     - [Testing](#testing)
   - [Runtime Core](#runtime-core)
-    - [Statistics](#statistics)
     - [Scheduler](#scheduler)
     - [Execution Stack](#execution-stack)
     - [Memory Allocator](#memory-allocator)
     - [Garbage Collector](#garbage-collector)
+    - [Statistics](#statistics)
     - [Memory model](#memory-model)
     - [ABI](#abi)
   - [Standard Library](#standard-library)
@@ -54,6 +55,7 @@ which intents to offer a comprehensive reference of the Go history.
       - [Map](#map)
       - [Pool](#pool)
       - [Mutex, RWMutex](#mutex-rwmutex)
+      - [Groups](#groups)
       - [atomic](#atomic)
     - [time](#time)
     - [context](#context)
@@ -535,13 +537,14 @@ The historical release notes may helpful for general information:
 - [issue/23109](https://golang.org/issue/23109) cmd/compile: rewrite escape analysis.
 - [issue/27167](https://golang.org/issue/27167) cmd/compile: rename a bunch of things
   - [doc/renames](https://docs.google.com/document/d/19_ExiylD9MRfeAjKIfEsMU1_RGhuxB9sA0b5Zv7byVI/edit) Proposed Go 1.12 toolchain renames
-- proposal: add GOEXPERIMENT=checkptr
+- GOEXPERIMENT=checkptr
   + [issue/22218](https://golang.org/issue/22218) proposal: add GOEXPERIMENT=checkptr
   + [issue/34964](https://golang.org/issue/34964) cmd/compile: enable -d=checkptr as part of -race and/or -msan?
   + [issue/34972](https://golang.org/issue/34972) all: get standard library building with -d=checkptr
   + [discuss/checkptr](https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ)
-- [issue/8885](https://golang.org/issue/8885) runtime: consider adding 24-byte size class.
-- [issue/16798](https://golang.org/issue/16798) proposal: cmd/compile: add tail call optimization for self-recursion only.
+- [issue/37121](https://golang.org/issue/37121) runtime: unaligned jumps causing performance regression on Intel
+- [issue/16798](https://golang.org/issue/16798) proposal: cmd/compile: add tail call optimization for self-recursion only. (declined)
+- [issue/22624](https://golang.org/issue/22624) proposal: Go 2: add become statement to support tail calls (declined)
 - [design/64align](https://golang.org/design/36606-64-bit-field-alignment) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
   + [issue/599](https://golang.org/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
@@ -578,6 +581,21 @@ in Go 1.15 and Go 1.16.
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
 
 [Back To Top](#top)
+
+### Lock Analysis
+
+- [issue/38029](https://golang.org/issue/38029) x/build: linux-amd64-staticlockranking consistently failing
+  - [cl/192704](https://golang.org/cl/192704) runtime: lock operation logging support
+  - [cl/207348](https://golang.org/cl/207348) runtime: release timersLock while running timer
+  - [cl/207846](https://golang.org/cl/207846) runtime: avoid potential deadlock when tracing memory code
+  - [cl/207619](https://golang.org/cl/207619) runtime: static lock ranking for the runtime (enabled by GOEXPERIMENT)
+  - [cl/222925](https://golang.org/cl/222925) cmd/go: define a build tag for any GOEXPERIMENT which is enabled
+  - [cl/228417](https://golang.org/cl/228417) runtime: incorporate Gscan acquire/release into lock ranking order
+  - [cl/229480](https://golang.org/cl/229480) runtime: added several new lock-rank partial order edges
+  - [cl/231463](https://golang.org/cl/231463) runtime: add one extra lock ranking partial edge
+  - [cl/233599](https://golang.org/cl/233599) runtime: add a lock partial order edge (assistQueue -> mspanSpecial)
+  - [cl/236137](https://golang.org/cl/236137) runtime: add three new partial orders for lock ranking
+
 
 ### Builder
 
@@ -621,6 +639,7 @@ in Go 1.15 and Go 1.16.
   + [discuss/go-dep-twitter](https://twitter.com/_rsc/status/1022588240501661696) Russ Cox's Twitter Storm
 - [design/sumdb](https://golang.org/design/25530-sumdb) Russ Cox, Filippo Valsorda. Proposal: Secure the Public Go Module Ecosystem. April 24, 2019.
   + [issue/25530](https://golang.org/issue/25530) proposal: cmd/go: secure releases with transparency log
+- [issue/23966](https://golang.org/issue/23966#issuecomment-377997161) why go.mod has its own bespoke syntax?
 - [design/lazy-gomod](https://golang.org/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
 
 [Back To Top](#top)
@@ -646,18 +665,6 @@ in Go 1.15 and Go 1.16.
 [Back To Top](#top)
 
 ## Runtime Core
-
-### Statistics
-
-- [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
-  + [cl/setmaxheap](https://go-review.googlesource.com/c/go/+/46751/) Austin Clements. runtime/debug: add SetMaxHeap API. Jun 26 2017.
-- [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
-- [design/go116runtime-metric](https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md) Michael Knyszek. Proposal: API for unstable runtime metrics. Mar 18, 2020.
-- [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
-- [issue/38712](https://golang.org/issue/38712) runtime: TestMemStats is flaky
-- [issue/40459](https://golang.org/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
-
-[Back To Top](#top)
 
 ### Scheduler
 
@@ -707,21 +714,25 @@ improving the memory allocator's scalability, such as migrating scavenger
 to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [doc/tcmalloc](http://goog-perftools.sourceforge.net/doc/tcmalloc.html) Sanjay Ghemawat, Paul Menage. TCMalloc : Thread-Caching Malloc. Google Inc., 2009
-- [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
-- [issue/34047](https://golang.org/issue/34047) runtime: potential deadlock cycle caused by scavenge.lock
-- [issue/34048](https://golang.org/issue/34048) runtime: scavenger pacing fails to account for fragmentation
-- [issue/35112](https://golang.org/issue/35112) runtime: make the page allocator scale
-- [issue/35788](https://golang.org/issue/35788) runtime: scavenger not as effective as in previous releases
 - [design/go113scavenge](https://go.googlesource.com/proposal/+/aa701aae530695d32916b779e048a3e18311a2e3/design/30333-smarter-scavenging.md) Michael Knyszek. Proposal: Smarter Scavenging. 2019-05-09.
+  + [issue/30333](https://golang.org/issue/30333) runtime: smarter scavenging
+  + [issue/32012](https://golang.org/issue/32012) runtime: background scavenger is overzealous with small heaps
+  + [issue/31966](https://golang.org/issue/31966) runtime: background scavenger can delay deadlock detection significantly
+  + [issue/34047](https://golang.org/issue/34047) runtime: potential deadlock cycle caused by scavenge.lock
+  + [issue/34048](https://golang.org/issue/34048) runtime: scavenger pacing fails to account for fragmentation
+  + [issue/35788](https://golang.org/issue/35788) runtime: scavenger not as effective as in previous releases
+  + [issue/36521](https://golang.org/issue/36521) runtime: performance degradation in go 1.12
+  + [issue/36603](https://golang.org/issue/36603) runtime: sysUsed often called on non-scavenged memory
 - [design/go114pagealloc](https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md) Michael Knyszek, Austin Clements. Proposal: Scaling the Go page allocator. 2019-10-18.
+  + [issue/35112](https://golang.org/issue/35112) runtime: make the page allocator scale
+  + [cl/200439](https://golang.org/cl/200439) runtime: place lower limit on trigger ratio
+- [issue/8885](https://golang.org/issue/8885) runtime: consider adding 24-byte size class.
 - [issue/37487](https://golang.org/issue/37487) runtime: improve mcentral scalability
   + [cl/221182](https://golang.org/cl/221182) runtime: add new mcentral implementation
 - [issue/18155](https://golang.org/issue/18155) runtime: latency in sweep assists when there's no garbage
 - [issue/19112](https://golang.org/issue/19112) runtime: deadlock involving gcControllerState.enlistWorker
 - [issue/29707](https://golang.org/issue/29707) cmd/trace: failed to parse trace: no consistent ordering of events possible
-- [issue/35788](https://golang.org/issue/35788) runtime: scavenger not as effective as in previous releases
 - [issue/35954](https://golang.org/issue/35954) runtime: handle hitting the top of the address space in the allocator more gracefully
-- [issue/37487](https://golang.org/issue/37487) runtime: improve mcentral scalability
 - [issue/37927](https://golang.org/issue/37927) runtime: GC pacing exhibits strange behavior with a low GOGC
 - [issue/38130](https://golang.org/issue/38130) runtime: incorrect sanity checks in the page allocator
 - [issue/38404](https://golang.org/issue/38404) runtime: STW GC stops working on arm64/mips64le
@@ -744,28 +755,41 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [design/go14gc](https://golang.org/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
 - [design/go15gcpacing](https://golang.org/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. 2015-03-10.
 - [discuss/gcpacing](https://groups.google.com/forum/#!topic/golang-dev/YjoG9yJktg4) Austin Clements et al. Discussion of "Proposal: Garbage collector pacing". March 10, 2015.
-- [design/eliminate-rescan](https://golang.org/design/17503-eliminate-rescan) Austin Clements, Rick Hudson. Eliminate STW stack re-scanning. October 21, 2016.
 - [issue/11970](https://golang.org/issue/11970) runtime: replace GC coordinator with state machine
 - [design/sweep-free-alloc](https://golang.org/design/12800-sweep-free-alloc) Austin Clements. Proposal: Dense mark bits and sweep-free allocation. Sep 30, 2015.
 - [issue/12800](https://golang.org/issue/12800) runtime: replace free list with direct bitmap allocation
 - [design/decentralized-gc](https://golang.org/design/11970-decentralized-gc) Austin Clements. Proposal: Decentralized GC coordination. October 25, 2015.
 - [issue/12967](https://golang.org/issue/12967#issuecomment-171466238) runtime: shrinkstack during mark termination significantly increases GC STW time
 - [issue/14951](https://golang.org/issue/14951) runtime: mutator assists are over-aggressive, especially at high GOGC
-- [issue/17503](https://golang.org/issue/17503) runtime: eliminate stack rescanning
+- [design/eliminate-rescan](https://golang.org/design/17503-eliminate-rescan) Austin Clements, Rick Hudson. Eliminate STW stack re-scanning. October 21, 2016.
+  + [issue/17503](https://golang.org/issue/17503) runtime: eliminate stack rescanning
 - [design/concurrent-rescan](https://golang.org/design/17505-concurrent-rescan) Austin Clements, Rick Hudson. Proposal: Concurrent stack re-scanning. Oct 18, 2016.
-- [issue/17505](https://golang.org/issue/17505) runtime: perform concurrent stack re-scanning
-- [design/eliminate-rescan](https://golang.org/design/17503-eliminate-rescan) Austin Clements, Rick Hudson. Proposal: Eliminate STW stack re-scanning. Oct 21, 2016
+  + [issue/17505](https://golang.org/issue/17505) runtime: perform concurrent stack re-scanning
 - [design/soft-heap-limit](https://golang.org/design/14951-soft-heap-limit) Austin Clements. Proposal: Separate soft and hard heap size goal. October 21, 2017.
+- [issue/22460](https://golang.org/issue/22460) runtime: optimize write barrier
 - [design/roc](https://golang.org/s/gctoc) Request Oriented Collector (ROC) Algorithm
   + [cl/roc](https://golang.org/cl/25058) runtime: ROC write barrier code
   + [cl/generational-gc](https://golang.org/cl/137482) runtime: trigger generational GC
 - [doc/ismm-gc](https://blog.golang.org/ismmkeynote) Rick Hudson. Getting to Go: The Journey of Go's Garbage Collector. 12 July 2018.
 - [discuss/ismm-gc](https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns) Garbage Collection Slides and Transcript now available
 - [design/simplify-mark-termination](https://golang.org/design/26903-simplify-mark-termination) Austin Clements. Proposal: Simplify mark termination and eliminate mark 2. Aug 9, 2018.
-- [issue/22350](https://golang.org/issue/22350) cmd/compile: compiler can unexpectedly preserve memory,
+  + [issue/26903](https://golang.org/issue/26903) runtime: simplify mark termination and eliminate mark 2
 - [design/gcscan](https://docs.google.com/document/d/1un-Jn47yByHL7I0aVIP_uVCMxjdM5mpelJhiKlIqxkE/edit#) Proposal: GC scanning of stacks
-- [issue/26903](https://golang.org/issue/26903) runtime: simplify mark termination and eliminate mark 2
+  + [issue/22350](https://golang.org/issue/22350) cmd/compile: compiler can unexpectedly preserve memory,
 - [issue/27993](https://golang.org/issue/27993) runtime: error message: P has cached GC work at end of mark termination
+- [issue/37116](https://golang.org/issue/37116) runtime: 10ms-26ms latency from GC in go1.14rc1, possibly due to 'GC (idle)' work
+
+[Back To Top](#top)
+
+### Statistics
+
+- [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
+  + [cl/setmaxheap](https://go-review.googlesource.com/c/go/+/46751/) Austin Clements. runtime/debug: add SetMaxHeap API. Jun 26 2017.
+- [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
+- [design/go116runtime-metric](https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md) Michael Knyszek. Proposal: API for unstable runtime metrics. Mar 18, 2020.
+- [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
+- [issue/38712](https://golang.org/issue/38712) runtime: TestMemStats is flaky
+- [issue/40459](https://golang.org/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
 
 [Back To Top](#top)
 
@@ -849,7 +873,6 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [cl/86020043](https://github.com/golang/go/commit/8fc6ed4c8901d13fe1a5aa176b0ba808e2855af5#diff-2e9fc106a7387ca4c32ecf856a91f82a) sync: less agressive local caching in Pool. Apr 14, 2014.
 - [cl/162980043](https://github.com/golang/go/commit/af3868f1879c7f8bef1a4ac43cfe1ab1304ad6a4#diff-491b0013c82345bf6cfa937bd78b690d) sync: release Pool memory during second and later GCs. Oct 22, 2014.
 - [issue/8979](https://golang.org/issue/8979) sync: Pool does not release memory on GC
-- [issue/13086](https://golang.org/issue/13086) runtime: fall back to fair locks after repeated sleep-acquire failures.
 - [issue/22331](https://golang.org/issue/22331) runtime: clearpools causes excessive STW1 time
 - [issue/22950](https://golang.org/issue/22950) sync: avoid clearing the full Pool on every GC.
   - [cl/166960](https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31) sync: use lock-free structure for Pool stealing.
@@ -860,10 +883,20 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 #### Mutex, RWMutex
 
-- [cl/4631059](https://github.com/golang/go/commit/997c00f) runtime: replace Semacquire/Semrelease implementation.
+- [cl/4631059](https://golang.org/cl/4631059) runtime: replace Semacquire/Semrelease implementation.
+- [issue/13086](https://golang.org/issue/13086) runtime: fall back to fair locks after repeated sleep-acquire failures.
+  + [cl/34310](https://golang.org/cl/34310) sync: make Mutex more fair
 - [issue/17973](https://golang.org/issue/17973) sync: RWMutex scales poorly with CPU count
+  + [cl/215361](https://golang.org/cl/215361) sync: Implement a version of RWMutex that can avoid cache contention
 
 [Back To Top](#top)
+
+#### Groups
+
+- [cl/134395](https://golang.org/cl/134395) errgroup: rethink concurrency patterns
+  + [cl/131815](https://golang.org/cl/131815) errgroup: handle runtime.Goexit from child goroutines
+  + [issue/15758](https://golang.org/issue/15758) testing: complain loudly during concurrent use of T.FatalX and T.SkipX
+  + [issue/25448](https://golang.org/issue/25448) proposal: promote panic(nil) to non-nil panic value
 
 #### atomic
 
@@ -878,19 +911,22 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 ### time
 
 - [design/monotonic-time](https://golang.org/design/12914-monotonic) Russ Cox. Proposal: Monotonic Elapsed Time Measurements in Go. January 26, 2017.
-  - [issue/12914](https://golang.org/issue/12914) time: use monotonic clock to measure elapsed time
-- [issue/6239](https://golang.org/issue/6239) runtime: make timers faster.
-- [issue/15133](https://golang.org/issue/15133) runtime: timer doesn't scale on multi-CPU systems with a lot of timers
+  + [issue/12914](https://golang.org/issue/12914) time: use monotonic clock to measure elapsed time
+- Scalable Timer
   + [cl/34784](https://golang.org/cl/34784) runtime: improve timers scalability on multi-CPU systems
-- [issue/18023](https://golang.org/issue/18023) runtime: unexpectedly large slowdown with runtime.LockOSThread
-- [issue/25471](https://golang.org/issue/25471) time: Sleep requires ~7 syscalls
-- [issue/27707](https://golang.org/issue/27707) time: excessive CPU usage when using Ticker and Sleep.
-- [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
-- [issue/36298](https://golang.org/issue/36298) net: 1.14 performance regression on mac
-- [issue/38860](https://golang.org/issue/38860) runtime: CPU bound goroutines cause unnecessary timer latency
-  + [cl/216198](https://golang.org/cl/216198) runtime: add goroutines returned by poller to local run queue
-  + [cl/232199](https://golang.org/cl/232199) runtime: steal timers from running P's
-  + [cl/232298](https://golang.org/cl/232298) runtime: reduce timer latency
+  + [issue/6239](https://golang.org/issue/6239) runtime: make timers faster.
+  + [issue/15133](https://golang.org/issue/15133) runtime: timer doesn't scale on multi-CPU systems with a lot of timers
+  + [issue/27707](https://golang.org/issue/27707) time: excessive CPU usage when using Ticker and Sleep.
+- Followup latency issues
+  - [issue/18023](https://golang.org/issue/18023) runtime: unexpectedly large slowdown with runtime.LockOSThread
+  - [issue/25471](https://golang.org/issue/25471) time: Sleep requires ~7 syscalls
+  - [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
+  - [issue/36298](https://golang.org/issue/36298) net: 1.14 performance regression on mac
+  - [issue/38860](https://golang.org/issue/38860) runtime: CPU bound goroutines cause unnecessary timer latency
+    + [cl/216198](https://golang.org/cl/216198) runtime: add goroutines returned by poller to local run queue
+    + [cl/232199](https://golang.org/cl/232199) runtime: steal timers from running P's
+    + [cl/232298](https://golang.org/cl/232298) runtime: reduce timer latency
+
 [Back To Top](#top)
 
 ### context
@@ -1060,6 +1096,7 @@ x/image:
 - [cl/1](https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8) Brian Kernighan. Go's first commit. Jul 19, 1972.
 - [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language. Nov 11, 2009
 - [doc/gophercount](https://research.swtch.com/gophercount) How Many Go Developers Are There?. November 1, 2019.
+- [discuss/google-owns-go](https://groups.google.com/forum/#!msg/golang-nuts/6dKNSN0M_kg/Y1yDJRwQBgAJ) Russ Cox's response on "Go is Google's language, not ours"
 
 [Back To Top](#top)
 
