@@ -883,9 +883,14 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/15133](https://golang.org/issue/15133) runtime: timer doesn't scale on multi-CPU systems with a lot of timers
   + [cl/34784](https://golang.org/cl/34784) runtime: improve timers scalability on multi-CPU systems
 - [issue/18023](https://golang.org/issue/18023) runtime: unexpectedly large slowdown with runtime.LockOSThread
+- [issue/25471](https://golang.org/issue/25471) time: Sleep requires ~7 syscalls
 - [issue/27707](https://golang.org/issue/27707) time: excessive CPU usage when using Ticker and Sleep.
 - [issue/38070](https://golang.org/issue/38070) runtime: timer self-deadlock due to preemption point
-
+- [issue/36298](https://golang.org/issue/36298) net: 1.14 performance regression on mac
+- [issue/38860](https://golang.org/issue/38860) runtime: CPU bound goroutines cause unnecessary timer latency
+  + [cl/216198](https://golang.org/cl/216198) runtime: add goroutines returned by poller to local run queue
+  + [cl/232199](https://golang.org/cl/232199) runtime: steal timers from running P's
+  + [cl/232298](https://golang.org/cl/232298) runtime: reduce timer latency
 [Back To Top](#top)
 
 ### context
