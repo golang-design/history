@@ -50,15 +50,17 @@ func main() {
 		log.Fatalf("Create: cannot create index.html, err: %v", err)
 	}
 
-	// find TOC
+	// Find TOC, and remove all hard coded all back to top. Then use
+	// back to top button for navigation.
+	//
+	// This is urgly, I know. At least this works so far with least efforts.
+	// A better and generic way obviously is to do DOM tree analysis.
 	dom := b.String()
 	tocStart := strings.Index(dom, "<p><strong>Table of Contents</strong></p>")
 	tocEnd := strings.Index(dom, `<h2 id="disclaimer">Disclaimer</h2>`)
 	toc := dom[tocStart:tocEnd]
 	dom = dom[:tocStart] + `<div class="doc-nav-mobile">` +
 		dom[tocStart:tocEnd] + `</div>` + dom[tocEnd:]
-
-	// remove all hard coded all back to top, use back to top button
 	dom = strings.ReplaceAll(dom, `<p><a href="#top">Back To Top</a></p>`, "")
 
 	type data struct {
