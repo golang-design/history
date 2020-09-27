@@ -479,6 +479,7 @@ The historical release notes may helpful for general information:
   + [cl/112990043](https://codereview.appspot.com/112990043/) runtime: fine-grained locking in select
   + [cl/110580043](https://codereview.appspot.com/110580043/) runtime: add fast paths to non-blocking channel operations
 - [issue/8898](https://golang.org/issue/8898) runtime: special case timer channels
+- [issue/37196](https://golang.org/issue/37196) time: make Timer/Ticker channels not receivable with old values after Stop or Reset returns
 - [issue/8903](https://golang.org/issue/8903) runtime: make chan-based generators faster.
 - [issue/21806](https://golang.org/issue/21806) fairness in select statement.
 
@@ -656,6 +657,10 @@ in Go 1.15 and Go 1.16.
   + [issue/12166](https://golang.org/issue/12166) proposal: testing: programmatic sub-test and sub-benchmark support
 - [design/gotest-bench](https://golang.org/design/14313-benchmark-format) Russ Cox, Austin Clements. Proposal: Go Benchmark Data Format. February 2016.
   + [issue/14313](https://golang.org/issue/14313) cmd/go: decide, document standard benchmark data format
+- [issue/20875](https://golang.org/issue/20875) testing: consider calling ReadMemStats less during benchmarking
+- [issue/27217](https://golang.org/issue/27217) testing: tiny benchmark with StopTimer runs forever
+- [issue/41637](https://golang.org/issue/41637) testing: benchmark iteration reports incorrectly
+- [issue/41641](https://golang.org/issue/41641) testing: inconsistent benchmark measurements when interrupts timer
 - [design/gotest-json](https://golang.org/design/2981-go-test-json) Nodir Turakulov. Proposal: -json flag in go test. 2016-09-14.
 - [design/testing-helper](https://golang.org/design/4899-testing-helper) Caleb Spare. Proposal: testing: better support test helper functions with TB.Helper. 2016-12-27
   + [issue/4899](https://golang.org/issue/4899) testing: add t.Helper to make file:line results more useful
@@ -1095,6 +1100,7 @@ x/image:
 
 - [cl/1](https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8) Brian Kernighan. Go's first commit. Jul 19, 1972.
 - [issue/9](https://golang.org/issue/9) I have already used the name for *MY* programming language. Nov 11, 2009
+- [issue/2870](https://golang.org/issue/2870) 9 is prime if it's a hot day. Feb 3, 2012
 - [doc/gophercount](https://research.swtch.com/gophercount) How Many Go Developers Are There?. November 1, 2019.
 - [discuss/google-owns-go](https://groups.google.com/forum/#!msg/golang-nuts/6dKNSN0M_kg/Y1yDJRwQBgAJ) Russ Cox's response on "Go is Google's language, not ours"
 
