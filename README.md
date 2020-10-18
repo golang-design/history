@@ -49,7 +49,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [ABI](#abi)
   - [Standard Library](#standard-library)
     - [syscall](#syscall)
-    - [io](#io)
+    - [os, io, io/fs](#os-io-iofs)
     - [go/*](#go)
     - [sync](#sync)
       - [Map](#map)
@@ -609,9 +609,9 @@ in Go 1.15 and Go 1.16.
 - [issue/13560](https://golang.org/issue/13560) proposal: build: define standard way to recognize machine-generated files
 - [discuss/generatedcode](https://golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
 - [design/goenv](https://golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
-  
   + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
+  + [issue/41184](https://golang.org/issue/41184) cmd/go: continue conversion to bug-resistant //go:build constraints
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
   - [issue/41191](https://golang.org/issue/41191#issuecomment-690887303) toolchain directives
@@ -837,9 +837,18 @@ guarantee sequential consistency.
 
 [Back To Top](#top)
 
-### io
+### os, io, io/fs
+
+In Go 1.16, tons of major rework and improvements surrounds the new `os/fs` package.
 
 - [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
+- [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
+- [issue/40025](https://golang.org/issue/40025) proposal: io/ioutil: move Discard, NopCloser, ReadAll to io
+- [issue/40027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
+- [issue/41190](https://golang.org/issue/41190) io/fs: add file system interfaces
+- [issue/41467](https://golang.org/issue/41467) os: add ReadDir method for lightweight directory reading
+- [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
+- [issue/42026](https://golang.org/issue/42026) proposal: os: add ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp & deprecate io/ioutil
 
 [Back To Top](#top)
 
@@ -889,6 +898,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 #### Mutex, RWMutex
 
 - [cl/4631059](https://golang.org/cl/4631059) runtime: replace Semacquire/Semrelease implementation.
+- [issue/9201](https://golang.org/issue/9201) proposal: sync: prohibit unlocking mutex in a different goroutine
 - [issue/13086](https://golang.org/issue/13086) runtime: fall back to fair locks after repeated sleep-acquire failures.
   + [cl/34310](https://golang.org/cl/34310) sync: make Mutex more fair
 - [issue/17973](https://golang.org/issue/17973) sync: RWMutex scales poorly with CPU count
