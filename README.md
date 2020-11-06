@@ -783,6 +783,13 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [issue/22350](https://golang.org/issue/22350) cmd/compile: compiler can unexpectedly preserve memory,
 - [issue/27993](https://golang.org/issue/27993) runtime: error message: P has cached GC work at end of mark termination
 - [issue/37116](https://golang.org/issue/37116) runtime: 10ms-26ms latency from GC in go1.14rc1, possibly due to 'GC (idle)' work
+- [issue/42430](https://golang.org/issue/42430) runtime: GC pacer problems meta-issue
+  + [issue/39983](https://golang.org/issue/39983) runtime: idle GC interferes with auto-scaling
+  + [issue/17969](https://golang.org/issue/17969) runtime: aggressive GC completion is disruptive to co-tenants
+  + [issue/14812](https://golang.org/issue/14812) runtime: GC causes latency spikes
+  + [issue/40460](https://golang.org/issue/40460) runtime: goroutines may allocate beyond the hard heap goal
+  + [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
+  + [issue/23044](https://golang.org/issue/23044) proposal: runtime: add a mechanism for specifying a minimum target heap size
 
 [Back To Top](#top)
 
@@ -790,7 +797,6 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [issue/16843](https://golang.org/issue/16843) runtime: mechanism for monitoring heap size
   + [cl/setmaxheap](https://go-review.googlesource.com/c/go/+/46751/) Austin Clements. runtime/debug: add SetMaxHeap API. Jun 26 2017.
-- [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
 - [design/go116runtime-metric](https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md) Michael Knyszek. Proposal: API for unstable runtime metrics. Mar 18, 2020.
 - [issue/19812](https://golang.org/issue/19812) runtime: cannot ReadMemStats during GC
 - [issue/38712](https://golang.org/issue/38712) runtime: TestMemStats is flaky
