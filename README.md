@@ -829,9 +829,13 @@ guarantee sequential consistency.
   + [issue/12416](https://golang.org/issue/12416) cmd/cgo: specify rules for passing pointers between Go and C
 - [design/internal-abi](https://golang.org/design/27539-internal-abi) Austin Clements. Proposal: Create an undefined internal calling convention. 2019-01-14.
   + [issue/27539](https://golang.org/issue/27539) proposal: runtime: make the ABI undefined as a step toward changing it.
+  + [issue/31193](https://golang.org/issue/31193) cmd/compile, runtime: reduce function prologue overhead
 - [design/register-call](https://golang.org/design/40724-register-calling) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
 - [issue/18597](https://golang.org/issue/18597) proposal: cmd/compile: define register-based calling convention
 - [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
+  + [cl/266638](https://golang.org/cl/266638) reflect,runtime: use internal ABI for selected ASM routines, attempt 2
+  + [cl/259445](https://golang.org/cl/259445) cmd/compile,cmd/link: initial support for ABI wrappers
+
 
 [Back To Top](#top)
 
