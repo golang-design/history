@@ -482,6 +482,9 @@ The historical release notes may helpful for general information:
 - [issue/37196](https://golang.org/issue/37196) time: make Timer/Ticker channels not receivable with old values after Stop or Reset returns
 - [issue/8903](https://golang.org/issue/8903) runtime: make chan-based generators faster.
 - [issue/21806](https://golang.org/issue/21806) fairness in select statement.
+- [issue/40410](https://golang.org/issue/40410) runtime: trim unnecessary fields from scase
+- [issue/40641](https://golang.org/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
+- [issue/37350](https://golang.org/issue/37350) reflect: Select panics if array length greater than 1<<16
 
 [Back To Top](#top)
 
