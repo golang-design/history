@@ -33,6 +33,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [Compiler](#compiler)
     - [Linker](#linker)
     - [Debugger](#debugger)
+    - [Race Detector](#race-detector)
     - [Tracer](#tracer)
     - [Lock Analysis](#lock-analysis)
     - [Builder](#builder)
@@ -49,7 +50,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [ABI](#abi)
   - [Standard Library](#standard-library)
     - [syscall](#syscall)
-    - [os, io, io/fs](#os-io-iofs)
+    - [os, io, io/fs, embed](#os-io-iofs-embed)
     - [go/*](#go)
     - [sync](#sync)
       - [Map](#map)
@@ -395,6 +396,7 @@ The historical release notes may helpful for general information:
   + [issue/29008](https://golang.org/issue/29008) proposal: Go 2: hexadecimal floats
 - [issue/33502](https://golang.org/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://golang.org/issue/33892) proposal: Go 2 review meeting minutes
+- [issue/19623](https://golang.org/issue/19623) proposal: spec: change int to be arbitrary precision
 
 [Back To Top](#top)
 
@@ -579,6 +581,12 @@ in Go 1.15 and Go 1.16.
 
 [Back To Top](#top)
 
+### Race Detector
+
+- [issue/42598](https://golang.org/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
+
+[Back To Top](#top)
+
 ### Tracer
 
 - [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov. Go Execution Tracer. Oct 2014
@@ -599,7 +607,7 @@ in Go 1.15 and Go 1.16.
   - [cl/231463](https://golang.org/cl/231463) runtime: add one extra lock ranking partial edge
   - [cl/233599](https://golang.org/cl/233599) runtime: add a lock partial order edge (assistQueue -> mspanSpecial)
   - [cl/236137](https://golang.org/cl/236137) runtime: add three new partial orders for lock ranking
-
+- [issue/40677](https://golang.org/issue/40677) runtime: lock held checking
 
 ### Builder
 
@@ -615,7 +623,6 @@ in Go 1.15 and Go 1.16.
   + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
 - [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
   + [issue/41184](https://golang.org/issue/41184) cmd/go: continue conversion to bug-resistant //go:build constraints
-- [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
 - Windows
   - [issue/41191](https://golang.org/issue/41191#issuecomment-690887303) toolchain directives
   + [discuss/win2000-golang-nuts](https://golang.org/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
@@ -793,6 +800,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [issue/40460](https://golang.org/issue/40460) runtime: goroutines may allocate beyond the hard heap goal
   + [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
   + [issue/23044](https://golang.org/issue/23044) proposal: runtime: add a mechanism for specifying a minimum target heap size
+- [issue/42642](https://golang.org/issue/42642) runtime: multi-ms sweep termination pauses (second edition)
 
 [Back To Top](#top)
 
@@ -850,7 +858,7 @@ guarantee sequential consistency.
 
 [Back To Top](#top)
 
-### os, io, io/fs
+### os, io, io/fs, embed
 
 In Go 1.16, tons of major rework and improvements surrounds the new `os/fs` package.
 
@@ -862,6 +870,10 @@ In Go 1.16, tons of major rework and improvements surrounds the new `os/fs` pack
 - [issue/41467](https://golang.org/issue/41467) os: add ReadDir method for lightweight directory reading
 - [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
 - [issue/42026](https://golang.org/issue/42026) proposal: os: add ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp & deprecate io/ioutil
+- [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
+  + [issue/41191](https://golang.org/issue/41191) embed, cmd/go: add support for embedded files
+  + [issue/42321](https://golang.org/issue/42321) embed: warn about dotfiles in embed.FS documentation
+  + [issue/42328](https://golang.org/issue/42328) proposal: cmd/go: avoid surprising inclusion of "hidden" files when using //go:embed
 
 [Back To Top](#top)
 
@@ -971,6 +983,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [doc/context-go-away](https://faiface.github.io/post/context-should-go-away-go2/) Michal Štrba. Context should go away for Go 2. 2017/08/06
 - [doc/context](https://blog.golang.org/context) Go Concurrency Patterns: Context.
 - [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
+- [issue/42564](https://golang.org/issue/42564) context: cancelCtx exclusive lock causes extreme contention
 
 [Back To Top](#top)
 
