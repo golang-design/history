@@ -851,20 +851,24 @@ guarantee sequential consistency.
 
 ### os, io, io/fs, embed
 
-In Go 1.16, tons of major rework and improvements surrounds the new `os/fs` package.
+In Go 1.16, tons of major rework and improvements surround the new `os/fs` package.
 
 - [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
-- [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
-- [issue/40025](https://golang.org/issue/40025) proposal: io/ioutil: move Discard, NopCloser, ReadAll to io
-- [issue/40027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
-- [issue/41190](https://golang.org/issue/41190) io/fs: add file system interfaces
-- [issue/41467](https://golang.org/issue/41467) os: add ReadDir method for lightweight directory reading
-- [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
-- [issue/42026](https://golang.org/issue/42026) proposal: os: add ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp & deprecate io/ioutil
+  + [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
+  + [issue/40025](https://golang.org/issue/40025) proposal: io/ioutil: move Discard, NopCloser, ReadAll to io
+  + [issue/40027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
+  + [issue/41190](https://golang.org/issue/41190) io/fs: add file system interfaces
+  + [issue/41467](https://golang.org/issue/41467) os: add ReadDir method for lightweight directory reading
+  + [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
+  + [issue/42026](https://golang.org/issue/42026) proposal: os: add ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp & deprecate io/ioutil
+  + [issue/43223](https://golang.org/issue/43223) proposal: io/fs, net/http: define interface for automatic ETag serving
 - [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
   + [issue/41191](https://golang.org/issue/41191) embed, cmd/go: add support for embedded files
   + [issue/42321](https://golang.org/issue/42321) embed: warn about dotfiles in embed.FS documentation
   + [issue/42328](https://golang.org/issue/42328) proposal: cmd/go: avoid surprising inclusion of "hidden" files when using //go:embed
+  + [issue/43216](https://golang.org/issue/43216) proposal: embed: remove support for embedding directives on local variables
+  + [issue/43217](https://golang.org/issue/43217) proposal: embed: define String and Bytes type aliases that must be used with //go:embed
+  + [issue/43218](https://golang.org/issue/43218) embed: resolve string, []byte issues
 
 [Back To Top](#top)
 
