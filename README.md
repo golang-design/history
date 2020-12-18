@@ -856,7 +856,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
 - [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
   + [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
   + [issue/40025](https://golang.org/issue/40025) proposal: io/ioutil: move Discard, NopCloser, ReadAll to io
-  + [issue/40027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
+  + [issue/42027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
   + [issue/41190](https://golang.org/issue/41190) io/fs: add file system interfaces
   + [issue/41467](https://golang.org/issue/41467) os: add ReadDir method for lightweight directory reading
   + [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
