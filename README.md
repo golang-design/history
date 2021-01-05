@@ -737,6 +737,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [cl/221182](https://golang.org/cl/221182) runtime: add new mcentral implementation
 - [issue/18155](https://golang.org/issue/18155) runtime: latency in sweep assists when there's no garbage
 - [issue/19112](https://golang.org/issue/19112) runtime: deadlock involving gcControllerState.enlistWorker
+- [issue/23687](https://golang.org/issue/23687) runtime: use MADV_FREE on linux as well
+  + [cl/135395](https://golang.org/cl/135395) runtime: use MADV_FREE on Linux if available
 - [issue/29707](https://golang.org/issue/29707) cmd/trace: failed to parse trace: no consistent ordering of events possible
 - [issue/35954](https://golang.org/issue/35954) runtime: handle hitting the top of the address space in the allocator more gracefully
 - [issue/37927](https://golang.org/issue/37927) runtime: GC pacing exhibits strange behavior with a low GOGC
@@ -749,6 +751,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/40191](https://golang.org/issue/40191) runtime: pageAlloc.searchAddr may point to unmapped memory in discontiguous heaps, violating its invariant
 - [issue/40457](https://golang.org/issue/40457) runtime: runqputbatch does not protect its call to globrunqputbatch
 - [issue/40641](https://golang.org/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
+- [issue/42330](https://golang.org/issue/42330) runtime: default to MADV_DONTNEED on Linux
+  + [cl/267100](https://golang.org/cl/267100) runtime: default to MADV_DONTNEED on Linux
 
 [Back To Top](#top)
 
