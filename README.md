@@ -509,6 +509,7 @@ The historical release notes may helpful for general information:
 - [discuss/generics-implementation](https://groups.google.com/g/golang-dev/c/OcW0ATRS4oM) Implementing Generics
 - [design/generics-implementation-stenciling](https://golang.org/design/generics-implementation-stenciling) Generics implementation - Stenciling
 - [design/generics-implementation-dictionaries](https://golang.org/design/generics-implementation-dictionaries) Generics implementation - Dictionaries
+- [issue/43651](https://golang.org/issue/43651) proposal: spec: add generic programming using type parameters
 
 [Back To Top](#top)
 
