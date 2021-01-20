@@ -161,7 +161,8 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Upspin. Gopherfest 2017. Jun 22, 2017.
   + [talk/rob2018a](https://www.youtube.com/watch?v=_2NI6t2r_Hs) The History of Unix. Nov 7, 2018.
   + [talk/rob2018b](https://www.youtube.com/watch?v=RIvL2ONhFBI) Go 2 Draft Specifications. Sydney Golang Meetup. Nov 13, 2018
-  + [talk/rob2019](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer. Sep 10, 2019.
+  + [talk/rob2019a](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer. Sep 10, 2019.
+  + [talk/rob2019b](https://www.youtube.com/watch?v=oU9cfQCxjpM) Rob Pike. A Brief History of Go. Dec 12, 2019.
   + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview. (Date Unclear) 2020.
 - Robert Griesemer. (Dr. Robert Griesemer) [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + Alma mater: ETH Zürich
