@@ -1074,9 +1074,6 @@ x/image:
 - [issue/11413](https://golang.org/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
 - [issue/11389](https://golang.org/issue/11389) x/image/tiff: excessive memory consumption
 - [issue/11386](https://golang.org/issue/11386) x/image/tiff: index out of range
-- [issue/38341](https://golang.org/issue/38341) x/image/webp: "non-Alpha VP8X is not implemented" error while doing DecodeConfig
-- [issue/11395](https://golang.org/issue/11395) x/image/webp: excessive memory consumption (2)
-- [issue/10790](https://golang.org/issue/10790) x/image/webp: excessive memory consumption
 - [issue/19672](https://golang.org/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
 - [issue/30902](https://golang.org/issue/30902) x/image/riff: Implement write functionality
 - [issue/29711](https://golang.org/issue/29711) x/image/bmp: support 1-bit format
