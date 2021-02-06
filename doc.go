@@ -110,6 +110,7 @@ const indexTemplate = `
 <nav class="doc-nav col-lg-3">{{.Navigation}}</nav>
 </div>
 <script src="dark.js"></script>
+<script async src="//changkun.de/urlstat/client.js"></script>
 </body>
 </html>
 `
