@@ -798,6 +798,9 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [issue/29696](https://golang.org/issue/29696) proposal: runtime: add way for applications to respond to GC backpressure
   + [issue/23044](https://golang.org/issue/23044) proposal: runtime: add a mechanism for specifying a minimum target heap size
 - [issue/42642](https://golang.org/issue/42642) runtime: multi-ms sweep termination pauses (second edition)
+- [issue/44163](https://golang.org/issue/44163) runtime: remove idle GC workers
+- [issue/44167](https://golang.org/issue/44167) runtime: GC pacer redesign
+- 
 
 [Back To Top](#top)
 
@@ -879,6 +882,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/43216](https://golang.org/issue/43216) proposal: embed: remove support for embedding directives on local variables
   + [issue/43217](https://golang.org/issue/43217) proposal: embed: define String and Bytes type aliases that must be used with //go:embed
   + [issue/43218](https://golang.org/issue/43218) embed: resolve string, []byte issues
+  + [issue/44166](https://golang.org/issue/44166) io/fs,os: fs.ReadDir with an os.DirFS can produce invalid paths
 
 [Back To Top](#top)
 
