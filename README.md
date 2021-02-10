@@ -1160,6 +1160,8 @@ It is also important to thank the continuing, inspiring discussion and sharing w
 
 The document would not be organized without all of the supports from them.
 
+![](https://changkun.de/urlstat?mode=github&repo=golang-design/history)
+
 [Back To Top](#top)
 
 ## License
