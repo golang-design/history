@@ -554,10 +554,11 @@ The historical release notes may helpful for general information:
 
 ### Linker
 
-The Go Linker was written by Ken Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
+The Go Linker was written by Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
 Cheery and many other brilliant brains, which was landed
 in Go 1.15 and Go 1.16.
 
+- [design/6l](https://github.com/golang/go/commit/0cafb9ea3d3d34627e8f492ccafa6ba9b633a213) Rob Pike. Add compiler source from inferno-os. 2008-06-05 
 - [design/go13linker](https://golang.org/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. Nov 2013.
 - [design/go116linker](https://golang.org/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
 
