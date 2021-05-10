@@ -521,6 +521,7 @@ The historical release notes may helpful for general information:
 
 ### Compiler
 
+- [code/gc0initial](https://github.com/golang/go/tree/cb87526ce3531557ccf69969de4c8018956b10b5/src/c) Ken Thompson. Go0 compiler initial version. 28 Mar 2008.
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
 - [design/go13compiler](https://golang.org/s/go13compiler) Russ Cox. Go 1.3+ Compiler Overhaul. December 2013
 - [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
@@ -560,7 +561,7 @@ The Go Linker was written by Ken Thompson. Russ led a few more overhaul in Go 1.
 Cheery and many other brilliant brains, which was landed
 in Go 1.15 and Go 1.16.
 
-- [design/6l](https://github.com/golang/go/commit/0cafb9ea3d3d34627e8f492ccafa6ba9b633a213) Rob Pike. Add compiler source from inferno-os. 2008-06-05 
+- [code/6l](https://github.com/golang/go/commit/0cafb9ea3d3d34627e8f492ccafa6ba9b633a213) Rob Pike. Add compiler source from inferno-os. 2008-06-05
 - [design/go13linker](https://golang.org/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. Nov 2013.
 - [design/go116linker](https://golang.org/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
 
