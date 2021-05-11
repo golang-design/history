@@ -367,8 +367,7 @@ The historical release notes may helpful for general information:
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
-  + [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification (March 7, 2008)
-  + [design/go0spec1](https://github.com/golang/go/blob/cb87526ce3531557ccf69969de4c8018956b10b5/doc/go_lang.txt) The Go Programming Language. Language Specification (March 28, 2008)
+- [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification (March 7, 2008)
 - [design/go0semicolon](https://golang.org/s/semicolon-proposal) Rob Pike. Semicolons in Go. Dec 10, 2009.
 - [design/go11func](https://golang.org/s/go11func) Russ Cox. Go 1.1 Function Calls. February 2013
 - [design/go11return](https://golang.org/s/go11return) Russ Cox. Go “Return at End of Function” Requirements. March 2013
