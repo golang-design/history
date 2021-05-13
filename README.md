@@ -367,6 +367,7 @@ The historical release notes may helpful for general information:
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
+- [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification (March 7, 2008)
 - [design/go0semicolon](https://golang.org/s/semicolon-proposal) Rob Pike. Semicolons in Go. Dec 10, 2009.
 - [design/go11func](https://golang.org/s/go11func) Russ Cox. Go 1.1 Function Calls. February 2013
 - [design/go11return](https://golang.org/s/go11return) Russ Cox. Go “Return at End of Function” Requirements. March 2013
@@ -519,6 +520,8 @@ The historical release notes may helpful for general information:
 
 ### Compiler
 
+- [code/gc0initial](https://github.com/golang/go/tree/cb87526ce3531557ccf69969de4c8018956b10b5/src/c) Ken Thompson. Go0 compiler initial version. 28 Mar 2008.
+- [code/6g](https://github.com/golang/go/commit/0cafb9ea3d3d34627e8f492ccafa6ba9b633a213) Rob Pike. the first complete Go0 compiler. 4 Jun 2008.
 - [design/go12symtab](https://golang.org/s/go12symtab) Russ Cox. Go 1.2 Runtime Symbol Information. July 2013.
 - [design/go13compiler](https://golang.org/s/go13compiler) Russ Cox. Go 1.3+ Compiler Overhaul. December 2013
 - [design/go14generate](https://golang.org/s/go1.4-generate) Rob Pike. Go generate: A Proposal
@@ -554,7 +557,7 @@ The historical release notes may helpful for general information:
 
 ### Linker
 
-The Go Linker was written by Ken Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
+The Go Linker was written by Ken Thompson. Russ led a few more overhaul in Go 1.3. Austin led a rework to the linker together with Keith, Than,
 Cheery and many other brilliant brains, which was landed
 in Go 1.15 and Go 1.16.
 
