@@ -391,6 +391,8 @@ The historical release notes may helpful for general information:
 - [issue/33502](https://golang.org/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://golang.org/issue/33892) proposal: Go 2 review meeting minutes
 - [issue/19623](https://golang.org/issue/19623) proposal: spec: change int to be arbitrary precision
+- [issue/19367](https://golang.org/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
+- [issue/40481](https://golang.org/issue/40481) unsafe: add Add function
 
 [Back To Top](#top)
 
@@ -513,6 +515,10 @@ The historical release notes may helpful for general information:
 - [design/generics-implementation-stenciling](https://golang.org/design/generics-implementation-stenciling) Generics implementation - Stenciling
 - [design/generics-implementation-dictionaries](https://golang.org/design/generics-implementation-dictionaries) Generics implementation - Dictionaries
 - [issue/43651](https://golang.org/issue/43651) proposal: spec: add generic programming using type parameters
+- [design/type-parameters3](https://golang.org/design/43651-type-parameters) Type Parameters Proposal
+- [issue/45346](https://golang.org/issue/45346) proposal: spec: generics: use type sets to remove type keyword in constraints
+- [issue/45955](https://golang.org/issue/45955) proposal: slices: new package to provide generic slice functions
+- [issue/46477](https://golang.org/issue/46477) proposal: spec: generics: type parameters on aliases
 
 [Back To Top](#top)
 
@@ -649,6 +655,8 @@ in Go 1.15 and Go 1.16.
   + [issue/25530](https://golang.org/issue/25530) proposal: cmd/go: secure releases with transparency log
 - [issue/23966](https://golang.org/issue/23966#issuecomment-377997161) why go.mod has its own bespoke syntax?
 - [design/lazy-gomod](https://golang.org/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
+- [issue/45713](https://golang.org/issue/45713) proposal: cmd/go: add a workspace mode
+  + [design/workspace](https://golang.org/design/45713-workspace) Proposal: Multi-Module Workspaces in cmd/go
 
 [Back To Top](#top)
 
@@ -702,6 +710,9 @@ in Go 1.15 and Go 1.16.
 - [issue/27345](https://golang.org/issue/27345) runtime: use parent goroutine's stack for new goroutines
 - [issue/28808](https://golang.org/issue/28808) runtime: scheduler work stealing slow for high GOMAXPROCS
 - [issue/32113](https://golang.org/issue/32113) runtime: optimization to reduce P churn.
+- [issue/44313](https://golang.org/issue/44313) runtime: stopped Ms can't become dedicated or fractional GC workers
+
+
 
 [Back To Top](#top)
 
@@ -804,7 +815,12 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/42642](https://golang.org/issue/42642) runtime: multi-ms sweep termination pauses (second edition)
 - [issue/44163](https://golang.org/issue/44163) runtime: remove idle GC workers
 - [issue/44167](https://golang.org/issue/44167) runtime: GC pacer redesign
-- 
+  + [design/gc-pacer-redesign](https://golang.org/design/44167-gc-pacer-redesign) GC Pacer Redesign
+- [issue/44309](https://golang.org/issue/44309) proposal: runtime/debug: user-configurable memory target
+  + [design/user-configurable-memory-target](https://golang.org/design/44309-user-configurable-memory-target) User-configurable memory target
+- [issue/45894](https://golang.org/issue/45894) runtime: mark termination is slow to restart mutator
+- [issue/45315](https://golang.org/issue/45315) runtime: runtime.GC can return without finishing sweep
+
 
 [Back To Top](#top)
 
@@ -870,7 +886,9 @@ guarantee sequential consistency.
 
 In Go 1.16, tons of major rework and improvements surround the new `os/fs` package.
 
-- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
+- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.]
+  + [issue/13473](https://golang.org/issue/13473) proposal: os: Stdin, Stdout and Stderr should be interfaces
+  + [issue/14106](https://golang.org/issue/14106) proposal: os: File should be an interface
   + [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
   + [issue/40025](https://golang.org/issue/40025) proposal: io/ioutil: move Discard, NopCloser, ReadAll to io
   + [issue/42027](https://golang.org/issue/40027) proposal: path/filepath: add WalkDir (Walk using DirEntry)
@@ -887,6 +905,8 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/43217](https://golang.org/issue/43217) proposal: embed: define String and Bytes type aliases that must be used with //go:embed
   + [issue/43218](https://golang.org/issue/43218) embed: resolve string, []byte issues
   + [issue/44166](https://golang.org/issue/44166) io/fs,os: fs.ReadDir with an os.DirFS can produce invalid paths
+  + [issue/42322](https://golang.org/issue/42322) io/fs: add func Sub(fsys FS, dir string) FS
+
 
 [Back To Top](#top)
 
@@ -979,6 +999,8 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
     + [cl/216198](https://golang.org/cl/216198) runtime: add goroutines returned by poller to local run queue
     + [cl/232199](https://golang.org/cl/232199) runtime: steal timers from running P's
     + [cl/232298](https://golang.org/cl/232298) runtime: reduce timer latency
+  - [issue/44343](https://golang.org/issue/44343) runtime: time.Sleep takes more time than expected
+  - [issue/44868](https://golang.org/issue/44868) time, runtime: zero duration timer takes 2 minutes to fire
 
 [Back To Top](#top)
 
@@ -1033,6 +1055,7 @@ metadata APIs to aware the color profile in an encoded image file.
   + [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
   + [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
   + [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
+- [issue/46395](https://golang.org/issue/46395) image/draw: increase performances by applying special case if mask is *image.Alpha
 
 <!--
 TODO: read all of these!
