@@ -25,7 +25,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [Slice (1.2)](#slice-12)
     - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
     - [Type alias (1.9)](#type-alias-19)
-    - [Defer (1.13)](#defer-113)
+    - [Defer (1.14)](#defer-114)
     - [Error values (1.13)](#error-values-113)
     - [Channel/Select](#channelselect)
     - [Generics](#generics)
@@ -427,7 +427,7 @@ The historical release notes may helpful for general information:
 
 [Back To Top](#top)
 
-### Defer (1.13)
+### Defer (1.14)
 
 - [design/open-defer](https://golang.org/design/34481-opencoded-defers) Dan Scales, Keith Randall, and Austin Clements. Proposal: Low-cost defers through inline code, and extra funcdata to manage the panic case. 2019-09-23
   + [issue/6980](https://golang.org/issue/6980) cmd/compile: allocate some defers in stack frames
