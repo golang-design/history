@@ -851,6 +851,11 @@ guarantee sequential consistency.
 - [doc/go2017russ](https://research.swtch.com/go2017#memory) Russ Cox. My Go Resolutions for 2017: Memory model. January 18, 2017.
 - [doc/atomic-bug](https://golang.org/pkg/sync/atomic/#pkg-note-BUG) Package atomic
 - [discuss/atomic-mem-order](https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ) specify the memory order guarantee provided by atomic Load/Store
+- [issue/37355](https://golang.org/issue/37355) runtime/race: running with -race misses races (mismatch with memory model)
+  - [cl/220419](https://golang.org/cl/220419) runtime: swap the order of raceacquire() and racerelease
+  - [issue/42598](https://golang.org/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
+  - [cl/271987](https://golang.org/cl/271987) runtime: check channel's elemsize before calling race detector
+  - [paper/fava2020fix] Fava, Daniel Schnetzer. "Finding and Fixing a Mismatch Between the Go Memory Model and Data-Race Detector." International Conference on Software Engineering and Formal Methods. Springer, Cham, 2020.
 
 
 [Back To Top](#top)
@@ -867,10 +872,6 @@ guarantee sequential consistency.
 - [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
   + [cl/266638](https://golang.org/cl/266638) reflect,runtime: use internal ABI for selected ASM routines, attempt 2
   + [cl/259445](https://golang.org/cl/259445) cmd/compile,cmd/link: initial support for ABI wrappers
-- [issue/37355](https://golang.org/issue/37355) runtime/race: running with -race misses races (mismatch with memory model)
-  - [cl/220419](https://golang.org/cl/220419) runtime: swap the order of raceacquire() and racerelease
-  - [issue/42598](https://golang.org/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
-  - [cl/271987](https://golang.org/cl/271987) runtime: check channel's elemsize before calling race detector
 
 [Back To Top](#top)
 
