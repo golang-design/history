@@ -1056,6 +1056,7 @@ metadata APIs to aware the color profile in an encoded image file.
   + [issue/18365](https://golang.org/issue/18365) image/png: no support for setting and retrieving the PPI/DPI
   + [cl/208559](https://golang.org/cl/208559) image: New metadata-aware read/write API
   + [cl/216799](https://golang.org/cl/216799) image: metadata API sketch
+- [issue/44808](https://golang.org/issue/44808) image, image/draw: add interfaces for using RGBA64 directly
 - [issue/46395](https://golang.org/issue/46395) image/draw: increase performances by applying special case if mask is *image.Alpha
 
 <!--
