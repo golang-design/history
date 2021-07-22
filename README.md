@@ -517,8 +517,14 @@ The historical release notes may helpful for general information:
 - [issue/43651](https://golang.org/issue/43651) proposal: spec: add generic programming using type parameters
 - [design/type-parameters3](https://golang.org/design/43651-type-parameters) Type Parameters Proposal
 - [issue/45346](https://golang.org/issue/45346) proposal: spec: generics: use type sets to remove type keyword in constraints
-- [issue/45955](https://golang.org/issue/45955) proposal: slices: new package to provide generic slice functions
 - [issue/46477](https://golang.org/issue/46477) proposal: spec: generics: type parameters on aliases
+- Standard packages using generics
+  + [issue/45458](https://golang.org/issue/45458) proposal: constraints: new package to define standard type parameter constraints
+  + [discuss/47319](https://github.com/golang/go/discussions/47319) proposal: constraints: new package to define standard type parameter constraints (discussion)
+  + [issue/45955](https://golang.org/issue/45955) proposal: slices: new package to provide generic slice functions
+  + [discuss/47203](https://github.com/golang/go/discussions/47203) proposal: slices: new package to provide generic slice functions (discussion)
+  + [discuss/47331](https://github.com/golang/go/discussions/47331) proposal: container/set: new package to provide a generic set type (discussion)
+  + [discuss/47330](https://github.com/golang/go/discussions/47330) proposal: maps: new package to provide generic map functions (discussion)
 
 [Back To Top](#top)
 
