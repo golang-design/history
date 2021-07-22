@@ -209,9 +209,9 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2018c](https://www.youtube.com/watch?v=F8nrpe0XWRg) Opening keynote: Go with Versions. GopherConSG 2018. May 5, 2018
   + [talk/russ2018d](https://www.youtube.com/watch?v=6wIP3rO6On8) Go 2 Drafts Announcement. Aug 28, 2018.
   + [talk/russ2019](https://www.youtube.com/watch?v=kNHo788oO5Y) On the Path to Go 2. GopherCon 2019. Aug 27, 2019.
-  + [talk/russ2020a](https://www.youtube.com/watch?v=AgR_mdC4Rs4) `go:build` design draft. Jun 30, 2020.
-  + [talk/russ2020b](https://www.youtube.com/watch?v=yx7lmuwUNv8) `io/fs` draft design. Jul 21, 2020.
-  + [talk/russ2020c](https://www.youtube.com/watch?v=rmS-oWcBZaI) `//go:embed` draft design. Jul 21, 2020.
+  + [talk/russ2020a](https://golang.org/s/go-build-video) `go:build` design draft. Jun 30, 2020.
+  + [talk/russ2020b](https://golang.org/s/draft-iofs-video) `io/fs` draft design. Jul 21, 2020.
+  + [talk/russ2020c](https://golang.org/s/draft-embed-video) `//go:embed` draft design. Jul 21, 2020.
 
 [Back To Top](#top)
 
@@ -624,7 +624,7 @@ in Go 1.15 and Go 1.16.
 - [discuss/generatedcode](https://golang.org/s/generatedcode) Rob Pike's Final Comments on Issue 13560
 - [design/goenv](https://golang.org/design/30411-env) Russ Cox. Proposal: go command configuration file. March 1, 2019
   + [issue/30411](https://golang.org/issue/30411) proposal: cmd/go: add go env -w to set default env vars
-- [design/go116build](https://golang.org/design/draft-gobuild) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
+- [design/go116build](https://golang.org/s/go-build-design​) Russ Cox. Bug-resistant build constraints — Draft Design. June 30, 2020.
   + [issue/41184](https://golang.org/issue/41184) cmd/go: continue conversion to bug-resistant //go:build constraints
 - Windows
   - [issue/41191](https://golang.org/issue/41191#issuecomment-690887303) toolchain directives
@@ -679,7 +679,7 @@ in Go 1.15 and Go 1.16.
 - [design/gotest-json](https://golang.org/design/2981-go-test-json) Nodir Turakulov. Proposal: -json flag in go test. 2016-09-14.
 - [design/testing-helper](https://golang.org/design/4899-testing-helper) Caleb Spare. Proposal: testing: better support test helper functions with TB.Helper. 2016-12-27
   + [issue/4899](https://golang.org/issue/4899) testing: add t.Helper to make file:line results more useful
-- [design/fuzzing](https://golang.org/design/draft-fuzzing) Katie Hockman. Design Draft: First Class Fuzzing
+- [design/fuzzing](https://golang.org/s/draft-fuzzing-design) Katie Hockman. Design Draft: First Class Fuzzing
 <!-- - Tool chain, benchseries/benchstat -->
 
 [Back To Top](#top)
@@ -837,8 +837,11 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 
 ### Memory model
 
-Go memory model is not well defined (yet), but atomic is likely to
-guarantee sequential consistency.
+The Go memory model consists the following parts:
+
+- Memory order regarding atomic operations
+- Memory order regarding the `sync` package APIs
+- Memory order regarding runtime mechanism (i.e. Object finalizer)
 
 - [doc/refmem](https://golang.org/ref/mem) Rob Pike and Russ Cox. The Go Memory Model. February 21, 2009.
 - [issue/4947]( https://golang.org/issue/4947) cmd/cc: atomic intrinsics
@@ -856,7 +859,11 @@ guarantee sequential consistency.
   - [issue/42598](https://golang.org/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
   - [cl/271987](https://golang.org/cl/271987) runtime: check channel's elemsize before calling race detector
   - [paper/fava2020fix] Fava, Daniel Schnetzer. "Finding and Fixing a Mismatch Between the Go Memory Model and Data-Race Detector." International Conference on Software Engineering and Formal Methods. Springer, Cham, 2020.
-
+- [doc/mm](https://research.swtch.com/mm) Russ Cox. Memory Models. June, 2021.
+  + [doc/hwmm](https://research.swtch.com/hwmm) Russ Cox. Hardware Memory Models. June 29, 2021.
+  + [doc/plmm](https://research.swtch.com/plmm) Russ Cox. Programming Language Memory Models. July 6, 2021.
+  + [doc/gomm](https://research.swtch.com/gomm) Russ Cox. Updating the Go Memory Model. July 12, 2021.
+  + [discuss/47141](https://github.com/golang/go/discussions/47141) Updating the Go memory model.
 
 [Back To Top](#top)
 
@@ -887,7 +894,7 @@ guarantee sequential consistency.
 
 In Go 1.16, tons of major rework and improvements surround the new `os/fs` package.
 
-- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.]
+- [design/draft-iofs](https://golang.org/design/draft-iofs) Russ Cox, Rob Pike. File System Interfaces for Go — Draft Design. July 2020.
   + [issue/13473](https://golang.org/issue/13473) proposal: os: Stdin, Stdout and Stderr should be interfaces
   + [issue/14106](https://golang.org/issue/14106) proposal: os: File should be an interface
   + [issue/19660](https://golang.org/issue/19660) proposal: io/ioutil: rename to io/fileio or similar
@@ -898,7 +905,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/41974](https://golang.org/issue/41974) proposal: io/fs, filepath: add more efficient Walk alternative
   + [issue/42026](https://golang.org/issue/42026) proposal: os: add ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp & deprecate io/ioutil
   + [issue/43223](https://golang.org/issue/43223) proposal: io/fs, net/http: define interface for automatic ETag serving
-- [design/go116embed](https://golang.org/design/draft-embed) Embedded files - Russ & Braid
+- [design/go116embed](https://golang.org/s/draft-embed-design) Embedded files - Russ & Braid
   + [issue/41191](https://golang.org/issue/41191) embed, cmd/go: add support for embedded files
   + [issue/42321](https://golang.org/issue/42321) embed: warn about dotfiles in embed.FS documentation
   + [issue/42328](https://golang.org/issue/42328) proposal: cmd/go: avoid surprising inclusion of "hidden" files when using //go:embed
