@@ -48,6 +48,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [Statistics](#statistics)
     - [Memory model](#memory-model)
     - [ABI](#abi)
+    - [Misc](#misc-1)
   - [Standard Library](#standard-library)
     - [syscall](#syscall)
     - [os, io, io/fs, embed](#os-io-iofs-embed)
@@ -62,7 +63,8 @@ which intents to offer a comprehensive reference of the Go history.
     - [context](#context)
     - [encoding](#encoding)
     - [image, x/image](#image-ximage)
-    - [misc](#misc-1)
+    - [Mobile](#mobile)
+    - [misc](#misc-2)
   - [Unclassified But Relevant Links](#unclassified-but-relevant-links)
   - [Fun Facts](#fun-facts)
   - [Acknowledgements](#acknowledgements)
@@ -888,6 +890,10 @@ The Go memory model consists the following parts:
 
 [Back To Top](#top)
 
+### Misc
+
+- [issue/20135](https://golang.org/issue/20135) runtime: shrink map as elements are deleted
+
 ## Standard Library
 
 ### syscall
@@ -1139,6 +1145,13 @@ x/image:
 - [issue/14436](https://golang.org/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
 - [issue/33990](https://golang.org/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
 - [issue/16904](https://golang.org/issue/16904) proposal: x/image packages to render TrueType fonts -->
+
+[Back To Top](#top)
+
+### Mobile
+
+- [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
+- [design/gobind](https://golang.org/s/) David Crawshaw. Binding Go and Java. July 2014
 
 [Back To Top](#top)
 
