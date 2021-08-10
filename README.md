@@ -303,7 +303,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - Bryan C. Mills. [GitHub](https://github.com/bcmills)
   + [talk/bryan2017](https://www.youtube.com/watch?v=C1EtfDnsdDs) Lightning Talk: An overview of sync.Map. GopherCon 2017. Jul 24, 2017.
   + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) Rethinking Classical Concurrency Patterns. GopherCon 2018. Sep 14, 2018
-- Steve Francia. [Website](https://spf13.com/) [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
+- Steve Francia. [Website](https://spf13.com/), [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
   + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) What Should A Modern Practical Programming Language Look Like. Landing Festival. April 4, 2019.
   + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) The Legacy Of Go. Go Lab. Oct 22, 2019.
 - Jonathan Amsterdam.
@@ -315,6 +315,11 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - Jay Conrod. [Website](https://jayconrod.com/), [Twitter](https://twitter.com/jayconrod)
 - Dave Cheney. [Website](https://dave.cheney.net/), [GitHub](https://github.com/davecheney), [Twitter](https://twitter.com/davecheney)
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
+- Fillippo Valsorda. [Website](https://filippo.io/), [GitHub](https://github.com/FiloSottile), [Twitter](https://twitter.com/FiloSottile)
+  + [talk/filo2016](https://www.youtube.com/watch?v=lhMhApWQp2E) From cgo back to Go. July 12, 2016
+  + [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) From Go to Rust without cgo. 
+  + [talk/filo2018](https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018) Why cgo is slow. CapitalGo 2018.
+  + [talk/speakerdeck](https://speakerdeck.com/filosottile?page=1)
 
 > more people and talks should be added...
 
