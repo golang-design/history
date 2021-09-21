@@ -331,7 +331,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - [talk/goteam2013](https://www.youtube.com/watch?v=p9VUCp98ay4) Fireside Chat with the Go Team. Google I/O 2013. May 18, 2013.
 - [talk/goteam2014](https://www.youtube.com/watch?v=u-kkf76TDHE) Inside the Gophers Studio with Blake Mizerany. GopherCon 2014. May 21, 2014
 - [talk/goteam2019](https://www.youtube.com/watch?v=3yghHvvZQmA) Meet the Authors: Go Language. Cloud Next '19. Apr 10, 2019.
-- [talk/goteam2020a](https://www.youtube.com/watch?v=gJxvkOHpTSM) GoLab 2020: Go Team AMA. Oct 22, 2020. 
+- [talk/goteam2020a](https://www.youtube.com/watch?v=gJxvkOHpTSM) GoLab 2020: Go Team AMA. Oct 22, 2020.
 - [talk/goteam2020b](https://www.youtube.com/watch?v=BNHwHLNLjLs) GopherCon 2020: Go Team AMA. Nov 16, 2020.
 
 [Back To Top](#top)
@@ -409,6 +409,10 @@ The historical release notes may helpful for general information:
 - [design/read-only-slices-russ](https://docs.google.com/document/d/1-NzIYu0qnnsshMBpMPmuO21qd8unlimHgKjRD9qwp2A/edit) Russ Cox. Evaluation of read-only slices. May 2013.
 - [design/go12slice](https://golang.org/s/go12slice) Russ Cox. Go Slice with Cap. June 2013.
 - [design/multidim-slice](https://golang.org/design/6282-table-data) Brendan Tracey. Proposal: Multi-dimensional slices. November 17th, 2016.
+- [issue/41239](https://golang.org/issue/41239) runtime: append growth sort of inconsistent and surprising
+- [discuss/why-slice-grow](https://groups.google.com/g/golang-nuts/c/UaVlMQ8Nz3o) slices grow at 25% after 1024 but why 1024?
+- [cl/347917](https://golang.org/cl/347917) runtime: make slice growth formula a bit smoother
+  + [doc/cl-347917-graph](https://docs.google.com/document/d/1JQvV6vyAYdHhIboY-zAwK06OXZjxHrUhOFeG38MuJ94/edit?resourcekey=0-L5OsHqwZZBxvjfK0dwsyVQ) Graphs for CL 347917
 
 [Back To Top](#top)
 
@@ -629,7 +633,6 @@ in Go 1.15 and Go 1.16.
 
 - [design/go13nacl](https://golang.org/s/go13nacl) Russ Cox. Go 1.3 Native Client Support. October 2013.
 - [design/gobuilder](http://golang.org/s/builderplan) Brad Fitzpatrick. Go Builder Plan. 2014-09-03.
-  
   + [discuss/gobuilder](https://groups.google.com/g/golang-dev/c/sdFD0-2Ed8k) Changing how builders run
 - [design/go14android](https://golang.org/s/go14android) David Crawshaw. Go support for Android. June 2014.
 - [design/go-generate](https://golang.org/s/go1.4-generate) Rob Pike. Go Generate. January 2014.
@@ -733,6 +736,10 @@ in Go 1.15 and Go 1.16.
 
 - [design/contigstack](https://golang.org/s/contigstacks) Contiguous stacks
 - [issue/17007](https://golang.org/issue/17007) runtime: fatal error: bad g->status in ready
+- [issue/18138](https://golang.org/issue/18138) runtime: new goroutines can spend excessive time in morestack
+  + [design/predict-stack-size](https://docs.google.com/document/d/1YDlGIdVTPnmUiTAavlZxBI1d9pwGQgZT7IKFKlIXohQ/edit#) Keith Randall. Determining a good starting stack size. 2021/08/18.
+  + [cl/341990](https://golang.org/cl/341990) runtime: predict stack sizing
+  + [cl/345889](https://golang.org/cl/345889) runtime: measure stack usage; start stacks larger if needed
 - [issue/26061](https://golang.org/issue/26061) runtime: g0 stack.lo is sometimes too low
 
 [Back To Top](#top)
@@ -831,6 +838,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [design/gc-pacer-redesign](https://golang.org/design/44167-gc-pacer-redesign) GC Pacer Redesign
 - [issue/44309](https://golang.org/issue/44309) proposal: runtime/debug: user-configurable memory target
   + [design/user-configurable-memory-target](https://golang.org/design/44309-user-configurable-memory-target) User-configurable memory target
+  + [design/soft-memory-limit](https://golang.org/design/48409-soft-memory-limit) Soft memory limit
 - [issue/45894](https://golang.org/issue/45894) runtime: mark termination is slow to restart mutator
 - [issue/45315](https://golang.org/issue/45315) runtime: runtime.GC can return without finishing sweep
 
@@ -1098,7 +1106,7 @@ These issues are discussion the current performance issue that exist in the curr
 - [issue/18098](https://golang.org/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
 - [issue/2362](https://golang.org/issue/2362) image/jpeg: chroma downsampling ratios are restricted
 - [issue/4341](https://golang.org/issue/4341) image/jpeg: correct for EXIF orientation?
-- [issue/10447](https://golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images? 
+- [issue/10447](https://golang.org/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images?
 - [issue/12202](https://golang.org/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
 - [issue/13614](https://golang.org/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
 - [issue/22170](https://golang.org/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
