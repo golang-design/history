@@ -900,6 +900,7 @@ The Go memory model consists the following parts:
 - [issue/40724](https://golang.org/issue/40724) proposal: switch to a register-based calling convention for Go functions
   + [cl/266638](https://golang.org/cl/266638) reflect,runtime: use internal ABI for selected ASM routines, attempt 2
   + [cl/259445](https://golang.org/cl/259445) cmd/compile,cmd/link: initial support for ABI wrappers
+- [design/internal-abi-spec](https://github.com/golang/go/blob/master/src/cmd/compile/abi-internal.md) Go internal ABI specification.
 
 [Back To Top](#top)
 
