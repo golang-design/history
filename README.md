@@ -166,6 +166,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2019a](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer. Sep 10, 2019.
   + [talk/rob2019b](https://www.youtube.com/watch?v=oU9cfQCxjpM) Rob Pike. A Brief History of Go. Dec 12, 2019.
   + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview. (Date Unclear) 2020.
+  + [talk/rob2021](https://www.youtube.com/watch?v=YXV7sa4oM4I) The Go Programming Language and Environment. John Lions Distinguished Lecture, UNSW, May 27, 2021.
 - Robert Griesemer. (Dr. Robert Griesemer) [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + Alma mater: ETH Zürich
   + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation.
