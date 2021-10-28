@@ -39,7 +39,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [Builder](#builder)
     - [Modules](#modules)
     - [gopls](#gopls)
-    - [Testing](#testing)
+    - [Testing](#testing-xperf)
   - [Runtime Core](#runtime-core)
     - [Scheduler](#scheduler)
     - [Execution Stack](#execution-stack)
@@ -537,6 +537,7 @@ The historical release notes may helpful for general information:
   + [discuss/47203](https://github.com/golang/go/discussions/47203) proposal: slices: new package to provide generic slice functions (discussion)
   + [discuss/47331](https://github.com/golang/go/discussions/47331) proposal: container/set: new package to provide a generic set type (discussion)
   + [discuss/47330](https://github.com/golang/go/discussions/47330) proposal: maps: new package to provide generic map functions (discussion)
+  + [issue/47657](https://golang.org/issue/47657) proposal: sync, sync/atomic: add PoolOf, MapOf, ValueOf
 
 [Back To Top](#top)
 
@@ -575,7 +576,8 @@ The historical release notes may helpful for general information:
 - [design/64align](https://golang.org/design/36606-64-bit-field-alignment) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
   + [issue/599](https://golang.org/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://golang.org/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
-- [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.]
+- [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
+- [issue/28262](https://golang.org/issue/28262) cmd/compile: feedback-guided optimization
 
 [Back To Top](#top)
 
@@ -683,7 +685,7 @@ in Go 1.15 and Go 1.16.
 
 [Back To Top](#top)
 
-### Testing
+### Testing, x/perf
 
 - [design/subtests](https://golang.org/design/12166-subtests) Marcel van Lohuizen. testing: programmatic sub-test and sub-benchmark support. September 2, 2015.
   + [issue/12166](https://golang.org/issue/12166) proposal: testing: programmatic sub-test and sub-benchmark support
@@ -697,6 +699,10 @@ in Go 1.15 and Go 1.16.
 - [design/testing-helper](https://golang.org/design/4899-testing-helper) Caleb Spare. Proposal: testing: better support test helper functions with TB.Helper. 2016-12-27
   + [issue/4899](https://golang.org/issue/4899) testing: add t.Helper to make file:line results more useful
 - [design/fuzzing](https://golang.org/s/draft-fuzzing-design) Katie Hockman. Design Draft: First Class Fuzzing
+- [issue/43744](https://golang.org/issue/43744) testing: benchmark unit properties
+- [issue/48803](https://golang.org/issue/48803) all: Go compiler/runtime performance monitoring system
+- [issue/49121](https://golang.org/issue/49121) x/perf/storage: support postgres for db
+
 <!-- - Tool chain, benchseries/benchstat -->
 
 [Back To Top](#top)
@@ -838,6 +844,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/44167](https://golang.org/issue/44167) runtime: GC pacer redesign
   + [design/gc-pacer-redesign](https://golang.org/design/44167-gc-pacer-redesign) GC Pacer Redesign
 - [issue/44309](https://golang.org/issue/44309) proposal: runtime/debug: user-configurable memory target
+- [issue/48409](https://golang.org/issue/48409) proposal: runtime/debug: soft memory limit
   + [design/user-configurable-memory-target](https://golang.org/design/44309-user-configurable-memory-target) User-configurable memory target
   + [design/soft-memory-limit](https://golang.org/design/48409-soft-memory-limit) Soft memory limit
 - [issue/45894](https://golang.org/issue/45894) runtime: mark termination is slow to restart mutator
