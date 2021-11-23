@@ -87,6 +87,8 @@ historical design, and here are some of the official sources:
 
 - [go.dev/blog](https://go.dev/blog)
 - [dev.golang.org](https://dev.golang.org)
+- [build.golang.org](https://build.golang.org/)
+- [farmer.golang.org](https://farmer.golang.org/)
 - [go.dev/talks](https://go.dev/talks)
 - [go.dev/doc](https://go.dev/doc)
 - [go.dev/pkg](https://go.dev/pkg)
@@ -384,8 +386,8 @@ The historical release notes may helpful for general information:
 - [design/go11return](https://go.dev/s/go11return) Russ Cox. Go “Return at End of Function” Requirements. March 2013
 - [design/go12nil](https://go.dev/s/go12nil) Russ Cox. Go 1.2 Field Selectors and Nil Checks. July 2013.
 - [doc/go13todo](https://go.dev/s/go13todo) Go 1.3 “To Do” List
-- [doc/goatgoogle](https://talks.golang.org/2012/splash.article#TOC_12.) Rob Pike. Go at Google - Language Semantics. October 25, 2012.
-- [doc/makego](https://talks.golang.org/2015/how-go-was-made.slide)  Andrew Gerrand. How Go was Made. 9 July 2015.
+- [doc/goatgoogle](https://go.dev/talks/2012/splash.article#TOC_12.) Rob Pike. Go at Google - Language Semantics. October 25, 2012.
+- [doc/makego](https://go.dev/talks/2015/how-go-was-made.slide)  Andrew Gerrand. How Go was Made. 9 July 2015.
 - [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Russ Cox. Go 1 Preview.
 - [design/overlapping-interfaces](https://go.dev/design/6977-overlapping-interfaces) Robert Griesemer. Proposal: Permit embedding of interfaces with overlapping method sets. 2019-10-16
   + [issue/6977](https://go.dev/issue/6977) spec: allow embedding overlapping interfaces
@@ -438,7 +440,7 @@ The historical release notes may helpful for general information:
   + [issue/16339](https://go.dev/issue/16339) proposal: Alias declarations for Go
   + [issue/18130](https://go.dev/issue/18130) all: support gradual code repair while moving a type between packages
 - [talk/refactor-video](https://www.youtube.com/watch?v=h6Cw9iCDVcU) Russ Cox. Codebase Refactoring (with help from Go). GothamGo 2016. November 18, 2016.
-  + [doc/refactor](https://talks.golang.org/2016/refactor.article) Russ Cox. Codebase Refactoring (with help from Go).
+  + [doc/refactor](https://go.dev/talks/2016/refactor.article) Russ Cox. Codebase Refactoring (with help from Go).
 
 [Back To Top](#top)
 
