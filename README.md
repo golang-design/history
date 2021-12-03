@@ -1179,7 +1179,7 @@ x/image:
 ### Mobile
 
 - [design/go14android](https://go.dev/s/go14android) David Crawshaw. Go support for Android. June 2014.
-- [design/gobind](https://go.dev/s/) David Crawshaw. Binding Go and Java. July 2014
+- [design/gobind](https://go.dev/s/gobind) David Crawshaw. Binding Go and Java. July 2014
 
 [Back To Top](#top)
 
