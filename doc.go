@@ -8,7 +8,6 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/yuin/goldmark/parser"
 	"html/template"
 	"io/ioutil"
 	"log"
