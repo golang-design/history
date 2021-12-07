@@ -3,12 +3,12 @@
 
 > 英文原版：[https://golang.design/history/](https://golang.design/history/)，来自 Changkun Ou 及其他贡献者
 
-> 此翻译文档可能更新不即使，您可以查看英文原版获得最新更新。
+> 此翻译文档可能更新不及时，您可以查看英文原版获得最新更新。
 
 
 此文档收集了Go语言开发过程中公开的讨论及提案，以全面地展现Go语言发展历史。
 
-
+<a id="top"></a>
 
 **Table of Contents**
 
@@ -80,6 +80,7 @@
 - 非常欢迎关于新内容、错误修复、拼写修复的合并请求
 - 使用 Github Issue 进行讨论
 
+[Back To Top](#top)
 
 
 ## 资料来源
@@ -98,6 +99,7 @@
 - [groups.google.com/g/golang-dev](https://groups.google.com/g/golang-dev)
 - [groups.google.com/g/golang-tools](https://groups.google.com/g/golang-tools)
 
+[Back To Top](#top)
 
 
 ## 起源
@@ -110,6 +112,7 @@ Go 的起源很吸引人。通过这些人举办的讲座，您可以了解到�
 例如，您可以选择这些有关 Go 历史壮举的讲座作为起点（仅建议）：talk/rob2007, talk/rob2009, talk/rob2010b, talk/rob2010d, talk/rob2011a, talk/rob2013a, talk/rob2019, talk/robert2015, talk/russ2014, steve2019b, etc.
 > YouTube 视频。
 
+[Back To Top](#top)
 
 
 ## 贡献者
@@ -214,6 +217,7 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
    - [talk/russ2020b](https://golang.org/s/draft-iofs-video) os/fs 包设计草稿。2020年7月21日。
    - [talk/russ2020c](https://golang.org/s/draft-embed-video) //go:embed 包设计草稿。2020年7月21日。
 
+[Back To Top](#top)
 
 
 ### 编译运行时团队
@@ -377,10 +381,11 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
    - [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) 不使用 cgo，从 Go 到 Rust。
    - [talk/filo2018](https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018) 为什么 cgo 太慢。2018年 CapitalGo。
    - [talk/speakerdeck](https://speakerdeck.com/filosottile?page=1)
+   
 
+> 更多人和谈话应该被添加……
 
-
-更多人和谈话应该被添加……
+[Back To Top](#top)
 
 
 ### 小组会谈
@@ -392,6 +397,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [talk/goteam2020a](https://www.youtube.com/watch?v=gJxvkOHpTSM) 2020年 GoLab：Go 团队问答。2020年10月22日。
 - [talk/goteam2020b](https://www.youtube.com/watch?v=BNHwHLNLjLs) 2020年 GopherCon：Go 团队问答。2020年11月16日。
 
+[Back To Top](#top)
 
 
 ## 时间线
@@ -423,6 +429,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [doc/go1prerelease](https://golang.org/doc/devel/pre_go1.html) Go 1 预发布历史
 - [doc/go0release](https://golang.org/doc/devel/weekly.html) 每周发布历史（Go 1 之前）
 
+[Back To Top](#top)
 
 
 ## 语言设计
@@ -456,6 +463,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/19367](https://golang.org/issue/19367) unsafe：添加 `Slice(ptr *T, len anyIntegerType) []T`
 - [issue/40481](https://golang.org/issue/40481) unsafe：添加函数
 
+[Back To Top](#top)
 
 
 ### 切片 (1.2)
@@ -469,6 +477,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [cl/347917](https://golang.org/cl/347917) 运行时：让切片增长公式更平滑。
    - [doc/cl-347917-graph](https://docs.google.com/document/d/1JQvV6vyAYdHhIboY-zAwK06OXZjxHrUhOFeG38MuJ94/edit?resourcekey=0-L5OsHqwZZBxvjfK0dwsyVQ) CL 347917 图表
 
+[Back To Top](#top)
 
 
 ### 包管理 (1.4, 1.5, 1.7)
@@ -480,6 +489,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/go17binarypkg](https://golang.org/design/2775-binary-only-packages) Russ Cox，提案：纯二进制包，2016年4月24日。
    - [issue/2775](https://golang.org/issue/2775) cmd/go：当二进制可用但源文件丢失。
 
+[Back To Top](#top)
 
 
 ### 类型别名 (1.9)
@@ -491,6 +501,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [talk/refactor-video](https://www.youtube.com/watch?v=h6Cw9iCDVcU) Russ Cox，重构代码库（在 Go 的帮助下）。2016年 GothamGo，2016年11月18日。
    - [doc/refactor](https://talks.golang.org/2016/refactor.article) Russ Cox，重构代码库（在 Go 的帮助下）。
 
+[Back To Top](#top)
 
 
 ### Defer (1.14)
@@ -505,6 +516,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
    - [issue/34530](https://golang.org/issue/34530) 规范：澄清何时调用 recover 停止 panic 
    - [cl/189377](https://golang.org/cl/189377) 规范：列举 recover 行为和递归 panic 的详情。 
 
+[Back To Top](#top)
 
 
 ### 错误值 (1.13)
@@ -533,6 +545,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/40776](https://golang.org/issue/40776) 提案：动态错误忽略的检测器
 - [issue/41198](https://golang.org/issue/41198) 提案：errors：添加 ErrUnimplemented 作为失败接口方法的标准方式。
 
+[Back To Top](#top)
 
 
 ### 通道、选择器
@@ -550,6 +563,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/40641](https://golang.org/issue/40641) 运行时，在堆栈收缩和通道发送/接受之间的竞争导致错误的 sudog 值
 - [issue/37350](https://golang.org/issue/37350) 反射：如果数组长度大于 1<< 16，请 panic
 
+[Back To Top](#top)
 
 
 ### 泛型
@@ -593,6 +607,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
    - [discuss/47330](https://github.com/golang/go/discussions/47330) 提案：maps：提供泛型 map 函数的新包（讨论）
    - [issue/47657](https://golang.org/issue/47657) 提案：sync，sync/atomic：添加 PoolOf, MapOf, ValueOf
 
+[Back To Top](#top)
 
 
 ## 编译工具链
@@ -632,6 +647,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) gccgo 的简要概述，“另一个” Go 编译器。2015年8月6日。
 - [issue/28262](https://golang.org/issue/28262) cmd/compile：反馈导向优化
 
+[Back To Top](#top)
 
 
 ### 连接器
@@ -640,6 +656,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 
 - [design/go116linker](https://golang.org/s/better-linker) Austin Clements，构建更好的 Go 连接器，2019年9月12日。
 
+[Back To Top](#top)
 
 
 ### 调试器
@@ -652,12 +669,14 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [design/profiler-labels](https://golang.org/design/17280-profile-labels) Michael Matloob，提案：支持 pprof 探查器标签，2017年3月15日。
    - [issue/17280](https://golang.org/issue/17280) pprof：添加探查器标签支持
 
+[Back To Top](#top)
 
 
 ### 竞争检测器
 
 - [issue/42598](https://golang.org/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
 
+[Back To Top](#top)
 
 
 ### 跟踪器
@@ -665,6 +684,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [design/go15trace](https://golang.org/s/go15trace) Dmitry Vyukov，Go 执行跟踪器，2014年10月。
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@，跟踪事件格式，2016年10月。
 
+[Back To Top](#top)
 
 
 ### 锁分析
@@ -682,6 +702,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
    - [cl/236137](https://golang.org/cl/236137) 运行时：为锁排名3个新的 partial orders
 - [issue/40677](https://golang.org/issue/40677) 运行时：锁保持检查
 
+[Back To Top](#top)
 
 
 ### 构建
@@ -703,6 +724,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol，Go WebAssembly 的架构。2018年2月28日。
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly 程序文件
 
+[Back To Top](#top)
 
 
 ### 模块
@@ -729,12 +751,14 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/45713](https://go.dev/issue/45713) 提案：cmd/go: 添加工作区模式
    - [design/workspace](https://go.dev/design/45713-workspace) 提案：cmd/go 多模块工作区
 
+[Back To Top](#top)
 
 
 ### gopls
 
 - [design/gopls-workspace](https://go.dev/design/37720-gopls-workspaces) Heschi Kreinick, Rebecca Stambler，提案：多项目 gopls 工作区，2020年3月9日。
 
+[Back To Top](#top)
 
 
 ### 测试，x/perf
@@ -755,6 +779,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/48803](https://go.dev/issue/48803) 所有：Go 编译/运行时性能监控系统。
 - [issue/49121](https://go.dev/issue/49121) x/perf/storage：支持 postgresql。
 
+[Back To Top](#top)
 
 
 ## 运行时核心
@@ -785,6 +810,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/44313](https://go.dev/issue/44313) 运行时：已停止的Ms不能成为专用或小数的GC工作者。
 
 
+[Back To Top](#top)
 
 ### 执行栈
 
@@ -797,6 +823,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/26061](https://go.dev/issue/26061) 运行时：g0 stack.lo 有时太慢
 
 
+[Back To Top](#top)
 
 ### 内存分配器
 Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcmallor 的内存分配器，mcache 缓存在 M 上。然后他修改了分配器，允许使用 16GB 的内存，后来到了128GB。然而，分配器（包括收集器）有很严重的锁竞争，且不可伸缩。在 Dmitry 的可伸缩运行时调度器后，分配器可以直接从P锁竞争中分配（更少）。同时，收集器从独立线程迁移到系统监视器线程。现在，Michael 正致力于提高内存分配器的可伸缩性，例如将收集器迁移到用户线程，基于位图的页分配器，可伸缩的 mcentral。
@@ -837,6 +864,7 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
    - [cl/267100](https://go.dev/cl/267100) 运行时：在 Linux 上默认为 MADV_DONTNEED
 
 
+[Back To Top](#top)
 
 ### 垃圾收集器
 
@@ -889,6 +917,7 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/45315](https://go.dev/issue/45315) 运行时：runtime.GC 无需完成扫描就能返回。
 
 
+[Back To Top](#top)
 
 ### 统计
 
@@ -900,6 +929,7 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/40459](https://go.dev/issue/40459) 运行时：在循环中调用 ReadMemStats 可能阻止GC
 
 
+[Back To Top](#top)
 
 ### 内存模型
 Go内存模型包含以下方面：
@@ -930,6 +960,7 @@ Go内存模型包含以下方面：
    - [discuss/47141](https://github.com/golang/go/discussions/47141) 更新Go内存模型。
 
 
+[Back To Top](#top)
 
 ### ABI
 
@@ -944,11 +975,16 @@ Go内存模型包含以下方面：
    - [cl/266638](https://go.dev/cl/266638) 反射、运行时：为 ASM 例程使用内部 ABI，第二次尝试。
    - [cl/259445](https://go.dev/cl/259445) cmd/compile,cmd/link: 为ABI包装器的初始支持
 - [design/internal-abi-spec](https://github.com/golang/go/blob/master/src/cmd/compile/abi-internal.md) Go 内部ABI规范。
+
+[Back To Top](#top)
+
+
 ### Misc
 
 - [issue/20135](https://go.dev/issue/20135) 运行时：删除元素时map收缩。
 
 
+[Back To Top](#top)
 
 ## 标准库
 ### syscall
@@ -956,6 +992,7 @@ Go内存模型包含以下方面：
 - [design/go14syscall](https://go.dev/s/go1.4-syscall) syscal 包。
 
 
+[Back To Top](#top)
 
 ### os, io, io/fs, embed
 Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
@@ -982,6 +1019,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [issue/42322](https://go.dev/issue/42322) io/fs: 添加函数 `Sub(fsys FS, dir string) FS`
 
 
+[Back To Top](#top)
 
 ### go/*
 
@@ -991,6 +1029,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [cl/134935](https://go.dev/cl/134935) go/analysis: 分析工具的新的应用接口
 
 
+[Back To Top](#top)
 
 ### sync
 
@@ -999,6 +1038,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/37142](https://go.dev/issue/37142) sync: sync 包里的收缩类型
 
 
+[Back To Top](#top)
 
 #### Map
 
@@ -1008,6 +1048,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/37033](https://go.dev/issue/37033) 运行时：提供集中的工具来管理 go/cgo 的指针句柄
 
 
+[Back To Top](#top)
 
 #### Pool
 
@@ -1024,6 +1065,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/24479](https://go.dev/issue/24479) sync: 在池操作里去除全部 Mutex。
 
 
+[Back To Top](#top)
 
 #### Mutex, RWMutex
 
@@ -1035,6 +1077,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [cl/215361](https://go.dev/cl/215361) sync: 实现能够避免缓存竞争的 RWMutex 版本。
 
 
+[Back To Top](#top)
 
 #### Groups
 
@@ -1044,6 +1087,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [issue/25448](https://go.dev/issue/25448) 提案：将`panic(nil)`改为非空的panic值。
 
 
+[Back To Top](#top)
 
 #### atomic
 
@@ -1054,6 +1098,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/37262](https://go.dev/issue/37262) 运行时：在32位架构上不能原子性地访问 tiny-allocated 结构的第一个字。
 
 
+[Back To Top](#top)
 
 ### time
 
@@ -1077,6 +1122,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [issue/44868](https://go.dev/issue/44868) time, runtime: 零间隔的计时器需要2分钟才能启动。
 
 
+[Back To Top](#top)
 
 ### context
 
@@ -1095,6 +1141,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/42564](https://go.dev/issue/42564) context: cancelCtx 独占锁导致极端的竞争。
 
 
+[Back To Top](#top)
 
 ### encoding
 
@@ -1110,6 +1157,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [issue/26756](https://go.dev/issue/26756) 提案: encoding/xml: 添加 RawXML 令牌。
 
 
+[Back To Top](#top)
 
 ### image, x/image
 以下的讨论关于颜色管理和图片标准库。现在，Go图片库不会在编码和解码期间读取或写入元信息。因此，在处理图片时（例如在非线性 sRGB 空间中缩放），颜色可能出错。通用解决方案是设计图片元数据API，来识别编码图片文件中的颜色配置文件。
@@ -1128,6 +1176,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [issue/46395](https://go.dev/issue/46395) image/draw: 如果掩码是 *image.Alpha，通过使用特殊情况来提升性能。
 
 
+[Back To Top](#top)
 
 ### Mobile
 
@@ -1135,6 +1184,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [design/gobind](https://go.dev/s/gobind) David Crawshaw，绑定Go和Java，2014年7月。
 
 
+[Back To Top](#top)
 
 ### misc
 
@@ -1152,6 +1202,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
    - [issue/26160](https://go.dev/issue/26160) 提案：将 DNS 文本记录用于虚导入路径
 
 
+[Back To Top](#top)
 
 ## 未分类但相关的链接
 
@@ -1173,6 +1224,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
 
 
+[Back To Top](#top)
 
 ## 有趣的事实
 
@@ -1183,6 +1235,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 - [discuss/google-owns-go](https://groups.google.com/forum/#!msg/golang-nuts/6dKNSN0M_kg/Y1yDJRwQBgAJ) Russ Cox 关于“Go是谷歌的语言，不是我们的语言”的回应。
 
 
+[Back To Top](#top)
 
 ## 鸣谢
 首先感谢 [TalkGo](https://github.com/talkgo) 社区创建者 [Mai Yang](https://github.com/yangwenmai) 对 [golang.design](https://golang.design/) 倡议的大力推动。他创建的 TalkGo 极大地改变了中国的 Go 社区。他也是一个伟大的人，积极为各种与 Go 相关的项目作贡献。
@@ -1193,6 +1246,7 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 
 如果没有他们的支持，此文档无法完成。
 
+[Back To Top](#top)
 
 ## 凭证
 [golang.design/history](https://github.com/golang-design/history) | CC-BY-NC-ND 4.0 © [changkun](https://changkun.de/)
