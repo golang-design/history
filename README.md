@@ -70,6 +70,8 @@ which intents to offer a comprehensive reference of the Go history.
   - [Acknowledgements](#acknowledgements)
   - [License](#license)
 
+---
+
 ## Disclaimer
 
 - Most of the texts are written as _subjective_ understanding based on public sources
