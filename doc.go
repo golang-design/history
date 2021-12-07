@@ -48,8 +48,8 @@ func main() {
 	index := convertMD("README.md")
 	parseTemplate("en", "index", index)
 
-	cn := convertMD("README_zh-Hans.md", parser.WithContext(pctx))
-	parseTemplate("zh-Hans", "zh-Hans", cn)
+	cn := convertMD("README_cn.md", parser.WithContext(pctx))
+	parseTemplate("cn", "cn", cn)
 
 	fmt.Println("golang-design/history: A Documentary of Go")
 }
@@ -127,7 +127,7 @@ const indexTemplate = `
 		<label>
    			<select Onchange="window.open(this.options[this.selectedIndex].value,target='_self')">
 	 		<option value="index.html">English</option>
-	 		<option {{.Selected}} value="zh-Hans.html">简体中文</option>
+	 		<option {{.Selected}} value="cn.html">简体中文</option>
       		</select>
 		</label>
     </div>
