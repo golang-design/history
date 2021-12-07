@@ -1248,5 +1248,5 @@ Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
 
 [Back To Top](#top)
 
-## 凭证
+## 许可
 [golang.design/history](https://github.com/golang-design/history) | CC-BY-NC-ND 4.0 © [changkun](https://changkun.de/)
