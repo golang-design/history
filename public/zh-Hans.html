@@ -1,0 +1,1537 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80889616-4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-80889616-4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go: A Documentary</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header row">
+	<div class="col-3 dark-switch">
+		<label>
+   			<select Onchange="window.open(this.options[this.selectedIndex].value,target='_self')">
+	 		<option value="index.html">English</option>
+	 		<option selected value="zh-Hans.html">简体中文</option>
+      		</select>
+		</label>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-3 dark-switch">
+    <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+    </div>
+    </div>
+</div>
+<div id="btt"><a href="#top">⬆</a></div>
+<div id="container" class="row">
+<div class="doc-content col-lg-9"><h1 id="Go+%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2">Go 语言历史</h1>
+<blockquote>
+<p>英文原版：<a href="https://golang.design/history/">https://golang.design/history/</a>，来自 Changkun Ou 及其他贡献者</p>
+</blockquote>
+<blockquote>
+<p>此翻译文档可能更新不即使，您可以查看英文原版获得最新更新。</p>
+</blockquote>
+<p>此文档收集了Go语言开发过程中公开的讨论及提案，以全面地展现Go语言发展历史。</p>
+<div class="doc-nav-mobile"><p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#Go+%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2">Go 语言历史</a>
+<ul>
+<li><a href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E">免责声明</a></li>
+<li><a href="#%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90">资料来源</a></li>
+<li><a href="#%E8%B5%B7%E6%BA%90">起源</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a>
+<ul>
+<li><a href="#%E6%A0%B8%E5%BF%83%E4%BD%9C%E8%80%85">核心作者</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%97%B6%E5%9B%A2%E9%98%9F">编译运行时团队</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%84%E4%BC%9A%E8%B0%88">小组会谈</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%B6%E9%97%B4%E7%BA%BF">时间线</a></li>
+<li><a href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1">语言设计</a>
+<ul>
+<li><a href="#Misc">Misc</a></li>
+<li><a href="#%E5%88%87%E7%89%87+%281.2%29">切片 (1.2)</a></li>
+<li><a href="#%E5%8C%85%E7%AE%A1%E7%90%86+%281.4%2C+1.5%2C+1.7%29">包管理 (1.4, 1.5, 1.7)</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D+%281.9%29">类型别名 (1.9)</a></li>
+<li><a href="#Defer+%281.14%29">Defer (1.14)</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E5%80%BC+%281.13%29">错误值 (1.13)</a></li>
+<li><a href="#%E9%80%9A%E9%81%93%E3%80%81%E9%80%89%E6%8B%A9%E5%99%A8">通道、选择器</a></li>
+<li><a href="#%E6%B3%9B%E5%9E%8B">泛型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE">编译工具链</a>
+<ul>
+<li><a href="#%E7%BC%96%E8%AF%91">编译</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E5%99%A8">连接器</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E5%99%A8">调试器</a></li>
+<li><a href="#%E7%AB%9E%E4%BA%89%E6%A3%80%E6%B5%8B%E5%99%A8">竞争检测器</a></li>
+<li><a href="#%E8%B7%9F%E8%B8%AA%E5%99%A8">跟踪器</a></li>
+<li><a href="#%E9%94%81%E5%88%86%E6%9E%90">锁分析</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA">构建</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97">模块</a></li>
+<li><a href="#gopls">gopls</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%EF%BC%8Cx%2Fperf">测试，x/perf</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%B8%E5%BF%83">运行时核心</a>
+<ul>
+<li><a href="#%E8%B0%83%E5%BA%A6%E5%99%A8">调度器</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E6%A0%88">执行栈</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%99%A8">内存分配器</a></li>
+<li><a href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8">垃圾收集器</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1">统计</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B">内存模型</a></li>
+<li><a href="#ABI">ABI</a></li>
+<li><a href="#Misc">Misc</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%87%E5%87%86%E5%BA%93">标准库</a>
+<ul>
+<li><a href="#syscall">syscall</a></li>
+<li><a href="#os%2C+io%2C+io%2Ffs%2C+embed">os, io, io/fs, embed</a></li>
+<li><a href="#go%2F%2A">go/*</a></li>
+<li><a href="#sync">sync</a>
+<ul>
+<li><a href="#Map">Map</a></li>
+<li><a href="#Pool">Pool</a></li>
+<li><a href="#Mutex%2C+RWMutex">Mutex, RWMutex</a></li>
+<li><a href="#Groups">Groups</a></li>
+<li><a href="#atomic">atomic</a></li>
+</ul>
+</li>
+<li><a href="#time">time</a></li>
+<li><a href="#context">context</a></li>
+<li><a href="#encoding">encoding</a></li>
+<li><a href="#image%2C+x%2Fimage">image, x/image</a></li>
+<li><a href="#Mobile">Mobile</a></li>
+<li><a href="#misc">misc</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%AA%E5%88%86%E7%B1%BB%E4%BD%86%E7%9B%B8%E5%85%B3%E7%9A%84%E9%93%BE%E6%8E%A5">未分类但相关的链接</a></li>
+<li><a href="#%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BA%8B%E5%AE%9E">有趣的事实</a></li>
+<li><a href="#%E9%B8%A3%E8%B0%A2">鸣谢</a></li>
+<li><a href="#%E5%87%AD%E8%AF%81">凭证</a></li>
+</ul>
+</li>
+</ul>
+</div><hr>
+<h2 id="%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E">免责声明</h2>
+<ul>
+<li>很多内容是对于公开信息的主观理解</li>
+<li>可能出现实际错误或拼写错误。如果某些内容和您的观点相违背，请参考原始链接</li>
+<li>非常欢迎关于新内容、错误修复、拼写修复的合并请求</li>
+<li>使用 Github Issue 进行讨论</li>
+</ul>
+<h2 id="%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90">资料来源</h2>
+<p>有很多探索Go历史设计的平台，以下是这些平台的官方网站：</p>
+<ul>
+<li><a href="https://blog.golang.org/">blog.golang.org</a></li>
+<li><a href="https://dev.golang.org/">dev.golang.org</a></li>
+<li><a href="https://talks.golang.org/">talks.golang.org</a></li>
+<li><a href="https://golang.org/doc">golang.org/doc</a></li>
+<li><a href="https://golang.org/pkg">golang.org/pkg</a></li>
+<li><a href="https://github.com/golang/go">github.com/golang/go</a></li>
+<li><a href="https://github.com/golang/proposal">github.com/golang/proposal</a></li>
+<li><a href="https://github.com/golang/go/wiki">github.com/golang/go/wiki</a></li>
+<li><a href="https://go-review.googlesource.com/">go-review.googlesource.com</a></li>
+<li><a href="https://groups.google.com/g/golang-nuts">groups.google.com/g/golang-nuts</a></li>
+<li><a href="https://groups.google.com/g/golang-dev">groups.google.com/g/golang-dev</a></li>
+<li><a href="https://groups.google.com/g/golang-tools">groups.google.com/g/golang-tools</a></li>
+</ul>
+<h2 id="%E8%B5%B7%E6%BA%90">起源</h2>
+<p>Go 是由一个小组织以及语言社区的用户推动的。以下是一些核心贡献者，你可能会对他们杰出的工作感兴趣。</p>
+<p>Go 的起源很吸引人。通过这些人举办的讲座，您可以了解到相关的口述历史和有趣的故事。</p>
+<p>例如，您可以选择这些有关 Go 历史壮举的讲座作为起点（仅建议）：talk/rob2007, talk/rob2009, talk/rob2010b, talk/rob2010d, talk/rob2011a, talk/rob2013a, talk/rob2019, talk/robert2015, talk/russ2014, steve2019b, etc.</p>
+<blockquote>
+<p>YouTube 视频。</p>
+</blockquote>
+<h2 id="%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</h2>
+<h3 id="%E6%A0%B8%E5%BF%83%E4%BD%9C%E8%80%85">核心作者</h3>
+<p>Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编译时间， 而 Ken 刚好在隔壁办公室。之后 Ian 因为兴趣加入了这个项目，编写了 <a href="https://github.com/golang/gofrontend">gccgo</a>。Rob 和 Ken 退休后，Robert 和 Ian 目前为 Go 添加通用方法。Russ 也是早期的核心贡献者，那时候他是谷歌的新人，Rob 从 <a href="https://9p.io/plan9/">Plan 9</a> 项目回来的路上认识了他，邀请他加入 Go 团队。Russ 做了很多基础工作，包括早期的 Go 编译器、运行时以及 Go 1.5 启动时的巨大提升。Russ 现在是 Go 团队的技术领导。</p>
+<ul>
+<li>
+<p>Rob Pike. (Robert C. Pike 科学硕士) <a href="http://herpolhode.com/rob/">Website</a>, <a href="https://commandcenter.blogspot.com/">Blog</a>, <a href="https://github.com/robpike">GitHub</a>, <a href="https://twitter.com/rob_pike">Twitter</a>, <a href="https://www.reddit.com/user/robpike">Reddit</a>.（退休）</p>
+<ul>
+<li>毕业院校：多伦多大学（理学学士），加州理工</li>
+<li><a href="https://www.youtube.com/watch?v=hB05UFqOtFA">talk/rob2007</a> 编程语言的高级主题：并发/通过 Newsqueak 发送消息。2007年3月9日。</li>
+<li><a href="https://changelog.com/podcast/3">talk/rob2009</a> Go 编程语言。2009年11月27日。</li>
+<li><a href="https://www.youtube.com/watch?v=jgVhBThJdXc">talk/rob2010a</a> Go 编程。谷歌2010年网络开发者年会。2010年3月20日。</li>
+<li><a href="https://www.youtube.com/watch?v=-_DKfAn4pFA">talk/rob2010b</a> Go 并发风格的起源。新兴语言集会2010。2010年7月21日。</li>
+<li><a href="https://www.youtube.com/watch?v=5kj5ApnhPAE">talk/rob2010c</a> <code>public static void</code>，2010年 OSCON 大会。2010年7月22日。</li>
+<li><a href="https://www.youtube.com/watch?v=7VcArS4Wpqk">talk/rob2010d</a> 另一种 Go 语言设计。2010年8月27日。</li>
+<li><a href="https://www.infoq.com/interviews/pike-concurrency/">talk/rob2011a</a> 编程语言中的并行性和并发性。2011年2月17日。</li>
+<li><a href="https://www.infoq.com/interviews/pike-google-go/">talk/rob2011b</a> Go 语言：并发、类型系统、内存管理和垃圾回收。2011年2月25日。</li>
+<li><a href="https://www.youtube.com/watch?v=HxaD_trXwRE">talk/rob2011c</a> Go 词法分析。2011年8月30日。</li>
+<li><a href="https://www.youtube.com/watch?v=f6kdp27TYZs">talk/rob2012a</a> Go 并发模式。谷歌2012年网络开发者年会。2012年7月2日。</li>
+<li><a href="https://www.youtube.com/watch?v=FTl0tl9BGdc">talk/rob2012b</a> 什么学习Go？2012年9月12日。</li>
+<li><a href="https://www.youtube.com/watch?v=bj9T2c2Xk_s">talk/rob2013a</a> Go 1 的路径图。2013年3月14日。</li>
+<li><a href="https://www.infoq.com/presentations/Go-Google/">talk/rob2013b</a> Go 在谷歌。2013年4月13日。</li>
+<li><a href="https://changelog.com/podcast/100">talk/rob2013c</a> Go 开发（Rob Pike 和 Andrew Gerrand)。2013年8月14日。</li>
+<li><a href="https://www.youtube.com/watch?v=cN_DpYBzKso">talk/rob2013d</a> 并发不是并行。2013年10月20日。</li>
+<li><a href="https://www.youtube.com/watch?v=VoS7DsT1rdM">talk/rob2014a</a> Hello Gophers! Gophercon 开幕演讲。2014年 Gophercon。2014年4月24日。</li>
+<li><a href="https://www.youtube.com/watch?v=PXoG0WX0r_E">talk/rob2014b</a> 大数计算器实现。悉尼 Go 集会。2014年11月19日。</li>
+<li><a href="https://www.youtube.com/watch?v=cF1zJYkBW4A">talk/rob2015a</a> 从 C 到 Go 的工具链变化。2015年 GopherFest。2015年6月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk/rob2015b</a> Go 箴言。GopherFest。2015年11月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=rFejpH_tAHM">talk/rob2015c</a> 简单是复杂的。2015年 dotGo。2015年12月2日。</li>
+<li><a href="https://www.youtube.com/watch?v=KINIAgRpkDA">talk/rob2016a</a> Go 汇编的设计。2016年 GopherCon。2016年8月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=sDTGhIqyMjo">talk/rob2016b</a> 标识堆栈：接口学习。悉尼 Go 集会。2016年9月。</li>
+<li><a href="https://www.youtube.com/watch?v=ENLWEfi0Tkg">talk/rob2017</a> Upspin 项目。2017 年 Gopherfest。2017年1月22日。</li>
+<li><a href="https://www.youtube.com/watch?v=_2NI6t2r_Hs">talk/rob2018a</a> Unix 历史。2018年11月7日。</li>
+<li><a href="https://www.youtube.com/watch?v=RIvL2ONhFBI">talk/rob2018b</a> Go 2 规划草案。悉尼 Go 集会。2018年11月13日。</li>
+<li><a href="https://changelog.com/gotime/100">talk/rob2019a</a> Rob Pike 和 Robert Griesemer 创建 Go 语言。2019年9月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=oU9cfQCxjpM">talk/rob2019b</a> Rob Pike，Go 语言简史。2019年12月12日。</li>
+<li><a href="https://evrone.com/rob-pike-interview">talk/rob2020</a> 一次 Rob Pike 采访。2020年。</li>
+<li><a href="https://www.youtube.com/watch?v=YXV7sa4oM4I">talk/rob2021</a> Go 编程语言和环境。John Lions 卓越的演讲，新南威尔士大学。2021年3月27日。</li>
+</ul>
+</li>
+<li>
+<p>Robert Griesemer（博士）<a href="https://github.com/griesemer">GitHub</a>, <a href="https://twitter.com/robertgriesemer?lang=en">Twitter</a></p>
+<ul>
+<li>毕业院校：苏黎世联邦理工学院</li>
+<li><a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&amp;rep=rep1&amp;type=pdf">paper/robert1993</a> 矢量计算机编程语言。博士论文。</li>
+<li><a href="https://www.youtube.com/watch?v=on5DeUyWDqI">talk/robert2012a</a> E2E: Erik Meijer 和 Robert Griesemer。2012年 Lang.NEXT Going Go。</li>
+<li><a href="https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces">talk/robert2012b</a> Go 的三个简单部分。2012年3月19日。</li>
+<li><a href="https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages">talk/robert2012c</a> 2012年 Lang.NEXT 专家组：原生语言。2012年4月11日。</li>
+<li><a href="https://www.youtube.com/watch?v=0ReKdcpNyQg">talk/robert2015</a> Go 的演变。2015年 GopherCon，2015年7月28日。</li>
+<li><a href="https://www.youtube.com/watch?v=t-w6MyI2qlU">talk/robert2016a</a> 和 Gom 的简单对话：声明别名（建议）。2016年 GopherCon，2016年10月9日。</li>
+<li><a href="https://www.youtube.com/watch?v=vLxX3yZmw5Q">talk/robert2016b</a> 为你的设计做原型！2016年 dotGo，2016年11月29日。</li>
+<li><a href="https://www.youtube.com/watch?v=KPk1UPihWtY">talk/robert2017</a> 开幕演讲：导出 Go。2017年 GopherCon SG，2017年3月29日。</li>
+<li><a href="https://www.youtube.com/watch?v=UmwJsQTSEP8">talk/robert2017</a> Go 的概述。2017年4月28日。</li>
+<li><a href="https://www.youtube.com/watch?v=i0zzChzk8KE">talk/robert2019</a> Go 10岁了！现在咋样？2019年 Gopherpalooza。2019年12月2日。</li>
+<li><a href="https://changelog.com/gotime/140">talk/robert2020a</a> 泛型最终版：Robert Griesemer 和 Ian Lance Taylor。2020年1月21日。</li>
+<li><a href="https://www.gophercon.com/agenda/session/233094">talk/robert2020b</a> 编写 Go（通用）。2020年11月11日。</li>
+</ul>
+</li>
+<li>
+<p>Ken Thompson（Kenneth Lane Thompson 科学硕士）（退休）</p>
+<ul>
+<li>毕业院校: 加州大学伯克利分校</li>
+<li><a href="https://www.youtube.com/watch?v=tc4ROCJYbm0">talk/ken1982a</a> UNIX 系统：提高计算机生产效率。1982年</li>
+<li><a href="https://www.youtube.com/watch?v=XvDZLjaCJuw">talk/ken1982b</a> UNIX 系统：提高计算机易用性。</li>
+<li><a href="https://www.youtube.com/watch?v=JoVQTPbD6UY">talk/ken1982c</a> Ken Thompson 和 Dennis Ritchie 解释 UNIX（贝尔实验室）</li>
+<li><a href="https://www.youtube.com/watch?v=LXZ1OL2U3lY">talk/ken1983</a> Ken Thompson 和 Dennis Ritchie：国家技术奖章。1996年。</li>
+<li><a href="https://www.youtube.com/watch?v=dsMKJKTOte0">talk/ken2013</a> 系统架构、设计、工程和验证。2013年1月17日。</li>
+<li><a href="https://www.youtube.com/watch?v=g3jOJfrOknA">talk/ken2019a</a> Thompson 和 Ritchie 的故事。2019年2月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=EY6q5dv_B-o">talk/ken2019b</a> Brian Kernighan 采访 Ken Thompson。2019年VCF East，2019年3月4日。</li>
+</ul>
+</li>
+<li>
+<p>Ian Taylor（Ian Lance Taylor 学士） <a href="https://www.airs.com/ian/">Website</a>, <a href="https://github.com/ianlancetaylor">GitHub</a>, <a href="https://www.quora.com/profile/Ian-Lance-Taylor">Quora</a></p>
+<ul>
+<li>毕业院校：耶鲁大学</li>
+<li><a href="https://www.youtube.com/watch?v=gc78olyguqA">talk/ian2007</a> GCC：当前主题和未来方向。2007年2月27日。</li>
+<li><a href="https://www.youtube.com/watch?v=LqKOY_pH8u0">talk/ian2018</a> 向 Go 2 转变。2018年 Gopherpalooza，2018年10月24日。</li>
+<li><a href="https://www.youtube.com/watch?v=WzgLqE-3IhY">talk/ian2019a</a> Go 的泛型。2019年 GopherCon。2019年8月27日。</li>
+<li><a href="https://changelog.com/gotime/98">talk/ian2019b</a> Go 的泛型。2019年8月27日。</li>
+<li><a href="https://www.youtube.com/watch?v=yoZ05GG8aLs">talk/ian2020</a> Go 语言与 Ian Lance Taylor。CppCast，2020年8月9日。</li>
+</ul>
+</li>
+<li>
+<p>Russ Cox（Russell Stensby Cox 博士） <a href="https://swtch.com/~rsc/">Website</a>, <a href="https://research.swtch.com/">Blog</a>, <a href="https://github.com/rsc">GitHub</a>, <a href="https://twitter.com/_rsc">Twitter</a>, <a href="https://old.reddit.com/user/rsc">Reddit</a></p>
+<ul>
+<li>毕业院校：麻省理工学院</li>
+<li><a href="https://pdos.csail.mit.edu/~rsc/">paper/russ2008</a> 面向扩展的编译器。博士论文。</li>
+<li><a href="https://www.youtube.com/watch?v=wwoWei-GAPo">talk/russ2009</a> Go 语言广告。2009年11月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=MzYZhh6gpI0">talk/russ2012</a> Go 语言之旅。2012年1月24日。</li>
+<li><a href="https://www.youtube.com/watch?v=dP1xVpMPn8M">talk/russ2012b</a> Acme 编辑器之旅。2012年9月17日。</li>
+<li><a href="https://www.youtube.com/watch?v=QIE5nV5fDwA">talk/russ2014</a> 从 C 到 Go。2014年 GopherCon。2014年3月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=XvZOdpd_9tc">talk/russ2015</a> Go、开源、社区。2015年 GopherCon。2015年1月28日。</li>
+<li><a href="https://www.youtube.com/watch?v=h6Cw9iCDVcU">talk/russ2016</a> 使用 Go 重构代码库。2016年12月5日。</li>
+<li><a href="https://www.youtube.com/watch?v=0Zbh_vmAKvk">talk/russ2017</a> Go 的特性。2017年 GopherCon.2017年7月24日。</li>
+<li><a href="https://changelog.com/gotime/77">talk/russ2018a</a> Go 的依赖和特性。2018年4月19日。</li>
+<li><a href="https://changelog.com/gotime/bonus-77">talk/russ2018b</a> Go 和 WebAssembly (Wasm). 2018年4月19日。</li>
+<li><a href="https://www.youtube.com/watch?v=F8nrpe0XWRg">talk/russ2018c</a> 开幕演讲：Go 和 版本。2018年 GopherConSG。2018年3月5日。</li>
+<li><a href="https://www.youtube.com/watch?v=6wIP3rO6On8">talk/russ2018d</a> Go 2 草稿宣布。2018年8月28日。</li>
+<li><a href="https://www.youtube.com/watch?v=kNHo788oO5Y">talk/russ2019</a> Go 2 路径图。2019年 GopherCon。2019年8月27日。</li>
+<li><a href="https://golang.org/s/go-build-video">talk/russ2020a</a> Go 编译设计草稿。2020年6月30日。</li>
+<li><a href="https://golang.org/s/draft-iofs-video">talk/russ2020b</a> os/fs 包设计草稿。2020年7月21日。</li>
+<li><a href="https://golang.org/s/draft-embed-video">talk/russ2020c</a> //go:embed 包设计草稿。2020年7月21日。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%97%B6%E5%9B%A2%E9%98%9F">编译运行时团队</h3>
+<p>Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可伸缩的 goroutine 调度器，很多的性能提升，早期的同步，race 检测，Go 运行时阻塞分析器。Austin 在攻读博士期间是谷歌的实习生，在 Go 项目早期工作。后来，在他结束学生生涯后加入了 Go 团队，和 Rick 一起从事 Go 并发 GC 工作。他也在做抢占式调度器和链接器的工作。他现在是 Go 语言编译运行时团队的领导人。Keith 和 David 一起专注于 Go 编译器后端，尤其是当前的 SSA 后端。Michael 是 Go 团队的新成员，他的主要工作是运行时内存系统，例如内存分配器的重构和运行时指标。</p>
+<ul>
+<li>
+<p>Dmitry Vyukov（Дмитрий Вьюков 理学硕士）<a href="http://www.1024cores.net/">Website</a>, <a href="https://github.com/dvyukov">GitHub</a>, <a href="https://twitter.com/dvyukov">Twitter</a></p>
+<ul>
+<li>毕业院校：莫斯科国立鲍曼技术大学</li>
+<li><a href="https://www.youtube.com/watch?v=QEhpLb0UCfE">talk/dmitry2014</a> 用 Go 编写一个函数式的可靠快速的 Web 应用。2014年9月25日。</li>
+<li><a href="https://www.youtube.com/watch?v=Ef7TtSZlmlk">talk/dmitry2015a</a> 和 Dmitry Vyukov 的谈论：Go 语言和信息安全。</li>
+<li><a href="https://www.youtube.com/watch?v=a9xrxRsIbSU">talk/dmitry2015b</a> Go 动态工具。2015年 GopherCon。2015年7月28日。</li>
+<li><a href="https://www.youtube.com/watch?v=9cpN2r22sLE">talk/dmitry2016</a> Dmitry Vyukov 的采访。2016年6月1日。</li>
+<li><a href="https://www.youtube.com/watch?v=FD30Qzd6ylk">talk/dmitry2017</a> 模糊测试：新单元测试。2017年俄罗斯 C++。2017年3月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=EJVp13f_aIs">talk/dmitry2018a</a> 模糊测试：新单元测试。俄罗斯 GopherCon。2018年4月2日。</li>
+<li><a href="https://www.youtube.com/watch?v=qrBVXxZDVQY">talk/dmitry2018b</a> Syzbot 和数千个内核 Bug 的故事。2018年9月1日。</li>
+<li><a href="https://www.youtube.com/watch?v=-K11rY57K7k">talk/dmitry2019</a> Go 调度器：以轻量级并发实现编程语言。2019年10月14日。</li>
+<li><a href="https://www.youtube.com/watch?v=YwX4UyXnhz0">talk/dmitry2020</a> syzkaller：连续覆盖引导内核模糊器。2020年BlueHat IL。2020年2月13日。</li>
+</ul>
+</li>
+<li>
+<p>Austin Clements（Austin T. Clements 博士）<a href="https://github.com/aclements">GitHub</a>, <a href="https://scholar.google.com/citations?user=MKDtxN4AAAAJ">Scholar</a></p>
+<ul>
+<li>毕业院校：麻省理工学院</li>
+<li><a href="https://pdos.csail.mit.edu/papers/aclements-phd.pdf">paper/autin2014</a> 可伸缩交换规则：为多核处理器设计可伸缩软件。博士论文。</li>
+<li><a href="https://www.gophercon.com/agenda/session/233441">talk/austin2020</a> 原谅中断：Go 1.14 中的循环抢占。2020年11月12日。</li>
+</ul>
+</li>
+<li>
+<p>Richard Hudson（Richard L. Hudson 理学硕士）<a href="https://github.com/RLH">GitHub</a>（退休）</p>
+<ul>
+<li>毕业院校：马萨诸塞大学阿默斯特分校</li>
+<li><a href="https://dl.acm.org/profile/81100566849/publications?Role=author">paper/rick</a> List 研究</li>
+<li><a href="https://www.youtube.com/watch?v=aiv1JOfMjm0">talk/rick2015</a> Go 垃圾回收：解决延迟问题。2015年 GopherCon，2015年7月8日。</li>
+<li><a href="https://www.infoq.com/interviews/hudson-go-gc/">talk/rick2015b</a> Go 垃圾回收：Rick Hudson。2015年12月21日</li>
+</ul>
+</li>
+<li>
+<p>Keith Randall（Keith H. Randall 博士）<a href="https://github.com/randall77">GitHub</a></p>
+<ul>
+<li>毕业院校：麻省理工学院</li>
+<li><a href="http://supertech.csail.mit.edu/papers/PPoPP95.pdf">paper/1998keith</a> Cilk 语言：高校多线生程计算。博士论文。</li>
+<li><a href="https://www.youtube.com/watch?v=Tl7mi9QmLns">talk/keith2016</a> Map 内部实现。2016年 GopherCon，2016年7月12日。</li>
+<li><a href="https://www.youtube.com/watch?v=uTMvKVma5ms">talk/keith2017</a> 用 SSA 生成更好的机器码。2017年 GopherCon，2017年7月24日。</li>
+</ul>
+</li>
+<li>
+<p>David Chase（David Chase 博士）<a href="http://chasewoerner.org/resume.html">Website</a>, <a href="https://dr2chase.wordpress.com/">Block</a>, <a href="https://github.com/dr2chase">GitHub</a>, <a href="https://twitter.com/dr2chase">Twitter</a>, <a href="https://dblp.org/pid/51/3488.html">Scholar</a></p>
+<ul>
+<li>毕业院校：莱斯大学</li>
+<li><a href="http://www.chasewoerner.org/dissertation.pdf">paper/1987david</a> 垃圾回收和其他优化。博士论文。</li>
+<li><a href="https://changelog.com/gotime/52">talk/david2017</a> Go 编译器详述。2017年7月20日。</li>
+</ul>
+</li>
+<li>
+<p>Dan Scales.</p>
+<ul>
+<li><a href="https://www.gophercon.com/agenda/session/233397">talk/dan2020</a> 实现更快的 defer。2020年11月11日。</li>
+</ul>
+</li>
+<li>
+<p>Michael Knyszek. <a href="https://www.ocf.berkeley.edu/~mknyszek/">Website</a>, <a href="https://github.com/mknyszek">GitHub</a></p>
+<ul>
+<li><a href="https://www.gophercon.com/agenda/session/233086">talk/michael2020</a> 提升 Go 内存管理器的 RAM 和 CPU 效率。</li>
+</ul>
+</li>
+<li>
+<p>Than McIntosh. <a href="https://github.com/thanm">GitHub</a></p>
+</li>
+<li>
+<p>Cherry Zhang. <a href="https://github.com/cherrymui">GitHub</a></p>
+</li>
+</ul>
+<p>仓库、工具、安全、社区</p>
+<ul>
+<li>
+<p>Andrew Gerrand <a href="https://github.com/adg">GitHub</a>, <a href="https://twitter.com/enneff">Twitter</a></p>
+</li>
+<li>
+<p>Brad Fitzpatrick <a href="https://bradfitz.com/">Website</a>, <a href="https://github.com/bradfitz">GitHub</a>, <a href="https://twitter.com/bradfitz">Twitter</a></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=c4znvD-7VDA">talk/brad2010</a> 编写 zippy 安卓应用。2010年谷歌网络开发者大会。2010年3月27日。</li>
+<li><a href="https://www.youtube.com/watch?v=OExxMUVVjRM">talk/brad2011</a> Palestra Brad FitzPatrick：Perl 工厂。第1部分，2011年3月12日。</li>
+<li><a href="https://www.youtube.com/watch?v=zHXoDB07Iwg">talk/brad2012</a> LiveJournal 幕后：缩放的故事时间。2012年3月21日。</li>
+<li><a href="https://www.youtube.com/watch?v=sYukPc0y_Ro">talk/brad2013a</a> 令我高兴的软件。2013年 dotScale。2013年7月30日。</li>
+<li><a href="https://www.youtube.com/watch?v=kJ68OWnlycQ">talk/brad2013b</a> LiveJournal 莫斯科办公室。Brad Fitzpatrick。2013年12月15日。</li>
+<li><a href="https://www.youtube.com/watch?v=Ds0KXj8ohR8">talk/brad2014a</a> Camlistore。Go 集会。2014年1月</li>
+<li><a href="https://www.youtube.com/watch?v=D6okO8Qzusk">talk/brad2014b</a> Camlistore 和标准仓库。2014年 GopherCon。2014年3月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=4KFTacxqkcQ">talk/brad2014c</a> Gopher 的状态。2014年 dotGo，2014年10月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=VLciNxKAKyc">talk/brad2014d</a> 采访。2014年 dotGo，2014年。</li>
+<li><a href="https://www.youtube.com/watch?v=yG-UaBJXZ80">talk/brad2015a</a> Andrew 和 Brad 的工作：一个 HTTP/2 客户端。2015年2月25日。</li>
+<li><a href="https://www.youtube.com/watch?v=gukAZO1fqZQ">talk/brad2015b</a> HTTP/2 和 Go。2015年伦敦 Go 集会。2015年3月4日。</li>
+<li><a href="https://www.youtube.com/watch?v=gAfoLwog_MA">talk/brad2015c</a> Go 里的 HTTP/2。2015年欧洲开源开发者会议 Go 开发室。2015年3月4日。</li>
+<li><a href="https://www.youtube.com/watch?v=rHBbqjWCGq8">talk/brad2015d</a> Gopher 的状态。慕尼黑 Gopher。2015年4月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=stram5J144s">talk/brad2015e</a> Go 语言。2015年波兰 devoxx。2015年6月。</li>
+<li><a href="https://www.youtube.com/watch?v=1rZ-JorHJEY">talk/brad2015f</a> Andrew 和 Brad 的工作：tiop.golang.org。2015年1月8日。</li>
+<li><a href="https://www.youtube.com/watch?v=mj-1wscEQO8">talk/brad2015g</a> 快速采访：Go 的 HTTP/2。2015年 GopherCon。2015年8月19日。</li>
+<li><a href="https://www.youtube.com/watch?v=xxDZuPEgbBU">talk/brad2015h</a> Go 的分析及优化。2015年8月27日。</li>
+<li><a href="https://www.youtube.com/watch?v=4Dr8FXs9aJM">talk/brad2016a</a> Go 1.6 介绍：逐渐接近单调。2016年印度 GopherCon。2016年3月29日。</li>
+<li><a href="https://www.youtube.com/watch?v=4yFb-b5GYWc">talk/brad2016b</a> 快速谈话：我的视频和安全系统。2016年 GopherCon。2016年7月。</li>
+<li><a href="https://www.youtube.com/watch?v=8cQcPnzfkLk">talk/brad2016c</a> Go 1.7。西雅图 Go 集会。2016年8月25日。</li>
+<li><a href="https://www.youtube.com/watch?v=18kmlJvR6Bk">talk/brad2016d</a> Go 开源项目的内部结构。2016年 GothamGo。2016年12月15日。</li>
+<li><a href="https://www.youtube.com/watch?v=4fWqcOubYQ0">talk/brad2017</a> 我的前半生在开源项目。2017年3月19日。</li>
+<li><a href="https://www.youtube.com/watch?v=ZCB-g2B4Y5A">talk/brad2018a</a> Go：回顾和展望。2018年4月2日。</li>
+<li><a href="https://www.youtube.com/watch?v=rWJHbh6qO_Y">talk/brad2018b</a> Go 1.11 和未来。2018年8月26日。</li>
+<li><a href="https://www.youtube.com/watch?v=69Zy77O-BUM">talk/brad2018c</a> 快速谈话：核选项，<code>go test -run=InQemu</code>。2018年 GopherCon，2018年11月11日。</li>
+<li><a href="https://www.youtube.com/watch?v=BRSam0xQJKY">talk/brad2019</a> Brad Fitzpatrick 更喜欢Go，而非 C, C++, Rust, Perl, Python, Ruby, JavaScript 和 Java。2019年11月28日。</li>
+</ul>
+</li>
+<li>
+<p>Bryan C. Mills. <a href="https://github.com/bcmills">GitHub</a></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=C1EtfDnsdDs">talk/bryan2017</a> 快速谈话：sync.Map 的概述。2017年 GopherCon，2017年7月24日。</li>
+<li><a href="https://www.youtube.com/watch?v=5zXAHh5tJqQ">talk/bryan2018</a> 重新思考经典的并发模式。2018年 GopherCon，2018年9月14日。</li>
+</ul>
+</li>
+<li>
+<p>Steve Francia. <a href="https://spf13.com/">Website</a>, <a href="https://github.com/spf13">GitHub</a>, <a href="https://twitter.com/spf13">Twitter</a>.</p>
+<ul>
+<li><a href="https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/">talk/steve2019a</a> 现代实用编程语言应该是什么样子。Langding Festival，2019年4月4日</li>
+<li><a href="https://spf13.com/presentation/the-legacy-of-go/">talk/steve2019b</a> Go 的遗产。Go Lab，2019年10月22日。</li>
+</ul>
+</li>
+<li>
+<p>Jonathan Amsterdam.</p>
+<ul>
+<li><a href="https://www.gophercon.com/agenda/session/233432">talk/jonathan2020</a> Errors 方面。2020年11月13日。</li>
+</ul>
+</li>
+<li>
+<p>Daniel Martí. <a href="https://mvdan.cc/">Website</a>, <a href="https://github.com/mvdan">GitHub</a>, <a href="https://twitter.com/mvdan_">Twitter</a></p>
+</li>
+<li>
+<p>Nigel Tao. <a href="https://github.com/nigeltao">GitHub</a>, Twitter</p>
+</li>
+<li>
+<p>Filippo Valsorda. GitHub,</p>
+</li>
+<li>
+<p>Michael Matloob. <a href="https://github.com/matloob">GitHub</a>, <a href="https://twitter.com/matloob">Twitter</a></p>
+</li>
+<li>
+<p>Jay Conrod. <a href="https://jayconrod.com/">Website</a>, <a href="https://twitter.com/jayconrod">Twitter</a></p>
+</li>
+<li>
+<p>Dave Cheney. <a href="https://dave.cheney.net/">Website</a>, <a href="https://github.com/davecheney">GitHub</a>, <a href="https://twitter.com/davecheney">Twitter</a></p>
+</li>
+<li>
+<p>Sam Boyer. <a href="https://github.com/sdboyer">GitHub</a>, <a href="https://twitter.com/sdboyer">Twitter</a></p>
+</li>
+<li>
+<p>Fillippo Valsorda. <a href="https://filippo.io/">Website</a>, <a href="https://github.com/FiloSottile">GitHub</a>, <a href="https://twitter.com/FiloSottile">Twitter</a></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=lhMhApWQp2E">talk/filo2016</a> 从 cgo 回到 Go。2016年7月12日。</li>
+<li><a href="https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017">talk/filo2017</a> 不使用 cgo，从 Go 到 Rust。</li>
+<li><a href="https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018">talk/filo2018</a> 为什么 cgo 太慢。2018年 CapitalGo。</li>
+<li><a href="https://speakerdeck.com/filosottile?page=1">talk/speakerdeck</a></li>
+</ul>
+</li>
+</ul>
+<p>更多人和谈话应该被添加……</p>
+<h3 id="%E5%B0%8F%E7%BB%84%E4%BC%9A%E8%B0%88">小组会谈</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=sln-gJaURzk">talk/goteam2012</a> Go 团队集会。2012年谷歌网络开发者大会。2012年7月2日。</li>
+<li><a href="https://www.youtube.com/watch?v=p9VUCp98ay4">talk/goteam2013</a> 和 Go 团队的炉边谈话。2013年谷歌网络开发者大会。2013年3月18日。</li>
+<li><a href="https://www.youtube.com/watch?v=u-kkf76TDHE">talk/goteam2014</a> 和 Blake Mizerany 在 Gophers 工作室。2014年 GopherCon。2014年3月21日。</li>
+<li><a href="https://www.youtube.com/watch?v=3yghHvvZQmA">talk/goteam2019</a> 认识作者：Go 语言。2019年 Cloud Next 大会，2019年4月10日。</li>
+<li><a href="https://www.youtube.com/watch?v=gJxvkOHpTSM">talk/goteam2020a</a> 2020年 GoLab：Go 团队问答。2020年10月22日。</li>
+<li><a href="https://www.youtube.com/watch?v=BNHwHLNLjLs">talk/goteam2020b</a> 2020年 GopherCon：Go 团队问答。2020年11月16日。</li>
+</ul>
+<h2 id="%E6%97%B6%E9%97%B4%E7%BA%BF">时间线</h2>
+<p>时间线能帮助你确定关联到 Go 版本文档。</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Release Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go 1</td>
+<td>2012.03.28</td>
+</tr>
+<tr>
+<td>Go 1.1</td>
+<td>2013.05.13</td>
+</tr>
+<tr>
+<td>Go 1.2</td>
+<td>2013.12.01</td>
+</tr>
+<tr>
+<td>Go 1.3</td>
+<td>2014.06.18</td>
+</tr>
+<tr>
+<td>Go 1.4</td>
+<td>2014.12.10</td>
+</tr>
+<tr>
+<td>Go 1.5</td>
+<td>2015.08.19</td>
+</tr>
+<tr>
+<td>Go 1.6</td>
+<td>2016.02.17</td>
+</tr>
+<tr>
+<td>Go 1.7</td>
+<td>2016.08.15</td>
+</tr>
+<tr>
+<td>Go 1.8</td>
+<td>2017.02.16</td>
+</tr>
+<tr>
+<td>Go 1.9</td>
+<td>2017.08.24</td>
+</tr>
+<tr>
+<td>Go 1.10</td>
+<td>2018.02.16</td>
+</tr>
+<tr>
+<td>Go 1.11</td>
+<td>2018.08.24</td>
+</tr>
+<tr>
+<td>Go 1.12</td>
+<td>2019.02.25</td>
+</tr>
+<tr>
+<td>Go 1.13</td>
+<td>2019.09.03</td>
+</tr>
+<tr>
+<td>Go 1.14</td>
+<td>2020.02.25</td>
+</tr>
+<tr>
+<td>Go 1.15</td>
+<td>2020.08.11</td>
+</tr>
+<tr>
+<td>Go 1.16</td>
+<td>2021.02.16</td>
+</tr>
+</tbody>
+</table>
+<p>历史版本说明可以提供一些大概信息：</p>
+<ul>
+<li><a href="https://golang.org/doc/devel/release.html">doc/go1release</a> Go 发布历史</li>
+<li><a href="https://golang.org/doc/devel/pre_go1.html">doc/go1prerelease</a> Go 1 预发布历史</li>
+<li><a href="https://golang.org/doc/devel/weekly.html">doc/go0release</a> 每周发布历史（Go 1 之前）</li>
+</ul>
+<h2 id="%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1">语言设计</h2>
+<h3 id="Misc">Misc</h3>
+<ul>
+<li><a href="https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec">design/go0initial</a> Rob Pike、Robert Griesemer、Ken Thompson，Go 语言注释规范，2008年3月3日。</li>
+<li><a href="https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt">design/go0spec0</a> Go 编程语言，语言规范。2008年3月7日。</li>
+<li><a href="https://golang.org/s/semicolon-proposal">design/go0semicolon</a> Rob Pike，Go 中的分号。2009年12月10日。</li>
+<li><a href="https://golang.org/s/go11func">design/go11func</a> Russ Cox，Go 1.11 函数调用。2013年2月。</li>
+<li><a href="https://golang.org/s/go11return">design/go11return</a> Russ Cox，Go 函数最后的 Return 要求。2013年3月。</li>
+<li><a href="https://golang.org/s/go12nil">design/go12nil</a> Russ Cox，Go 1.2 字段选择和空检查。2013年7月。</li>
+<li><a href="https://golang.org/s/go13todo">doc/go13todo</a> Go 1.3 待完成列表。</li>
+<li><a href="https://talks.golang.org/2012/splash.article#TOC_12.">doc/goatgoogle</a> Rob Pike，谷歌 Go 使用 - 语义。2012年10月25日。</li>
+<li><a href="https://talks.golang.org/2015/how-go-was-made.slide">doc/makego</a> Andrew Gerrand，Go 怎样创建的。2015年7月9日。</li>
+<li><a href="https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE">discuss/go1preview</a> Russ Cox。Go 1 预览版。</li>
+<li><a href="https://golang.org/design/6977-overlapping-interfaces">design/overlapping-interfaces</a> Robert Griesemer 提案：允许将接口嵌入折叠方法集。2019年10月16日。
+<ul>
+<li><a href="https://golang.org/issue/6977">issue/6977</a> 规则：允许嵌入重叠接口</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/16085-conversions-ignore-tags">design/struct-conversion</a> Robert Griesemer 提案：struct 类型转换忽略 tag
+<ul>
+<li><a href="https://golang.org/issue/16085">issue/16085</a> 提案：struct 类型转换忽略 tag</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/28221-go2-transitions">design/go2trans</a> Ian Lance Taylor 提案：Go 2 变迁。2018年10月15日。</li>
+<li><a href="https://golang.org/design/19113-signed-shift-counts">design/signed-int-shift</a> Robert Griesemer 提案：在 Go 2 中允许有符号整数进行移位计算。2019年1月17日。
+<ul>
+<li><a href="https://golang.org/issue/19113">issue/19113</a> 提案：规范：允许有符号整数进行移位计算。</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/19308-number-literals">design/number-literal</a> Russ Cox、Robert Griesemer 提案：Go 2 数学字面量
+<ul>
+<li><a href="https://golang.org/issue/12711">issue/12711</a> 提案：不同的八进制字面量表示</li>
+<li><a href="https://golang.org/issue/19308">issue/19308</a> 提案：规范：二进制字面量</li>
+<li><a href="https://golang.org/issue/28493">issue/28493</a> 提案：允许在数字中使用 <code>_</code></li>
+<li><a href="https://golang.org/issue/29008">issue/29008</a> 提案：Go 2 十六进制浮点数</li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/33502">issue/33502</a> 提案：审查会议记录</li>
+<li><a href="https://golang.org/issue/33892">issue/33892</a> 提案：审查 Go 2 会议记录</li>
+<li><a href="https://golang.org/issue/19623">issue/19623</a> 提案：规范：更改 int 为任意精度</li>
+<li><a href="https://golang.org/issue/19367">issue/19367</a> unsafe：添加 <code>Slice(ptr *T, len anyIntegerType) []T</code></li>
+<li><a href="https://golang.org/issue/40481">issue/40481</a> unsafe：添加函数</li>
+</ul>
+<h3 id="%E5%88%87%E7%89%87+%281.2%29">切片 (1.2)</h3>
+<ul>
+<li><a href="https://docs.google.com/document/d/1UKu_do3FRvfeN5Bb1RxLohV-zBOJWTzX0E8ZU1bkqX0/edit#heading=h.2wzvdd6vdi83">design/read-only-slices</a> Brad Fitzpatrick，只读切片。2013年3月13日。</li>
+<li><a href="https://docs.google.com/document/d/1-NzIYu0qnnsshMBpMPmuO21qd8unlimHgKjRD9qwp2A/edit">design/read-only-slices-russ</a> Russ Cox，只读切片的评价。2013年3月。</li>
+<li><a href="https://golang.org/s/go12slice">design/go12slice</a> Russ Cox，Go 切片的容量。2013年6月。</li>
+<li><a href="https://golang.org/design/6282-table-data">design/multidim-slice</a> Brendan Tracey，提案：多维切片。2016年11月17日。</li>
+<li><a href="https://golang.org/issue/41239">issue/41239</a> 运行时：<code>append</code>的增长让人意外。</li>
+<li><a href="https://groups.google.com/g/golang-nuts/c/UaVlMQ8Nz3o">discuss/why-slice-grow</a> 为什么切片长度会在 1024 后以25%的速度增长？</li>
+<li><a href="https://golang.org/cl/347917">cl/347917</a> 运行时：让切片增长公式更平滑。
+<ul>
+<li><a href="https://docs.google.com/document/d/1JQvV6vyAYdHhIboY-zAwK06OXZjxHrUhOFeG38MuJ94/edit?resourcekey=0-L5OsHqwZZBxvjfK0dwsyVQ">doc/cl-347917-graph</a> CL 347917 图表</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E5%8C%85%E7%AE%A1%E7%90%86+%281.4%2C+1.5%2C+1.7%29">包管理 (1.4, 1.5, 1.7)</h3>
+<ul>
+<li><a href="https://golang.org/s/go14internal">design/go14internal</a> Russ Cox，Go 1.4 <code>Internal</code> 包，2014年6月。</li>
+<li><a href="https://golang.org/s/go14nopkg">design/go14nopkg</a> Russ Cox，Go 1.4 <code>src/pkg</code> → <code>src</code>，2014年6月。</li>
+<li><a href="https://golang.org/s/go14customimport">design/go14customimport</a> Russ Cox. Go 1.4 自定义路径导入检查。2014年6月。</li>
+<li><a href="https://golang.org/s/go15vendor">design/go15vendor</a> Russ Cox，Go 1.5 Vendor 实验，2015年7月。</li>
+<li><a href="https://golang.org/design/2775-binary-only-packages">design/go17binarypkg</a> Russ Cox，提案：纯二进制包，2016年4月24日。
+<ul>
+<li><a href="https://golang.org/issue/2775">issue/2775</a> cmd/go：当二进制可用但源文件丢失。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D+%281.9%29">类型别名 (1.9)</h3>
+<ul>
+<li><a href="https://golang.org/design/18130-type-alias">design/type-alias</a> Russ Cox、Robert Griesemer 提案：类型别名。2016年12月16日。
+<ul>
+<li><a href="https://www.youtube.com/watch?v=t-w6MyI2qlU">talk/type-alias</a> 2016年 GopherCon —— 快速谈话：Robert Griesemer - Go 别名说明，建议。2016年10月9日。</li>
+<li><a href="https://golang.org/issue/16339">issue/16339</a> 提案：Go 别名说明。</li>
+<li><a href="https://golang.org/issue/18130">issue/18130</a> 所有：支持渐进式代码修复，同时在包之间移动类型。</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=h6Cw9iCDVcU">talk/refactor-video</a> Russ Cox，重构代码库（在 Go 的帮助下）。2016年 GothamGo，2016年11月18日。
+<ul>
+<li><a href="https://talks.golang.org/2016/refactor.article">doc/refactor</a> Russ Cox，重构代码库（在 Go 的帮助下）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Defer+%281.14%29">Defer (1.14)</h3>
+<ul>
+<li><a href="https://golang.org/design/34481-opencoded-defers">design/open-defer</a> Dan Scales、Keith Randall、and Austin Clements 提案：通过内联代码进行低成本 defer，以及额外管理 panic。2019年9月23日。
+<ul>
+<li><a href="https://golang.org/issue/6980">issue/6980</a> cmd/compile：在栈帧中分配一些 defer。</li>
+<li><a href="https://golang.org/issue/14939">issue/14939</a> 运行时：defer 很慢</li>
+</ul>
+</li>
+<li>未解决的 <code>defer recover()</code>边缘案例
+<ul>
+<li><a href="https://golang.org/issue/10458">issue/10458</a> 规范：panic 在极端情况下的语义</li>
+<li><a href="https://golang.org/issue/23531">issue/23531</a> 规范：在嵌套 defer 中使用 <code>recover()</code></li>
+<li><a href="https://golang.org/issue/26275">issue/26275</a> 规范：在使用 defer 的函数中记录调用者的行为</li>
+<li><a href="https://golang.org/issue/34530">issue/34530</a> 规范：澄清何时调用 recover 停止 panic</li>
+<li><a href="https://golang.org/cl/189377">cl/189377</a> 规范：列举 recover 行为和递归 panic 的详情。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E9%94%99%E8%AF%AF%E5%80%BC+%281.13%29">错误值 (1.13)</h3>
+<ul>
+<li><a href="https://blog.golang.org/error-handling-and-go">doc/err2011</a> Andrew Gerrand，Go 错误处理。2011年7月。</li>
+<li><a href="https://blog.golang.org/errors-are-values">doc/err-values</a> Rob Pike。错误是值，2015年1月。</li>
+<li><a href="https://dave.cheney.net/paste/gocon-spring-2016.pdf">doc/err-philosophy</a> Dave Cheney，我处理错误的理念。2016年4月。</li>
+<li><a href="https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully">doc/err-gracefully</a> Dave Cheney，不要只检查错误，而是优雅处理。2016年4月。</li>
+<li><a href="https://dave.cheney.net/2016/06/12/stack-traces-and-the-errors-package">doc/err-stacktrace</a> Dave Cheney，堆栈跟踪和错误包，2016年6月12日。</li>
+<li><a href="https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html">doc/err-upspin</a> Rob Pike，Upspin 的错误处理。2017年12月6日。</li>
+<li><a href="https://blog.golang.org/go1.13-errors">doc/err-work</a> Damien Neil 和 Jonathan Amsterdam，Go 1.13 中处理错误，2019年10月17日。</li>
+<li><a href="https://golang.org/design/go2draft-error-handling-overview">design/err-handling-overview</a> Russ Cox，错误处理——问题综述。</li>
+<li><a href="https://github.com/golang/go/wiki/ErrorValueFAQ">doc/err-value-faq</a> Jonathan Amsterdam 和 Bryan C. Mills 错误值：常见问题。2019年8月。</li>
+<li><a href="https://golang.org/design/go2draft-error-handling">design/err-handle-check</a> Marcel van Lohuizen，错误处理——设计草稿。2018年8月27日。</li>
+<li><a href="https://golang.org/design/32437-try-builtin">design/err-try</a> Robert Griesemer 提案：Go 内置错误检查函数 <code>try</code>
+<ul>
+<li><a href="https://golang.org/issue/32437#issuecomment-512035919">issue/32437</a> 提案：Go 内置错误检查函数 <code>try</code>。判定回复。</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/go2draft-error-inspection">design/err-inspect</a> Jonathan Amsterdam、Damien Neil，错误检查——设计草稿，2018年8月27日。</li>
+<li><a href="https://golang.org/design/go2draft-error-values-overview">design/err-values-overview</a> Russ Cox，错误处理——问题综述。2018年8月27日。</li>
+<li><a href="https://golang.org/design/29934-error-values">design/error-values</a> Jonathan Amsterdam、Russ Cox、Marcel van Lohuizen、Damien Neil 提案：Go 2 错误检查。2019年1月25日。
+<ul>
+<li><a href="https://golang.org/issue/29934">issue/29934</a> Jonathan Amsterdam 提案：Go 2 错误检查。2019年1月25日。</li>
+<li><a href="https://golang.org/issue/29934#issuecomment-489682919">issue/29934-decision</a> Damien Neil。Go 1.13 关于错误值的决定。2019年3月6日。</li>
+<li><a href="https://golang.org/issue/29934#issuecomment-490087200">issue/29934-russ</a> Russ Cox，关于“提案：Go 2 错误检查”的回复。2019年3月7日。</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/go2draft-error-printing">design/err-print</a> Marcel van Lohuizen，错误打印——设计草稿。2018年8月27日。
+<ul>
+<li><a href="https://golang.org/issue/30468">issue/30468</a> errors: 新版本的性能衰退。</li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/40432">issue/40432</a> 语言：Go 2: 错误处理的讨论</li>
+<li><a href="https://golang.org/issue/40776">issue/40776</a> 提案：动态错误忽略的检测器</li>
+<li><a href="https://golang.org/issue/41198">issue/41198</a> 提案：errors：添加 ErrUnimplemented 作为失败接口方法的标准方式。</li>
+</ul>
+<h3 id="%E9%80%9A%E9%81%93%E3%80%81%E9%80%89%E6%8B%A9%E5%99%A8">通道、选择器</h3>
+<ul>
+<li><a href="https://docs.google.com/a/google.com/document/d/1yIAYmbvL3JxOKOjuCyon7JhW4cSv1wy5hC0ApeGMV9s/pub">design/lockfree-channels</a> Dmitry Vyukov，Go 通道。2014年1月28日。
+<ul>
+<li><a href="https://golang.org/issue/8899">issue/8899</a> 运行时：无锁通道。</li>
+<li><a href="https://groups.google.com/g/golang-dev/c/0IElw_BbTrk/m/cGHMdNoHGQEJ">discuss/lockfree-channels</a> 无锁通道的更新。</li>
+<li><a href="https://codereview.appspot.com/112990043/">cl/112990043</a> 运行时：选择器中的锁粒度</li>
+<li><a href="https://codereview.appspot.com/110580043/">cl/110580043</a> 运行时：在非阻塞通道操作中添加快速路径</li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/8898">issue/8898</a> 运行时：特殊案例，计时器通道。</li>
+<li><a href="https://golang.org/issue/37196">issue/37196</a> 时间：在停止或重置返回后，让 Timer/Ticker 通道不接受旧值。</li>
+<li><a href="https://golang.org/issue/8903">issue/8903</a> 运行时：让通道更快生成。</li>
+<li><a href="https://golang.org/issue/21806">issue/21806</a> 选择语句的公平性。</li>
+<li><a href="https://golang.org/issue/40410">issue/40410</a> 从 scase 中去除不必要的字段</li>
+<li><a href="https://golang.org/issue/40641">issue/40641</a> 运行时，在堆栈收缩和通道发送/接受之间的竞争导致错误的 sudog 值</li>
+<li><a href="https://golang.org/issue/37350">issue/37350</a> 反射：如果数组长度大于 1&lt;&lt; 16，请 panic</li>
+</ul>
+<h3 id="%E6%B3%9B%E5%9E%8B">泛型</h3>
+<ul>
+<li><a href="https://docs.google.com/document/d/1vrAy9gMpMoS3uaVphB32uVXX4pi-HnNjkMEgyAHX4N4/edit#heading=h.vuko0u3txoew">doc/generics-discuss</a> Go 泛型讨论摘要</li>
+<li><a href="https://research.swtch.com/generic">doc/generics-dilemma</a> Russ Cox，对泛型很犹豫。2009年12月3日。</li>
+<li><a href="https://golang.org/design/15292/2010-06-type-functions">design/type-functions</a> Ian Lance Taylor，类型函数。2010年6月。</li>
+<li><a href="https://golang.org/design/15292/2011-03-gen">design/generalized-types</a> Ian Lance Taylor，通用类型。2011年3月。</li>
+<li><a href="https://docs.google.com/document/pub?id=1IXHI5Jr9k4zDdmUhcZImH59bOUK0G325J1FY6hdelcM">design/code-gen</a> Russ Cox，Go 中动态代码生成的替代。2012年9月。</li>
+<li><a href="https://golang.org/design/15292/2013-10-gen">design/generalized-types2</a> Ian Lance Taylor，Go 中的通用类型，2013年10月。</li>
+<li><a href="https://golang.org/design/15292/2013-12-type-params">design/type-parameters</a> Ian Lance Taylor，Go 中的类型参数，2013年12月。</li>
+<li><a href="https://golang.org/design/15292/2016-09-compile-time-functions">design/compile-time-function</a> Bryan C. Mills，编译时函数和一等类型。2016年12月。</li>
+<li><a href="https://github.com/golang/proposal/blob/b571c3273d2c6988d24a22dd1c529387ff05962a/design/15292-generics">design/should-generics</a> Ian Lance Taylor，Go 应该有泛型。2011年1月。</li>
+<li><a href="https://golang.org/design/15292-generics">design/should-generics2</a> Ian Lance Taylor，Go 应该有泛型。更新：2016年4月。
+<ul>
+<li><a href="https://golang.org/issue/15292">issue/15292</a> 提案：规范：通用编程工具。</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/go2draft-generics-overview">design/generics-overview</a> Russ Cox，泛型——问题综述。2018年8月27日。</li>
+<li><a href="https://golang.org/design/go2draft-contracts">design/contracts</a> Ian Lance Taylor, Robert Griesemer，合同——设计草案。2018年8月27日，更新：2019年7月31日。
+<ul>
+<li><a href="https://golang.org/cl/187317/">cl/187317</a> 原型实现</li>
+<li><a href="https://arxiv.org/abs/2005.11710">paper/featherweight-go</a> Griesemer, Robert 等，轻量级 Go。arXiv 预印本 arXiv:2005.11710 (2020).</li>
+<li><a href="https://www.youtube.com/watch?v=Dq0WFigax_c">talk/featherweight-go</a> Phil Wadler：轻量级 Go，2020年6月8日。</li>
+</ul>
+</li>
+<li><a href="https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md">design/type-parameters2</a> Ian Lance Taylor, Robert Griesemer。类型参数——设计草稿。2016年6月16日，更新：2020年8月28日。
+<ul>
+<li><a href="https://github.com/golang/go/blob/dev.go2go/README.go2go.md">cl/dev.go2go</a> dev.go2go 分支</li>
+<li><a href="https://github.com/golang/go/tree/dev.go2go/src/go/types">doc/type-check-readme</a> 类型检查</li>
+<li><a href="https://github.com/golang/go/blob/dev.go2go/src/go/types/NOTES">doc/type-check-notes</a> 这个文件服务器作为笔记或实现日志</li>
+</ul>
+</li>
+<li><a href="https://groups.google.com/g/golang-nuts/c/7t-Q2vt60J8">discuss/generics-parenthesis</a> Robert，泛型和括号</li>
+<li><a href="https://golang.org/issue/33232">issue/33232</a> 提案：Go 2：为 interface{} 添加任意别名</li>
+<li><a href="https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw">discuss/generics-move</a> Ian，继续泛型设计。</li>
+<li><a href="https://groups.google.com/g/golang-dev/c/OcW0ATRS4oM">discuss/generics-implementation</a> 实现泛型</li>
+<li><a href="https://golang.org/design/generics-implementation-stenciling">design/generics-implementation-stenciling</a> 泛型实现——模板</li>
+<li><a href="https://golang.org/design/generics-implementation-dictionaries">design/generics-implementation-dictionaries</a> 泛型实现——字典</li>
+<li><a href="https://golang.org/issue/43651">issue/43651</a> 提案：规范：使用类型参数添加泛型编程</li>
+<li><a href="https://golang.org/design/43651-type-parameters">design/type-parameters3</a> 类型参数建议</li>
+<li><a href="https://golang.org/issue/45346">issue/45346</a> 提案：规范：泛型：使用类型集合删除类型中的类型关键字</li>
+<li><a href="https://golang.org/issue/46477">issue/46477</a> 提案：规范：泛型：别名中的类型参数</li>
+<li>使用泛型的标准库
+<ul>
+<li><a href="https://golang.org/issue/45458">issue/45458</a> 提案：约束：定义标准类型参数约束的新包</li>
+<li><a href="https://github.com/golang/go/discussions/47319">discuss/47319</a> 提案：约束：定义标准类型参数约束的新包（讨论）</li>
+<li><a href="https://golang.org/issue/45955">issue/45955</a> 提案：切片：提供泛型切片函数的新包</li>
+<li><a href="https://github.com/golang/go/discussions/47203">discuss/47203</a> 提案：切片：提供泛型切片函数的新包（讨论）</li>
+<li><a href="https://github.com/golang/go/discussions/47331">discuss/47331</a> 提案：容器/集合：提供泛型集合类型的新包（讨论）</li>
+<li><a href="https://github.com/golang/go/discussions/47330">discuss/47330</a> 提案：maps：提供泛型 map 函数的新包（讨论）</li>
+<li><a href="https://golang.org/issue/47657">issue/47657</a> 提案：sync，sync/atomic：添加 PoolOf, MapOf, ValueOf</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE">编译工具链</h2>
+<h3 id="%E7%BC%96%E8%AF%91">编译</h3>
+<ul>
+<li><a href="https://github.com/golang/go/tree/cb87526ce3531557ccf69969de4c8018956b10b5/src/c">code/gc0initial</a> Ken Thompson，Go 0 编译器初始版本，2008年3月28日。</li>
+<li><a href="https://github.com/golang/go/commit/0cafb9ea3d3d34627e8f492ccafa6ba9b633a213">code/6g</a> Rob Pike，Go 0 第一个完整的编译器，2008年6月4日。</li>
+<li><a href="https://golang.org/s/go12symtab">design/go12symtab</a> Russ Cox，Go 1.2 运行时符号信息，2013年7月。</li>
+<li><a href="https://golang.org/s/go13compiler">design/go13compiler</a> Russ Cox，Go 1.3+ 编译器大修，2013年12月。</li>
+<li><a href="https://golang.org/s/go1.4-generate">design/go14generate</a> Rob Pike，Go 生成：提案。</li>
+<li><a href="https://golang.org/s/dev.cc">design/dev.cc</a> Russ Cox，dev.cc 分支计划，2014年11月</li>
+<li><a href="https://golang.org/s/go15bootstrap">design/go15bootstrap</a> Russ Cox，Go 1.5 启动计划，2015年1月。</li>
+<li><a href="https://docs.google.com/document/d/1CxgUBPlx9iJzkz9JWkb6tIpTe5q32QDmz8l0BouG0Cw/edit#">doc/escape-analysis</a> Dmitry Vyukov，Go 逃逸分析缺陷，2015年2月10日。</li>
+<li><a href="https://golang.org/s/execmodes">design/execmodes</a> Ian Lance Taylor，Go 执行模式，2015年8月（2016年1月更新）</li>
+<li><a href="https://golang.org/s/go17ssa">design/go17ssa</a> Keith Randall，Go 编译器新的 SSA 后端。2015年2月10日。</li>
+<li><a href="https://github.com/golang/go/wiki/CompilerOptimizations">doc/compiler-optimization</a> 编译器和运行时优化。</li>
+<li><a href="https://golang.org/issue/6853">issue/6853</a> 所有：二进制文件太大且不断增长。</li>
+<li><a href="https://golang.org/design/19348-midstack-inlining">design/go19inlining</a> David Lazar, Austin Clements，提案：Go 编译器中内联中层堆栈。
+<ul>
+<li><a href="https://golang.org/issue/19348">issue/19348</a> cmd/compile：允许中层堆栈内联</li>
+<li><a href="https://golang.org/s/go19inliningtalk">talk/go19inliningtalk</a> David Lazar，Go 编译器中层堆栈内联</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/22080-dwarf-inlining">design/dwarf-inlining</a> Than McIntosh，提案：在 Go 编译器中发出 DWARF 内联信息
+<ul>
+<li><a href="https://golang.org/issue/22080">issue/22080</a> cmd/compile：生成 DWARF 内联信息</li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/23109">issue/23109</a> cmd/compile：重写逃逸分析</li>
+<li><a href="https://golang.org/issue/27167">issue/27167</a> cmd/compile：重命名很多东西
+<ul>
+<li><a href="https://docs.google.com/document/d/19_ExiylD9MRfeAjKIfEsMU1_RGhuxB9sA0b5Zv7byVI/edit">doc/renames</a> 提案：Go 1.12 工具链重命名</li>
+</ul>
+</li>
+<li>GOEXPERIMENT=checkptr
+<ul>
+<li><a href="https://golang.org/issue/22218">issue/22218</a> 提案：添加 GOEXPERIMENT=checkptr</li>
+<li><a href="https://golang.org/issue/34964">issue/34964</a> cmd/compile: 允许 -d=checkptr 作为 -race and/or -msan 的一部分?</li>
+<li><a href="https://golang.org/issue/34972">issue/34972</a> 所有：通过 -d=checkptr 获取标准库构建</li>
+<li><a href="https://groups.google.com/forum/#!msg/golang-dev/SzwDoqoRVJA/Iozu8vWdDwAJ">discuss/checkptr</a></li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/37121">issue/37121</a> 运行时：在 Intel 中，未对齐的跳转造成性能下降</li>
+<li><a href="https://golang.org/issue/16798">issue/16798</a> 提案：cmd/compile：仅为自递归添加尾部调用优化（已拒绝）</li>
+<li><a href="https://golang.org/issue/22624">issue/22624</a> 提案：Go 2：添加 become 语句来支持尾部调用（已拒绝）</li>
+<li><a href="https://golang.org/design/36606-64-bit-field-alignment">design/64align</a> Dan Scales，提案：在32位系统上使64位字段作为64位对齐，添加 //go:packed，//go:align 指令，2020年6月8日。
+<ul>
+<li><a href="https://golang.org/issue/599">issue/599</a> cmd/compile: 在32位系统上使64位字段作为64位对齐</li>
+<li><a href="https://golang.org/issue/36606">issue/36606</a> 提案：cmd/compile: 在32位系统上使64位字段作为64位对齐，在结构体上添加 //go:packed，//go:align 指令</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=U0w9eFunkX4">talk/gccgo</a> gccgo 的简要概述，“另一个” Go 编译器。2015年8月6日。</li>
+<li><a href="https://golang.org/issue/28262">issue/28262</a> cmd/compile：反馈导向优化</li>
+</ul>
+<h3 id="%E8%BF%9E%E6%8E%A5%E5%99%A8">连接器</h3>
+<p>Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修。Austin 和 keith, Than, Cheery 和其他人一起对连接器返工，将在 Go 1.15 和 Go 1.16 中发布
+<a href="https://golang.org/s/go13linker">design/go13linker</a> Russ Cox，Go 1.3 连接器大修，2013年11月。</p>
+<ul>
+<li><a href="https://golang.org/s/better-linker">design/go116linker</a> Austin Clements，构建更好的 Go 连接器，2019年9月12日。</li>
+</ul>
+<h3 id="%E8%B0%83%E8%AF%95%E5%99%A8">调试器</h3>
+<ul>
+<li><a href="https://golang.org/s/go13heapdump">doc/go13heapdump</a> 堆转储 Go 1.3</li>
+<li><a href="https://github.com/golang/go/wiki/heapdump14">doc/go14heapdump</a> 堆转储 Go 1.4</li>
+<li><a href="https://github.com/golang/go/wiki/heapdump15-through-heapdump17">doc/go15heapdump</a> 堆转储 Go 1.5 到 堆转储 Go 1.7</li>
+<li><a href="https://golang.org/design/16410-heap-viewer">design/heap-viewer</a> Michael Matloob，提案：Go 堆转储查看器，2016年7月20日。
+<ul>
+<li><a href="https://golang.org/issue/16410">issue/16410</a> x/tools/cmd/heapdump：创建一个堆转储查看器</li>
+</ul>
+</li>
+<li><a href="https://golang.org/design/17280-profile-labels">design/profiler-labels</a> Michael Matloob，提案：支持 pprof 探查器标签，2017年3月15日。
+<ul>
+<li><a href="https://golang.org/issue/17280">issue/17280</a> pprof：添加探查器标签支持</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%AB%9E%E4%BA%89%E6%A3%80%E6%B5%8B%E5%99%A8">竞争检测器</h3>
+<ul>
+<li><a href="https://golang.org/issue/42598">issue/42598</a> runtime: apparent false-positive race report for a buffered channel after CL 220419</li>
+</ul>
+<h3 id="%E8%B7%9F%E8%B8%AA%E5%99%A8">跟踪器</h3>
+<ul>
+<li><a href="https://golang.org/s/go15trace">design/go15trace</a> Dmitry Vyukov，Go 执行跟踪器，2014年10月。</li>
+<li><a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw">design/tracefmt</a> nduca@, dsinclair@，跟踪事件格式，2016年10月。</li>
+</ul>
+<h3 id="%E9%94%81%E5%88%86%E6%9E%90">锁分析</h3>
+<ul>
+<li><a href="https://golang.org/issue/38029">issue/38029</a> x/build: linux-amd64-staticlockranking 持续失败。
+<ul>
+<li><a href="https://golang.org/cl/192704">cl/192704</a> 运行时：锁操作日志支持</li>
+<li><a href="https://golang.org/cl/207348">cl/207348</a> 运行时：当运行 timer 时释放 timersLock</li>
+<li><a href="https://golang.org/cl/207846">cl/207846</a> 运行时，在跟踪内存代码时避免潜在的死锁</li>
+<li><a href="https://golang.org/cl/207619">cl/207619</a> 运行时：运行时的静态锁等级（通过 GOEXPERIMENT 开启）</li>
+<li><a href="https://golang.org/cl/222925">cl/222925</a> cmd/go: 为任何已启用的 GOEXPERIMENT 定义构建标志</li>
+<li><a href="https://golang.org/cl/228417">cl/228417</a> 运行时：将 Gscan 的合并/释放合并到锁排名顺序中</li>
+<li><a href="https://golang.org/cl/229480">cl/229480</a> 运行时：添加几个新的 lock-rank partial order edges</li>
+<li><a href="https://golang.org/cl/231463">cl/231463</a> 运行时：添加一个额外的 lock ranking partial edge</li>
+<li><a href="https://golang.org/cl/233599">cl/233599</a> 运行时：添加 partial order edge 的锁（assistQueue -&gt; mspanSpecial）</li>
+<li><a href="https://golang.org/cl/236137">cl/236137</a> 运行时：为锁排名3个新的 partial orders</li>
+</ul>
+</li>
+<li><a href="https://golang.org/issue/40677">issue/40677</a> 运行时：锁保持检查</li>
+</ul>
+<h3 id="%E6%9E%84%E5%BB%BA">构建</h3>
+<ul>
+<li><a href="https://go.dev/s/go13nacl">design/go13nacl</a> Russ Cox，Go 1.3 本地客户端支持。2013年10月。</li>
+<li><a href="http://go.dev/s/builderplan">design/gobuilder</a> Brad Fitzpatrick，Go 构建计划。2014年9月3日。
+<ul>
+<li><a href="https://groups.google.com/g/golang-dev/c/sdFD0-2Ed8k">discuss/gobuilder</a> 构建器运行的变更</li>
+</ul>
+</li>
+<li><a href="https://go.dev/s/go14android">design/go14android</a> David Crawshaw，Go 支持安卓。2014年6月。</li>
+<li><a href="https://go.dev/s/go1.4-generate">design/go-generate</a> Rob Pike，Go 生成，2014年1月。</li>
+<li><a href="https://go.dev/issue/13560">issue/13560</a> 提案：构建：定义识别机器生成的文件的标准方式。</li>
+<li><a href="https://go.dev/s/generatedcode">discuss/generatedcode</a> Rob Pike 的关于 Issue 13560 的最终意见。</li>
+<li><a href="https://go.dev/design/30411-env">design/goenv</a> Russ Cox，提案：Go 命令行配置文件。2019年3月1日。
+<ul>
+<li><a href="https://go.dev/issue/30411">issue/30411</a> proposal: cmd/go: 添加 <code>go env -w</code>设置默认环境变量</li>
+</ul>
+</li>
+<li><a href="https://go.dev/s/go-build-design%E2%80%8B">design/go116build</a> Russ Cox，防 Bug 构建约束——设计草稿。2020年6月30日。
+<ul>
+<li><a href="https://go.dev/issue/41184">issue/41184</a> cmd/go: 持续交流防 Bug //go:build</li>
+</ul>
+</li>
+<li>Windows
+<ul>
+<li><a href="https://go.dev/issue/41191#issuecomment-690887303">issue/41191</a> 工具链指令</li>
+<li><a href="https://go.dev/s/win2000-golang-nuts">discuss/win2000-golang-nuts</a> 反对删除对 Windows 2000(x86-32)的支持</li>
+</ul>
+</li>
+<li><a href="https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni">design/wasm</a> Richard Musiol，Go WebAssembly 的架构。2018年2月28日。</li>
+<li><a href="https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0">design/wasm2</a> WebAssembly 程序文件</li>
+</ul>
+<h3 id="%E6%A8%A1%E5%9D%97">模块</h3>
+<ul>
+<li><a href="https://docs.google.com/document/d/18tNd8r5DV0yluCR7tPvkMTsWD_lYcRO7NhpNSDymRr8">design/go-dep</a> Go 打包的建议流程</li>
+<li><a href="https://docs.google.com/document/d/1qnmjwfMmvSCDaY4jxPmLAccaaUI5FfySNE90gB0pTKQ/edit">design/go-dep2</a> 依赖管理工具
+<ul>
+<li><a href="https://golang.design/history/6https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/">doc/go-dep</a> Sam Boyer，Go 依赖管理事迹。2016年12月13日。</li>
+<li><a href="https://www.youtube.com/watch?v=5LtMb090AZI">talk/go-dep</a> GopherCon 2017：Sam Boyer，Go 依赖管理的新时代。2017年7月24日。</li>
+<li><a href="https://www.youtube.com/watch?v=wBTGd_dvnO8">talk/go-dep-design</a> dotGo 2017：sam boyer， 依赖的功能设计。2017年12月8日。</li>
+<li><a href="https://www.youtube.com/watch?v=sbrZfPgNmfw">discuss/go-dep</a> Russ Cox，Jess Frazelle, Sam Boyer, Pete Garcin，构建时添加可预测性。2018年2月22日。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/24301-versioned-go">design/vgo</a> Russ Cox，提案：Go 模块版本化。2018年3月20日。
+<ul>
+<li><a href="https://go.dev/issue/24301">issue/24301</a> cmd/go: 像 Go 工具链添加包版本支持。</li>
+<li><a href="https://research.swtch.com/deps">doc/deps</a> Russ Cox，我们的软件依赖问题。2019年1月23日。</li>
+<li><a href="https://research.swtch.com/vgo">doc/vgo</a> Russ Cox，Go 和版本化。</li>
+<li><a href="https://groups.google.com/g/golang-dev/c/a5PqQuBljF4">discuss/groups-gomod</a> Go 模块化来了。</li>
+<li><a href="https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/">discuss/go-dep-response</a> Reddit 讨论。</li>
+<li><a href="https://peter.bourgon.org/blog/2018/07/27/a-response-about-dep-and-vgo.html">doc/go-dep-response</a> Peter Bourgon，关于 dep 和 vgo 的回应。2018年7月27日。</li>
+<li><a href="https://news.ycombinator.com/item?id=17628311">discuss/go-dep-response2</a> 黑客新闻：关于 dep 和 vgo 的回应。</li>
+<li><a href="https://twitter.com/_rsc/status/1022588240501661696">discuss/go-dep-twitter</a> Russ Cox 的推特风暴。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/25530-sumdb">design/sumdb</a> Russ Cox, Filippo Valsorda，提案：公共 Go 模块生态的安全性。2019年4月24日。
+<ul>
+<li><a href="https://go.dev/issue/25530">issue/25530</a> 提案：cmd/go: 透明日志的安全版本。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/23966#issuecomment-377997161">issue/23966</a> 为什么 go.mod 要定制语法？</li>
+<li><a href="https://go.dev/design/36460-lazy-module-loading">design/lazy-gomod</a> Bryan C. Mills，提案：模块的延迟加载。2020年2月20日。</li>
+<li><a href="https://go.dev/issue/45713">issue/45713</a> 提案：cmd/go: 添加工作区模式
+<ul>
+<li><a href="https://go.dev/design/45713-workspace">design/workspace</a> 提案：cmd/go 多模块工作区</li>
+</ul>
+</li>
+</ul>
+<h3 id="gopls">gopls</h3>
+<ul>
+<li><a href="https://go.dev/design/37720-gopls-workspaces">design/gopls-workspace</a> Heschi Kreinick, Rebecca Stambler，提案：多项目 gopls 工作区，2020年3月9日。</li>
+</ul>
+<h3 id="%E6%B5%8B%E8%AF%95%EF%BC%8Cx%2Fperf">测试，x/perf</h3>
+<ul>
+<li><a href="https://go.dev/design/12166-subtests">design/subtests</a> Marcel van Lohuizen，测试：计划中的子测试和子基准测试支持。2015年9月2日。
+<ul>
+<li><a href="https://go.dev/issue/12166">issue/12166</a> 测试：计划中的子测试和子基准测试支持。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/14313-benchmark-format">design/gotest-bench</a> Russ Cox, Austin Clements，提案：Go 基准测试数据格式。2016年2月。
+<ul>
+<li><a href="https://go.dev/issue/14313">issue/14313</a> cmd/go: 决定，标准基准数据格式的文档。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/20875">issue/20875</a> 测试：考虑在基准测试时减少调用 ReadmemStats</li>
+<li><a href="https://go.dev/issue/27217">issue/27217</a> 测试：带有 StopTimer 的小型基准测试永久运行。</li>
+<li><a href="https://go.dev/issue/41637">issue/41637</a> 测试：基准测试迭代报告错误。</li>
+<li><a href="https://go.dev/issue/41641">issue/41641</a> 测出：中断计时器时基准测试不一致。</li>
+<li><a href="https://go.dev/design/2981-go-test-json">design/gotest-json</a> Nodir Turakulov，提案：go test 的 -json 标记。</li>
+<li><a href="https://go.dev/design/4899-testing-helper">design/testing-helper</a> Caleb Spare，提案：测试：用 TB.Helper 更好地支持测试帮助程序。2016年12月27日。
+<ul>
+<li><a href="https://go.dev/issue/4899">issue/4899</a> 测试：添加 t.Helper 让 file:line 的结果更好用。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/s/draft-fuzzing-design">design/fuzzing</a> Katie Hockman，设计草案：模糊测试的起步。</li>
+<li><a href="https://go.dev/issue/43744">issue/43744</a> 测试：基准测试单元属性</li>
+<li><a href="https://go.dev/issue/48803">issue/48803</a> 所有：Go 编译/运行时性能监控系统。</li>
+<li><a href="https://go.dev/issue/49121">issue/49121</a> x/perf/storage：支持 postgresql。</li>
+</ul>
+<h2 id="%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%B8%E5%BF%83">运行时核心</h2>
+<h3 id="%E8%B0%83%E5%BA%A6%E5%99%A8">调度器</h3>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=324234">paper/work-steal</a> Robert D. Blumofe 和 Charles E. Leiserson，通过工作窃取调度多线程计算。J. ACM 46, 5 (September 1999), 720-748.</li>
+<li><a href="https://github.com/golang/go/commit/96824000ed89d13665f6f24ddc10b3bf812e7f47#diff-1fe527a413d9f1c2e5e22e08e605a192">cl/sched-m-1</a> Russ Cox，清理调度器，2008年8月5日。</li>
+<li><a href="https://github.com/golang/go/commit/fe1e49241c04c748d0e3f4762925241adcb8d7da">cl/sched-m-n</a> 现在情况好多了。2009年11月11日。</li>
+<li><a href="https://go.dev/s/go11sched">design/go11sched</a> Dmitry Vyukov，可伸缩的 Go 调度器设计文档。2012年
+<ul>
+<li><a href="https://github.com/golang/go/commit/779c45a50700bda0f6ec98429720802e6c1624e8">cl/7314062</a> 运行时：提升的调度器。</li>
+</ul>
+</li>
+<li><a href="https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h">design/sched-preempt-dmitry</a> Dmitry Vyukov。Go 优先权调度器设计文档。2013年</li>
+<li><a href="https://docs.google.com/document/u/0/d/1d3iI2QWURgDIsSR6G2275vMeQ_X7w-qxM2Vp7iGwwuM/pub">design/sched-numa</a> Dmitry Vyukov，Go 的 NUMA 感知调度器。2014年9月。</li>
+<li><a href="https://go.dev/s/go15gomaxprocs">design/go15gomaxprocs</a> Russ Cox，Go 1.5 的 GOMAXPROCS 默认值。2015年5月。</li>
+<li><a href="https://www.quora.com/How-does-the-golang-scheduler-work/answer/Ian-Lance-Taylor">doc/go17sched</a> Ian Lance Taylor，Go 调度器怎样工作？2016年7月16日。</li>
+<li><a href="https://go.dev/design/24543-non-cooperative-preemption">design/sched-preempt-austin</a> Austin Clements，提案：goroutine 抢占竞争。
+<ul>
+<li><a href="https://go.dev/cl/43050">cl/43050</a> cmd/compile：在 amd64 上使用错误分支的循环抢占。</li>
+<li><a href="https://go.dev/issue/10958">issue/10958</a> 运行时：紧密循环应该是可抢占的。</li>
+<li><a href="https://go.dev/issue/24543">issue/24543</a> 运行时：goroutine 抢占竞争。</li>
+<li><a href="https://go.dev/issue/36365">issue/36365</a> 运行时：清理松散结尾上的异步抢占</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/14592">issue/14592</a> 运行时：让空闲的系统线程退出。</li>
+<li><a href="https://go.dev/issue/18237">issue/18237</a> 运行时：当 goroutine 被经常唤醒时调度很慢。</li>
+<li><a href="https://go.dev/issue/20395">issue/20395</a> 运行时：当所属的 goroutine 退出时中断锁住的系统线程。</li>
+<li><a href="https://go.dev/issue/20458">issue/20458</a> 提案：运行时：一起调用 LockOSThread、UnlockOSThread</li>
+<li><a href="https://go.dev/issue/21827">issue/21827</a> 运行时：使用 runtime.LockOSThread 会造成很大的性能影响。</li>
+<li><a href="https://go.dev/issue/27345">issue/27345</a> 运行时：将父 goroutine 的堆栈用于新的 goroutine。</li>
+<li><a href="https://go.dev/issue/28808">issue/28808</a> 运行时：当 GOMAXPROCS 很高时调度器工作窃取很慢。</li>
+<li><a href="https://go.dev/issue/32113">issue/32113</a> 运行时：减少P流失的优化。</li>
+<li><a href="https://go.dev/issue/44313">issue/44313</a> 运行时：已停止的Ms不能成为专用或小数的GC工作者。</li>
+</ul>
+<h3 id="%E6%89%A7%E8%A1%8C%E6%A0%88">执行栈</h3>
+<ul>
+<li><a href="https://go.dev/s/contigstacks">design/contigstack</a> 连续堆栈</li>
+<li><a href="https://go.dev/issue/17007">issue/17007</a> 运行时：致命错误：就绪状态糟糕的 g-&gt;status</li>
+<li><a href="https://go.dev/issue/18138">issue/18138</a> 运行时：新的 goroutine 在更多堆栈上花费更多的时间
+<ul>
+<li><a href="https://docs.google.com/document/d/1YDlGIdVTPnmUiTAavlZxBI1d9pwGQgZT7IKFKlIXohQ/edit#">design/predict-stack-size</a> Keith Randall，确定一个好的堆栈起始大小，2021年8月18日。</li>
+<li><a href="https://go.dev/cl/341990">cl/341990</a> 运行时：预测堆栈大小</li>
+<li><a href="https://go.dev/cl/345889">cl/345889</a> 运行时：测量堆栈使用情况；需要的话就启动更大的堆栈</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/26061">issue/26061</a> 运行时：g0 stack.lo 有时太慢</li>
+</ul>
+<h3 id="%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%99%A8">内存分配器</h3>
+<p>Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcmallor 的内存分配器，mcache 缓存在 M 上。然后他修改了分配器，允许使用 16GB 的内存，后来到了128GB。然而，分配器（包括收集器）有很严重的锁竞争，且不可伸缩。在 Dmitry 的可伸缩运行时调度器后，分配器可以直接从P锁竞争中分配（更少）。同时，收集器从独立线程迁移到系统监视器线程。现在，Michael 正致力于提高内存分配器的可伸缩性，例如将收集器迁移到用户线程，基于位图的页分配器，可伸缩的 mcentral。</p>
+<ul>
+<li><a href="http://goog-perftools.sourceforge.net/doc/tcmalloc.html">doc/tcmalloc</a> Sanjay Ghemawat, Paul Menage。TCMalloc : 线程缓存 Malloc，谷歌，2009。</li>
+<li><a href="https://go.googlesource.com/proposal/+/aa701aae530695d32916b779e048a3e18311a2e3/design/30333-smarter-scavenging.md">design/go113scavenge</a> Michael Knyszek，提案：智能收集。2019年5月9日。
+<ul>
+<li><a href="https://go.dev/issue/30333">issue/30333</a> 运行时：智能收集</li>
+<li><a href="https://go.dev/issue/32012">issue/32012</a> 运行时：后台收集对小堆过于频繁</li>
+<li><a href="https://go.dev/issue/31966">issue/31966</a> 运行时：后台收集堆栈会显著延迟死锁检测</li>
+<li><a href="https://go.dev/issue/34047">issue/34047</a> 运行时：由 scavenge.lock 引起的潜在死循环</li>
+<li><a href="https://go.dev/issue/34048">issue/34048</a> 运行时：收集器步长无法解释碎片</li>
+<li><a href="https://go.dev/issue/35788">issue/35788</a> 运行时：收集器的效率低于之前</li>
+<li><a href="https://go.dev/issue/36521">issue/36521</a> 运行时：Go 1.12 性能下降</li>
+<li><a href="https://go.dev/issue/36603">issue/36603</a> 运行时：系统经常在不收集的内存上调用</li>
+</ul>
+</li>
+<li><a href="https://go.googlesource.com/proposal/+/a078ea9d72b99dc88fdfd2cb6ee150a8ce202ea2/design/35112-scaling-the-page-allocator.md">design/go114pagealloc</a> Michael Knyszek, Austin Clements，提案：缩放Go 页分配器。2019年10月18日。
+<ul>
+<li><a href="https://go.dev/issue/35112">issue/35112</a> 运行时：页分配器缩放</li>
+<li><a href="https://go.dev/cl/200439">cl/200439</a> 运行时：对触发比例设置下限</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/8885">issue/8885</a> 运行时：考虑添加24字节大小的类</li>
+<li><a href="https://go.dev/issue/37487">issue/37487</a> 运行时：提高 mcentral 的可扩展性
+<ul>
+<li><a href="https://go.dev/cl/221182">cl/221182</a> 运行时：添加新的 mcentral 实现</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/18155">issue/18155</a> 运行时：当没有垃圾时延迟扫描辅助</li>
+<li><a href="https://go.dev/issue/19112">issue/19112</a> 运行时：gcControllerState.enlistWorker 死锁</li>
+<li><a href="https://go.dev/issue/23687">issue/23687</a> 运行时：在 Linux 上也使用 MADV_FREE
+<ul>
+<li><a href="https://go.dev/cl/135395">cl/135395</a> 运行时：在 Linux 上使用 MADV_FREE（如果可用）</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/29707">issue/29707</a> cmd/trace: 无法解析轨迹：无法对事件进行一致的排序</li>
+<li><a href="https://go.dev/issue/35954">issue/35954</a> 运行时：句柄更优雅地分配到分配器地址空间的顶部</li>
+<li><a href="https://go.dev/issue/37927">issue/37927</a> 运行时：GC 步长在低 GOGC 表现出奇怪行为。</li>
+<li><a href="https://go.dev/issue/38130">issue/38130</a> 运行时：页分配器的健全性检查不正确。</li>
+<li><a href="https://go.dev/issue/38404">issue/38404</a> 运行时：在 arm64/mips64le 上，STW GC 不工作。</li>
+<li><a href="https://go.dev/issue/38605">issue/38605</a> 运行时：pageAlloc.allocToCache 不正确地更新 pageAlloc.searchAddr</li>
+<li><a href="https://go.dev/issue/38617">issue/38617</a> 运行时：Go 1.14 中收集器在 Windows 里冻结，因为时间粒度太粗略。</li>
+<li><a href="https://go.dev/issue/38966">issue/38966</a> 运行时：aix-ppc64 构建器出现致命错误：“修剪错误”，“地址范围的基准和限制不在同一个内存片段中”</li>
+<li><a href="https://go.dev/issue/39128">issue/39128</a> 运行时：从 CL 233497 开始，linux-mips-rtrk 构建器一直因为“修剪错误”而失败。</li>
+<li><a href="https://go.dev/issue/40191">issue/40191</a> 运行时：pageAlloc.searchAddr 可能指向不连续堆中的未映射的内存，违反了其不变性</li>
+<li><a href="https://go.dev/issue/40457">issue/40457</a> 运行时：runqputbatch 不保护它对 globrunqputbatch 的调用。</li>
+<li><a href="https://go.dev/issue/40641">issue/40641</a> 运行时：堆栈收缩和通道收发之前的竞争导致错误的 sudog 值</li>
+<li><a href="https://go.dev/issue/42330">issue/42330</a> 运行时：在 Linux 上默认为 MADV_DONTNEED
+<ul>
+<li><a href="https://go.dev/cl/267100">cl/267100</a> 运行时：在 Linux 上默认为 MADV_DONTNEED</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8">垃圾收集器</h3>
+<ul>
+<li><a href="https://doi.org/10.1145/359642.359655">paper/on-the-fly-gc</a> Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten 和 E. F. M. Steffens。动态垃圾收集：合作练习。Commun.ACM 21，11（1978年11月），966-975。</li>
+<li><a href="https://doi.org/10.1016/0164-1212(90)90084-Y">paper/yuasa-barrier</a> T. Yuasa。通用机器上的实时垃圾收集。J. Syst. Softw. 11,3 （1990年3月），181-198.</li>
+<li><a href="https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub">design/go13gc</a> Dmitry Vyukov，更简单和更快速的 Go GC。2014年7月16日。
+<ul>
+<li><a href="https://codereview.appspot.com/106260045">cl/106260045</a> 运行时：更简单和更快速的 Go GC</li>
+</ul>
+</li>
+<li><a href="https://go.dev/s/go14gc">design/go14gc</a> Richard L. Hudson。Go 1.4+ 的垃圾收集计划和路线图。2014年8月6日。</li>
+<li><a href="https://go.dev/s/go15gcpacing">design/go15gcpacing</a> Austin Clements。Go 1.5 并发垃圾收集步长。2015年3月10日。</li>
+<li><a href="https://groups.google.com/forum/#!topic/golang-dev/YjoG9yJktg4">discuss/gcpacing</a> Austin Clements 等人。关于“提案：垃圾收集器步长”的讨论。2015年3月10日。</li>
+<li><a href="https://go.dev/issue/11970">issue/11970</a> 运行时：将 GC 协调器替换为状态机。</li>
+<li><a href="https://go.dev/design/12800-sweep-free-alloc">design/sweep-free-alloc</a> Austin Clements。提案：密集标记位和无扫描分配。2015年9月30日。</li>
+<li><a href="https://go.dev/issue/12800">issue/12800</a> 运行时：将空间的列表替换为直接的位图分配。</li>
+<li><a href="https://go.dev/design/11970-decentralized-gc">design/decentralized-gc</a> Austin Clements。提案：分散的GC协调器。2015年10月25日。</li>
+<li><a href="https://go.dev/issue/12967#issuecomment-171466238">issue/12967</a> 运行时：标记终止时的收缩堆栈显著增加了 GC 的 STW 时间</li>
+<li><a href="https://go.dev/issue/14951">issue/14951</a> 运行时：突变的辅助过于激进，尤其是在高 GC 时。</li>
+<li><a href="https://go.dev/design/17503-eliminate-rescan">design/eliminate-rescan</a> Austin Clements, Rick Hudson。消除 STW 堆栈的再次扫描。2016年10月21日。
+<ul>
+<li><a href="https://go.dev/issue/17503">issue/17503</a> 运行时：消除堆栈再扫描。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/17505-concurrent-rescan">design/concurrent-rescan</a> Austin Clements, Rick Hudson。提案：堆栈的并发再扫描。2016年10月18日。
+<ul>
+<li><a href="https://go.dev/issue/17505">issue/17505</a> 运行时：堆栈并发再扫描。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/14951-soft-heap-limit">design/soft-heap-limit</a> Austin Clements。提案：分开软硬堆大小目标。2018年7月12日。</li>
+<li><a href="https://go.dev/issue/22460">issue/22460</a> 运行时：优化写入屏障。</li>
+<li><a href="https://go.dev/s/gctoc">design/roc</a> 面向请求的收集器算法（ROC）
+<ul>
+<li><a href="https://go.dev/cl/25058">cl/roc</a> 运行时：用 ROC 编写屏障代码</li>
+<li><a href="https://go.dev/cl/137482">cl/generational-gc</a> 运行时：触发器生成GC</li>
+</ul>
+</li>
+<li><a href="https://go.dev/blog/ismmkeynote">doc/ismm-gc</a> Rick Hudson，Go 垃圾收集器之旅。</li>
+<li><a href="https://groups.google.com/forum/#!topic/golang-dev/UuDv7W1Hsns">discuss/ismm-gc</a> 垃圾回收 Slides 和 Transcritp 已可用。</li>
+<li><a href="https://go.dev/design/26903-simplify-mark-termination">design/simplify-mark-termination</a> Austin Clements，提案：简略标记终止和消除标记2。2018年8月9日。
+<ul>
+<li><a href="https://go.dev/issue/26903">issue/26903</a> 运行时：简略标记终止和消除标记2</li>
+</ul>
+</li>
+<li><a href="https://docs.google.com/document/d/1un-Jn47yByHL7I0aVIP_uVCMxjdM5mpelJhiKlIqxkE/edit#">design/gcscan</a> 提案：堆栈的GC扫描
+<ul>
+<li><a href="https://go.dev/issue/22350">issue/22350</a> cmd/compile: 编译器莫名其妙地保留内存。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/27993">issue/27993</a> 运行时：错误消息：在标记终止时 P 会缓存 GC 内容。</li>
+<li><a href="https://go.dev/issue/37116">issue/37116</a> 运行时：在 Go1.14rc1 中 GC 会延迟 10ms-26ms，可能因为 GC 空闲。</li>
+<li><a href="https://go.dev/issue/42430">issue/42430</a> 运行时：GC 里 pacer 问题讨论
+<ul>
+<li><a href="https://go.dev/issue/39983">issue/39983</a> 运行时：空闲的GC妨碍自动缩放</li>
+<li><a href="https://go.dev/issue/17969">issue/17969</a> 运行时：侵略型的GC实现会干扰共同租户。</li>
+<li><a href="https://go.dev/issue/14812">issue/14812</a> 运行时：GC 导致延迟峰值。</li>
+<li><a href="https://go.dev/issue/40460">issue/40460</a> 运行时：goroutine 可能分配超出硬堆目标。</li>
+<li><a href="https://go.dev/issue/29696">issue/29696</a> 提案：运行时：为应用增加回应GC反压力的方式。</li>
+<li><a href="https://go.dev/issue/23044">issue/23044</a> 提案：运行时：添加一种机制来指定最小目标堆大小</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/42642">issue/42642</a> 运行时：多毫秒扫描终止暂停（第二版）</li>
+<li><a href="https://go.dev/issue/44163">issue/44163</a> 运行时：删除空闲的GC工作者。</li>
+<li><a href="https://go.dev/issue/44167">issue/44167</a> 运行时：重新设计 GC Pacer
+<ul>
+<li><a href="https://go.dev/design/44167-gc-pacer-redesign">design/gc-pacer-redesign</a> 重新设计 GC Pacer</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/44309">issue/44309</a> 提案：runtime/debug: 用户可配置目标内存</li>
+<li><a href="https://go.dev/issue/48409">issue/48409</a> 提案：runtime/debug: 软内存限制
+<ul>
+<li><a href="https://go.dev/design/44309-user-configurable-memory-target">design/user-configurable-memory-target</a> 用户可配置目标内存</li>
+<li><a href="https://go.dev/design/48409-soft-memory-limit">design/soft-memory-limit</a> 软内存限制</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/45894">issue/45894</a> 运行时：标记终止重启突变太慢。</li>
+<li><a href="https://go.dev/issue/45315">issue/45315</a> 运行时：runtime.GC 无需完成扫描就能返回。</li>
+</ul>
+<h3 id="%E7%BB%9F%E8%AE%A1">统计</h3>
+<ul>
+<li><a href="https://go.dev/issue/16843">issue/16843</a> 运行时：用于监控堆大小的机制
+<ul>
+<li><a href="https://go-review.googlesource.com/c/go/+/46751/">cl/setmaxheap</a> Austin Clements，runtime/debug：添加 SetMaxHeap 应用接口。2017年6月26日。</li>
+</ul>
+</li>
+<li><a href="https://github.com/golang/proposal/blob/44d4d942c03cd8642cef3eb2f6c153f2e9883a77/design/37112-unstable-runtime-metrics.md">design/go116runtime-metric</a> Michael Knyszek，提案：用于不稳定运行时的指标应用接口。2020年3月18日。</li>
+<li><a href="https://go.dev/issue/19812">issue/19812</a> 运行时：在GC期间无法 ReadMemStats。</li>
+<li><a href="https://go.dev/issue/38712">issue/38712</a> 运行时：TestMemStats 很奇怪</li>
+<li><a href="https://go.dev/issue/40459">issue/40459</a> 运行时：在循环中调用 ReadMemStats 可能阻止GC</li>
+</ul>
+<h3 id="%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B">内存模型</h3>
+<p>Go内存模型包含以下方面：</p>
+<ul>
+<li>关于原子操作的内存顺序</li>
+<li>关于 sync 包应用接口的内存顺序</li>
+<li>关于运行时机制的内存顺序（即对象终结器）</li>
+<li><a href="https://go.dev/ref/mem">doc/refmem</a> Rob Pike 和 Russ Cox。Go 内存模型。2009年2月21日。</li>
+<li><a href="https://go.dev/issue/4947">issue/4947</a> cmd/cc: 原子的实质</li>
+<li><a href="https://go.dev/issue/5045">issue/5045</a> 文档：定义 sync/atomic 和内存模型怎样交互</li>
+<li><a href="https://go.dev/issue/7948">issue/7948</a> 文档：定义 sync 和内存模型怎样交互</li>
+<li><a href="https://go.dev/issue/9442">issue/9442</a> 文档：定义 finalizers 和内存模型怎样交互</li>
+<li><a href="https://go.dev/issue/33815">issue/33815</a> doc/go_mem: &quot;hello, world&quot; 并不总是打印两次</li>
+<li><a href="https://codereview.appspot.com/75130045">cl/75130045</a> 文档：允许缓冲通道在未初始化时作为信号量</li>
+<li><a href="http://nil.csail.mit.edu/6.824/2016/notes/gomem.pdf">doc/gomem</a> Russ Cox。Go 内存模型。2016年2月25日。</li>
+<li><a href="https://research.swtch.com/go2017#memory">doc/go2017russ</a> Russ Cox，我的Go决议2017：内存模型。2017年1月18日。</li>
+<li><a href="https://go.dev/pkg/sync/atomic/#pkg-note-BUG">doc/atomic-bug</a> atomic 包</li>
+<li><a href="https://groups.google.com/d/msg/golang-dev/vVkH_9fl1D8/azJa10lkAwAJ">discuss/atomic-mem-order</a> 通过 atomic 的 Load/Store 来提供内存顺序保证。</li>
+<li><a href="https://go.dev/issue/37355">issue/37355</a> runtime/race: 使用 -race 运行但没有 race（与内存模型不匹配）
+<ul>
+<li><a href="https://go.dev/cl/220419">cl/220419</a> 运行时：交换 raceacquire() 和 racerelease 的顺序</li>
+<li><a href="https://go.dev/issue/42598">issue/42598</a> 运行时：在 CL 220419 后缓冲通道的明显错误的竞争报告。</li>
+<li><a href="https://go.dev/cl/271987">cl/271987</a> 运行时：在调用竞争检测器前检查通道的 elemsize</li>
+<li>[paper/fava2020fix] Fava, Daniel Schnetzer，“查找并修复Go内存模型和数据竞争检测器间的不匹配。”软件工程和格式化方法的国际化会议。2020年 Springer, Cham。</li>
+</ul>
+</li>
+<li><a href="https://research.swtch.com/mm">doc/mm</a> Russ Cox，内存模型，2021年6月
+<ul>
+<li><a href="https://research.swtch.com/hwmm">doc/hwmm</a> Russ Cox，硬件内存模型。2021年6月29日。</li>
+<li><a href="https://research.swtch.com/plmm">doc/plmm</a> Russ Cox，编程语言内存模型。2021年7月6日。</li>
+<li><a href="https://research.swtch.com/gomm">doc/gomm</a> Russ Cox，更新Go内存模型。2021年7月12日。</li>
+<li><a href="https://github.com/golang/go/discussions/47141">discuss/47141</a> 更新Go内存模型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="ABI">ABI</h3>
+<ul>
+<li><a href="https://go.dev/design/12416-cgo-pointers">design/cgo-pointers</a> Ian Lance Taylor，提案：在Go和C之间传递指针的规则。2015年10月。
+<ul>
+<li><a href="https://go.dev/issue/12416">issue/12416</a> cmd/cgo: 指定Go和C之间传递指针的规则。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/27539-internal-abi">design/internal-abi</a> Austin Clements. 创建未定义的内部调用规定。2019年1月14日。
+<ul>
+<li><a href="https://go.dev/issue/27539">issue/27539</a> 提案：运行时：使 ABI 未定义，作为更改的步骤。</li>
+<li><a href="https://go.dev/issue/31193">issue/31193</a> cmd/compile，运行时：减少函数开头的开销。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/40724-register-calling">design/register-call</a> Austin Clements, 另有 Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor 提供建议。提案：基于注册的Go调用协议。2020年8月10日。</li>
+<li><a href="https://go.dev/issue/18597">issue/18597</a> 提案: cmd/compile: 定义基于注册的调用协议。</li>
+<li><a href="https://go.dev/issue/40724">issue/40724</a> 提案：Go 函数切换到基于注册的调用协议。
+<ul>
+<li><a href="https://go.dev/cl/266638">cl/266638</a> 反射、运行时：为 ASM 例程使用内部 ABI，第二次尝试。</li>
+<li><a href="https://go.dev/cl/259445">cl/259445</a> cmd/compile,cmd/link: 为ABI包装器的初始支持</li>
+</ul>
+</li>
+<li><a href="https://github.com/golang/go/blob/master/src/cmd/compile/abi-internal.md">design/internal-abi-spec</a> Go 内部ABI规范。</li>
+</ul>
+<h3 id="Misc-1">Misc</h3>
+<ul>
+<li><a href="https://go.dev/issue/20135">issue/20135</a> 运行时：删除元素时map收缩。</li>
+</ul>
+<h2 id="%E6%A0%87%E5%87%86%E5%BA%93">标准库</h2>
+<h3 id="syscall">syscall</h3>
+<ul>
+<li><a href="https://go.dev/s/go1.4-syscall">design/go14syscall</a> syscal 包。</li>
+</ul>
+<h3 id="os%2C+io%2C+io%2Ffs%2C+embed">os, io, io/fs, embed</h3>
+<p>Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
+<a href="https://go.dev/design/draft-iofs">design/draft-iofs</a> Russ Cox, Rob Pike，Go文件系统接口——设计草案。2020年7月。</p>
+<ul>
+<li><a href="https://go.dev/issue/13473">issue/13473</a> 提案：os: Stdin, Stdout 和 Stderr 应该是接口</li>
+<li><a href="https://go.dev/issue/14106">issue/14106</a> 提案：os：File 应该是接口</li>
+<li><a href="https://go.dev/issue/19660">issue/19660</a> 提案: 将 io/ioutil 重命名为 io/fileio 或类似名字</li>
+<li><a href="https://go.dev/issue/40025">issue/40025</a> 提案: io/ioutil: 移动 Discard, NopCloser, ReadAll 到 io</li>
+<li><a href="https://go.dev/issue/40027">issue/42027</a> 提案: path/filepath: 添加 WalkDir (使用 DirEntry 浏览)</li>
+<li><a href="https://go.dev/issue/41190">issue/41190</a> io/fs: 添加文件系统接口</li>
+<li><a href="https://go.dev/issue/41467">issue/41467</a> os: 为轻量级目录查询添加 ReadDir 方法。</li>
+<li><a href="https://go.dev/issue/41974">issue/41974</a> 提案: io/fs, filepath: 添加高效的浏览替代方案。</li>
+<li><a href="https://go.dev/issue/42026">issue/42026</a> 提案: os: 添加 ReadDir, ReadFile, WriteFile, CreateTemp, MkdirTemp，以及反对 io/ioutil</li>
+<li><a href="https://go.dev/issue/43223">issue/43223</a> 提案: io/fs, net/http: 定义自动 ETag 服务的接口</li>
+<li><a href="https://go.dev/s/draft-embed-design">design/go116embed</a> Russ 和 Braid，嵌入文件。
+<ul>
+<li><a href="https://go.dev/issue/41191">issue/41191</a> embed, cmd/go: 添加嵌入文件的支持</li>
+<li><a href="https://go.dev/issue/42321">issue/42321</a> embed: 在 embed.FS 文档中应该加入警告，说明包含点文件</li>
+<li><a href="https://go.dev/issue/42328">issue/42328</a> 提案: cmd/go: 在使用 <code>//go:embed</code>时避免包含隐藏文件</li>
+<li><a href="https://go.dev/issue/43216">issue/43216</a> 提案: embed: 删除在本地变量上对嵌入指令的支持</li>
+<li><a href="https://go.dev/issue/43217">issue/43217</a> 提案: embed: 定义 String 和 Bytes 类型别名时必须使用 <code>//go:embed</code></li>
+<li><a href="https://go.dev/issue/43218">issue/43218</a> embed: 对 string, []byte 讨论的决定</li>
+<li><a href="https://go.dev/issue/44166">issue/44166</a> io/fs,os: 使用 os.DirFS 的 fs.ReadDir 会造成错误的路径</li>
+<li><a href="https://go.dev/issue/42322">issue/42322</a> io/fs: 添加函数 <code>Sub(fsys FS, dir string) FS</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="go%2F%2A">go/*</h3>
+<ul>
+<li><a href="https://go.dev/s/types-tutorial">doc/gotypes</a> Alan Donovan. go/types: Go 类型检查器</li>
+<li><a href="https://docs.google.com/presentation/d/13OvHYozAUBeISPRoLgG7kMBuja1NsU1D_mMlmbaYojk/view">talk/gotypes</a> Alan Donovan. 使用 go/types 作为代码理解和重构工具。2015年12月2日。</li>
+<li><a href="https://docs.google.com/document/d/1-azPLXaLgTCKeKDNg0HVMq2ovMlD-e7n1ZHzZVzOlJk/edit">design/modular-interface</a> Alan Donovan. 提案：用于Go模块化静态分析的通用接口。2018年9月9日。
+<ul>
+<li><a href="https://go.dev/cl/134935">cl/134935</a> go/analysis: 分析工具的新的应用接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="sync">sync</h3>
+<ul>
+<li><a href="https://go.dev/design/18802-percpu-sharded">design/percpu-sharded</a> Sanjay Menakuru. 提案：percpu.Sharded，一个用来减少缓存竞争的应用接口。2018年6月12日。
+<ul>
+<li><a href="https://go.dev/issue/18802">issue/18802</a> 提案：sync: 支持分片值</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/37142">issue/37142</a> sync: sync 包里的收缩类型</li>
+</ul>
+<h4 id="Map">Map</h4>
+<ul>
+<li><a href="https://go.dev/issue/21031">issue/21031</a> sync: 减少 map 里的指针开销</li>
+<li><a href="https://go.dev/issue/21032">issue/21032</a> sync: 用存储新键值来减少 (*map).Load 的损失</li>
+<li><a href="https://go.dev/issue/21035">issue/21035</a> sync: 通过新的不相交的键来减少Map操作间的竞争</li>
+<li><a href="https://go.dev/issue/37033">issue/37033</a> 运行时：提供集中的工具来管理 go/cgo 的指针句柄</li>
+</ul>
+<h4 id="Pool">Pool</h4>
+<ul>
+<li><a href="https://groups.google.com/d/msg/golang-dev/kJ_R6vYVYHU/LjoGriFTYxMJ">discuss/add-pool</a> gc-aware 池耗尽策略</li>
+<li><a href="https://go.dev/issue/4720">issue/4720</a> sync：添加池类型，2013年1月28日。</li>
+<li><a href="https://github.com/golang/go/commit/f8e0057bb71cded5bb2d0b09c6292b13c59b5748#diff-2e9fc106a7387ca4c32ecf856a91f82a">cl/46010043</a> sync: 缩放池，2014年1月24日。</li>
+<li><a href="https://github.com/golang/go/commit/8fc6ed4c8901d13fe1a5aa176b0ba808e2855af5#diff-2e9fc106a7387ca4c32ecf856a91f82a">cl/86020043</a> sync: 池里减少激进的本地缓存，2014年4月14日。</li>
+<li><a href="https://github.com/golang/go/commit/af3868f1879c7f8bef1a4ac43cfe1ab1304ad6a4#diff-491b0013c82345bf6cfa937bd78b690d">cl/162980043</a> sync: 在第二次和之后的GC期间释放池内存，2014年10月22日。</li>
+<li><a href="https://go.dev/issue/8979">issue/8979</a> sync: 在GC期间池没有释放内存。</li>
+<li><a href="https://go.dev/issue/22331">issue/22331</a> 运行时：池清理导致 STW1 时间过长。</li>
+<li><a href="https://go.dev/issue/22950">issue/22950</a> sync: 避免每次GC都清理全部池。
+<ul>
+<li><a href="https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31">cl/166960</a> sync: 使用无锁结构进行池窃取。</li>
+<li><a href="https://github.com/golang/go/commit/2dcbf8b3691e72d1b04e9376488cef3b6f93b286">cl/166961</a> sync: 使用受害者缓存在GC上进行平缓的池操作。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/24479">issue/24479</a> sync: 在池操作里去除全部 Mutex。</li>
+</ul>
+<h4 id="Mutex%2C+RWMutex">Mutex, RWMutex</h4>
+<ul>
+<li><a href="https://go.dev/cl/4631059">cl/4631059</a> 运行时：替换 Semacquire/Semrelease 实现。</li>
+<li><a href="https://go.dev/issue/9201">issue/9201</a> 提案：同步：禁止解锁不同 goroutine 的 mutex。</li>
+<li><a href="https://go.dev/issue/13086">issue/13086</a> 运行时：在重复睡眠获取失败后回退到公平锁。
+<ul>
+<li><a href="https://go.dev/cl/34310">cl/34310</a> sync: 让 Mutex 更公平。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/17973">issue/17973</a> sync: RWMutex 无法随 CPU 数量扩展。
+<ul>
+<li><a href="https://go.dev/cl/215361">cl/215361</a> sync: 实现能够避免缓存竞争的 RWMutex 版本。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Groups">Groups</h4>
+<ul>
+<li><a href="https://go.dev/cl/134395">cl/134395</a> errgroup: 重新考虑并发模式。
+<ul>
+<li><a href="https://go.dev/cl/131815">cl/131815</a> errgroup: 句柄运行时。从子 goroutine 进行 Goexit。</li>
+<li><a href="https://go.dev/issue/15758">issue/15758</a> testing: 同时使用 T.FatalX 和 T.SkipX 时应该提示错误。</li>
+<li><a href="https://go.dev/issue/25448">issue/25448</a> 提案：将<code>panic(nil)</code>改为非空的panic值。</li>
+</ul>
+</li>
+</ul>
+<h4 id="atomic">atomic</h4>
+<ul>
+<li><a href="https://go.dev/issue/8739">issue/8739</a> runtime,sync/atomic: 统一 runtime/internal/atomic 和 sync/atomic 的应用接口。</li>
+<li><a href="https://go.dev/issue/20164">issue/20164</a> 提案: atomic: 添加 <code>(*Value).Swap</code></li>
+<li><a href="https://groups.google.com/g/golang-dev/c/SBmIen68ys0/m/WGfYQQSO4nAJ">discuss/atomic-value</a></li>
+<li><a href="https://go.dev/issue/36606">issue/36606</a> 提案: cmd/compile: 让64位字段在32位系统上对齐为64位，在结构上添加 <code>//go:packed</code>指令</li>
+<li><a href="https://go.dev/issue/37262">issue/37262</a> 运行时：在32位架构上不能原子性地访问 tiny-allocated 结构的第一个字。</li>
+</ul>
+<h3 id="time">time</h3>
+<ul>
+<li><a href="https://go.dev/design/12914-monotonic">design/monotonic-time</a> Russ Cox，提案：Go 中单调经过的时间跨度。2017年1月26日。
+<ul>
+<li><a href="https://go.dev/issue/12914">issue/12914</a> time: 使用单调时钟测量经过的时间</li>
+</ul>
+</li>
+<li>可扩展的计时器
+<ul>
+<li><a href="https://go.dev/cl/34784">cl/34784</a> 运行时：在多 CPU 系统上的计时器可扩展性。</li>
+<li><a href="https://go.dev/issue/6239">issue/6239</a> 运行时：让计时器更快。</li>
+<li><a href="https://go.dev/issue/15133">issue/15133</a> 运行时：计时器无法在有大量计时器的多CPU系统上扩展。</li>
+<li><a href="https://go.dev/issue/27707">issue/27707</a> time: 	当使用 Ticker 和 Sleep 时CPU使用率过高。</li>
+</ul>
+</li>
+<li>后续的延迟讨论
+<ul>
+<li><a href="https://go.dev/issue/18023">issue/18023</a> 运行时：使用 runtime.LockOSThread 意外会大幅减慢。</li>
+<li><a href="https://go.dev/issue/25471">issue/25471</a> time: 需要大约7次 syscall 才会睡眠。</li>
+<li><a href="https://go.dev/issue/38070">issue/38070</a> 运行时：因为抢占点导致计时器自己死锁。</li>
+<li><a href="https://go.dev/issue/36298">issue/36298</a> net: mac 上的 1.14 版本性能减弱。</li>
+<li><a href="https://go.dev/issue/38860">issue/38860</a> 运行时：CPU 限制 goroutine 导致不必要的计时器延迟。
+<ul>
+<li><a href="https://go.dev/cl/216198">cl/216198</a> 运行时：将 poller 返回的 goroutine 添加进本地运行队列。</li>
+<li><a href="https://go.dev/cl/232199">cl/232199</a> 运行时：从运行中的 P's 中窃取计时器。</li>
+<li><a href="https://go.dev/cl/232298">cl/232298</a> 运行时：减少计时器延迟。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/44343">issue/44343</a> 运行时：time.Sleep 比预计时间更长</li>
+<li><a href="https://go.dev/issue/44868">issue/44868</a> time, runtime: 零间隔的计时器需要2分钟才能启动。</li>
+</ul>
+</li>
+</ul>
+<h3 id="context">context</h3>
+<ul>
+<li><a href="https://go.dev/issue/8082">issue/8082</a> 提案：规范：通过接口的定义而不是包和名字来表示接口。</li>
+<li><a href="https://go.dev/issue/14660">issue/14660</a> 提案：context: 标准库的新包。</li>
+<li><a href="https://go.dev/issue/16209">issue/16209</a> 提案：放宽名称不同但实际相同的接口的分配规则。</li>
+<li><a href="https://go.dev/issue/20280">issue/20280</a> 提案: io: 向 Reader 等添加 Context 参数。</li>
+<li><a href="https://go.dev/issue/21355">issue/21355</a> 提案：让 Context 使用本地 goroutine 存储</li>
+<li><a href="https://go.dev/issue/24050">issue/24050</a> testing: 在1.10上使用子进程测试有时会挂住。</li>
+<li><a href="https://go.dev/issue/27982">issue/27982</a> 提案: Go 2: 加入协作式 goroutine 取消机制</li>
+<li><a href="https://go.dev/issue/28342">issue/28342</a> 提案: Go 2: 更新 context 包</li>
+<li><a href="https://go.dev/issue/29011">issue/29011</a> 提案: Go 2: 使用结构化的并发</li>
+<li><a href="https://faiface.github.io/post/context-should-go-away-go2/">doc/context-go-away</a> Michal Štrba，Go 2 应该取消 Context，2017年8月6日。</li>
+<li><a href="https://go.dev/blog/context">doc/context</a> Go 并发模式: Context。</li>
+<li><a href="https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation">doc/context-isnt-for-cancellation</a> Dave Cheney，Context 不适用取消。</li>
+<li><a href="https://go.dev/issue/42564">issue/42564</a> context: cancelCtx 独占锁导致极端的竞争。</li>
+</ul>
+<h3 id="encoding">encoding</h3>
+<ul>
+<li><a href="https://go.dev/s/go12encoding">design/go12encoding</a> Russ Cox，Go 1.2里的 encoding，TextMarshaler 和 TextUnmarshaler，2013年7月。</li>
+<li><a href="https://docs.google.com/document/d/1G-AMeUPoyTnbZDkuCJA89DjJwTjdWFctIZ_N9NgA9RM/pub">design/go12xml</a> Russ Cox，Go 1.2 里的 xml.Marshaler 和 Unmarshaler，2013年7月。</li>
+<li><a href="https://go.dev/design/13504-natural-xml">design/natural-xml</a> Sam Whited，提案: 原生 XML. 2016年9月27日。
+<ul>
+<li><a href="https://go.dev/issue/13504">issue/13504</a> encoding/xml: 添加 XML 数据的通用表现形式。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/14386-zip-package-archives">design/zip</a> Russ Cox，提案：基于 Zip 的 Go 包存档，2016年2月。
+<ul>
+<li><a href="https://go.dev/issue/14386">issue/14386</a> 提案：在 .a 和 .o 文件中使用 zip 格式。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/19480-xml-stream">design/xmlstream</a> Sam Whited，建议：XML 流。2017年3月9日。
+<ul>
+<li><a href="https://go.dev/issue/19480">issue/19480</a> encoding/xml: 从 TokenReader 添加解码，启用流转换器。</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/26756-rawxml-token">design/raw-xml</a> Sam Whited，提案：原始 XML 令牌，2018年9月1日。
+<ul>
+<li><a href="https://go.dev/issue/26756">issue/26756</a> 提案: encoding/xml: 添加 RawXML 令牌。</li>
+</ul>
+</li>
+</ul>
+<h3 id="image%2C+x%2Fimage">image, x/image</h3>
+<p>以下的讨论关于颜色管理和图片标准库。现在，Go图片库不会在编码和解码期间读取或写入元信息。因此，在处理图片时（例如在非线性 sRGB 空间中缩放），颜色可能出错。通用解决方案是设计图片元数据API，来识别编码图片文件中的颜色配置文件。</p>
+<ul>
+<li><a href="https://go.dev/issue/11420">issue/11420</a> x/image/draw: 颜色空间校正插值
+<ul>
+<li><a href="https://go.dev/issue/20613">issue/20613</a> image/png: 不要忽略 PNG gAMA块</li>
+<li><a href="https://go.dev/issue/27830">issue/27830</a> 提案: image: 解码选项</li>
+<li><a href="https://go.dev/cl/253497">cl/253497</a> x/image/draw: 伽玛校正非线性插值</li>
+<li><a href="https://go.dev/issue/37188">issue/37188</a> image/color: 文档没有包含指向颜色理论资源的链接</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/33457">issue/33457</a> 提案: image: 添加对 jpeg、gif、png 的通用元数据支持
+<ul>
+<li><a href="https://groups.google.com/g/golang-dev/c/aRvnYIcaIaA/m/9GVKL7mIAgAJ">discuss/image-metadata</a> image.Metadata 接口类型</li>
+<li><a href="https://go.dev/issue/18365">issue/18365</a> image/png: 不支持设计和检索 PPI/DPI</li>
+<li><a href="https://go.dev/cl/208559">cl/208559</a> image: 新的元数据感知读写API</li>
+<li><a href="https://go.dev/cl/216799">cl/216799</a> image: 元数据API草图</li>
+</ul>
+</li>
+<li><a href="https://go.dev/issue/44808">issue/44808</a> image, image/draw: 添加直接使用 RGBA64 的接口</li>
+<li><a href="https://go.dev/issue/46395">issue/46395</a> image/draw: 如果掩码是 *image.Alpha，通过使用特殊情况来提升性能。</li>
+</ul>
+<h3 id="Mobile">Mobile</h3>
+<ul>
+<li><a href="https://go.dev/s/go14android">design/go14android</a> David Crawshaw，Go 支持安卓，2014年6月。</li>
+<li><a href="https://go.dev/s/gobind">design/gobind</a> David Crawshaw，绑定Go和Java，2014年7月。</li>
+</ul>
+<h3 id="misc">misc</h3>
+<ul>
+<li><a href="https://go.dev/design/13432-mobile-audio">design/mobile-audio</a> Jaana Burcu Dogan，提案：手机音频。2015年11月30日。
+<ul>
+<li><a href="https://go.dev/issue/13432">issue/13432</a> 提案: x/mobile 音频</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/12750-localization">design/localization</a> Marcel van Lohuizen，提案：Go 本地化支持。2016年1月28日。
+<ul>
+<li><a href="https://go.dev/issue/12750">issue/12750</a> x/text: 本地化支持</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/27935-unbounded-queue-package">design/unbounded-queue</a> Christian Petrin，提案：内置高性能无界队列。2018年10月2日。
+<ul>
+<li><a href="https://go.dev/issue/27935">issue/27935</a> 提案: 添加 container/queue</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/33974-add-public-lockedfile-pkg">design/lockfile</a> Adrien Delorme，公开内部的锁定文件包
+<ul>
+<li><a href="https://go.dev/issue/33974">issue/33974</a></li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/16704-cidr-notation-no-proxy">design/cidr</a> Rudi Kramer, James Forrest，在 no_proxy 变量中添加对CIDR表示法的支持。2017年7月10日。
+<ul>
+<li><a href="https://go.dev/issue/16704">issue/16704</a> net/http: 考虑在 no_proxy 环境变量添加 CIDR 表示法</li>
+</ul>
+</li>
+<li><a href="https://go.dev/design/26160-dns-based-vanity-imports">design/dns</a> Sam Whited，提案：基于DNS的虚导入。2018年6月30日。
+<ul>
+<li><a href="https://go.dev/issue/26160">issue/26160</a> 提案：将 DNS 文本记录用于虚导入路径</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E6%9C%AA%E5%88%86%E7%B1%BB%E4%BD%86%E7%9B%B8%E5%85%B3%E7%9A%84%E9%93%BE%E6%8E%A5">未分类但相关的链接</h2>
+<ul>
+<li><a href="https://go.dev/s/using-guru">使用Go Guru：用于导航Go代码的集成编辑器工具，Alan Donovan。</a></li>
+<li><a href="https://docs.google.com/document/d/1UErU12vR7jTedYvKHVNRzGPmXqdMASZ6PfE7B-p6sIg/edit">Go Guru 计划 (née Oracle) ，Alan Donovan。</a></li>
+<li><a href="https://go.dev/s/stdwhy">为什么 X 在标准库中？（已放弃、未完成）</a></li>
+<li><a href="https://go.dev/s/oracle-design">go oracle: 设计，Alan Donovan。</a></li>
+<li><a href="https://go.dev/s/oracle-user-manual">go oracle: 用户手册，Alan Donovan。</a></li>
+<li><a href="https://go.dev/s/cgihttpproxy">cgihttpproxy</a></li>
+<li><a href="https://go.dev/s/sqldrivers">sqldrivers</a></li>
+<li><a href="https://go.dev/s/go2designs">Go 2 设计</a></li>
+<li><a href="http://doc.cat-v.org/bell_labs/pikestyle">C编程语言笔记，Rob Pike。</a></li>
+<li><a href="https://www.informit.com/articles/article.aspx?p=1941206">”我得到的最好的编程建议“，Rob Pike。</a></li>
+<li><a href="http://www.cs.cmu.edu/~mihaib/kernighan-interview/index.html">Mihai Budiu 对 Brian Kernighan 的采访</a></li>
+<li><a href="https://softwareengineeringdaily.com/2017/12/28/language-design-with-brian-kernighan-holiday-repeat/">语言设计，Brian Kernighan Holiday Repeat By SE Daily</a></li>
+<li><a href="https://youtu.be/de2Hsvxaf8M">C 编程语言: Brian Kernighan - Computerphile</a></li>
+<li><a href="https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html">调试Go程序中的性能问题，Dmitriy Vyukov。</a></li>
+<li><a href="https://github.com/dgryski/interesting-papers">我想实现的有趣的论文（或者有部分实现）</a></li>
+<li><a href="https://github.com/golang/go/wiki/ResearchPapers">golang/wiki/ResearchPapers</a></li>
+</ul>
+<h2 id="%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BA%8B%E5%AE%9E">有趣的事实</h2>
+<ul>
+<li><a href="https://github.com/golang/go/commit/7d7c6a97f815e9279d08cfaea7d5efb5e90695a8">cl/1</a> Brian Kernighan，Go的首次提交。1972年7月19日。</li>
+<li><a href="https://go.dev/issue/9">issue/9</a> 我使用了 MY 作为编程语言的名字，2009年11月11日。</li>
+<li><a href="https://go.dev/issue/2870">issue/2870</a> 9 不是素数，2012年2月3日。</li>
+<li><a href="https://research.swtch.com/gophercount">doc/gophercount</a> 有多少Go开发者？2019年11月1日。</li>
+<li><a href="https://groups.google.com/forum/#!msg/golang-nuts/6dKNSN0M_kg/Y1yDJRwQBgAJ">discuss/google-owns-go</a> Russ Cox 关于“Go是谷歌的语言，不是我们的语言”的回应。</li>
+</ul>
+<h2 id="%E9%B8%A3%E8%B0%A2">鸣谢</h2>
+<p>首先感谢 <a href="https://github.com/talkgo">TalkGo</a> 社区创建者 <a href="https://github.com/yangwenmai">Mai Yang</a> 对 <a href="https://golang.design/">golang.design</a> 倡议的大力推动。他创建的 TalkGo 极大地改变了中国的 Go 社区。他也是一个伟大的人，积极为各种与 Go 相关的项目作贡献。</p>
+<p>同样重要的是感谢 TalkGo 社区核心成员 <a href="https://github.com/qcrao">qcrao</a> 和 <a href="https://github.com/eddycjy">eddycjy</a> 的持续而鼓舞人心的讨论和分享。</p>
+<p>如果没有他们的支持，此文档无法完成。</p>
+<h2 id="%E5%87%AD%E8%AF%81">凭证</h2>
+<p><a href="https://github.com/golang-design/history">golang.design/history</a> | CC-BY-NC-ND 4.0 © <a href="https://changkun.de/">changkun</a></p>
+</div>
+<nav class="doc-nav col-lg-3"><p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#Go+%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2">Go 语言历史</a>
+<ul>
+<li><a href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E">免责声明</a></li>
+<li><a href="#%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90">资料来源</a></li>
+<li><a href="#%E8%B5%B7%E6%BA%90">起源</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a>
+<ul>
+<li><a href="#%E6%A0%B8%E5%BF%83%E4%BD%9C%E8%80%85">核心作者</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%97%B6%E5%9B%A2%E9%98%9F">编译运行时团队</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%84%E4%BC%9A%E8%B0%88">小组会谈</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%B6%E9%97%B4%E7%BA%BF">时间线</a></li>
+<li><a href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1">语言设计</a>
+<ul>
+<li><a href="#Misc">Misc</a></li>
+<li><a href="#%E5%88%87%E7%89%87+%281.2%29">切片 (1.2)</a></li>
+<li><a href="#%E5%8C%85%E7%AE%A1%E7%90%86+%281.4%2C+1.5%2C+1.7%29">包管理 (1.4, 1.5, 1.7)</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D+%281.9%29">类型别名 (1.9)</a></li>
+<li><a href="#Defer+%281.14%29">Defer (1.14)</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E5%80%BC+%281.13%29">错误值 (1.13)</a></li>
+<li><a href="#%E9%80%9A%E9%81%93%E3%80%81%E9%80%89%E6%8B%A9%E5%99%A8">通道、选择器</a></li>
+<li><a href="#%E6%B3%9B%E5%9E%8B">泛型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE">编译工具链</a>
+<ul>
+<li><a href="#%E7%BC%96%E8%AF%91">编译</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E5%99%A8">连接器</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E5%99%A8">调试器</a></li>
+<li><a href="#%E7%AB%9E%E4%BA%89%E6%A3%80%E6%B5%8B%E5%99%A8">竞争检测器</a></li>
+<li><a href="#%E8%B7%9F%E8%B8%AA%E5%99%A8">跟踪器</a></li>
+<li><a href="#%E9%94%81%E5%88%86%E6%9E%90">锁分析</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA">构建</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97">模块</a></li>
+<li><a href="#gopls">gopls</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%EF%BC%8Cx%2Fperf">测试，x/perf</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%B8%E5%BF%83">运行时核心</a>
+<ul>
+<li><a href="#%E8%B0%83%E5%BA%A6%E5%99%A8">调度器</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E6%A0%88">执行栈</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%99%A8">内存分配器</a></li>
+<li><a href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8">垃圾收集器</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1">统计</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B">内存模型</a></li>
+<li><a href="#ABI">ABI</a></li>
+<li><a href="#Misc">Misc</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%87%E5%87%86%E5%BA%93">标准库</a>
+<ul>
+<li><a href="#syscall">syscall</a></li>
+<li><a href="#os%2C+io%2C+io%2Ffs%2C+embed">os, io, io/fs, embed</a></li>
+<li><a href="#go%2F%2A">go/*</a></li>
+<li><a href="#sync">sync</a>
+<ul>
+<li><a href="#Map">Map</a></li>
+<li><a href="#Pool">Pool</a></li>
+<li><a href="#Mutex%2C+RWMutex">Mutex, RWMutex</a></li>
+<li><a href="#Groups">Groups</a></li>
+<li><a href="#atomic">atomic</a></li>
+</ul>
+</li>
+<li><a href="#time">time</a></li>
+<li><a href="#context">context</a></li>
+<li><a href="#encoding">encoding</a></li>
+<li><a href="#image%2C+x%2Fimage">image, x/image</a></li>
+<li><a href="#Mobile">Mobile</a></li>
+<li><a href="#misc">misc</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%AA%E5%88%86%E7%B1%BB%E4%BD%86%E7%9B%B8%E5%85%B3%E7%9A%84%E9%93%BE%E6%8E%A5">未分类但相关的链接</a></li>
+<li><a href="#%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BA%8B%E5%AE%9E">有趣的事实</a></li>
+<li><a href="#%E9%B8%A3%E8%B0%A2">鸣谢</a></li>
+<li><a href="#%E5%87%AD%E8%AF%81">凭证</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<script src="dark.js"></script>
+<script async src="//changkun.de/urlstat/client.js"></script>
+</body>
+</html>
