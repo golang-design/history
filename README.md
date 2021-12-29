@@ -318,7 +318,6 @@ his work mainly in the runtime memory system such as the refactoring of memory a
   + [talk/jonathan2020](https://www.gophercon.com/agenda/session/233432) Working with Errors. Nov 13, 2020.
 - Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
 - Nigel Tao. [GitHub](https://github.com/nigeltao), Twitter
-- Filippo Valsorda. GitHub,
 - Michael Matloob. [GitHub](https://github.com/matloob), [Twitter](https://twitter.com/matloob)
 - Jay Conrod. [Website](https://jayconrod.com/), [Twitter](https://twitter.com/jayconrod)
 - Dave Cheney. [Website](https://dave.cheney.net/), [GitHub](https://github.com/davecheney), [Twitter](https://twitter.com/davecheney)
@@ -742,8 +741,6 @@ in Go 1.15 and Go 1.16.
 - [issue/28808](https://go.dev/issue/28808) runtime: scheduler work stealing slow for high GOMAXPROCS
 - [issue/32113](https://go.dev/issue/32113) runtime: optimization to reduce P churn.
 - [issue/44313](https://go.dev/issue/44313) runtime: stopped Ms can't become dedicated or fractional GC workers
-
-
 
 [Back To Top](#top)
 
