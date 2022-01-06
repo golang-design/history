@@ -115,7 +115,7 @@ Go 的起源很吸引人。通过这些人举办的讲座，您可以了解到�
 
 ### 核心作者
 
-Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编译时间， 而 Ken 刚好在隔壁办公室。之后 Ian 因为兴趣加入了这个项目，编写了 [gccgo](https://github.com/golang/gofrontend)。Rob 和 Ken 退休后，Robert 和 Ian 目前为 Go 添加通用方法。Russ 也是早期的核心贡献者，那时候他是谷歌的新人，Rob 从 [Plan 9](https://9p.io/plan9/) 项目回来的路上认识了他，邀请他加入 Go 团队。Russ 做了很多基础工作，包括早期的 Go 编译器、运行时以及 Go 1.5 启动时的巨大提升。Russ 现在是 Go 团队的技术领导。
+Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编译时间， 而 Ken 刚好在隔壁办公室。之后 Ian 因为兴趣加入了这个项目，编写了 [gccgo](https://github.com/golang/gofrontend)。Rob 和 Ken 退休后，Robert 和 Ian 目前为 Go 添加泛型。Russ 也是早期的核心贡献者，那时候他是谷歌的新人，Rob 在 [Plan 9](https://9p.io/plan9/) 项目就认识了 Russ，并邀请他加入 Go 团队。Russ 做了很多基础工作，包括早期的 Go 编译器、运行时以及 Go 1.5 启动时的巨大提升。Russ 现在是 Go 团队的 Tech Lead。
 
 - Rob Pike. (Robert C. Pike 科学硕士) [Website](http://herpolhode.com/rob/), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike).（退休）
   + 毕业院校：多伦多大学（理学学士），加州理工
