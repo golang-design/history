@@ -119,9 +119,9 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
 
 - Rob Pike. (Robert C. Pike 科学硕士) [Website](http://herpolhode.com/rob/), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike).（退休）
   + 毕业院校：多伦多大学（理学学士），加州理工
-  + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) 编程语言的高级主题：并发/通过 Newsqueak 发送消息。2007年3月9日。
+  + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) 编程语言的高级主题：并发/通过 Newsqueak 发送消息。2007年5月9日。
   + [talk/rob2009](https://changelog.com/podcast/3) Go 编程语言。2009年11月27日。
-  + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go 编程。谷歌2010年网络开发者年会。2010年3月20日。
+  + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go 编程。谷歌2010年网络开发者年会。2010年5月20日。
   + [talk/rob2010b](https://www.youtube.com/watch?v=-_DKfAn4pFA) Go 并发风格的起源。新兴语言集会2010。2010年7月21日。
   + [talk/rob2010c](https://www.youtube.com/watch?v=5kj5ApnhPAE) `public static void`，2010年 OSCON 大会。2010年7月22日。
   + [talk/rob2010d](https://www.youtube.com/watch?v=7VcArS4Wpqk) 另一种 Go 语言设计。2010年8月27日。
@@ -140,36 +140,36 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
   + [talk/rob2015b](https://www.youtube.com/watch?v=PAAkCSZUG1c) Go 箴言。GopherFest。2015年11月18日。
   + [talk/rob2015c](https://www.youtube.com/watch?v=rFejpH_tAHM) 简单是复杂的。2015年 dotGo。2015年12月2日。
   + [talk/rob2016a](https://www.youtube.com/watch?v=KINIAgRpkDA) Go 汇编的设计。2016年 GopherCon。2016年8月18日。
-  + [talk/rob2016b](https://www.youtube.com/watch?v=sDTGhIqyMjo) 标识堆栈：接口学习。悉尼 Go 集会。2016年9月。
-  + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Upspin 项目。2017 年 Gopherfest。2017年1月22日。
+  + [talk/rob2016b](https://www.youtube.com/watch?v=sDTGhIqyMjo) 标识堆栈：接口学习。悉尼 Go 集会。2016年9月19日。
+  + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Upspin 项目。2017 年 Gopherfest。2017年6月22日。
   + [talk/rob2018a](https://www.youtube.com/watch?v=_2NI6t2r_Hs) Unix 历史。2018年11月7日。
   + [talk/rob2018b](https://www.youtube.com/watch?v=RIvL2ONhFBI) Go 2 规划草案。悉尼 Go 集会。2018年11月13日。
   + [talk/rob2019a](https://changelog.com/gotime/100) Rob Pike 和 Robert Griesemer 创建 Go 语言。2019年9月10日。
   + [talk/rob2019b](https://www.youtube.com/watch?v=oU9cfQCxjpM) Rob Pike，Go 语言简史。2019年12月12日。
-  + [talk/rob2020](https://evrone.com/rob-pike-interview) 一次 Rob Pike 采访。2020年。
-  + [talk/rob2021](https://www.youtube.com/watch?v=YXV7sa4oM4I) Go 编程语言和环境。John Lions 卓越的演讲，新南威尔士大学。2021年3月27日。
+  + [talk/rob2020](https://evrone.com/rob-pike-interview) 一次 Rob Pike 采访。2020年4月30日。
+  + [talk/rob2021](https://www.youtube.com/watch?v=YXV7sa4oM4I) Go 编程语言和环境。John Lions 卓越的演讲，新南威尔士大学。2021年5月27日。
 
 - Robert Griesemer（博士）[GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + 毕业院校：苏黎世联邦理工学院
-  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) 矢量计算机编程语言。博士论文。
-  + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer 和 Robert Griesemer。2012年 Lang.NEXT Going Go。
+  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) 矢量计算机编程语言。博士论文。1964年6月9日。
+  + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer 和 Robert Griesemer。Lang.NEXT Going Go。2012年3月16日。
   + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go 的三个简单部分。2012年3月19日。
   + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) 2012年 Lang.NEXT 专家组：原生语言。2012年4月11日。
   + [talk/robert2015](https://www.youtube.com/watch?v=0ReKdcpNyQg) Go 的演变。2015年 GopherCon，2015年7月28日。
   + [talk/robert2016a](https://www.youtube.com/watch?v=t-w6MyI2qlU) 和 Gom 的简单对话：声明别名（建议）。2016年 GopherCon，2016年10月9日。
   + [talk/robert2016b](https://www.youtube.com/watch?v=vLxX3yZmw5Q) 为你的设计做原型！2016年 dotGo，2016年11月29日。
-  + [talk/robert2017](https://www.youtube.com/watch?v=KPk1UPihWtY) 开幕演讲：导出 Go。2017年 GopherCon SG，2017年3月29日。
-  + [talk/robert2017](https://www.youtube.com/watch?v=UmwJsQTSEP8) Go 的概述。2017年4月28日。
+  + [talk/robert2017](https://www.youtube.com/watch?v=KPk1UPihWtY) 开幕演讲：导出 Go。2017年 GopherCon SG，2017年5月29日。
+  + [talk/robert2017](https://www.youtube.com/watch?v=UmwJsQTSEP8) Go 的概述。2017年8月28日。
   + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) Go 10岁了！现在咋样？2019年 Gopherpalooza。2019年12月2日。
-  + [talk/robert2020a](https://changelog.com/gotime/140) 泛型最终版：Robert Griesemer 和 Ian Lance Taylor。2020年1月21日。
-  + [talk/robert2020b](https://www.gophercon.com/agenda/session/233094) 编写 Go（通用）。2020年11月11日。
+  + [talk/robert2020a](https://changelog.com/gotime/140) 泛型最终版：Robert Griesemer 和 Ian Lance Taylor。2020年7月21日。
+  + [talk/robert2020b](https://www.gophercon.com/agenda/session/233094) 编写 Go（泛型）。2020年11月11日。
 
 - Ken Thompson（Kenneth Lane Thompson 科学硕士）（退休）
   + 毕业院校: 加州大学伯克利分校
-  + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) UNIX 系统：提高计算机生产效率。1982年
-  + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX 系统：提高计算机易用性。
-  + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson 和 Dennis Ritchie 解释 UNIX（贝尔实验室）
-  + [talk/ken1983](https://www.youtube.com/watch?v=LXZ1OL2U3lY) Ken Thompson 和 Dennis Ritchie：国家技术奖章。1996年。
+  + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) UNIX 系统：提高计算机生产效率。1982年。
+  + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX 系统：提高计算机易用性。1982年
+  + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson 和 Dennis Ritchie 解释 UNIX（贝尔实验室）。1982年。
+  + [talk/ken1998](https://www.youtube.com/watch?v=LXZ1OL2U3lY) Ken Thompson 和 Dennis Ritchie：国家技术奖章。1998年。
   + [talk/ken2013](https://www.youtube.com/watch?v=dsMKJKTOte0) 系统架构、设计、工程和验证。2013年1月17日。
   + [talk/ken2019a](https://www.youtube.com/watch?v=g3jOJfrOknA) Thompson 和 Ritchie 的故事。2019年2月18日。
   + [talk/ken2019b](https://www.youtube.com/watch?v=EY6q5dv_B-o) Brian Kernighan 采访 Ken Thompson。2019 年 VCF East，2019年3月4日。
@@ -184,23 +184,23 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
 
 - Russ Cox（Russell Stensby Cox 博士） [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc)
   + 毕业院校：麻省理工学院
-  + [paper/russ2008](https://pdos.csail.mit.edu/~rsc/) 面向扩展的编译器。博士论文。
+  + [paper/russ2008](https://pdos.csail.mit.edu/~rsc/) 面向扩展的编译器。博士论文。2008年8月20日。
   + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) Go 语言广告。2009年11月10日。
-  + [talk/russ2012](https://www.youtube.com/watch?v=MzYZhh6gpI0) Go 语言之旅。2012年1月24日。
+  + [talk/russ2012a](https://www.youtube.com/watch?v=MzYZhh6gpI0) Go 语言之旅。2012年6月24日。
   + [talk/russ2012b](https://www.youtube.com/watch?v=dP1xVpMPn8M) Acme 编辑器之旅。2012年9月17日。
-  + [talk/russ2014](https://www.youtube.com/watch?v=QIE5nV5fDwA) 从 C 到 Go。2014年 GopherCon。2014年3月18日。
-  + [talk/russ2015](https://www.youtube.com/watch?v=XvZOdpd_9tc) Go、开源、社区。2015年 GopherCon。2015年1月28日。
+  + [talk/russ2014](https://www.youtube.com/watch?v=QIE5nV5fDwA) 从 C 到 Go。2014年 GopherCon。2014年5月18日。
+  + [talk/russ2015](https://www.youtube.com/watch?v=XvZOdpd_9tc) Go、开源、社区。2015年 GopherCon。2015年7月28日。
   + [talk/russ2016](https://www.youtube.com/watch?v=h6Cw9iCDVcU) 使用 Go 重构代码库。2016年12月5日。
-  + [talk/russ2017](https://www.youtube.com/watch?v=0Zbh_vmAKvk) Go 的特性。2017年 GopherCon.2017年7月24日。
+  + [talk/russ2017](https://www.youtube.com/watch?v=0Zbh_vmAKvk) Go 的特性。2017年 GopherCon. 2017年7月24日。
   + [talk/russ2018a](https://changelog.com/gotime/77) Go 的依赖和特性。2018年4月19日。
   + [talk/russ2018b](https://changelog.com/gotime/bonus-77) Go 和 WebAssembly (Wasm). 2018年4月19日。
-  + [talk/russ2018c](https://www.youtube.com/watch?v=F8nrpe0XWRg) 开幕演讲：Go 和 版本。2018年 GopherConSG。2018年3月5日。
+  + [talk/russ2018c](https://www.youtube.com/watch?v=F8nrpe0XWRg) 开幕演讲：Go 和 版本。2018年 GopherConSG。2018年5月5日。
   + [talk/russ2018d](https://www.youtube.com/watch?v=6wIP3rO6On8) Go 2 草稿宣布。2018年8月28日。
   + [talk/russ2019](https://www.youtube.com/watch?v=kNHo788oO5Y) Go 2 路径图。2019年 GopherCon。2019年8月27日。
   + [talk/russ2020a](https://go.dev/s/go-build-video) `go:build` 设计草稿。2020年6月30日。
   + [talk/russ2020b](https://go.dev/s/draft-iofs-video) `os/fs` 包设计草稿。2020年7月21日。
   + [talk/russ2020c](https://go.dev/s/draft-embed-video) `//go:embed` 包设计草稿。2020年7月21日。
-  + [talk/russ2021](https://www.twitch.tv/videos/1203523364) #PLTalk: Russ Cox 的 12 年 Go 经历。 Nov. 12, 2021.
+  + [talk/russ2021](https://www.twitch.tv/videos/1203523364) #PLTalk: Russ Cox 的 12 年 Go 经历。 2021年11月12日。
 
 [Back To Top](#top)
 
@@ -211,7 +211,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - Dmitry Vyukov（Дмитрий Вьюков 理学硕士）[Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + 毕业院校：莫斯科国立鲍曼技术大学
   + [talk/dmitry2014](https://www.youtube.com/watch?v=QEhpLb0UCfE) 用 Go 编写一个函数式的可靠快速的 Web 应用。2014年9月25日。
-  + [talk/dmitry2015a](https://www.youtube.com/watch?v=Ef7TtSZlmlk) 和 Dmitry Vyukov 的谈论：Go 语言和信息安全。
+  + [talk/dmitry2015a](https://www.youtube.com/watch?v=Ef7TtSZlmlk) 和 Dmitry Vyukov 的谈论：Go 语言和信息安全。 2015年7月3日。
   + [talk/dmitry2015b](https://www.youtube.com/watch?v=a9xrxRsIbSU) Go 动态工具。2015年 GopherCon。2015年7月28日。
   + [talk/dmitry2016](https://www.youtube.com/watch?v=9cpN2r22sLE) Dmitry Vyukov 的采访。2016年6月1日。
   + [talk/dmitry2017](https://www.youtube.com/watch?v=FD30Qzd6ylk) 模糊测试：新单元测试。2017年俄罗斯 C++。2017年3月10日。
@@ -222,31 +222,31 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 
 - Austin Clements（Austin T. Clements 博士）[GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
   + 毕业院校：麻省理工学院
-  + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) 可伸缩交换规则：为多核处理器设计可伸缩软件。博士论文。
+  + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) 可伸缩交换规则：为多核处理器设计可伸缩软件。博士论文。2014年5月21日
   + [talk/austin2020](https://www.gophercon.com/agenda/session/233441) 原谅中断：Go 1.14 中的循环抢占。2020年11月12日。
 
 - Richard Hudson（Richard L. Hudson 理学硕士）[GitHub](https://github.com/RLH)（退休）
   + 毕业院校：马萨诸塞大学阿默斯特分校
   + [paper/rick](https://dl.acm.org/profile/81100566849/publications?Role=author) List 研究
-  + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) Go 垃圾回收：解决延迟问题。2015年 GopherCon，2015年7月8日。
-  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Go 垃圾回收：Rick Hudson。2015年12月21日
+  + [talk/rick2015a](https://www.youtube.com/watch?v=aiv1JOfMjm0) Go 垃圾回收：解决延迟问题。2015年 GopherCon，2015年7月8日。
+  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Go 垃圾回收：Rick Hudson。2015年12月21日。
 
 - Keith Randall（Keith H. Randall 博士）[GitHub](https://github.com/randall77)
   + 毕业院校：麻省理工学院
-  + [paper/1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk 语言：高校多线生程计算。博士论文。
+  + [paper/1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk 语言：高校多线生程计算。博士论文。 1998年5月21日。
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) Map 内部实现。2016年 GopherCon，2016年7月12日。
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) 用 SSA 生成更好的机器码。2017年 GopherCon，2017年7月24日。
 
 - David Chase（David Chase 博士）[Website](http://chasewoerner.org/resume.html), [Block](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
   + 毕业院校：莱斯大学
-  + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) 垃圾回收和其他优化。博士论文。
+  + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) 垃圾回收和其他优化。博士论文。 1987年8月。
   + [talk/david2017](https://changelog.com/gotime/52) Go 编译器详述。2017年7月20日。
 
 - Dan Scales.
   + [talk/dan2020](https://www.gophercon.com/agenda/session/233397) 实现更快的 defer。2020年11月11日。
 
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
-  + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) 提升 Go 内存管理器的 RAM 和 CPU 效率。
+  + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) 提升 Go 内存管理器的 RAM 和 CPU 效率。2020年11月11日。
 
 - Than McIntosh. [GitHub](https://github.com/thanm)
 
@@ -256,15 +256,15 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 
 - Andrew Gerrand [GitHub](https://github.com/adg), [Twitter](https://twitter.com/enneff)
 - Brad Fitzpatrick [Website](https://bradfitz.com/), [GitHub](https://github.com/bradfitz), [Twitter](https://twitter.com/bradfitz)
-  + [talk/brad2010](https://www.youtube.com/watch?v=c4znvD-7VDA) 编写 zippy 安卓应用。2010年谷歌网络开发者大会。2010年3月27日。
-  + [talk/brad2011](https://www.youtube.com/watch?v=OExxMUVVjRM) Palestra Brad FitzPatrick：Perl 工厂。第1部分，2011年3月12日。
-  + [talk/brad2012](https://www.youtube.com/watch?v=zHXoDB07Iwg) LiveJournal 幕后：缩放的故事时间。2012年3月21日。
+  + [talk/brad2010](https://www.youtube.com/watch?v=c4znvD-7VDA) 编写 zippy 安卓应用。2010年谷歌网络开发者大会。2010年5月27日。
+  + [talk/brad2011](https://www.youtube.com/watch?v=OExxMUVVjRM) Palestra Brad FitzPatrick：Perl 工厂。第1部分，2011年5月12日。
+  + [talk/brad2012](https://www.youtube.com/watch?v=zHXoDB07Iwg) LiveJournal 幕后：缩放的故事时间。2012年5月21日。
   + [talk/brad2013a](https://www.youtube.com/watch?v=sYukPc0y_Ro) 令我高兴的软件。2013年 dotScale。2013年7月30日。
   + [talk/brad2013b](https://www.youtube.com/watch?v=kJ68OWnlycQ) LiveJournal 莫斯科办公室。Brad Fitzpatrick。2013年12月15日。
   + [talk/brad2014a](https://www.youtube.com/watch?v=Ds0KXj8ohR8) Camlistore。Go 集会。2014年1月
-  + [talk/brad2014b](https://www.youtube.com/watch?v=D6okO8Qzusk) Camlistore 和标准仓库。2014年 GopherCon。2014年3月18日。
+  + [talk/brad2014b](https://www.youtube.com/watch?v=D6okO8Qzusk) Camlistore 和标准仓库。2014年 GopherCon。2014年5月18日。
   + [talk/brad2014c](https://www.youtube.com/watch?v=4KFTacxqkcQ) Gopher 的状态。2014年 dotGo，2014年10月10日。
-  + [talk/brad2014d](https://www.youtube.com/watch?v=VLciNxKAKyc) 采访。2014年 dotGo，2014年。
+  + [talk/brad2014d](https://www.youtube.com/watch?v=VLciNxKAKyc) 采访。2014年 dotGo，2014年11月6日。
   + [talk/brad2015a](https://www.youtube.com/watch?v=yG-UaBJXZ80) Andrew 和 Brad 的工作：一个 HTTP/2 客户端。2015年2月25日。
   + [talk/brad2015b](https://www.youtube.com/watch?v=gukAZO1fqZQ) HTTP/2 和 Go。2015年伦敦 Go 集会。2015年3月4日。
   + [talk/brad2015c](https://www.youtube.com/watch?v=gAfoLwog_MA) Go 里的 HTTP/2。2015年欧洲开源开发者会议 Go 开发室。2015年3月4日。
@@ -280,7 +280,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [talk/brad2017](https://www.youtube.com/watch?v=4fWqcOubYQ0) 我的前半生在开源项目。2017年3月19日。
   + [talk/brad2018a](https://www.youtube.com/watch?v=ZCB-g2B4Y5A) Go：回顾和展望。2018年4月2日。
   + [talk/brad2018b](https://www.youtube.com/watch?v=rWJHbh6qO_Y) Go 1.11 和未来。2018年8月26日。
-  + [talk/brad2018c](https://www.youtube.com/watch?v=69Zy77O-BUM) 快速谈话：核选项，`go test -run=InQemu`。2018年 GopherCon，2018年11月11日。
+  + [talk/brad2018c](https://www.youtube.com/watch?v=69Zy77O-BUM) 快速谈话：核选项，`go test -run=InQemu`。2018年 GopherCon，2018年9月11日。
   + [talk/brad2019](https://www.youtube.com/watch?v=BRSam0xQJKY) Brad Fitzpatrick 更喜欢 Go，而非 C, C++, Rust, Perl, Python, Ruby, JavaScript 和 Java。2019年11月28日。
 
 - Bryan C. Mills. [GitHub](https://github.com/bcmills)
@@ -288,10 +288,10 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) 重新思考经典的并发模式。2018年 GopherCon，2018年9月14日。
 
 - Dmitri Shuralyov. (Dmitri Shuralyov, M. Sc.) [Website](https://dmitri.shuralyov.com/), [GitHub](https://github.com/dmitshur), [YouTube](https://www.youtube.com/c/DmitriShuralyov)
-  + [talk/dmitri2016](https://www.youtube.com/watch?v=9XTl1d4nwdY) Go in the browser. dotGo. Oct 10, 2016.
+  + [talk/dmitri2016](https://www.youtube.com/watch?v=9XTl1d4nwdY) Go in the browser. dotGo. 2016年10月10日。
 
 - Steve Francia. [Website](https://spf13.com/), [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
-  + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) 现代实用编程语言应该是什么样子。Langding Festival，2019年4月4日
+  + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) 现代实用编程语言应该是什么样子。Langding Festival，2019年4月4日。
   + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) Go 的遗产。Go Lab，2019年10月22日。
 
 - Jonathan Amsterdam.
@@ -322,8 +322,8 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 ### 小组会谈
 
 - [talk/goteam2012](https://www.youtube.com/watch?v=sln-gJaURzk) Go 团队集会。2012年谷歌网络开发者大会。2012年7月2日。
-- [talk/goteam2013](https://www.youtube.com/watch?v=p9VUCp98ay4) 和 Go 团队的炉边谈话。2013年谷歌网络开发者大会。2013年3月18日。
-- [talk/goteam2014](https://www.youtube.com/watch?v=u-kkf76TDHE) 和 Blake Mizerany 在 Gophers 工作室。2014年 GopherCon。2014年3月21日。
+- [talk/goteam2013](https://www.youtube.com/watch?v=p9VUCp98ay4) 和 Go 团队的炉边谈话。2013年谷歌网络开发者大会。2013年5月18日。
+- [talk/goteam2014](https://www.youtube.com/watch?v=u-kkf76TDHE) 和 Blake Mizerany 在 Gophers 工作室。2014年 GopherCon。2014年5月21日。
 - [talk/goteam2019](https://www.youtube.com/watch?v=3yghHvvZQmA) 认识作者：Go 语言。2019年 Cloud Next 大会，2019年4月10日。
 - [talk/goteam2020a](https://www.youtube.com/watch?v=gJxvkOHpTSM) 2020年 GoLab：Go 团队问答。2020年10月22日。
 - [talk/goteam2020b](https://www.youtube.com/watch?v=BNHwHLNLjLs) 2020年 GopherCon：Go 团队问答。2020年11月16日。
@@ -373,18 +373,18 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/go11func](https://go.dev/s/go11func) Russ Cox，Go 1.11 函数调用。2013年2月。
 - [design/go11return](https://go.dev/s/go11return) Russ Cox，Go 函数最后的 Return 要求。2013年3月。
 - [design/go12nil](https://go.dev/s/go12nil) Russ Cox，Go 1.2 字段选择和空检查。2013年7月。
-- [doc/go13todo](https://go.dev/s/go13todo) Go 1.3 待完成列表。
+- [doc/go13todo](https://go.dev/s/go13todo) Go 1.3 待完成列表。2014年6月1日。
 - [doc/goatgoogle](https://go.dev/talks/2012/splash.article#TOC_12.) Rob Pike，谷歌 Go 使用 - 语义。2012年10月25日。
 - [doc/makego](https://go.dev/talks/2015/how-go-was-made.slide) Andrew Gerrand，Go 怎样创建的。2015年7月9日。
-- [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Russ Cox。Go 1 预览版。
+- [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Russ Cox。Go 1 预览版。 2011年。
 - [design/overlapping-interfaces](https://go.dev/design/6977-overlapping-interfaces) Robert Griesemer 提案：允许将接口嵌入折叠方法集。2019年10月16日。
   + [issue/6977](https://go.dev/issue/6977) 规则：允许嵌入重叠接口
-- [design/struct-conversion](https://go.dev/design/16085-conversions-ignore-tags) Robert Griesemer 提案：struct 类型转换忽略 tag
+- [design/struct-conversion](https://go.dev/design/16085-conversions-ignore-tags) Robert Griesemer 提案：struct 类型转换忽略 tag。2016年6月16日。
   + [issue/16085](https://go.dev/issue/16085) 提案：struct 类型转换忽略 tag
 - [design/go2trans](https://go.dev/design/28221-go2-transitions) Ian Lance Taylor 提案：Go 2 变迁。2018年10月15日。
 - [design/signed-int-shift](https://go.dev/design/19113-signed-shift-counts) Robert Griesemer 提案：在 Go 2 中允许有符号整数进行移位计算。2019年1月17日。
   + [issue/19113](https://go.dev/issue/19113) 提案：规范：允许有符号整数进行移位计算。
-- [design/number-literal](https://go.dev/design/19308-number-literals) Russ Cox、Robert Griesemer 提案：Go 2 数学字面量
+- [design/number-literal](https://go.dev/design/19308-number-literals) Russ Cox、Robert Griesemer 提案：Go 2 数学字面量。2019年3月6日。
   + [issue/12711](https://go.dev/issue/12711) 提案：不同的八进制字面量表示
   + [issue/19308](https://go.dev/issue/19308) 提案：规范：二进制字面量
   + [issue/28493](https://go.dev/issue/28493) 提案：允许在数字中使用 `_`
@@ -399,8 +399,8 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 
 ### 切片 (1.2)
 
-- [design/read-only-slices](https://docs.google.com/document/d/1UKu_do3FRvfeN5Bb1RxLohV-zBOJWTzX0E8ZU1bkqX0/edit#heading=h.2wzvdd6vdi83) Brad Fitzpatrick，只读切片。2013年3月13日。
-- [design/read-only-slices-russ](https://docs.google.com/document/d/1-NzIYu0qnnsshMBpMPmuO21qd8unlimHgKjRD9qwp2A/edit) Russ Cox，只读切片的评价。2013年3月。
+- [design/read-only-slices](https://docs.google.com/document/d/1UKu_do3FRvfeN5Bb1RxLohV-zBOJWTzX0E8ZU1bkqX0/edit#heading=h.2wzvdd6vdi83) Brad Fitzpatrick，只读切片。2013年5月13日。
+- [design/read-only-slices-russ](https://docs.google.com/document/d/1-NzIYu0qnnsshMBpMPmuO21qd8unlimHgKjRD9qwp2A/edit) Russ Cox，只读切片的评价。2013年5月。
 - [design/go12slice](https://go.dev/s/go12slice) Russ Cox，Go 切片的容量。2013年6月。
 - [design/multidim-slice](https://go.dev/design/6282-table-data) Brendan Tracey，提案：多维切片。2016年11月17日。
 - [issue/41239](https://go.dev/issue/41239) 运行时：`append`的增长让人意外。
@@ -458,14 +458,14 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/err-handling-overview](https://go.dev/design/go2draft-error-handling-overview) Russ Cox，错误处理——问题综述。
 - [doc/err-value-faq](https://github.com/golang/go/wiki/ErrorValueFAQ) Jonathan Amsterdam 和 Bryan C. Mills 错误值：常见问题。2019年8月。
 - [design/err-handle-check](https://go.dev/design/go2draft-error-handling) Marcel van Lohuizen，错误处理——设计草稿。2018年8月27日。
-- [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer 提案：Go 内置错误检查函数 `try`
+- [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer 提案：Go 内置错误检查函数 `try`, 2019年6月12日。
   + [issue/32437](https://go.dev/issue/32437#issuecomment-512035919) 提案：Go 内置错误检查函数 `try`。判定回复。
 - [design/err-inspect](https://go.dev/design/go2draft-error-inspection) Jonathan Amsterdam、Damien Neil，错误检查——设计草稿，2018年8月27日。
 - [design/err-values-overview](https://go.dev/design/go2draft-error-values-overview) Russ Cox，错误处理——问题综述。2018年8月27日。
 - [design/error-values](https://go.dev/design/29934-error-values) Jonathan Amsterdam、Russ Cox、Marcel van Lohuizen、Damien Neil 提案：Go 2 错误检查。2019年1月25日。
   + [issue/29934](https://go.dev/issue/29934) Jonathan Amsterdam 提案：Go 2 错误检查。2019年1月25日。
-  + [issue/29934-decision](https://go.dev/issue/29934#issuecomment-489682919) Damien Neil。Go 1.13 关于错误值的决定。2019年3月6日。
-  + [issue/29934-russ](https://go.dev/issue/29934#issuecomment-490087200) Russ Cox，关于“提案：Go 2 错误检查”的回复。2019年3月7日。
+  + [issue/29934-decision](https://go.dev/issue/29934#issuecomment-489682919) Damien Neil。Go 1.13 关于错误值的决定。2019年5月6日。
+  + [issue/29934-russ](https://go.dev/issue/29934#issuecomment-490087200) Russ Cox，关于“提案：Go 2 错误检查”的回复。2019年5月7日。
 - [design/err-print](https://go.dev/design/go2draft-error-printing) Marcel van Lohuizen，错误打印——设计草稿。2018年8月27日。
   + [issue/30468](https://go.dev/issue/30468) errors: 新版本的性能衰退。
 - [issue/40432](https://go.dev/issue/40432) 语言：Go 2: 错误处理的讨论
@@ -500,7 +500,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/code-gen](https://docs.google.com/document/pub?id=1IXHI5Jr9k4zDdmUhcZImH59bOUK0G325J1FY6hdelcM) Russ Cox，Go 中动态代码生成的替代。2012年9月。
 - [design/generalized-types2](https://go.dev/design/15292/2013-10-gen) Ian Lance Taylor，Go 中的通用类型，2013年10月。
 - [design/type-parameters](https://go.dev/design/15292/2013-12-type-params) Ian Lance Taylor，Go 中的类型参数，2013年12月。
-- [design/compile-time-function](https://go.dev/design/15292/2016-09-compile-time-functions) Bryan C. Mills，编译时函数和一等类型。2016年12月。
+- [design/compile-time-function](https://go.dev/design/15292/2016-09-compile-time-functions) Bryan C. Mills，编译时函数和一等类型。2016年9月。
 - [design/should-generics](https://github.com/golang/proposal/blob/b571c3273d2c6988d24a22dd1c529387ff05962a/design/15292-generics) Ian Lance Taylor，Go 应该有泛型。2011年1月。
 - [design/should-generics2](https://go.dev/design/15292-generics) Ian Lance Taylor，Go 应该有泛型。更新：2016年4月。
   + [issue/15292](https://go.dev/issue/15292) 提案：规范：通用编程工具。
@@ -907,8 +907,8 @@ Go 内存模型包含以下方面：
 
 ### os, io, io/fs, embed
 
-Go 1.16中，对新的 os/fs 包进行了大量返工和改进。
-[design/draft-iofs](https://go.dev/design/draft-iofs) Russ Cox, Rob Pike，Go文件系统接口——设计草案。2020年7月。
+Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
+[design/draft-iofs](https://go.dev/design/draft-iofs) Russ Cox, Rob Pike，Go 文件系统接口——设计草案。2020年7月。
 
   + [issue/13473](https://go.dev/issue/13473) 提案：os: Stdin, Stdout 和 Stderr 应该是接口
   + [issue/14106](https://go.dev/issue/14106) 提案：os：File 应该是接口

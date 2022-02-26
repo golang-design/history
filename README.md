@@ -163,18 +163,19 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2015b](https://www.youtube.com/watch?v=PAAkCSZUG1c) Go Proverbs. Gopherfest. Nov 18, 2015
   + [talk/rob2015c](https://www.youtube.com/watch?v=rFejpH_tAHM) Simplicity is Complicated. dotGo 2015. Dec 2, 2015
   + [talk/rob2016a](https://www.youtube.com/watch?v=KINIAgRpkDA) The Design of the Go Assembler. GopherCon 2016. Aug 18, 2016.
-  + [talk/rob2016b](https://www.youtube.com/watch?v=sDTGhIqyMjo) Stacks of Tokens: A study in interfaces. Sydney Go Meetup. September 2016.
+  + [talk/rob2016b](https://www.youtube.com/watch?v=sDTGhIqyMjo) Stacks of Tokens: A study in interfaces. Sydney Go Meetup. September 19, 2016.
   + [talk/rob2017](https://www.youtube.com/watch?v=ENLWEfi0Tkg) Upspin. Gopherfest 2017. Jun 22, 2017.
   + [talk/rob2018a](https://www.youtube.com/watch?v=_2NI6t2r_Hs) The History of Unix. Nov 7, 2018.
   + [talk/rob2018b](https://www.youtube.com/watch?v=RIvL2ONhFBI) Go 2 Draft Specifications. Sydney Golang Meetup. Nov 13, 2018
   + [talk/rob2019a](https://changelog.com/gotime/100) Creating the Go programming language with Rob Pike & Robert Griesemer. Sep 10, 2019.
   + [talk/rob2019b](https://www.youtube.com/watch?v=oU9cfQCxjpM) Rob Pike. A Brief History of Go. Dec 12, 2019.
-  + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview. (Date Unclear) 2020.
+  + [talk/rob2020](https://evrone.com/rob-pike-interview) A Rob Pike Interview. (Date Unclear) Apr 30, 2020.
   + [talk/rob2021](https://www.youtube.com/watch?v=YXV7sa4oM4I) The Go Programming Language and Environment. John Lions Distinguished Lecture, UNSW, May 27, 2021.
+
 - Robert Griesemer. (Dr. Robert Griesemer) [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + Alma mater: ETH Zürich
-  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation.
-  + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer. Going Go. Lang.NEXT. 2012.
+  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation. Jun 9, 1964.
+  + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer. Going Go. Lang.NEXT. Mar 16, 2012.
   + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go In Three Easy Pieces. Mar 19, 2012.
   + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
   + [talk/robert2015](https://www.youtube.com/watch?v=0ReKdcpNyQg) The Evolution of Go. GopherCon 2015. Jul 28, 2015.
@@ -185,15 +186,17 @@ Now, Russ is the tech leader of the Go team.
   + [talk/robert2019](https://www.youtube.com/watch?v=i0zzChzk8KE) Go is 10! Now What?. Gopherpalooza 2019. Dec 2, 2019.
   + [talk/robert2020a](https://changelog.com/gotime/140) The latest on Generics with Robert Griesemer and Ian Lance Taylor. Jul 21, 2020.
   + [talk/robert2020b](https://www.gophercon.com/agenda/session/233094) Typing [Generic] Go. Nov 11, 2020.
+
 - Ken Thompson. (Kenneth Lane Thompson, M. Sc.) (Retired)
   + Alma mater: UC Berkeley
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
   + [talk/ken1982b](https://www.youtube.com/watch?v=XvDZLjaCJuw) UNIX: Making Computers Easier To Use.
   + [talk/ken1982c](https://www.youtube.com/watch?v=JoVQTPbD6UY) Ken Thompson and Dennis Ritchie Explain UNIX (Bell Labs).
-  + [talk/ken1983](https://www.youtube.com/watch?v=LXZ1OL2U3lY) Ken Thompson and Dennis Ritchie. National Medal of Technology Awards. 1996.
+  + [talk/ken1998](https://www.youtube.com/watch?v=LXZ1OL2U3lY) Ken Thompson and Dennis Ritchie. National Medal of Technology Awards. 1998.
   + [talk/ken2013](https://www.youtube.com/watch?v=dsMKJKTOte0) Systems Architecture, Design, Engineering, and Verification. Jan 17, 2013.
   + [talk/ken2019a](https://www.youtube.com/watch?v=g3jOJfrOknA) The Thompson and Ritchie Story. Feb 18, 2019.
   + [talk/ken2019b](https://www.youtube.com/watch?v=EY6q5dv_B-o) Brian Kernighan interviews Ken Thompson. VCF East 2019. May 4, 2019.
+
 - Ian Taylor. (Ian Lance Taylor, B. Sc.) [Website](https://www.airs.com/ian/), [GitHub](https://github.com/ianlancetaylor), [Quora](https://www.quora.com/profile/Ian-Lance-Taylor)
   + Alma mater: Yale University
   + [talk/ian2007](https://www.youtube.com/watch?v=gc78olyguqA) GCC: Current Topics and Future Directions. February 27, 2007.
@@ -201,11 +204,12 @@ Now, Russ is the tech leader of the Go team.
   + [talk/ian2019a](https://www.youtube.com/watch?v=WzgLqE-3IhY) Generics in Go. GopherCon 2019. Aug 27, 2019
   - [talk/ian2019b](https://changelog.com/gotime/98) Generics in Go. Aug 27, 2019.
   + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) Go with Ian Lance Taylor. CppCast. Aug 9, 2020.
+
 - Russ Cox. (Dr. Russell Stensby Cox) [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc), [YouTube](https://www.youtube.com/channel/UC3P6PrEBAVH1UaiPOzZ-u-w)
   + Alma mater: MIT
-  + [paper/russ2008](https://pdos.csail.mit.edu/~rsc/) An Extension-Oriented Compiler. Doctor Dissertation.
+  + [paper/russ2008](https://pdos.csail.mit.edu/~rsc/) An Extension-Oriented Compiler. Doctor Dissertation. Aug 20, 2008.
   + [talk/russ2009](https://www.youtube.com/watch?v=wwoWei-GAPo) The Go Programming Language Promo. Nov 10, 2009.
-  + [talk/russ2012](https://www.youtube.com/watch?v=MzYZhh6gpI0) A Tour of the Go Programming Language. Jun 24, 2012.
+  + [talk/russ2012a](https://www.youtube.com/watch?v=MzYZhh6gpI0) A Tour of the Go Programming Language. Jun 24, 2012.
   + [talk/russ2012b](https://www.youtube.com/watch?v=dP1xVpMPn8M) A Tour of the Acme Editor. Sep 17, 2012.
   + [talk/russ2014](https://www.youtube.com/watch?v=QIE5nV5fDwA) Go from C to Go. GopherCon 2014.  May 18, 2014
   + [talk/russ2015](https://www.youtube.com/watch?v=XvZOdpd_9tc) Go, Open Source, Community. GopherCon 2015. Jul 28, 2015.
@@ -249,28 +253,35 @@ his work mainly in the runtime memory system such as the refactoring of memory a
   + [talk/dmitry2018b](https://www.youtube.com/watch?v=qrBVXxZDVQY) Syzbot and the Tale of Thousand Kernel Bugs. Sep 1, 2018.
   + [talk/dmitry2019](https://www.youtube.com/watch?v=-K11rY57K7k) Go scheduler: Implementing language with lightweight concurrency. Oct 14, 2019.
   + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) syzkaller: Adventures in Continuous Coverage-guided Kernel Fuzzing. BlueHat IL 2020. Feb 13, 2020.
+
 - Austin Clements. (Dr. Austin T. Clements) [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
   + Alma mater: MIT
-  + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) The Scalable Commutativity Rule: Designing Scalable Software for Multicore Processors. Doctor Dissertation
+  + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) The Scalable Commutativity Rule: Designing Scalable Software for Multicore Processors. Doctor Dissertation. May 21, 2014.
   + [talk/austin2020](https://www.gophercon.com/agenda/session/233441) Pardon the Interruption: Loop Preemption in Go 1.14. Nov 12, 2020.
+
 - Richard Hudson. (Richard L. Hudson, M. Sc.) [GitHub](https://github.com/RLH) (Retired)
   + Alma mater: University of Massachusetts Amherst
   + [paper/rick](https://dl.acm.org/profile/81100566849/publications?Role=author) Research List
-  + [talk/rick2015](https://www.youtube.com/watch?v=aiv1JOfMjm0) Go GC: Solving the Latency Problem. GopherCon 2015. Jul 8, 2015.
-  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015
+  + [talk/rick2015a](https://www.youtube.com/watch?v=aiv1JOfMjm0) Go GC: Solving the Latency Problem. GopherCon 2015. Jul 8, 2015.
+  + [talk/rick2015b](https://www.infoq.com/interviews/hudson-go-gc/) Rick Hudson on Garbage Collection in Go. Dec 21, 2015.
+
 - Keith Randall. (Dr. Keith H. Randall.) [GitHub](https://github.com/randall77)
   + Alma mater: MIT
-  + [paper/1998keith](http://supertech.csail.mit.edu/papers/PPoPP95.pdf) Cilk: Efficient Multithreaded Computing.  Doctor Dissertation.
+  + [paper/1998keith](http://supertech.csail.mit.edu/papers/randall-phdthesis.pdf) Cilk: Efficient Multithreaded Computing. Doctor Dissertation. May 21, 1998.
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) Inside the Map Implementation. GopherCon 2016. Jul 12, 2016.
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) Generating Better Machine Code with SSA. GopherCon 2017. Jul 24, 2017.
+
 - David Chase. (Dr. David Chase) [Website](http://chasewoerner.org/resume.html), [Block](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
   + Alma mater: Rice University
-  + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation.
+  + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation. Aug 1987.
   + [talk/david2017](https://changelog.com/gotime/52) All About The Go Compiler. Jul 20, 2017.
+
 - Dan Scales.
   + [talk/dan2020](https://www.gophercon.com/agenda/session/233397) Implementing Faster Defers. Nov 11, 2020
+
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
   + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) Evolving the Go Memory Manager's RAM and CPU Efficiency. Nov 11, 2020
+
 - Than McIntosh. [GitHub](https://github.com/thanm)
 - Cherry Zhang. [GitHub](https://github.com/cherrymui)
 
@@ -306,16 +317,21 @@ his work mainly in the runtime memory system such as the refactoring of memory a
   + [talk/brad2018b](https://www.youtube.com/watch?v=rWJHbh6qO_Y) Go 1 11 and beyond. Aug 26, 2018.
   + [talk/brad2018c](https://www.youtube.com/watch?v=69Zy77O-BUM) Lightning Talk: The nuclear option, go test -run=InQemu. GopherCon 2018. Sep 11, 2018.
   + [talk/brad2019](https://www.youtube.com/watch?v=BRSam0xQJKY) Brad Fitzpatrick likes Go better than C, C++, Rust, Perl, Python, Ruby, JavaScript and Java. Nov 28, 2019.
+
 - Bryan C. Mills. [GitHub](https://github.com/bcmills)
   + [talk/bryan2017](https://www.youtube.com/watch?v=C1EtfDnsdDs) Lightning Talk: An overview of sync.Map. GopherCon 2017. Jul 24, 2017.
   + [talk/bryan2018](https://www.youtube.com/watch?v=5zXAHh5tJqQ) Rethinking Classical Concurrency Patterns. GopherCon 2018. Sep 14, 2018
+
 - Dmitri Shuralyov. (Dmitri Shuralyov, M. Sc.) [Website](https://dmitri.shuralyov.com/), [GitHub](https://github.com/dmitshur), [YouTube](https://www.youtube.com/c/DmitriShuralyov)
   + [talk/dmitri2016](https://www.youtube.com/watch?v=9XTl1d4nwdY) Go in the browser. dotGo. Oct 10, 2016.
+
 - Steve Francia. [Website](https://spf13.com/), [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
   + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) What Should A Modern Practical Programming Language Look Like. Landing Festival. April 4, 2019.
   + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) The Legacy Of Go. Go Lab. Oct 22, 2019.
+
 - Jonathan Amsterdam.
   + [talk/jonathan2020](https://www.gophercon.com/agenda/session/233432) Working with Errors. Nov 13, 2020.
+
 - Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
 - Nigel Tao. [GitHub](https://github.com/nigeltao), Twitter
 - Michael Matloob. [GitHub](https://github.com/matloob), [Twitter](https://twitter.com/matloob)
@@ -382,16 +398,16 @@ The historical release notes may helpful for general information:
 ### Misc
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
-- [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification (March 7, 2008)
+- [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification. Mar 7, 2008.
 - [design/go0semicolon](https://go.dev/s/semicolon-proposal) Rob Pike. Semicolons in Go. Dec 10, 2009.
 - [design/go11func](https://go.dev/s/go11func) Russ Cox. Go 1.1 Function Calls. February 2013
 - [design/go11return](https://go.dev/s/go11return) Russ Cox. Go “Return at End of Function” Requirements. March 2013
 - [design/go12nil](https://go.dev/s/go12nil) Russ Cox. Go 1.2 Field Selectors and Nil Checks. July 2013.
-- [doc/go13todo](https://go.dev/s/go13todo) Go 1.3 “To Do” List
+- [doc/go13todo](https://go.dev/s/go13todo) Go 1.3 “To Do” List. Jun 1, 2014.
 - [doc/goatgoogle](https://go.dev/talks/2012/splash.article#TOC_12.) Rob Pike. Go at Google - Language Semantics. October 25, 2012.
-- [doc/makego](https://go.dev/talks/2015/how-go-was-made.slide)  Andrew Gerrand. How Go was Made. 9 July 2015.
-- [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Russ Cox. Go 1 Preview.
-- [design/overlapping-interfaces](https://go.dev/design/6977-overlapping-interfaces) Robert Griesemer. Proposal: Permit embedding of interfaces with overlapping method sets. 2019-10-16
+- [doc/makego](https://go.dev/talks/2015/how-go-was-made.slide)  Andrew Gerrand. How Go was Made. July 9, 2015.
+- [discuss/go1preview](https://docs.google.com/document/pub?id=1ny8uI-_BHrDCZv_zNBSthNKAMX_fR_0dc6epA6lztRE) Russ Cox. Go 1 Preview. 2011.
+- [design/overlapping-interfaces](https://go.dev/design/6977-overlapping-interfaces) Robert Griesemer. Proposal: Permit embedding of interfaces with overlapping method sets. Oct 16, 2019.
   + [issue/6977](https://go.dev/issue/6977) spec: allow embedding overlapping interfaces
 - [design/struct-conversion](https://go.dev/design/16085-conversions-ignore-tags) Robert Griesemer. Proposal: Ignore tags in struct type conversions. June 16, 2016.
   + [issue/16085](https://go.dev/issue/16085) Proposal: Ignore tags in struct type conversions
@@ -472,7 +488,7 @@ The historical release notes may helpful for general information:
 - [design/err-handling-overview](https://go.dev/design/go2draft-error-handling-overview) Russ Cox. Error Handling — Problem Overview.
 - [doc/err-value-faq](https://github.com/golang/go/wiki/ErrorValueFAQ) Jonathan Amsterdam and Bryan C. Mills. Error Values: Frequently Asked Questions. August 2019.
 - [design/err-handle-check](https://go.dev/design/go2draft-error-handling) Marcel van Lohuizen. Error Handling — Draft Design. August 27, 2018.
-- [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer. Proposal: A built-in Go error check function, "try". 2019-06-12
+- [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer. Proposal: A built-in Go error check function, "try". Jun 12, 2019.
   - [issue/32437](https://go.dev/issue/32437#issuecomment-512035919) Proposal: A built-in Go error check function, "try". Decision response.
 - [design/err-inspect](https://go.dev/design/go2draft-error-inspection) Jonathan Amsterdam, Damien Neil. Error Inspection — Draft Design. August 27, 2018.
 - [design/err-values-overview](https://go.dev/design/go2draft-error-values-overview) Russ Cox. Error Values — Problem Overview. August 27, 2018.
@@ -606,7 +622,7 @@ in Go 1.15 and Go 1.16.
 - [doc/go15heapdump](https://github.com/golang/go/wiki/heapdump15-through-heapdump17) heapdump15 through heapdump17
 - [design/heap-viewer](https://go.dev/design/16410-heap-viewer) Michael Matloob. Proposal: Go Heap Dump Viewer. 20 July 2016
   + [issue/16410](https://go.dev/issue/16410) x/tools/cmd/heapdump: create a heap dump viewer
-- [design/profiler-labels](https://go.dev/design/17280-profile-labels) Michael Matloob. Proposal: Support for pprof profiler labels. 15 May 2017.
+- [design/profiler-labels](https://go.dev/design/17280-profile-labels) Michael Matloob. Proposal: Support for pprof profiler labels. May 15, 2017.
   + [issue/17280](https://go.dev/issue/17280) pprof: add support for profiler labels
 
 [Back To Top](#top)
@@ -680,7 +696,7 @@ in Go 1.15 and Go 1.16.
 - [design/sumdb](https://go.dev/design/25530-sumdb) Russ Cox, Filippo Valsorda. Proposal: Secure the Public Go Module Ecosystem. April 24, 2019.
   + [issue/25530](https://go.dev/issue/25530) proposal: cmd/go: secure releases with transparency log
 - [issue/23966](https://go.dev/issue/23966#issuecomment-377997161) why go.mod has its own bespoke syntax?
-- [design/lazy-gomod](https://go.dev/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. 2020-02-20
+- [design/lazy-gomod](https://go.dev/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. Feb 20, 2020
 - [issue/45713](https://go.dev/issue/45713) proposal: cmd/go: add a workspace mode
   + [design/workspace](https://go.dev/design/45713-workspace) Proposal: Multi-Module Workspaces in cmd/go
 
@@ -812,7 +828,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
 - [design/go14gc](https://go.dev/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
-- [design/go15gcpacing](https://go.dev/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. 2015-03-10.
+- [design/go15gcpacing](https://go.dev/s/go15gcpacing) Austin Clements. Go 1.5 concurrent garbage collector pacing. Mar 10, 2015.
 - [discuss/gcpacing](https://groups.google.com/forum/#!topic/golang-dev/YjoG9yJktg4) Austin Clements et al. Discussion of "Proposal: Garbage collector pacing". March 10, 2015.
 - [issue/11970](https://go.dev/issue/11970) runtime: replace GC coordinator with state machine
 - [design/sweep-free-alloc](https://go.dev/design/12800-sweep-free-alloc) Austin Clements. Proposal: Dense mark bits and sweep-free allocation. Sep 30, 2015.
@@ -905,10 +921,10 @@ The Go memory model consists the following parts:
 
 - [design/cgo-pointers](https://go.dev/design/12416-cgo-pointers) Ian Lance Taylor. Proposal: Rules for passing pointers between Go and C. October, 2015
   + [issue/12416](https://go.dev/issue/12416) cmd/cgo: specify rules for passing pointers between Go and C
-- [design/internal-abi](https://go.dev/design/27539-internal-abi) Austin Clements. Proposal: Create an undefined internal calling convention. 2019-01-14.
+- [design/internal-abi](https://go.dev/design/27539-internal-abi) Austin Clements. Proposal: Create an undefined internal calling convention. Jan 14, 2019.
   + [issue/27539](https://go.dev/issue/27539) proposal: runtime: make the ABI undefined as a step toward changing it.
   + [issue/31193](https://go.dev/issue/31193) cmd/compile, runtime: reduce function prologue overhead
-- [design/register-call](https://go.dev/design/40724-register-calling) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. 2020-08-10.
+- [design/register-call](https://go.dev/design/40724-register-calling) Austin Clements, with input from Cherry Zhang, Michael Knyszek, Martin Möhrmann, Michael Pratt, David Chase, Keith Randall, Dan Scales, and Ian Lance Taylor. Proposal: Register-based Go calling convention. Aug 10, 2020.
 - [issue/18597](https://go.dev/issue/18597) proposal: cmd/compile: define register-based calling convention
 - [issue/40724](https://go.dev/issue/40724) proposal: switch to a register-based calling convention for Go functions
   + [cl/266638](https://go.dev/cl/266638) reflect,runtime: use internal ABI for selected ASM routines, attempt 2
@@ -1077,9 +1093,9 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/13504](https://go.dev/issue/13504) encoding/xml: add generic representation of XML data
 - [design/zip](https://go.dev/design/14386-zip-package-archives) Russ Cox. Proposal: Zip-based Go package archives. February 2016
   + [issue/14386](https://go.dev/issue/14386) proposal: use zip format inside .a and .o files
-- [design/xmlstream](https://go.dev/design/19480-xml-stream) Sam Whited. Proposal: XML Stream. 2017-03-09
+- [design/xmlstream](https://go.dev/design/19480-xml-stream) Sam Whited. Proposal: XML Stream. Mar 9, 2017.
   + [issue/19480](https://go.dev/issue/19480) encoding/xml: add decode from TokenReader, to enable stream transformers
-- [design/raw-xml](https://go.dev/design/26756-rawxml-token) Sam Whited. Proposal: Raw XML Token. 2018-09-01
+- [design/raw-xml](https://go.dev/design/26756-rawxml-token) Sam Whited. Proposal: Raw XML Token. Sep 1, 2018.
   + [issue/26756](https://go.dev/issue/26756) proposal: encoding/xml: add RawXML token
 
 [Back To Top](#top)
