@@ -84,6 +84,14 @@ Referring to the original link if some text conflicts to your understanding
 
 ## Sources
 
+<!--
+  + [issue/](https://go.dev/issue/)
+  + [issue/](https://go.dev/issue/)
+  + [issue/](https://go.dev/issue/)
+  + [design/](https://go.dev/design/)
+  + [cl/](https://go.dev/cl/)
+-->
+
 There are many sources for digging the documents that relate to Go's
 historical design, and here are some of the official sources:
 
@@ -424,6 +432,9 @@ The historical release notes may helpful for general information:
 - [issue/19623](https://go.dev/issue/19623) proposal: spec: change int to be arbitrary precision
 - [issue/19367](https://go.dev/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
 - [issue/40481](https://go.dev/issue/40481) unsafe: add Add function
+- [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
+- [issue/24282](https://go.dev/issue/24282) proposal: Go 2: improve for-loop ergonomics
+- [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
 
 [Back To Top](#top)
 
@@ -544,7 +555,6 @@ The historical release notes may helpful for general information:
   + [doc/type-check-readme](https://github.com/golang/go/tree/dev.go2go/src/go/types) type checking.
   + [doc/type-check-notes](https://github.com/golang/go/blob/dev.go2go/src/go/types/NOTES) This file serves as a notebook/implementation log.
 - [discuss/generics-parenthesis](https://groups.google.com/g/golang-nuts/c/7t-Q2vt60J8) Robert. Generics and parenthesis.
-- [issue/33232](https://go.dev/issue/33232) proposal: Go 2: add alias for interface {} as any
 - [discuss/generics-move](https://groups.google.com/g/golang-nuts/c/iAD0NBz3DYw) Ian, Moving forward with the generics design.
 - [discuss/generics-implementation](https://groups.google.com/g/golang-dev/c/OcW0ATRS4oM) Implementing Generics
 - [design/generics-implementation-stenciling](https://go.dev/design/generics-implementation-stenciling) Generics implementation - Stenciling
@@ -553,14 +563,38 @@ The historical release notes may helpful for general information:
 - [design/type-parameters3](https://go.dev/design/43651-type-parameters) Type Parameters Proposal
 - [issue/45346](https://go.dev/issue/45346) proposal: spec: generics: use type sets to remove type keyword in constraints
 - [issue/46477](https://go.dev/issue/46477) proposal: spec: generics: type parameters on aliases
+- [issue/38907](https://go.dev/issue/38907) proposal: spec: disallow impossible interface-interface type assertions
+- [discussion/48287](https://github.com/golang/go/discussions/48287) how to update APIs for generics
+- Generics behavior
+  + [issue/48274](https://go.dev/issue/48274) doc: update FAQ for the arrival of parametric polymorphism
+  + [issue/50202](https://go.dev/issue/50202) spec: document that type parameters are not permitted as constant declaration types
+  + [issue/50272](https://go.dev/issue/50272) spec: function type inference ignores type parameter constraints
+  + [issue/50954](https://go.dev/issue/50954) go/types, types2: review error messages
+  + [issue/51110](https://go.dev/issue/51110) spec: document behavior of type switches containing type parameter cases
+  + any/comparable
+    * [issue/33232](https://go.dev/issue/33232) spec: allow 'any' for 'interface{}' in non-constraint contexts 
+    * [issue/49587](https://go.dev/issue/49587) proposal: spec: add comparable w/o interfaces
+    * [issue/49927](https://go.dev/issue/49927) builtin: add documentation for any and comparable to pseudo-package builtin
+    * [issue/49884](https://go.dev/issue/49884) all: rewrite interface{} to any
+    * [issue/50646](https://go.dev/issue/50646) spec: document/explain which interfaces implement comparable
+    * [issue/50646](https://go.dev/issue/50791) spec: document definition of comparable
+    * [issue/51257](https://go.dev/issue/51257) spec: any no longer implements comparable
+    * [issue/51338](https://go.dev/issue/51338) proposal: spec: permit values to have type "comparable"
 - Standard packages using generics
-  + [issue/45458](https://go.dev/issue/45458) proposal: constraints: new package to define standard type parameter constraints
+  + [issue/45458](https://go.dev/issue/45458) constraints: new package to define standard type parameter constraints
   + [discuss/47319](https://github.com/golang/go/discussions/47319) proposal: constraints: new package to define standard type parameter constraints (discussion)
-  + [issue/45955](https://go.dev/issue/45955) proposal: slices: new package to provide generic slice functions
+  + [issue/45955](https://go.dev/issue/45955) slices: new package to provide generic slice functions
   + [discuss/47203](https://github.com/golang/go/discussions/47203) proposal: slices: new package to provide generic slice functions (discussion)
   + [discuss/47331](https://github.com/golang/go/discussions/47331) proposal: container/set: new package to provide a generic set type (discussion)
   + [discuss/47330](https://github.com/golang/go/discussions/47330) proposal: maps: new package to provide generic map functions (discussion)
+  + [issue/47649](https://go.dev/issue/47649) maps: new package to provide generic map functions
   + [issue/47657](https://go.dev/issue/47657) proposal: sync, sync/atomic: add PoolOf, MapOf, ValueOf
+  + [issue/50792](https://go.dev/issue/50792) constraints: move to x/exp for Go 1.18
+- Related packages
+  + [issue/47781](https://go.dev/issue/47781) go/ast, go/token: additions to support type parameters
+  + [issue/47916](https://go.dev/issue/47916) go/types: additions to support type parameters
+  + [issue/48525](https://go.dev/issue/48525) x/tools/go/ssa: generics support
+  + [issue/50887](https://go.dev/issue/50887) go/types, types2: document predicates on generic types
 
 [Back To Top](#top)
 
@@ -756,7 +790,9 @@ in Go 1.15 and Go 1.16.
 - [issue/27345](https://go.dev/issue/27345) runtime: use parent goroutine's stack for new goroutines
 - [issue/28808](https://go.dev/issue/28808) runtime: scheduler work stealing slow for high GOMAXPROCS
 - [issue/32113](https://go.dev/issue/32113) runtime: optimization to reduce P churn.
+- [issue/43997](https://go.dev/issue/43997) runtime: non-spinning Ms spin uselessly when work exists
 - [issue/44313](https://go.dev/issue/44313) runtime: stopped Ms can't become dedicated or fractional GC workers
+- [issue/51071](https://go.dev/issue/51071) runtime: investigate possible Go scheduler improvements inspired by Linux Kernel's CFS
 
 [Back To Top](#top)
 
@@ -818,6 +854,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/40641](https://go.dev/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
 - [issue/42330](https://go.dev/issue/42330) runtime: default to MADV_DONTNEED on Linux
   + [cl/267100](https://go.dev/cl/267100) runtime: default to MADV_DONTNEED on Linux
+- [issue/51317](https://go.dev/issue/51317) proposal: arena: new package providing memory arenas
 
 [Back To Top](#top)
 
@@ -870,7 +907,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [design/soft-memory-limit](https://go.dev/design/48409-soft-memory-limit) Soft memory limit
 - [issue/45894](https://go.dev/issue/45894) runtime: mark termination is slow to restart mutator
 - [issue/45315](https://go.dev/issue/45315) runtime: runtime.GC can return without finishing sweep
-
+- [issue/49075](https://go.dev/issue/49075) runtime: possible memory corruption
 
 [Back To Top](#top)
 
@@ -914,6 +951,9 @@ The Go memory model consists the following parts:
   + [doc/plmm](https://research.swtch.com/plmm) Russ Cox. Programming Language Memory Models. July 6, 2021.
   + [doc/gomm](https://research.swtch.com/gomm) Russ Cox. Updating the Go Memory Model. July 12, 2021.
   + [discuss/47141](https://github.com/golang/go/discussions/47141) Updating the Go memory model.
+  + [issue/50860](https://go.dev/issue/50860) proposal: sync/atomic: add typed atomic values
+  + [issue/50859](https://go.dev/issue/50859) proposal: doc: update Go memory model
+
 
 [Back To Top](#top)
 
@@ -936,6 +976,7 @@ The Go memory model consists the following parts:
 ### Misc
 
 - [issue/20135](https://go.dev/issue/20135) runtime: shrink map as elements are deleted
+- [issue/48687](https://go.dev/issue/48687) runtime: enhance map cacheline efficiency
 
 ## Standard Library
 
@@ -969,7 +1010,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/43218](https://go.dev/issue/43218) embed: resolve string, []byte issues
   + [issue/44166](https://go.dev/issue/44166) io/fs,os: fs.ReadDir with an os.DirFS can produce invalid paths
   + [issue/42322](https://go.dev/issue/42322) io/fs: add func Sub(fsys FS, dir string) FS
-
+- [issue/45757](https://go.dev/issue/45757) proposal: io/fs: add writable interfaces
 
 [Back To Top](#top)
 
@@ -1082,6 +1123,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [doc/context](https://go.dev/blog/context) Go Concurrency Patterns: Context.
 - [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
 - [issue/42564](https://go.dev/issue/42564) context: cancelCtx exclusive lock causes extreme contention
+- [issue/51365](https://go.dev/issue/51365) proposal: context: add APIs for writing and reading cancelation cause
 
 [Back To Top](#top)
 
@@ -1120,24 +1162,16 @@ metadata APIs to aware the color profile in an encoded image file.
   + [cl/216799](https://go.dev/cl/216799) image: metadata API sketch
 - [issue/44808](https://go.dev/issue/44808) image, image/draw: add interfaces for using RGBA64 directly
 - [issue/46395](https://go.dev/issue/46395) image/draw: increase performances by applying special case if mask is *image.Alpha
-
-<!--
-TODO: read all of these!
-These issues are discussion the current performance issue that exist in the current implementation.
-
 - [issue/8055](https://go.dev/issue/8055) image: decode / resize into an existing buffer
 - [issue/11793](https://go.dev/issue/11793) image/color: NRGBA(64).RGBA() optimization
 - [issue/15759](https://go.dev/issue/15759) image: optimize Image.At().RGBA()
 - [issue/20851](https://go.dev/issue/20851) image: Decode drops interfaces
 - [issue/24499](https://go.dev/issue/24499) image/jpeg: Decode is slow
 
-
-- [issue/22535](https://go.dev/issue/22535) image: support LJPEG
-- [issue/18098](https://go.dev/issue/18098) proposal: add Validate functions to image/jpeg, image/png etc.
-- [issue/2362](https://go.dev/issue/2362) image/jpeg: chroma downsampling ratios are restricted
-- [issue/4341](https://go.dev/issue/4341) image/jpeg: correct for EXIF orientation?
+<!--
+TODO: read all of these!
+These issues are discussion the current performance issue that exist in the current implementation.
 - [issue/10447](https://go.dev/issue/10447) image/jpeg: add options to partially decode or tolerantly decode invalid images?
-- [issue/12202](https://go.dev/issue/12202) image/jpeg: specify APP1 segment for outputting EXIF data in jpeg.Encode()?
 - [issue/13614](https://go.dev/issue/13614) image/jpeg: add a jpeg option to disable chroma subsampling
 - [issue/22170](https://go.dev/issue/22170) image/jpeg: Unable to decode concatenated JPEGs (MIME-less "MJPEG")
 - [issue/23936](https://go.dev/issue/23936) image/jpeg: encoding with RGB profile causing loss of image saturation
@@ -1154,40 +1188,7 @@ These issues are discussion the current performance issue that exist in the curr
 - [issue/35503](https://go.dev/issue/35503) image/gif: decode fails with "gif: too much image data"
 - [issue/38958](https://go.dev/issue/38958) image/gif: "not enough image data" on gif that works in browser
 - [issue/38853](https://go.dev/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
-- [issue/41142](https://go.dev/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)
-
-x/image:
-
-- [issue/40173](https://go.dev/issue/40173) x/image: WebP decode contrast issue
-- [issue/39705](https://go.dev/issue/39705) x/image: CCITT reader EOF error for tiff image
-- [issue/25657](https://go.dev/issue/25657) x/image: vector.go rasterizer shifts alpha mask and is slow when target is offset and small relative image size
-- [issue/39900](https://go.dev/issue/39900) x/image/tiff: Missing raw stream read/write
-- [issue/38252](https://go.dev/issue/38252) x/image/tiff: add 32bit float grayscale support
-- [issue/36121](https://go.dev/issue/36121) x/image/tiff: grayscale tiled images are not decoded correctly
-- [issue/33708](https://go.dev/issue/33708) x/image/tiff: sony .arw files decode as a 0x0 image.Gray
-- [issue/30827](https://go.dev/issue/30827) x/image/tiff: unexpected EOF
-- [issue/26450](https://go.dev/issue/26450) x/image/tiff: implement a generic tiff parser
-- [issue/26360](https://go.dev/issue/26360) x/image/tiff: compressed tiffs are invalid (at least on Mac OS X)
-- [issue/23115](https://go.dev/issue/23115) x/image/tiff: no support for cJPEG or cJPEGOld
-- [issue/20742](https://go.dev/issue/20742) x/image/tiff: package does not support image resolution
-- [issue/11413](https://go.dev/issue/11413) x/image/tiff: invalid format: wrong number of samples for RGB
-- [issue/11389](https://go.dev/issue/11389) x/image/tiff: excessive memory consumption
-- [issue/11386](https://go.dev/issue/11386) x/image/tiff: index out of range
-- [issue/19672](https://go.dev/issue/19672) x/image/webp: issue with colors contrast when converting to jpeg/png
-- [issue/30902](https://go.dev/issue/30902) x/image/riff: Implement write functionality
-- [issue/29711](https://go.dev/issue/29711) x/image/bmp: support 1-bit format
-- [issue/37532](https://go.dev/issue/37532) x/image/font/gofont: Go Mono font readability for users
-- [issue/37441](https://go.dev/issue/37441) x/image/font/gofont: Go fonts not representative of OpenType state of the art
-- [issue/30699](https://go.dev/issue/30699) x/image/font/sfnt: read more glyph metrics
-- [issue/28932](https://go.dev/issue/28932) x/image/font: wrong rendering of intersecting paths
-- [issue/28380](https://go.dev/issue/28380) x/image/font/sfnt: support trimmed table mapping cmap format
-- [issue/27281](https://go.dev/issue/27281) x/image/font: rendering texts in Arabic
-- [issue/23497](https://go.dev/issue/23497) x/image/font/gofont/gomedium: wrong shape for "l" letter
-- [issue/22451](https://go.dev/issue/22451) x/image/font/sfnt: implement font.Face
-- [issue/20208](https://go.dev/issue/20208) x/image/font: Tool for running Unicode’s text rendering tests
-- [issue/14436](https://go.dev/issue/14436) x/image/font: make it easier to measure a string's bounds and draw it in a bounding box
-- [issue/33990](https://go.dev/issue/33990) x/image/font/sfnt: GlyphName returns empty string on OpenType font
-- [issue/16904](https://go.dev/issue/16904) proposal: x/image packages to render TrueType fonts -->
+- [issue/41142](https://go.dev/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)-->
 
 [Back To Top](#top)
 
@@ -1212,6 +1213,7 @@ x/image:
   + [issue/16704](https://go.dev/issue/16704) net/http: considering supporting CIDR notation in no_proxy env variable
 - [design/dns](https://go.dev/design/26160-dns-based-vanity-imports) Sam Whited. Proposal: DNS Based Vanity Imports. 2018-06-30.
   + [issue/26160](https://go.dev/issue/26160) proposal: use DNS TXT records for vanity import paths
+- [issue/46518](https://go.dev/issue/46518) net/netip: add new IP address package, use in net
 
 [Back To Top](#top)
 
