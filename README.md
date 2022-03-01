@@ -561,6 +561,8 @@ The historical release notes may helpful for general information:
 - [discuss/generics-implementation](https://groups.google.com/g/golang-dev/c/OcW0ATRS4oM) Implementing Generics
 - [design/generics-implementation-stenciling](https://go.dev/design/generics-implementation-stenciling) Generics implementation - Stenciling
 - [design/generics-implementation-dictionaries](https://go.dev/design/generics-implementation-dictionaries) Generics implementation - Dictionaries
+- [design/generics-implementation-gcshape](https://go.dev/design/generics-implementation-gcshape) Generics implementation - GC Shape Stenciling
+- [design/generics-implementation-dictionaries-go1.18](https://go.dev/design/generics-implementation-dictionaries-go1.18) Go 1.18 Implementation of Generics via Dictionaries and Gcshape Stenciling
 - [issue/43651](https://go.dev/issue/43651) proposal: spec: add generic programming using type parameters
 - [design/type-parameters3](https://go.dev/design/43651-type-parameters) Type Parameters Proposal
 - [issue/45346](https://go.dev/issue/45346) proposal: spec: generics: use type sets to remove type keyword in constraints
