@@ -43,8 +43,9 @@ which intents to offer a comprehensive reference of the Go history.
   - [Runtime Core](#runtime-core)
     - [Scheduler](#scheduler)
     - [Execution Stack](#execution-stack)
-    - [Memory Allocator](#memory-allocator)
-    - [Garbage Collector](#garbage-collector)
+    - [Memory Management](#memory-management)
+      - [Allocator](#allocator)
+      - [Collector](#collector)
     - [Statistics](#statistics)
     - [Memory model](#memory-model)
     - [ABI](#abi)
@@ -429,6 +430,9 @@ The historical release notes may helpful for general information:
   + [issue/19308](https://go.dev/issue/19308) proposal: spec: binary integer literals
   + [issue/28493](https://go.dev/issue/28493) proposal: permit blank (_) separator in integer number literals
   + [issue/29008](https://go.dev/issue/29008) proposal: Go 2: hexadecimal floats
+- [discuss/delete-return](https://www.reddit.com/r/golang/comments/5tfx7i/why_delete_doesnt_return_a_bool/ddmo4ug/?utm_source=share&utm_medium=web2x&context=3) why delete() doesn't return a bool ?
+  + [issue/5147](https://go.dev/issue/5147) runtime: consider caching previous map hash value
+  + [issue/51405](https://go.dev/issue/51405) proposal: Go 2: builtin: delete should return the deleted map item
 - [issue/33502](https://go.dev/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://go.dev/issue/33892) proposal: Go 2 review meeting minutes
 - [issue/19623](https://go.dev/issue/19623) proposal: spec: change int to be arbitrary precision
@@ -812,15 +816,17 @@ in Go 1.15 and Go 1.16.
 
 [Back To Top](#top)
 
-### Memory Allocator
+### Memory Management
+
+#### Allocator
 
 A quick history about the Go's memory allocator: Russ Cox first implements
 the memory allocator based on `tcmalloc` for Go 1, `mcache` is cached on M.
-Then he revised the allocator to allow user code to use 16GB memory and later allows 128GB. However, the allocator (including scavenger) was
-suffered from massive lock contentions and does not scale. After Dmitry's scalable runtime
-scheduler, the allocator can allocate directly from P (with much less)
-lock contentions. In the meantime, the scavenger is migrated from an independent
-thread into the system monitor thread. Now, Michael is actively working on
+Then he revised the allocator to allow user code to use 16GB memory and later allows 128GB.
+However, the allocator (including scavenger) was suffered from massive lock contentions and
+does not scale. After Dmitry's scalable runtime scheduler, the allocator can allocate directly
+from P (with much less) lock contentions. In the meantime, the scavenger is migrated from
+an independent thread into the system monitor thread. Now, Michael is actively working on
 improving the memory allocator's scalability, such as migrating scavenger
 to user threads, bitmap-based page allocator, scalable mcentral.
 
@@ -858,11 +864,12 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/40641](https://go.dev/issue/40641) runtime: race between stack shrinking and channel send/recv leads to bad sudog values
 - [issue/42330](https://go.dev/issue/42330) runtime: default to MADV_DONTNEED on Linux
   + [cl/267100](https://go.dev/cl/267100) runtime: default to MADV_DONTNEED on Linux
+- [issue/46787](https://go.dev/issue/46787) runtime: provide Pinner API for object pinning
 - [issue/51317](https://go.dev/issue/51317) proposal: arena: new package providing memory arenas
 
 [Back To Top](#top)
 
-### Garbage Collector
+#### Collector
 
 - [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
 - [paper/yuasa-barrier](https://doi.org/10.1016/0164-1212(90)90084-Y) T. Yuasa. 1990. Real-time garbage collection on general-purpose machines. J. Syst. Softw. 11, 3 (March 1990), 181-198.
@@ -987,6 +994,7 @@ The Go memory model consists the following parts:
 ### syscall
 
 - [design/go14syscall](https://go.dev/s/go1.4-syscall) The syscall package.
+- [issue/51087](https://go.dev/issue/51087) runtime: clean up system call code 
 
 [Back To Top](#top)
 
@@ -1260,7 +1268,9 @@ for the [golang.design](https://golang.design) initiative. His creation of
 the TalkGo significantly changed the Go community in China. He is also a great person
 that is actively contributing to all kinds of Go related projects.
 
-It is also important to thank the continuing, inspiring discussion and sharing with the TalkGo community core members [qcrao](https://github.com/qcrao), and [eddycjy](https://github.com/eddycjy).
+It is also important to thank the continuing, inspiring discussion and sharing with
+the TalkGo community core members [qcrao](https://github.com/qcrao),
+[aofei](https://github.com/aofei), and [eddycjy](https://github.com/eddycjy).
 
 The document would not be organized without all of the supports from them.
 
