@@ -375,7 +375,7 @@ reflected in Go versions.
 
 | Version | Release Expected/Actual Date | Days Since Last Release (+Delay) |
 |:--|:--|:--|
-| Go 1    | 2012.03.28 | - |
+| Go 1    | - / 2012.03.28 | - |
 | Go 1.1  | - / 2013.05.13 | 440 |
 | Go 1.2  | - / 2013.12.01 | 202 |
 | Go 1.3  | - / 2014.06.18 | 199 |
@@ -393,7 +393,7 @@ reflected in Go versions.
 | Go 1.15 | 2020.07.31 / 2020.08.11 | 168 (+11) |
 | Go 1.16 | 2021.01.31 / 2021.02.16 | 189 (+16) |
 | Go 1.17 | 2021.07.31 / 2021.08.16 | 181 (+16) |
-| Go 1.18 | 2022.01.31 / - | - |
+| Go 1.18 | 2022.01.31 / 2022.03.15 | 196 (+43) |
 
 
 The historical release notes may helpful for general information:
