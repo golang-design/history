@@ -64,6 +64,7 @@ which intents to offer a comprehensive reference of the Go history.
     - [context](#context)
     - [encoding](#encoding)
     - [image, x/image](#image-ximage)
+    - [math](#math)
     - [Mobile](#mobile)
     - [misc](#misc-2)
   - [Unclassified But Relevant Links](#unclassified-but-relevant-links)
@@ -1188,6 +1189,16 @@ These issues are discussion the current performance issue that exist in the curr
 - [issue/38958](https://go.dev/issue/38958) image/gif: "not enough image data" on gif that works in browser
 - [issue/38853](https://go.dev/issue/38853) image/gif: GIF files with extraneous 0x00 bytes cause "gif: unknown block type: 0x00"
 - [issue/41142](https://go.dev/issue/41142) image/gif: Decode reads the entire animated gif image, even though it returns only the first frame (while DecodeAll exists to read and return all frames)-->
+
+[Back To Top](#top)
+
+### math
+
+- [issue/8037](https://go.dev/issue/8037) cmd/internal/obj/x86: add fma
+- [issue/17895](https://go.dev/issue/17895) spec: allow the use of fused multiply-add floating point instructions
+  + [cl/40391](https://go.dev/cl/40391) spec: clarify use of fused-floating point operations
+- [issue/24813](https://go.dev/issue/24813) math/bits: add extended precision Add, Sub, Mul, Div
+- [issue/25819](https://go.dev/issue/25819) math: add guaranteed FMA
 
 [Back To Top](#top)
 
