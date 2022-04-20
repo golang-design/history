@@ -183,7 +183,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/rob2021](https://www.youtube.com/watch?v=YXV7sa4oM4I) The Go Programming Language and Environment. John Lions Distinguished Lecture, UNSW, May 27, 2021.
 - Robert Griesemer. (Dr. Robert Griesemer) [GitHub](https://github.com/griesemer), [Twitter](https://twitter.com/robertgriesemer?lang=en)
   + Alma mater: ETH Zürich
-  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation. Jun 9, 1964.
+  + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation. 1993.
   + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer. Going Go. Lang.NEXT. Mar 16, 2012.
   + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go In Three Easy Pieces. Mar 19, 2012.
   + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
