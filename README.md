@@ -185,8 +185,8 @@ Now, Russ is the tech leader of the Go team.
   + Alma mater: ETH Zürich
   + [paper/robert1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.5290&rep=rep1&type=pdf) A Programming Language for Vector Computers. Doctor Dissertation. 1993.
   + [talk/robert2012a](https://www.youtube.com/watch?v=on5DeUyWDqI) E2E: Erik Meijer and Robert Griesemer. Going Go. Lang.NEXT. Mar 16, 2012.
-  + [talk/robert2012b](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Go-In-Three-Easy-Pieces) Go In Three Easy Pieces. Mar 19, 2012.
-  + [talk/robert2012c](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2012/Panel-Native-Languages) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
+  + [talk/robert2012b](https://www.youtube.com/watch?v=Ns3csOBiIuE) Go In Three Easy Pieces. Mar 19, 2012.
+  + [talk/robert2012c](https://www.youtube.com/watch?v=MrY6f4siVA4) Lang.NEXT 2012 Expert Panel: Native Languages. Apr 11, 2012.
   + [talk/robert2015](https://www.youtube.com/watch?v=0ReKdcpNyQg) The Evolution of Go. GopherCon 2015. Jul 28, 2015.
   + [talk/robert2016a](https://www.youtube.com/watch?v=t-w6MyI2qlU) Lightning Talk: Alias Declarations for Gom: A proposal. GopherCon 2016. Oct 9, 2016.
   + [talk/robert2016b](https://www.youtube.com/watch?v=vLxX3yZmw5Q) Prototype your design!. dotGo 2016. Nov 29, 2016.
