@@ -353,6 +353,7 @@ his work mainly in the runtime memory system such as the refactoring of memory a
 - [talk/goteam2019](https://www.youtube.com/watch?v=3yghHvvZQmA) Meet the Authors: Go Language. Cloud Next '19. Apr 10, 2019.
 - [talk/goteam2020a](https://www.youtube.com/watch?v=gJxvkOHpTSM) GoLab 2020: Go Team AMA. Oct 22, 2020.
 - [talk/goteam2020b](https://www.youtube.com/watch?v=BNHwHLNLjLs) GopherCon 2020: Go Team AMA. Nov 16, 2020.
+- [talk/goteam2021](https://www.youtube.com/watch?v=hu9spj-GJ1U&) GopherCon 2021: Go Time Live - Go Team "Ask Me Anything", Dec 28, 2021.
 
 [Back To Top](#top)
 
