@@ -577,6 +577,11 @@ The historical release notes may helpful for general information:
     * [issue/50646](https://go.dev/issue/50791) spec: document definition of comparable
     * [issue/51257](https://go.dev/issue/51257) spec: any no longer implements comparable
     * [issue/51338](https://go.dev/issue/51338) proposal: spec: permit values to have type "comparable"
+    * [issue/52474](https://go.dev/issue/52474) proposal: spec: permit non-interface types that support == to satisfy the comparable constraint
+    * [issue/52509](https://go.dev/issue/52509) proposal: spec: allow interface types to instantiate comparable type parameters
+    * [issue/52531](https://go.dev/issue/52531) proposal: spec: add new constraint kind satisfied by types that support == (including interface types)
+    * [issue/52614](https://go.dev/issue/52614) proposal: type parameters are comparable unless they exclude comparable types
+    * [issue/52624](https://go.dev/issue/52624) proposal: the comparable interface represents the comparable subset of run-time values
 - Standard packages using generics
   + [issue/45458](https://go.dev/issue/45458) constraints: new package to define standard type parameter constraints
   + [discuss/47319](https://github.com/golang/go/discussions/47319) proposal: constraints: new package to define standard type parameter constraints (discussion)
