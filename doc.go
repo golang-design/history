@@ -93,7 +93,6 @@ func parseTemplate(lang, target string, b bytes.Buffer) {
 
 	tmpl := template.Must(template.New(target).Parse(indexTemplate))
 
-    updatedAt := time.Now().UTC().Format("2006.01.02")
 	var selected string
 	if "index" != target {
 		selected = "selected"
