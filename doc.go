@@ -102,7 +102,7 @@ func parseTemplate(lang, target string, b bytes.Buffer) {
 		Selected:   selected,
 		Navigation: template.HTML(toc),
 		Content:    template.HTML(dom),
-		UpdatedAt:  updatedAt,
+		UpdatedAt:  time.Now().UTC().Format("2006.01.02"),
 	})
 }
 
