@@ -13,6 +13,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -29,6 +30,7 @@ type data struct {
 	Selected   string
 	Navigation template.HTML
 	Content    template.HTML
+	UpdatedAt  string
 }
 
 func init() {
@@ -100,6 +102,7 @@ func parseTemplate(lang, target string, b bytes.Buffer) {
 		Selected:   selected,
 		Navigation: template.HTML(toc),
 		Content:    template.HTML(dom),
+		UpdatedAt:  time.Now().UTC().Format("2006.01.02"),
 	})
 }
 
@@ -141,7 +144,7 @@ const indexTemplate = `
 </div>
 <div id="btt"><a href="#top">⬆</a></div>
 <div id="container" class="row">
-<div class="doc-content col-lg-9">{{.Content}}</div>
+<div class="doc-content col-lg-9">{{.Content}} <p>Last Updated: {{.UpdatedAt}}</p></div>
 <nav class="doc-nav col-lg-3">{{.Navigation}}</nav>
 </div>
 <script src="dark.js"></script>
