@@ -507,6 +507,8 @@ The historical release notes may helpful for general information:
 - [issue/40432](https://go.dev/issue/40432) language: Go 2: error handling meta issue
 - [issue/40776](https://go.dev/issue/40776) proposal: dynamic ignored error detector
 - [issue/41198](https://go.dev/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
+- [issue/47811](https://go.dev/issue/47811) proposal: errors: add Errors as a standard way to represent multiple errors as a single error
+- [issue/53435](https://go.dev/issue/53435) proposal: wrapping multiple errors
 
 [Back To Top](#top)
 
@@ -518,6 +520,7 @@ The historical release notes may helpful for general information:
   + [cl/112990043](https://codereview.appspot.com/112990043/) runtime: fine-grained locking in select
   + [cl/110580043](https://codereview.appspot.com/110580043/) runtime: add fast paths to non-blocking channel operations
 - [issue/8898](https://go.dev/issue/8898) runtime: special case timer channels
+- [issue/9120](https://go.dev/issue/9120) runtime: remove implementation restriction on channel element size
 - [issue/37196](https://go.dev/issue/37196) time: make Timer/Ticker channels not receivable with old values after Stop or Reset returns
 - [issue/8903](https://go.dev/issue/8903) runtime: make chan-based generators faster.
 - [issue/21806](https://go.dev/issue/21806) fairness in select statement.
@@ -592,6 +595,7 @@ The historical release notes may helpful for general information:
   + [issue/47649](https://go.dev/issue/47649) maps: new package to provide generic map functions
   + [issue/47657](https://go.dev/issue/47657) proposal: sync, sync/atomic: add PoolOf, MapOf, ValueOf
   + [issue/50792](https://go.dev/issue/50792) constraints: move to x/exp for Go 1.18
+  + [issue/53427](https://go.dev/issue/53427) proposal: x/sync/singleflight: add generic version
 - Related packages
   + [issue/47781](https://go.dev/issue/47781) go/ast, go/token: additions to support type parameters
   + [issue/47916](https://go.dev/issue/47916) go/types: additions to support type parameters
@@ -913,6 +917,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/45894](https://go.dev/issue/45894) runtime: mark termination is slow to restart mutator
 - [issue/45315](https://go.dev/issue/45315) runtime: runtime.GC can return without finishing sweep
 - [issue/49075](https://go.dev/issue/49075) runtime: possible memory corruption
+- [issue/52433](https://go.dev/issue/52433) runtime: heap goal overrun due to scheduler delays in mark termination
 
 [Back To Top](#top)
 
@@ -958,6 +963,10 @@ The Go memory model consists the following parts:
   + [discuss/47141](https://github.com/golang/go/discussions/47141) Updating the Go memory model.
   + [issue/50860](https://go.dev/issue/50860) proposal: sync/atomic: add typed atomic values
   + [issue/50859](https://go.dev/issue/50859) proposal: doc: update Go memory model
+  + [doc/out-of-thin-air](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1217r2.html) Hans-J. Boehm. P1217R2: Out-of-thin-air, revisited, again. 2019-06-16.
+  + [doc/cpp-memory-model](https://www.hpl.hp.com/techreports/2008/HPL-2008-56.pdf) Hans-J. Boehm, Sarita V. Adve. Foundations of the C++ Concurrency Memory Model. May 21, 2008.
+  + [cl/381315](https://github.com/golang/go/commit/865911424d509184d95d3f9fc6a8301927117fdc) doc: update Go memory model
+  + [cl/381316](https://github.com/golang/go/commit/a71ca3dfbd32faf351ff68bcc26a4d5abd9b06d7) runtime, sync, sync/atomic: document happens-before guarantees
 
 
 [Back To Top](#top)
@@ -1044,6 +1053,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/21032](https://go.dev/issue/21032) sync: reduce (*Map).Load penalty for Stores with new keys
 - [issue/21035](https://go.dev/issue/21035) sync: reduce contention between Map operations with new-but-disjoint keys
 - [issue/37033](https://go.dev/issue/37033) runtime: provide centralized facility for managing (c)go pointer handles
+- [issue/51972](https://go.dev/issue/51972) sync: add new Map methods CompareAndSwap, CompareAndDelete, Swap
 
 [Back To Top](#top)
 
@@ -1230,6 +1240,7 @@ These issues are discussion the current performance issue that exist in the curr
 - [design/dns](https://go.dev/design/26160-dns-based-vanity-imports) Sam Whited. Proposal: DNS Based Vanity Imports. 2018-06-30.
   + [issue/26160](https://go.dev/issue/26160) proposal: use DNS TXT records for vanity import paths
 - [issue/46518](https://go.dev/issue/46518) net/netip: add new IP address package, use in net
+- [issue/53171](https://go.dev/issue/53171) proposal: add package for using SIMD instructions
 
 [Back To Top](#top)
 
