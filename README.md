@@ -428,7 +428,6 @@ The historical release notes may helpful for general information:
 - [issue/19367](https://go.dev/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
 - [issue/40481](https://go.dev/issue/40481) unsafe: add Add function
 - [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
-- [issue/24282](https://go.dev/issue/24282) proposal: Go 2: improve for-loop ergonomics
 - [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
 
 [Back To Top](#top)
@@ -601,6 +600,19 @@ The historical release notes may helpful for general information:
   + [issue/47916](https://go.dev/issue/47916) go/types: additions to support type parameters
   + [issue/48525](https://go.dev/issue/48525) x/tools/go/ssa: generics support
   + [issue/50887](https://go.dev/issue/50887) go/types, types2: document predicates on generic types
+
+[Back To Top](#top)
+
+### Iterator
+
+- [issue/24282](https://go.dev/issue/24282) proposal: Go 2: improve for-loop ergonomics
+- [issue/40605](https://go.dev/issue/40605) proposal: Go 2: iterators
+- [issue/43557](https://go.dev/issue/43557) proposal: Go 2: function values as iterators
+- [issue/47707](https://go.dev/issue/47707) proposal: Go 2: spec: for range with defined types
+- [issue/48567](https://go.dev/issue/48567) proposal: use channels as iterators
+- [issue/50112](https://go.dev/issue/50112) proposal: package collection and iterator design for go
+- [issue/54047](https://go.dev/issue/54047) proposal: Go 2: add a new iterator syntax, package, interfaces
+- [discuss/54245](https://go.dev/issue/54245) discussion: standard iterator interface
 
 [Back To Top](#top)
 
