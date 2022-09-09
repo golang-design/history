@@ -383,7 +383,7 @@ reflected in Go versions.
 | Go 1.16 | 2021.01.31 / 2021.02.16 | 189 (+16) |
 | Go 1.17 | 2021.07.31 / 2021.08.16 | 181 (+16) |
 | Go 1.18 | 2022.01.31 / 2022.03.15 | 196 (+43) |
-
+| Go 1.19 | 2022.07.31 / 2022.08.02 | 140 (+2)  |
 
 The historical release notes may helpful for general information:
 
