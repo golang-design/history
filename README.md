@@ -575,6 +575,7 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/51110](https://go.dev/issue/51110) spec: document behavior of type switches containing type parameter cases
   + any/comparable
     * [issue/33232](https://go.dev/issue/33232) spec: allow 'any' for 'interface{}' in non-constraint contexts 
+    * [issue/46746](https://go.dev/issue/46746) reflect: add Value.Equal, Value.Comparable
     * [issue/49587](https://go.dev/issue/49587) proposal: spec: add comparable w/o interfaces
     * [issue/49927](https://go.dev/issue/49927) builtin: add documentation for any and comparable to pseudo-package builtin
     * [issue/49884](https://go.dev/issue/49884) all: rewrite interface{} to any
@@ -662,6 +663,10 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/36606](https://go.dev/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
 - [issue/28262](https://go.dev/issue/28262) cmd/compile: feedback-guided optimization
+- [issue/55022](https://go.dev/issue/55022) proposal: cmd/compile: profile-guided optimization
+- [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
+- [design/pgo](https://go.dev/design/55022-pgo.md) Proposal: profile-guided optimization
+- [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation.md) Design and Implementation of Profile-Guided Optimization (PGO) for Go
 
 [Back To Top](#top)
 
@@ -940,6 +945,9 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/49075](https://go.dev/issue/49075) runtime: possible memory corruption
 - [issue/52433](https://go.dev/issue/52433) runtime: heap goal overrun due to scheduler delays in mark termination
 - [doc/gc-guide](https://go.dev/doc/gc-guide) A Guide to the Go Garbage Collector
+- [issue/12234](https://go.dev/issue/12234) runtime: revisit non-constant assist ratio
+- [issue/27732](https://go.dev/issue/27732) runtime: mark assist blocks GC microbenchmark for 7ms
+
 
 [Back To Top](#top)
 
