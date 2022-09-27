@@ -619,6 +619,12 @@ Error handling includes two separate works: error values and error formatting. H
 
 [Back To Top](#top)
 
+### Compatibility
+
+- [doc/go1compat](https://go.dev/doc/go1compat) Go 1 and the Future of Go Programs
+- [discussion/55090](https://go.dev/issue/55090) extending Go backward compatibility
+- [discussion/55092](https://go.dev/issue/55092) extending Go forward compatibility
+
 ## Compiler Toolchain
 
 ### Compiler
