@@ -481,7 +481,9 @@ The historical release notes may helpful for general information:
 
 [Back To Top](#top)
 
-### Error values (1.13)
+### Error values 
+
+Error handling includes two separate works: error values and error formatting. Historically, there was a try proposal that had been investigated for a year, however, due to its lack of simplicity and impact to stack tracing, it was rejected. In 1.13, error values received a large revision, and the package `errors` includes different APIs, such as `errors.Is`. Until recently (1.21), #53435 allows wrapping multiple errors, and there is a community repository that tries to implement the original try proposal.
 
 - [doc/err2011](https://go.dev/blog/error-handling-and-go) Andrew Gerrand. Error handling in Go. July 2011.
 - [doc/err-values](https://go.dev/blog/errors-are-values) Rob Pike. Errors are values. January 2015.
@@ -508,6 +510,7 @@ The historical release notes may helpful for general information:
 - [issue/41198](https://go.dev/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
 - [issue/47811](https://go.dev/issue/47811) proposal: errors: add Errors as a standard way to represent multiple errors as a single error
 - [issue/53435](https://go.dev/issue/53435) proposal: wrapping multiple errors
+- [repo/try](https://github.com/dsnet/try) Try: Simplified Error Handling in Go
 
 [Back To Top](#top)
 
@@ -930,6 +933,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/45315](https://go.dev/issue/45315) runtime: runtime.GC can return without finishing sweep
 - [issue/49075](https://go.dev/issue/49075) runtime: possible memory corruption
 - [issue/52433](https://go.dev/issue/52433) runtime: heap goal overrun due to scheduler delays in mark termination
+- [doc/gc-guide](https://go.dev/doc/gc-guide) A Guide to the Go Garbage Collector
 
 [Back To Top](#top)
 
