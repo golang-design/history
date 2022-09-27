@@ -427,6 +427,7 @@ The historical release notes may helpful for general information:
 - [issue/19623](https://go.dev/issue/19623) proposal: spec: change int to be arbitrary precision
 - [issue/19367](https://go.dev/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
 - [issue/40481](https://go.dev/issue/40481) unsafe: add Add function
+- [issue/53003](https://go.dev/issue/53003) unsafe: add StringData, String, SliceData
 - [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
 - [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
 
