@@ -4,7 +4,7 @@ _by Changkun Ou <[changkun.de](https://changkun.de)>_ (and many inputs from [con
 
 This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
-which intents to offer a comprehensive reference of the Go history.
+which intends to offer a comprehensive reference of the Go history.
 
 <a id="top"></a>
 
@@ -118,7 +118,7 @@ historical design, and here are some of the official sources:
 
 Go is a big project driven by a tiny group of people and the crowd of
 wisdom from the language user community. Here are some core committers
-to the project that you might interest in following their excellent work.
+to the project if you are interested in following their excellent work.
 
 Go's origin is attractive without doubts. By listening to the talks held
 by these people, you could learn more about their oral history and fun
@@ -136,17 +136,16 @@ in Go might be your starting points (as a _subjective_ recommendation):
 
 ### Core Authors
 
-The Go was created by Rob, Robert, and Ken initially because
-Rob were suffered by the slow C++ compiling time, talked to Robert, and luckily
+The Go language was created by Rob, Robert, and Ken initially because
+Rob was bothered by slow C++ compiling times, talked to Robert, and luckily
 Ken was in the next office.
-Later, Ian joined the project since he showed huge interests and
+Later, Ian joined the project after showing interest, and
 wrote the [gccgo](https://github.com/golang/gofrontend).
 Rob and Ken are retired. Robert and Ian currently work on adding generics
 to Go. Russ is also one of the core authors of the project in the early stage.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining
 the Go team since he knew Russ from way back because of the
-[Plan 9](https://9p.io/plan9/) project. Russ did many
-fundamental work for the early Go compiler, runtime, as well as the leap of
+[Plan 9](https://9p.io/plan9/) project. Russ worked on the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
@@ -249,7 +248,7 @@ the current preemptive scheduler and linker.
 Now, he is leading the Compiler/Runtime team for Go.
 Keith and David together focus on the Go's compiler backend,
 notably the current SSA backend. Michael is a recent newcomer to the Go team,
-his work mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
+his work is mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
 
 - Dmitry Vyukov. (Дмитрий Вьюков, M. Sc.) [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + Alma mater: Bauman Moscow State Technical University
