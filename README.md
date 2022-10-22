@@ -1259,6 +1259,10 @@ These issues are discussion the current performance issue that exist in the curr
 
 [Back To Top](#top)
 
+### log
+
+- [discussion/54763](https://go.dev/issue/54763) discussion: structured, leveled logging
+
 ### misc
 
 - [design/mobile-audio](https://go.dev/design/13432-mobile-audio) Jaana Burcu Dogan. Proposal: Audio for Mobile. November 30, 2015.
