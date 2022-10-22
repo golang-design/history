@@ -429,6 +429,7 @@ The historical release notes may helpful for general information:
 - [issue/53003](https://go.dev/issue/53003) unsafe: add StringData, String, SliceData
 - [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
 - [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
+- [issue/56351](https://go.dev/issue/56351) proposal: spec: add delete(m) to clear map
 
 [Back To Top](#top)
 
@@ -617,6 +618,9 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/50112](https://go.dev/issue/50112) proposal: package collection and iterator design for go
 - [issue/54047](https://go.dev/issue/54047) proposal: Go 2: add a new iterator syntax, package, interfaces
 - [discuss/54245](https://go.dev/issue/54245) discussion: standard iterator interface
+- [issue/20733](https://go.dev/issue/20733) proposal: spec: redefine range loop variables in each iteration
+- [issue/56010](https://go.dev/issue/56010) redefining for loop variable semantics
+
 
 [Back To Top](#top)
 
@@ -1271,6 +1275,7 @@ These issues are discussion the current performance issue that exist in the curr
   + [issue/26160](https://go.dev/issue/26160) proposal: use DNS TXT records for vanity import paths
 - [issue/46518](https://go.dev/issue/46518) net/netip: add new IP address package, use in net
 - [issue/53171](https://go.dev/issue/53171) proposal: add package for using SIMD instructions
+- [issue/54880](https://go.dev/issue/54880) math/rand: seed global generator randomly
 
 [Back To Top](#top)
 
