@@ -620,7 +620,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [discuss/54245](https://go.dev/issue/54245) discussion: standard iterator interface
 - [issue/20733](https://go.dev/issue/20733) proposal: spec: redefine range loop variables in each iteration
 - [issue/56010](https://go.dev/issue/56010) redefining for loop variable semantics
-
+- [discuss/56413](https://go.dev/issue/56413) user-defined iteration using range over func values
 
 [Back To Top](#top)
 
