@@ -951,7 +951,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [doc/gc-guide](https://go.dev/doc/gc-guide) A Guide to the Go Garbage Collector
 - [issue/12234](https://go.dev/issue/12234) runtime: revisit non-constant assist ratio
 - [issue/27732](https://go.dev/issue/27732) runtime: mark assist blocks GC microbenchmark for 7ms
-
+- [design/batch-wb](https://docs.google.com/document/d/1uXH_HKo2QlU2N2nE-0tm1ikibDT1stR56_-Ki7N-LUg/edit#heading=h.n0os25ndb49z) Keith Randall. Batching Write Barriers. 2022 Oct, 25.
 
 [Back To Top](#top)
 
