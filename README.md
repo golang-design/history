@@ -835,6 +835,8 @@ in Go 1.15 and Go 1.16.
 ### Execution Stack
 
 - [design/contigstack](https://go.dev/s/contigstacks) Contiguous stacks
+- [doc/stackroots](https://docs.google.com/document/d/13v_u3UrN2pgUtPnH4y-qfmlXwEEryikFu0SQiwk35SA/pub) precise stack roots
+  + [discussion/stackroots](https://groups.google.com/g/golang-dev/c/5cw0mjxRB_o/m/h0L1GmnY_HAJ) Precise garbage collection of stack roots
 - [issue/17007](https://go.dev/issue/17007) runtime: fatal error: bad g->status in ready
 - [issue/18138](https://go.dev/issue/18138) runtime: new goroutines can spend excessive time in morestack
   + [design/predict-stack-size](https://docs.google.com/document/d/1YDlGIdVTPnmUiTAavlZxBI1d9pwGQgZT7IKFKlIXohQ/edit#) Keith Randall. Determining a good starting stack size. 2021/08/18.
