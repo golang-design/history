@@ -424,6 +424,7 @@ The historical release notes may helpful for general information:
 - [issue/33502](https://go.dev/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://go.dev/issue/33892) proposal: Go 2 review meeting minutes
 - [issue/19623](https://go.dev/issue/19623) proposal: spec: change int to be arbitrary precision
+- [design/unsafearithmetic](https://docs.google.com/document/d/1yyCMzE4YPfsXvnZNjhszaYNqavxHhvbY-OWPqdzZK30/pub) Matthew Dempsky. Go 1.4: unsafe.Pointer arithmetic. Aug 2014.
 - [issue/19367](https://go.dev/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
 - [issue/40481](https://go.dev/issue/40481) unsafe: add Add function
 - [issue/53003](https://go.dev/issue/53003) unsafe: add StringData, String, SliceData
