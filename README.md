@@ -901,6 +901,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
 - [paper/yuasa-barrier](https://doi.org/10.1016/0164-1212(90)90084-Y) T. Yuasa. 1990. Real-time garbage collection on general-purpose machines. J. Syst. Softw. 11, 3 (March 1990), 181-198.
+- [design/bettergc](https://docs.google.com/document/d/1HCPu3WKyCX3ZRYxmIMKTk0Ik1dePxKW1p02k3uhcft4/edit) Dmitry Vyukov. Better GC and Memory Allocator for Go. May 20, 2013
 - [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
 - [design/go14gc](https://go.dev/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
