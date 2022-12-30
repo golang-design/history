@@ -231,7 +231,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2020a](https://go.dev/s/go-build-video) `go:build` design draft. Jun 30, 2020.
   + [talk/russ2020b](https://go.dev/s/draft-iofs-video) `io/fs` draft design. Jul 21, 2020.
   + [talk/russ2020c](https://go.dev/s/draft-embed-video) `//go:embed` draft design. Jul 21, 2020.
-  + [talk/russ2021](https://www.twitch.tv/videos/1203523364) #PLTalk: 12 Years of Go with Russ Cox. Nov. 12, 2021.
+  + [talk/russ2021](https://archive.org/details/PLTalk/%23PLTalk+-+12+Years+of+Go+with+Russ+Cox+%5Bv1203523364%5D.mp4) #PLTalk: 12 Years of Go with Russ Cox. Nov. 12, 2021.
 
 [Back To Top](#top)
 
