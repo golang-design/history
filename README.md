@@ -4,7 +4,7 @@ _by Changkun Ou <[changkun.de](https://changkun.de)>_ (and many inputs from [con
 
 This document collects many interesting (publicly observable) issues,
 discussions, proposals, CLs, and talks from the Go development process,
-which intents to offer a comprehensive reference of the Go history.
+which intends to offer a comprehensive reference of the Go history.
 
 <a id="top"></a>
 
@@ -118,7 +118,7 @@ historical design, and here are some of the official sources:
 
 Go is a big project driven by a tiny group of people and the crowd of
 wisdom from the language user community. Here are some core committers
-to the project that you might interest in following their excellent work.
+to the project if you are interested in following their excellent work.
 
 Go's origin is attractive without doubts. By listening to the talks held
 by these people, you could learn more about their oral history and fun
@@ -136,17 +136,16 @@ in Go might be your starting points (as a _subjective_ recommendation):
 
 ### Core Authors
 
-The Go was created by Rob, Robert, and Ken initially because
-Rob were suffered by the slow C++ compiling time, talked to Robert, and luckily
+The Go language was created by Rob, Robert, and Ken initially because
+Rob was bothered by slow C++ compiling times, talked to Robert, and luckily
 Ken was in the next office.
-Later, Ian joined the project since he showed huge interests and
+Later, Ian joined the project after showing interest, and
 wrote the [gccgo](https://github.com/golang/gofrontend).
 Rob and Ken are retired. Robert and Ian currently work on adding generics
 to Go. Russ is also one of the core authors of the project in the early stage.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining
 the Go team since he knew Russ from way back because of the
-[Plan 9](https://9p.io/plan9/) project. Russ did many
-fundamental work for the early Go compiler, runtime, as well as the leap of
+[Plan 9](https://9p.io/plan9/) project. Russ worked on the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
 Now, Russ is the tech leader of the Go team.
 
@@ -232,7 +231,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2020a](https://go.dev/s/go-build-video) `go:build` design draft. Jun 30, 2020.
   + [talk/russ2020b](https://go.dev/s/draft-iofs-video) `io/fs` draft design. Jul 21, 2020.
   + [talk/russ2020c](https://go.dev/s/draft-embed-video) `//go:embed` draft design. Jul 21, 2020.
-  + [talk/russ2021](https://www.twitch.tv/videos/1203523364) #PLTalk: 12 Years of Go with Russ Cox. Nov. 12, 2021.
+  + [talk/russ2021](https://archive.org/details/PLTalk/%23PLTalk+-+12+Years+of+Go+with+Russ+Cox+%5Bv1203523364%5D.mp4) #PLTalk: 12 Years of Go with Russ Cox. Nov. 12, 2021.
 
 [Back To Top](#top)
 
@@ -249,7 +248,7 @@ the current preemptive scheduler and linker.
 Now, he is leading the Compiler/Runtime team for Go.
 Keith and David together focus on the Go's compiler backend,
 notably the current SSA backend. Michael is a recent newcomer to the Go team,
-his work mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
+his work is mainly in the runtime memory system such as the refactoring of memory allocator and runtime metrics.
 
 - Dmitry Vyukov. (Дмитрий Вьюков, M. Sc.) [Website](http://www.1024cores.net/), [GitHub](https://github.com/dvyukov), [Twitter](https://twitter.com/dvyukov)
   + Alma mater: Bauman Moscow State Technical University
@@ -426,10 +425,13 @@ The historical release notes may helpful for general information:
 - [issue/33502](https://go.dev/issue/33502) proposal: review meeting minutes
 - [issue/33892](https://go.dev/issue/33892) proposal: Go 2 review meeting minutes
 - [issue/19623](https://go.dev/issue/19623) proposal: spec: change int to be arbitrary precision
+- [design/unsafearithmetic](https://docs.google.com/document/d/1yyCMzE4YPfsXvnZNjhszaYNqavxHhvbY-OWPqdzZK30/pub) Matthew Dempsky. Go 1.4: unsafe.Pointer arithmetic. Aug 2014.
 - [issue/19367](https://go.dev/issue/19367) unsafe: add Slice(ptr *T, len anyIntegerType) []T
 - [issue/40481](https://go.dev/issue/40481) unsafe: add Add function
+- [issue/53003](https://go.dev/issue/53003) unsafe: add StringData, String, SliceData
 - [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
 - [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
+- [issue/56351](https://go.dev/issue/56351) proposal: spec: add delete(m) to clear map
 
 [Back To Top](#top)
 
@@ -482,7 +484,9 @@ The historical release notes may helpful for general information:
 
 [Back To Top](#top)
 
-### Error values (1.13)
+### Error values 
+
+Error handling includes two separate works: error values and error formatting. Historically, there was a try proposal that had been investigated for a year, however, due to its lack of simplicity and impact to stack tracing, it was rejected. In 1.13, error values received a large revision, and the package `errors` includes different APIs, such as `errors.Is`. Until recently (1.21), #53435 allows wrapping multiple errors, and there is a community repository that tries to implement the original try proposal.
 
 - [doc/err2011](https://go.dev/blog/error-handling-and-go) Andrew Gerrand. Error handling in Go. July 2011.
 - [doc/err-values](https://go.dev/blog/errors-are-values) Rob Pike. Errors are values. January 2015.
@@ -509,6 +513,7 @@ The historical release notes may helpful for general information:
 - [issue/41198](https://go.dev/issue/41198) proposal: errors: add ErrUnimplemented as standard way for interface method to fail.
 - [issue/47811](https://go.dev/issue/47811) proposal: errors: add Errors as a standard way to represent multiple errors as a single error
 - [issue/53435](https://go.dev/issue/53435) proposal: wrapping multiple errors
+- [repo/try](https://github.com/dsnet/try) Try: Simplified Error Handling in Go
 
 [Back To Top](#top)
 
@@ -573,6 +578,7 @@ The historical release notes may helpful for general information:
   + [issue/51110](https://go.dev/issue/51110) spec: document behavior of type switches containing type parameter cases
   + any/comparable
     * [issue/33232](https://go.dev/issue/33232) spec: allow 'any' for 'interface{}' in non-constraint contexts 
+    * [issue/46746](https://go.dev/issue/46746) reflect: add Value.Equal, Value.Comparable
     * [issue/49587](https://go.dev/issue/49587) proposal: spec: add comparable w/o interfaces
     * [issue/49927](https://go.dev/issue/49927) builtin: add documentation for any and comparable to pseudo-package builtin
     * [issue/49884](https://go.dev/issue/49884) all: rewrite interface{} to any
@@ -614,8 +620,17 @@ The historical release notes may helpful for general information:
 - [issue/50112](https://go.dev/issue/50112) proposal: package collection and iterator design for go
 - [issue/54047](https://go.dev/issue/54047) proposal: Go 2: add a new iterator syntax, package, interfaces
 - [discuss/54245](https://go.dev/issue/54245) discussion: standard iterator interface
+- [issue/20733](https://go.dev/issue/20733) proposal: spec: redefine range loop variables in each iteration
+- [issue/56010](https://go.dev/issue/56010) redefining for loop variable semantics
+- [discuss/56413](https://go.dev/issue/56413) user-defined iteration using range over func values
 
 [Back To Top](#top)
+
+### Compatibility
+
+- [doc/go1compat](https://go.dev/doc/go1compat) Go 1 and the Future of Go Programs
+- [discussion/55090](https://go.dev/issue/55090) extending Go backward compatibility
+- [discussion/55092](https://go.dev/issue/55092) extending Go forward compatibility
 
 ## Compiler Toolchain
 
@@ -654,6 +669,10 @@ The historical release notes may helpful for general information:
   + [issue/36606](https://go.dev/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
 - [issue/28262](https://go.dev/issue/28262) cmd/compile: feedback-guided optimization
+- [issue/55022](https://go.dev/issue/55022) proposal: cmd/compile: profile-guided optimization
+- [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
+- [design/pgo](https://go.dev/design/55022-pgo.md) Proposal: profile-guided optimization
+- [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation.md) Design and Implementation of Profile-Guided Optimization (PGO) for Go
 
 [Back To Top](#top)
 
@@ -818,6 +837,8 @@ in Go 1.15 and Go 1.16.
 ### Execution Stack
 
 - [design/contigstack](https://go.dev/s/contigstacks) Contiguous stacks
+- [doc/stackroots](https://docs.google.com/document/d/13v_u3UrN2pgUtPnH4y-qfmlXwEEryikFu0SQiwk35SA/pub) precise stack roots
+  + [discussion/stackroots](https://groups.google.com/g/golang-dev/c/5cw0mjxRB_o/m/h0L1GmnY_HAJ) Precise garbage collection of stack roots
 - [issue/17007](https://go.dev/issue/17007) runtime: fatal error: bad g->status in ready
 - [issue/18138](https://go.dev/issue/18138) runtime: new goroutines can spend excessive time in morestack
   + [design/predict-stack-size](https://docs.google.com/document/d/1YDlGIdVTPnmUiTAavlZxBI1d9pwGQgZT7IKFKlIXohQ/edit#) Keith Randall. Determining a good starting stack size. 2021/08/18.
@@ -884,6 +905,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 
 - [paper/on-the-fly-gc](https://doi.org/10.1145/359642.359655) Edsger W. Dijkstra, Leslie Lamport, A. J. Martin, C. S. Scholten, and E. F. M. Steffens. 1978. On-the-fly garbage collection: An exercise in cooperation. Commun. ACM 21, 11 (November 1978), 966–975.
 - [paper/yuasa-barrier](https://doi.org/10.1016/0164-1212(90)90084-Y) T. Yuasa. 1990. Real-time garbage collection on general-purpose machines. J. Syst. Softw. 11, 3 (March 1990), 181-198.
+- [design/bettergc](https://docs.google.com/document/d/1HCPu3WKyCX3ZRYxmIMKTk0Ik1dePxKW1p02k3uhcft4/edit) Dmitry Vyukov. Better GC and Memory Allocator for Go. May 20, 2013
+  + [discuss/bettergc](https://groups.google.com/g/golang-dev/c/pwUh0BVFpY0) Better GC and Memory Allocator for Go
 - [design/go13gc](https://docs.google.com/document/d/1v4Oqa0WwHunqlb8C3ObL_uNQw3DfSY-ztoA-4wWbKcg/pub) Dmitry Vyukov. Simpler and faster GC for Go. July 16, 2014
   + [cl/106260045](https://codereview.appspot.com/106260045) runtime: simpler and faster GC
 - [design/go14gc](https://go.dev/s/go14gc) Richard L. Hudson. Go 1.4+ Garbage Collection (GC) Plan and Roadmap. August 6, 2014.
@@ -931,6 +954,10 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/45315](https://go.dev/issue/45315) runtime: runtime.GC can return without finishing sweep
 - [issue/49075](https://go.dev/issue/49075) runtime: possible memory corruption
 - [issue/52433](https://go.dev/issue/52433) runtime: heap goal overrun due to scheduler delays in mark termination
+- [doc/gc-guide](https://go.dev/doc/gc-guide) A Guide to the Go Garbage Collector
+- [issue/12234](https://go.dev/issue/12234) runtime: revisit non-constant assist ratio
+- [issue/27732](https://go.dev/issue/27732) runtime: mark assist blocks GC microbenchmark for 7ms
+- [design/batch-wb](https://docs.google.com/document/d/1uXH_HKo2QlU2N2nE-0tm1ikibDT1stR56_-Ki7N-LUg/edit#heading=h.n0os25ndb49z) Keith Randall. Batching Write Barriers. 2022 Oct, 25.
 
 [Back To Top](#top)
 
@@ -1238,6 +1265,10 @@ These issues are discussion the current performance issue that exist in the curr
 
 [Back To Top](#top)
 
+### log
+
+- [discussion/54763](https://go.dev/issue/54763) discussion: structured, leveled logging
+
 ### misc
 
 - [design/mobile-audio](https://go.dev/design/13432-mobile-audio) Jaana Burcu Dogan. Proposal: Audio for Mobile. November 30, 2015.
@@ -1254,6 +1285,7 @@ These issues are discussion the current performance issue that exist in the curr
   + [issue/26160](https://go.dev/issue/26160) proposal: use DNS TXT records for vanity import paths
 - [issue/46518](https://go.dev/issue/46518) net/netip: add new IP address package, use in net
 - [issue/53171](https://go.dev/issue/53171) proposal: add package for using SIMD instructions
+- [issue/54880](https://go.dev/issue/54880) math/rand: seed global generator randomly
 
 [Back To Top](#top)
 
