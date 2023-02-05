@@ -232,6 +232,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2020b](https://go.dev/s/draft-iofs-video) `io/fs` draft design. Jul 21, 2020.
   + [talk/russ2020c](https://go.dev/s/draft-embed-video) `//go:embed` draft design. Jul 21, 2020.
   + [talk/russ2021](https://archive.org/details/PLTalk/%23PLTalk+-+12+Years+of+Go+with+Russ+Cox+%5Bv1203523364%5D.mp4) #PLTalk: 12 Years of Go with Russ Cox. Nov. 12, 2021.
+  + [talk/russ2022](https://youtube.com/watch?v=v24wrd3RwGo) Compatibility: How Go Programs Keep Working. GopherCon 2022. Oct 28, 2022.
 
 [Back To Top](#top)
 
@@ -434,6 +435,8 @@ The historical release notes may helpful for general information:
 - [issue/56351](https://go.dev/issue/56351) proposal: spec: add delete(m) to clear map
 - [issue/58233](https://go.dev/issue/58233) proposal: spec: define return statement's result assignment order?
 - [issue/57616](https://go.dev/issue/57616) proposal: spec: add simple string interpolation similar to Swift
+- [issue/57411](https://go.dev/issue/57411) proposal: spec: define initialization order more precisely
+- [issue/56103](https://go.dev/issue/56103) spec: disallow anonymous interface cycles
 
 [Back To Top](#top)
 
@@ -633,10 +636,11 @@ Error handling includes two separate works: error values and error formatting. H
 
 - [doc/go1compat](https://go.dev/doc/go1compat) Go 1 and the Future of Go Programs
 - [discussion/55090](https://go.dev/issue/55090) extending Go backward compatibility
-  + [design/godebug](https://go.dev/design/56986-godebug.md) Proposal: Extended backwards compatibility for Go
+  + [issue/56986](https://go.dev/issue/56986) extended backwards compatibility for Go
+  + [design/godebug](https://go.dev/design/56986-godebug) Proposal: Extended backwards compatibility for Go
 - [discussion/55092](https://go.dev/issue/55092) extending Go forward compatibility
   + [issue/57001](https://go.dev/issue/57001) extended forwards compatibility for Go
-  + [design/gotoolchain](https://go.dev/design/57001-gotoolchain.md) Proposal: Extended forwards compatibility in Go
+  + [design/gotoolchain](https://go.dev/design/57001-gotoolchain) Proposal: Extended forwards compatibility in Go
 
 
 
@@ -680,8 +684,8 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/28262](https://go.dev/issue/28262) cmd/compile: feedback-guided optimization
 - [issue/55022](https://go.dev/issue/55022) proposal: cmd/compile: profile-guided optimization
 - [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
-- [design/pgo](https://go.dev/design/55022-pgo.md) Proposal: profile-guided optimization
-- [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation.md) Design and Implementation of Profile-Guided Optimization (PGO) for Go
+- [design/pgo](https://go.dev/design/55022-pgo) Proposal: profile-guided optimization
+- [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation) Design and Implementation of Profile-Guided Optimization (PGO) for Go
 
 [Back To Top](#top)
 
@@ -1277,6 +1281,7 @@ These issues are discussion the current performance issue that exist in the curr
 ### log
 
 - [discussion/54763](https://go.dev/issue/54763) discussion: structured, leveled logging
+- [design/structured-logging](https://go.dev/design/56345-structured-logging) Proposal: Structured Logging
 - [issue/56345](https://go.dev/issue/56345) proposal: log/slog: structured, leveled logging
 - [issue/58243](https://go.dev/issue/58243) log/slog: make the current context easily available to loggers
 
