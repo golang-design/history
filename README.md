@@ -437,6 +437,7 @@ The historical release notes may helpful for general information:
 - [issue/57616](https://go.dev/issue/57616) proposal: spec: add simple string interpolation similar to Swift
 - [issue/57411](https://go.dev/issue/57411) proposal: spec: define initialization order more precisely
 - [issue/56103](https://go.dev/issue/56103) spec: disallow anonymous interface cycles
+- [issue/25448](https://go.dev/issue/25448) spec: guarantee non-nil return value from recover
 
 [Back To Top](#top)
 
@@ -646,6 +647,12 @@ Error handling includes two separate works: error values and error formatting. H
 
 
 ## Compiler Toolchain
+
+### Office Hours
+
+- [discuss/runtime-office-hours](https://docs.google.com/document/d/17YYCLhsyoGx7wLVGUET2VvHog9oJE4xLCljUGmJCucU/edit) compiler & runtime office hours 
+  + [talk/runtime-office-meeting1](https://www.youtube.com/watch?v=p69c_R-YdFk&ab_channel=TheGoProgrammingLanguage) Go compiler & runtime office hours 2022-12-19 
+  + [talk/runtime-office-meeting2](https://www.youtube.com/watch?v=x7-5qlTW0J8&ab_channel=TheGoProgrammingLanguage) Go compiler & runtime office hours 2023-01-19
 
 ### Compiler
 
@@ -1191,8 +1198,10 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [doc/context-go-away](https://faiface.github.io/post/context-should-go-away-go2/) Michal Štrba. Context should go away for Go 2. 2017/08/06
 - [doc/context](https://go.dev/blog/context) Go Concurrency Patterns: Context.
 - [doc/context-isnt-for-cancellation](https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation) Dave Cheney. Context isn’t for cancellation. August 20, 2017.
+- [issue/36503](https://go.dev/issue/36503) proposal: context: add Merge
 - [issue/42564](https://go.dev/issue/42564) context: cancelCtx exclusive lock causes extreme contention
 - [issue/51365](https://go.dev/issue/51365) proposal: context: add APIs for writing and reading cancelation cause
+- [issue/56661](https://go.dev/issue/56661) context: add APIs for setting a cancelation cause when deadline or timer expires
 
 [Back To Top](#top)
 
