@@ -395,7 +395,7 @@ The historical release notes may helpful for general information:
 
 ## Language Design
 
-### Misc
+### General
 
 - [design/go0initial](https://github.com/golang/go/blob/18c5b488a3b2e218c0e0cf2a7d4820d9da93a554/doc/go_spec) Rob Pike, Robert Griesemer, Ken Thompson. The Go Annotated Specification. Mar 3, 2008.
 - [design/go0spec0](https://github.com/golang/go/blob/e6626dafa8de8a0efae351e85cf96f0c683e0a4f/doc/go_lang.txt) The Go Programming Language. Language Specification. Mar 7, 2008.
@@ -432,6 +432,8 @@ The historical release notes may helpful for general information:
 - [issue/43615](https://go.dev/issue/43615) proposal: weak reference maps
 - [issue/48105](https://go.dev/issue/48105) spec: clarify sequencing of function calls within expressions
 - [issue/56351](https://go.dev/issue/56351) proposal: spec: add delete(m) to clear map
+- [issue/58233](https://go.dev/issue/58233) proposal: spec: define return statement's result assignment order?
+- [issue/57616](https://go.dev/issue/57616) proposal: spec: add simple string interpolation similar to Swift
 
 [Back To Top](#top)
 
@@ -599,6 +601,7 @@ Error handling includes two separate works: error values and error formatting. H
   + [discuss/47331](https://github.com/golang/go/discussions/47331) proposal: container/set: new package to provide a generic set type (discussion)
   + [discuss/47330](https://github.com/golang/go/discussions/47330) proposal: maps: new package to provide generic map functions (discussion)
   + [issue/47649](https://go.dev/issue/47649) maps: new package to provide generic map functions
+  + [issue/57436](https://go.dev/issue/57436) maps: new standard library package based on x/exp/maps
   + [issue/47657](https://go.dev/issue/47657) proposal: sync, sync/atomic: add PoolOf, MapOf, ValueOf
   + [issue/50792](https://go.dev/issue/50792) constraints: move to x/exp for Go 1.18
   + [issue/53427](https://go.dev/issue/53427) proposal: x/sync/singleflight: add generic version
@@ -630,7 +633,13 @@ Error handling includes two separate works: error values and error formatting. H
 
 - [doc/go1compat](https://go.dev/doc/go1compat) Go 1 and the Future of Go Programs
 - [discussion/55090](https://go.dev/issue/55090) extending Go backward compatibility
+  + [design/godebug](https://go.dev/design/56986-godebug.md) Proposal: Extended backwards compatibility for Go
 - [discussion/55092](https://go.dev/issue/55092) extending Go forward compatibility
+  + [issue/57001](https://go.dev/issue/57001) extended forwards compatibility for Go
+  + [design/gotoolchain](https://go.dev/design/57001-gotoolchain.md) Proposal: Extended forwards compatibility in Go
+
+
+
 
 ## Compiler Toolchain
 
@@ -1268,6 +1277,8 @@ These issues are discussion the current performance issue that exist in the curr
 ### log
 
 - [discussion/54763](https://go.dev/issue/54763) discussion: structured, leveled logging
+- [issue/56345](https://go.dev/issue/56345) proposal: log/slog: structured, leveled logging
+- [issue/58243](https://go.dev/issue/58243) log/slog: make the current context easily available to loggers
 
 ### misc
 
