@@ -451,6 +451,7 @@ The historical release notes may helpful for general information:
 - [discuss/why-slice-grow](https://groups.google.com/g/golang-nuts/c/UaVlMQ8Nz3o) slices grow at 25% after 1024 but why 1024?
 - [cl/347917](https://go.dev/cl/347917) runtime: make slice growth formula a bit smoother
   + [doc/cl-347917-graph](https://docs.google.com/document/d/1JQvV6vyAYdHhIboY-zAwK06OXZjxHrUhOFeG38MuJ94/edit?resourcekey=0-L5OsHqwZZBxvjfK0dwsyVQ) Graphs for CL 347917
+- [cl/418554](https://go.dev/cl/418554) cmd/compile,runtime: redo growslice calling convention
 
 [Back To Top](#top)
 
