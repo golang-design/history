@@ -18,6 +18,7 @@ import (
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/renderer/html"
 )
 
 var (
@@ -41,6 +42,7 @@ func init() {
 		),
 		goldmark.WithRendererOptions(
 		// html.WithHardWraps(), // do this someday.
+			html.WithUnsafe(),
 		),
 	)
 	pctx = parser.NewContext(parser.WithIDs(newIDs()))
