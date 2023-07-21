@@ -476,8 +476,8 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [issue/10458](https://go.dev/issue/10458) 规范：panic 在极端情况下的语义
   + [issue/23531](https://go.dev/issue/23531) 规范：在嵌套 defer 中使用 `recover()`
   + [issue/26275](https://go.dev/issue/26275) 规范：在使用 defer 的函数中记录调用者的行为
-  + [issue/34530](https://go.dev/issue/34530) 规范：澄清何时调用 recover 停止 panic 
-  + [cl/189377](https://go.dev/cl/189377) 规范：列举 recover 行为和递归 panic 的详情。 
+  + [issue/34530](https://go.dev/issue/34530) 规范：澄清何时调用 recover 停止 panic
+  + [cl/189377](https://go.dev/cl/189377) 规范：列举 recover 行为和递归 panic 的详情。
 
 [Back To Top](#top)
 

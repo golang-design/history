@@ -17,19 +17,22 @@ which intends to offer a comprehensive reference of the Go history.
   - [Committers](#committers)
     - [Core Authors](#core-authors)
     - [Compiler/Runtime Team](#compilerruntime-team)
-    - [Library/Tools/Security/Community](#librarytoolssecuritycommunity)
+    - [Library/Tools/Release/Security/Community](#librarytoolsreleasesecuritycommunity)
     - [Group Interviews](#group-interviews)
   - [Timeline](#timeline)
   - [Language Design](#language-design)
-    - [Misc](#misc)
+    - [General](#general)
     - [Slice (1.2)](#slice-12)
     - [Package Management (1.4, 1.5, 1.7)](#package-management-14-15-17)
     - [Type alias (1.9)](#type-alias-19)
     - [Defer (1.14)](#defer-114)
-    - [Error values (1.13)](#error-values-113)
+    - [Error values](#error-values)
     - [Channel/Select](#channelselect)
     - [Generics](#generics)
+    - [Iterator](#iterator)
+    - [Compatibility](#compatibility)
   - [Compiler Toolchain](#compiler-toolchain)
+    - [Office Hours](#office-hours)
     - [Compiler](#compiler)
     - [Linker](#linker)
     - [Debugger](#debugger)
@@ -39,7 +42,7 @@ which intends to offer a comprehensive reference of the Go history.
     - [Builder](#builder)
     - [Modules](#modules)
     - [gopls](#gopls)
-    - [Testing](#testing-xperf)
+    - [Testing, x/perf](#testing-xperf)
   - [Runtime Core](#runtime-core)
     - [Scheduler](#scheduler)
     - [Execution Stack](#execution-stack)
@@ -49,11 +52,11 @@ which intends to offer a comprehensive reference of the Go history.
     - [Statistics](#statistics)
     - [Memory model](#memory-model)
     - [ABI](#abi)
-    - [Misc](#misc-1)
+    - [Misc](#misc)
   - [Standard Library](#standard-library)
     - [syscall](#syscall)
     - [os, io, io/fs, embed](#os-io-iofs-embed)
-    - [go/*](#go)
+    - [go/\*](#go)
     - [sync](#sync)
       - [Map](#map)
       - [Pool](#pool)
@@ -66,7 +69,8 @@ which intends to offer a comprehensive reference of the Go history.
     - [image, x/image](#image-ximage)
     - [math](#math)
     - [Mobile](#mobile)
-    - [misc](#misc-2)
+    - [log](#log)
+    - [misc](#misc-1)
   - [Unclassified But Relevant Links](#unclassified-but-relevant-links)
   - [Fun Facts](#fun-facts)
   - [Acknowledgements](#acknowledgements)
@@ -372,7 +376,7 @@ his work is mainly in the runtime memory system such as the refactoring of memor
 - Sam Boyer. [GitHub](https://github.com/sdboyer), [Twitter](https://twitter.com/sdboyer)
 - Fillippo Valsorda. [Website](https://filippo.io/), [GitHub](https://github.com/FiloSottile), [Twitter](https://twitter.com/FiloSottile)
   + [talk/filo2016](https://www.youtube.com/watch?v=lhMhApWQp2E) From cgo back to Go. July 12, 2016
-  + [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) From Go to Rust without cgo. 
+  + [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) From Go to Rust without cgo.
   + [talk/filo2018](https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018) Why cgo is slow. CapitalGo 2018.
   + [talk/speakerdeck](https://speakerdeck.com/filosottile?page=1)
 
@@ -473,6 +477,11 @@ The historical release notes may helpful for general information:
 - [issue/57411](https://go.dev/issue/57411) proposal: spec: define initialization order more precisely
 - [issue/56103](https://go.dev/issue/56103) spec: disallow anonymous interface cycles
 - [issue/25448](https://go.dev/issue/25448) spec: guarantee non-nil return value from recover
+- [issue/61372](https://go.dev/issue/61372) proposal: spec: add untyped builtin zero
+- [issue/56351](https://go.dev/issue/56351) spec: add clear(x) builtin, to clear map, zero content of slice
+- [issue/58625](https://go.dev/issue/58625) unsafe: allow conversion of uintptr to unsafe.Pointer when it points to non-Go memory
+- [discuss/48305](https://go.dev/issue/48305) doc comment revisions: headings, lists, and links
+- [issue/12445](https://go.dev/issue/12445) spec: clarify how unsafe.Pointers may be used to determine offsets between addresses
 
 [Back To Top](#top)
 
@@ -526,7 +535,7 @@ The historical release notes may helpful for general information:
 
 [Back To Top](#top)
 
-### Error values 
+### Error values
 
 Error handling includes two separate works: error values and error formatting. Historically, there was a try proposal that had been investigated for a year, however, due to its lack of simplicity and impact to stack tracing, it was rejected. In 1.13, error values received a large revision, and the package `errors` includes different APIs, such as `errors.Is`. Until recently (1.21), #53435 allows wrapping multiple errors, and there is a community repository that tries to implement the original try proposal.
 
@@ -619,7 +628,7 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/50954](https://go.dev/issue/50954) go/types, types2: review error messages
   + [issue/51110](https://go.dev/issue/51110) spec: document behavior of type switches containing type parameter cases
   + any/comparable
-    * [issue/33232](https://go.dev/issue/33232) spec: allow 'any' for 'interface{}' in non-constraint contexts 
+    * [issue/33232](https://go.dev/issue/33232) spec: allow 'any' for 'interface{}' in non-constraint contexts
     * [issue/46746](https://go.dev/issue/46746) reflect: add Value.Equal, Value.Comparable
     * [issue/49587](https://go.dev/issue/49587) proposal: spec: add comparable w/o interfaces
     * [issue/49927](https://go.dev/issue/49927) builtin: add documentation for any and comparable to pseudo-package builtin
@@ -650,8 +659,20 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/47916](https://go.dev/issue/47916) go/types: additions to support type parameters
   + [issue/48525](https://go.dev/issue/48525) x/tools/go/ssa: generics support
   + [issue/50887](https://go.dev/issue/50887) go/types, types2: document predicates on generic types
-
+- [issue/52654](https://go.dev/issue/52654) spec: provide some way to refer to a generic function without instantiation
+- [issue/59488](https://go.dev/issue/59488) cmp: new package with Ordered, Compare, Less; min, max as builtins
+- [issue/60648](https://go.dev/issue/60648) cmp: document ordering for floating point values in cmp.Ordered
+- [issue/59531](https://go.dev/issue/59531) all: ordering numeric values, including NaNs, and the consequences thereof
+- [issue/60519](https://go.dev/issue/60519) math: remove Compare, Compare32
+- [issue/58650](https://go.dev/issue/58650) spec: a general approach to type inference
+- [issue/59338](https://go.dev/issue/59338) spec: infer type arguments from assignments of generic functions (reverse type inference)
+- [issue/58671](https://go.dev/issue/58671) spec: type inference should be more lenient about untyped numeric literals
+- [issue/57644](https://go.dev/issue/57644) proposal: spec: sum types based on general interfaces
 [Back To Top](#top)
+- [issue/60353](https://go.dev/issue/60353) spec: when unifying against interface types, consider common methods
+- [issue/57433](https://go.dev/issue/57433) slices: new standard library package based on x/exp/slices
+- [issue/51259](https://go.dev/issue/51259) proposal: spec: support for struct members in interface/constraint syntax
+- [issue/50285](https://go.dev/issue/50285) proposal: generic should infer type from variable definition
 
 ### Iterator
 
@@ -665,7 +686,11 @@ Error handling includes two separate works: error values and error formatting. H
 - [discuss/54245](https://go.dev/issue/54245) discussion: standard iterator interface
 - [issue/20733](https://go.dev/issue/20733) proposal: spec: redefine range loop variables in each iteration
 - [issue/56010](https://go.dev/issue/56010) redefining for loop variable semantics
+- [issue/60078](https://go.dev/issue/60078) spec: less error-prone loop variable scoping
 - [discuss/56413](https://go.dev/issue/56413) user-defined iteration using range over func values
+- [issue/61405](https://go.dev/issue/61405) proposal: spec: add range over int, range over func
+- [doc/coro](https://research.swtch.com/coro) Coroutines for Go
+- [issue/54650](https://go.dev/issue/54650) x/exp/slices: memory leak on Delete
 
 [Back To Top](#top)
 
@@ -678,6 +703,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [discussion/55092](https://go.dev/issue/55092) extending Go forward compatibility
   + [issue/57001](https://go.dev/issue/57001) extended forwards compatibility for Go
   + [design/gotoolchain](https://go.dev/design/57001-gotoolchain) Proposal: Extended forwards compatibility in Go
+- [issue/33791](https://go.dev/issue/33791) proposal: add explicit decision doc for large changes
 
 
 
@@ -686,8 +712,8 @@ Error handling includes two separate works: error values and error formatting. H
 
 ### Office Hours
 
-- [discuss/runtime-office-hours](https://docs.google.com/document/d/17YYCLhsyoGx7wLVGUET2VvHog9oJE4xLCljUGmJCucU/edit) compiler & runtime office hours 
-  + [talk/runtime-office-meeting1](https://www.youtube.com/watch?v=p69c_R-YdFk&ab_channel=TheGoProgrammingLanguage) Go compiler & runtime office hours 2022-12-19 
+- [discuss/runtime-office-hours](https://docs.google.com/document/d/17YYCLhsyoGx7wLVGUET2VvHog9oJE4xLCljUGmJCucU/edit) compiler & runtime office hours
+  + [talk/runtime-office-meeting1](https://www.youtube.com/watch?v=p69c_R-YdFk&ab_channel=TheGoProgrammingLanguage) Go compiler & runtime office hours 2022-12-19
   + [talk/runtime-office-meeting2](https://www.youtube.com/watch?v=x7-5qlTW0J8&ab_channel=TheGoProgrammingLanguage) Go compiler & runtime office hours 2023-01-19
 
 ### Compiler
@@ -729,6 +755,11 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
 - [design/pgo](https://go.dev/design/55022-pgo) Proposal: profile-guided optimization
 - [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation) Design and Implementation of Profile-Guided Optimization (PGO) for Go
+- [issue/58409](https://go.dev/issue/58409) telemetry in the Go toolchain
+- [issue/58894](https://go.dev/issue/58894) all: add opt-in transparent telemetry to Go toolchain
+- [issue/54534](https://go.dev/issue/54534) cmd/compile: design doc explaining unified IR implementation
+- [discuss/53060](https://go.dev/issue/53060) discussion: clarify Go support policy for secondary ports
+- [issue/53383](https://go.dev/issue/53383) clarify Go support policy for secondary ports
 
 [Back To Top](#top)
 
@@ -765,7 +796,7 @@ in Go 1.15 and Go 1.16.
 
 - [design/go15trace](https://go.dev/s/go15trace) Dmitry Vyukov. Go Execution Tracer. Oct 2014
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
-
+- [issue/54466](https://go.dev/issue/54466) runtime: rewrite gentraceback as an iterator API
 [Back To Top](#top)
 
 ### Lock Analysis
@@ -853,6 +884,7 @@ in Go 1.15 and Go 1.16.
 - [issue/43744](https://go.dev/issue/43744) testing: benchmark unit properties
 - [issue/48803](https://go.dev/issue/48803) all: Go compiler/runtime performance monitoring system
 - [issue/49121](https://go.dev/issue/49121) x/perf/storage: support postgres for db
+- [issue/61179](https://go.dev/issue/61179) proposal: testing: add identity function that forces evaluation for benchmarks
 
 <!-- - Tool chain, benchseries/benchstat -->
 
@@ -954,7 +986,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   + [cl/267100](https://go.dev/cl/267100) runtime: default to MADV_DONTNEED on Linux
 - [issue/46787](https://go.dev/issue/46787) runtime: provide Pinner API for object pinning
 - [issue/51317](https://go.dev/issue/51317) proposal: arena: new package providing memory arenas
-
+- [issue/59960](https://go.dev/issue/59960) runtime: improve heap hugepage utilization
 [Back To Top](#top)
 
 #### Collector
@@ -1014,6 +1046,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/12234](https://go.dev/issue/12234) runtime: revisit non-constant assist ratio
 - [issue/27732](https://go.dev/issue/27732) runtime: mark assist blocks GC microbenchmark for 7ms
 - [design/batch-wb](https://docs.google.com/document/d/1uXH_HKo2QlU2N2nE-0tm1ikibDT1stR56_-Ki7N-LUg/edit#heading=h.n0os25ndb49z) Keith Randall. Batching Write Barriers. 2022 Oct, 25.
+- [issue/31222](https://go.dev/issue/31222) runtime: long pauses STW (sweep termination) on massive block allocation
 
 [Back To Top](#top)
 
@@ -1087,13 +1120,14 @@ The Go memory model consists the following parts:
 
 - [issue/20135](https://go.dev/issue/20135) runtime: shrink map as elements are deleted
 - [issue/48687](https://go.dev/issue/48687) runtime: enhance map cacheline efficiency
+- [issue/54766](https://go.dev/issue/54766) runtime: use SwissTable
 
 ## Standard Library
 
 ### syscall
 
 - [design/go14syscall](https://go.dev/s/go1.4-syscall) The syscall package.
-- [issue/51087](https://go.dev/issue/51087) runtime: clean up system call code 
+- [issue/51087](https://go.dev/issue/51087) runtime: clean up system call code
 
 [Back To Top](#top)
 
@@ -1122,6 +1156,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/44166](https://go.dev/issue/44166) io/fs,os: fs.ReadDir with an os.DirFS can produce invalid paths
   + [issue/42322](https://go.dev/issue/42322) io/fs: add func Sub(fsys FS, dir string) FS
 - [issue/45757](https://go.dev/issue/45757) proposal: io/fs: add writable interfaces
+- [issue/9051](https://go.dev/issue/9051) io: no easy way to fan out to multiple readers
 
 [Back To Top](#top)
 
@@ -1139,7 +1174,9 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 
 - [design/percpu-sharded](https://go.dev/design/18802-percpu-sharded) Sanjay Menakuru. Proposal: percpu.Sharded, an API for reducing cache contention. Jun 12, 2018.
   + [issue/18802](https://go.dev/issue/18802) proposal: sync: support for sharded values
+  + [cl/4850045](https://codereview.appspot.com/4850045/) co: new package
 - [issue/37142](https://go.dev/issue/37142) sync: shrink types in sync package
+- [issue/56102](https://go.dev/issue/56102) sync: add OnceFunc, OnceValue, OnceValues
 
 [Back To Top](#top)
 
@@ -1238,6 +1275,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
 - [issue/42564](https://go.dev/issue/42564) context: cancelCtx exclusive lock causes extreme contention
 - [issue/51365](https://go.dev/issue/51365) proposal: context: add APIs for writing and reading cancelation cause
 - [issue/56661](https://go.dev/issue/56661) context: add APIs for setting a cancelation cause when deadline or timer expires
+- [issue/57928](https://go.dev/issue/57928) context: add AfterFunc
 
 [Back To Top](#top)
 
@@ -1329,6 +1367,7 @@ These issues are discussion the current performance issue that exist in the curr
 - [design/structured-logging](https://go.dev/design/56345-structured-logging) Proposal: Structured Logging
 - [issue/56345](https://go.dev/issue/56345) proposal: log/slog: structured, leveled logging
 - [issue/58243](https://go.dev/issue/58243) log/slog: make the current context easily available to loggers
+- [issue/59928](https://go.dev/issue/59928) proposal: testing: Add log/slog support
 
 ### misc
 
