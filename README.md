@@ -751,6 +751,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [discuss/56413](https://go.dev/issue/56413) user-defined iteration using range over func values
 - [issue/61405](https://go.dev/issue/61405) proposal: spec: add range over int, range over func
 - [doc/coro](https://research.swtch.com/coro) Coroutines for Go
+- [doc/undefined-behavior](https://research.swtch.com/ub) C and C++ Prioritize Performance over Correctness
 - [issue/54650](https://go.dev/issue/54650) x/exp/slices: memory leak on Delete
 
 [Back To Top](#top)
@@ -811,16 +812,26 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/599](https://go.dev/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://go.dev/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
-- [issue/28262](https://go.dev/issue/28262) cmd/compile: feedback-guided optimization
-- [issue/55022](https://go.dev/issue/55022) proposal: cmd/compile: profile-guided optimization
-- [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
-- [design/pgo](https://go.dev/design/55022-pgo) Proposal: profile-guided optimization
-- [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation) Design and Implementation of Profile-Guided Optimization (PGO) for Go
-- [issue/58409](https://go.dev/issue/58409) telemetry in the Go toolchain
-- [issue/58894](https://go.dev/issue/58894) all: add opt-in transparent telemetry to Go toolchain
 - [issue/54534](https://go.dev/issue/54534) cmd/compile: design doc explaining unified IR implementation
 - [discuss/53060](https://go.dev/issue/53060) discussion: clarify Go support policy for secondary ports
 - [issue/53383](https://go.dev/issue/53383) clarify Go support policy for secondary ports
+- **Profile-guided Optimization**
+  - [paper/autofdo](https://research.google/pubs/pub45290/) Chen, et al. AutoFDO: Automatic Feedback-Directed Optimization for Warehouse-Scale Applications. 2016.
+  - [doc/pgo](https://go.dev/doc/pgo) Profile-guided optimization
+  - [issue/28262](https://go.dev/issue/28262) cmd/compile: feedback-guided optimization
+  - [issue/55022](https://go.dev/issue/55022) proposal: cmd/compile: profile-guided optimization
+  - [issue/55025](https://go.dev/issue/55025) proposal: design and implementation of Profile-Guided Optimization (PGO)
+  - [design/pgo](https://go.dev/design/55022-pgo) Proposal: profile-guided optimization
+  - [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation) Design and Implementation of Profile-Guided Optimization (PGO) for Go
+  - [issue/62463](https://go.dev/issue/62463) cmd/compile: PGO opportunities umbrella issue
+- **Toolchain Telemetry**
+  - [issue/58409](https://go.dev/issue/58409) telemetry in the Go toolchain
+  - [issue/58894](https://go.dev/issue/58894) all: add opt-in transparent telemetry to Go toolchain
+  - [doc/telemetry-sample](https://research.swtch.com/sample) The Magic of Sampling, and its Limitations
+  - [doc/telemetry-intro](https://research.swtch.com/telemetry-intro) Transparent Telemetry for Open-Source Projects.
+  - [doc/telemetry-design](https://research.swtch.com/telemetry-design) The Design of Transparent Telemetry.
+  - [doc/telemetry-uses](https://research.swtch.com/telemetry-uses) Use Cases for Transparent Telemetry.
+  - [doc/telemetry-optin](https://research.swtch.com/telemetry-opt-in) Opting In to Transparent Telemetry.
 
 [Back To Top](#top)
 
@@ -1468,6 +1479,8 @@ These issues are discussion the current performance issue that exist in the curr
 - [Debugging performance issues in Go* programs By Dmitriy Vyukov](https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html)
 - [Interesting papers I'd like to implement (or at least have implementations of)](https://github.com/dgryski/interesting-papers)
 - [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
+- John Ousterhout. Open Decision-Making. June, 2021. https://web.stanford.edu/~ouster/cgi-bin/decisions.php.
+- [Go’s Version Control History](https://research.swtch.com/govcs)
 
 [Back To Top](#top)
 
