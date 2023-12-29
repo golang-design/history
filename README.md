@@ -813,6 +813,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [design/go19inlining](https://go.dev/design/19348-midstack-inlining) David Lazar, Austin Clements. Proposal: Mid-stack inlining in the Go compiler.
   + [issue/19348](https://go.dev/issue/19348) cmd/compile: enable mid-stack inlining.
   + [talk/go19inliningtalk](https://go.dev/s/go19inliningtalk) David Lazar. Mid-stack inlining in the Go compiler
+- [design/go122inlining](https://docs.google.com/document/d/1a6p7-nbk5PVyM1S2tmccFrrIuGzCyzclstBtaciHxVw/edit#heading=h.o82v9r2rjlej) Go 1.22 inlining overhaul
 - [design/dwarf-inlining](https://go.dev/design/22080-dwarf-inlining) Than McIntosh. Proposal: emit DWARF inlining info in the Go compiler. 2017-10-23.
   + [issue/22080](https://go.dev/issue/22080) cmd/compile: generated DWARF inlining info
 - [issue/23109](https://go.dev/issue/23109) cmd/compile: rewrite escape analysis.
