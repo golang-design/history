@@ -770,6 +770,14 @@ Error handling includes two separate works: error values and error formatting. H
 - [doc/coro](https://research.swtch.com/coro) Coroutines for Go
 - [doc/undefined-behavior](https://research.swtch.com/ub) C and C++ Prioritize Performance over Correctness
 - [issue/54650](https://go.dev/issue/54650) x/exp/slices: memory leak on Delete
+- [issue/66455](https://go.dev/issue/66455) proposal: errors: add All and AllAs iterators
+- [issue/61898](https://go.dev/issue/61898) proposal: x/exp/xiter: new package with iterator adapters
+- [issue/65236](https://go.dev/issue/65236) spec: allow range-over-func to omit iteration variables
+- [issue/61899](https://go.dev/issue/61899) slices: add iterator-related functions
+- [issue/61897](https://go.dev/issue/61897) iter: new package for iterators
+- [issue/61900](https://go.dev/issue/61900) maps: add iterator-related functions
+- [issue/61901](https://go.dev/issue/61901) bytes, strings: add iterator forms of existing functions
+- [issue/65237](https://go.dev/issue/65237) spec: document range-over-func
 
 [Back To Top](#top)
 
