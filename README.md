@@ -654,6 +654,7 @@ Error handling includes two separate works: error values and error formatting. H
   + [cl/112990043](https://codereview.appspot.com/112990043/) runtime: fine-grained locking in select
   + [cl/110580043](https://codereview.appspot.com/110580043/) runtime: add fast paths to non-blocking channel operations
 - [issue/8898](https://go.dev/issue/8898) runtime: special case timer channels
+  + [issue/61542](https://go.dev/issue/61542) time: stop requiring Timer/Ticker.Stop for prompt GC
 - [issue/9120](https://go.dev/issue/9120) runtime: remove implementation restriction on channel element size
 - [issue/37196](https://go.dev/issue/37196) time: make Timer/Ticker channels not receivable with old values after Stop or Reset returns
 - [issue/8903](https://go.dev/issue/8903) runtime: make chan-based generators faster.
@@ -751,6 +752,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/57433](https://go.dev/issue/57433) slices: new standard library package based on x/exp/slices
 - [issue/51259](https://go.dev/issue/51259) proposal: spec: support for struct members in interface/constraint syntax
 - [issue/50285](https://go.dev/issue/50285) proposal: generic should infer type from variable definition
+- [issue/66651](https://go.dev/issue/66651) proposal: spec: variadic type parameters
 
 ### Iterator
 
@@ -898,6 +900,8 @@ in Go 1.15 and Go 1.16.
 - [design/go15trace](https://go.dev/s/go15trace) Dmitry Vyukov. Go Execution Tracer. Oct 2014
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
 - [issue/54466](https://go.dev/issue/54466) runtime: rewrite gentraceback as an iterator API
+- [issue/57175](https://go.dev/issue/57175) runtime: diagnostics improvements tracking issue
+
 [Back To Top](#top)
 
 ### Lock Analysis
@@ -989,6 +993,7 @@ in Go 1.15 and Go 1.16.
 - [issue/48803](https://go.dev/issue/48803) all: Go compiler/runtime performance monitoring system
 - [issue/49121](https://go.dev/issue/49121) x/perf/storage: support postgres for db
 - [issue/61179](https://go.dev/issue/61179) proposal: testing: add identity function that forces evaluation for benchmarks
+- [issue/67434](https://go.dev/issue/67434) proposal: testing/synctest: new package for testing concurrent code
 
 <!-- - Tool chain, benchseries/benchstat -->
 
@@ -1091,6 +1096,12 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/46787](https://go.dev/issue/46787) runtime: provide Pinner API for object pinning
 - [issue/51317](https://go.dev/issue/51317) proposal: arena: new package providing memory arenas
 - [issue/59960](https://go.dev/issue/59960) runtime: improve heap hugepage utilization
+- [issue/62483](https://go.dev/issue/62483) unique: new package with unique.Handle
+  - [repo/unsafe-assuming-no-moving-gc](https://github.com/go4org/unsafe-assume-no-moving-gc) go4.org/unsafe/assume-no-moving-gc
+  - [cl/498121](https://go.dev/cl/498121) runtime: add heapObjectsCanMove
+  - [cl/498261](https://go.dev/cl/498261) runtime: change heapObjectsCanMove to a func
+
+
 [Back To Top](#top)
 
 #### Collector
@@ -1162,6 +1173,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/19812](https://go.dev/issue/19812) runtime: cannot ReadMemStats during GC
 - [issue/38712](https://go.dev/issue/38712) runtime: TestMemStats is flaky
 - [issue/40459](https://go.dev/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
+- [issue/50285](https://go.dev/issue/50285) proposal: runtime/metrics: define a recommended set of metrics
+- [issue/15490](https://go.dev/issue/15490) runtime/metrics: add goroutine state counts, total goroutines created, total threads
 
 [Back To Top](#top)
 
@@ -1327,6 +1340,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [cl/131815](https://go.dev/cl/131815) errgroup: handle runtime.Goexit from child goroutines
   + [issue/15758](https://go.dev/issue/15758) testing: complain loudly during concurrent use of T.FatalX and T.SkipX
   + [issue/25448](https://go.dev/issue/25448) proposal: promote panic(nil) to non-nil panic value
+  + [issue/53757](https://go.dev/issue/53757) x/sync/errgroup: propagate panics and Goexits through Wait
 
 #### atomic
 
