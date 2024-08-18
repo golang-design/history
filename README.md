@@ -856,6 +856,7 @@ Error handling includes two separate works: error values and error formatting. H
   - [design/pgo](https://go.dev/design/55022-pgo) Proposal: profile-guided optimization
   - [design/pgo-implementation](https://go.dev/design/55022-pgo-implementation) Design and Implementation of Profile-Guided Optimization (PGO) for Go
   - [issue/62463](https://go.dev/issue/62463) cmd/compile: PGO opportunities umbrella issue
+  - [talk/pgo](https://www.youtube.com/watch?v=0GkRJQ1aUOI) Michael Pratt, Boost application performance with profile guided optimization, GopherConUK 2024
 - **Toolchain Telemetry**
   - [issue/58409](https://go.dev/issue/58409) telemetry in the Go toolchain
   - [issue/58894](https://go.dev/issue/58894) all: add opt-in transparent telemetry to Go toolchain
