@@ -502,6 +502,7 @@ reflected in Go versions.
 | Go 1.21 | 2023.07.31 / 2023.08.08 | 188 (+8)  |
 | Go 1.22 | 2024.01.31 / 2024.02.07 | 184 (+7)  |
 | Go 1.23 | 2024.07.31 / 2024.08.14 | 189 (+14)  |
+| Go 1.24 | 2025.01.31 / 2025.02.12 | 182 (+12)  |
 
 The historical release notes may helpful for general information:
 
