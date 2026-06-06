@@ -221,6 +221,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/ian2020](https://www.youtube.com/watch?v=yoZ05GG8aLs) Go with Ian Lance Taylor. CppCast. Aug 9, 2020.
   + [talk/ian2021a](https://www.youtube.com/watch?v=nr8EpUO9jhw) Using Generics in Go. Dec 6, 2021.
   + [talk/ian2021b](https://www.youtube.com/watch?v=Pa_e9EeCdy8) Generics! Dec 17, 2021.
+  + [talk/ian2024](https://www.youtube.com/watch?v=i9zwUT9dlVc) Range Over Function Types. GopherCon 2024.
 
 - Russ Cox. (Dr. Russell Stensby Cox) [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc), [YouTube](https://www.youtube.com/channel/UC3P6PrEBAVH1UaiPOzZ-u-w)
   + Alma mater: MIT
@@ -288,6 +289,8 @@ his work is mainly in the runtime memory system such as the refactoring of memor
   + [paper/1998keith](http://supertech.csail.mit.edu/papers/randall-phdthesis.pdf) Cilk: Efficient Multithreaded Computing. Doctor Dissertation. May 21, 1998.
   + [talk/keith2016](https://www.youtube.com/watch?v=Tl7mi9QmLns) Inside the Map Implementation. GopherCon 2016. Jul 12, 2016.
   + [talk/keith2017](https://www.youtube.com/watch?v=uTMvKVma5ms) Generating Better Machine Code with SSA. GopherCon 2017. Jul 24, 2017.
+  + [talk/keith2024](https://www.youtube.com/watch?v=7_h9iT672HQ) Interface Internals. GopherCon 2024
+
 - David Chase. (Dr. David Chase) [Website](http://chasewoerner.org/resume.html), [Block](https://dr2chase.wordpress.com/), [GitHub](https://github.com/dr2chase), [Twitter](https://twitter.com/dr2chase), [Scholar](https://dblp.org/pid/51/3488.html)
   + Alma mater: Rice University
   + [paper/1987david](http://www.chasewoerner.org/dissertation.pdf) Garbage Collection and Other Optimizations. Doctor Dissertation. Aug 1987.
@@ -404,6 +407,8 @@ reflected in Go versions.
 | Go 1.22 | 2024.01.31 / 2024.02.07 | 184 (+7)  |
 | Go 1.23 | 2024.07.31 / 2024.08.14 | 189 (+14)  |
 | Go 1.24 | 2025.01.31 / 2025.02.12 | 182 (+12)  |
+| Go 1.25 | 2025.07.31 / 2025.08.12 | 181 (+12)  |
+| Go 1.26 | 2026.01.31 / 2026.02.10 | 182 (+10)  |
 
 The historical release notes may helpful for general information:
 
@@ -462,6 +467,7 @@ The historical release notes may helpful for general information:
 - [issue/58625](https://go.dev/issue/58625) unsafe: allow conversion of uintptr to unsafe.Pointer when it points to non-Go memory
 - [discuss/48305](https://go.dev/issue/48305) doc comment revisions: headings, lists, and links
 - [issue/12445](https://go.dev/issue/12445) spec: clarify how unsafe.Pointers may be used to determine offsets between addresses
+- [issue/45624](https://go.dev/issue/45624) spec: expression to create pointer to simple types (new(expr) in Go 1.26)
 
 [Back To Top](#top)
 
@@ -656,6 +662,10 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/51259](https://go.dev/issue/51259) proposal: spec: support for struct members in interface/constraint syntax
 - [issue/50285](https://go.dev/issue/50285) proposal: generic should infer type from variable definition
 - [issue/66651](https://go.dev/issue/66651) proposal: spec: variadic type parameters
+- [issue/47796](https://go.dev/issue/47796) types2, go/types: self-referential type parameter list is not accepted (allowed in Go 1.26)
+  + [issue/52190](https://go.dev/issue/52190) proposal: generics: self referencing type constraints
+- [issue/75526](https://go.dev/issue/75526) proposal: allow type parameters on methods (generic methods)
+  + [issue/77273](https://go.dev/issue/77273) spec: generic methods for Go
 
 ### Iterator
 
@@ -909,6 +919,8 @@ in Go 1.15 and Go 1.16.
 - [design/sched-preempt-dmitry](https://docs.google.com/document/d/1ETuA2IOmnaQ4j81AtTGT40Y4_Jr6_IDASEKg0t0dBR8/edit#heading=h.3pilqarbrc9h) Dmitry Vyukov. Go Preemptive Scheduler Design Doc, 2013
 - [design/sched-numa](https://docs.google.com/document/u/0/d/1d3iI2QWURgDIsSR6G2275vMeQ_X7w-qxM2Vp7iGwwuM/pub) Dmitry Vyukov, NUMA-aware scheduler for Go. Sep 2014.
 - [design/go15gomaxprocs](https://go.dev/s/go15gomaxprocs) Russ Cox. Go 1.5 GOMAXPROCS Default. May 2015.
+- [issue/73193](https://go.dev/issue/73193) runtime: CPU limit-aware GOMAXPROCS default (container/cgroup-aware, Go 1.25)
+  + [issue/33803](https://go.dev/issue/33803) runtime: make GOMAXPROCS cfs-aware on GOOS=linux
 - [doc/go17sched](https://www.quora.com/How-does-the-golang-scheduler-work/answer/Ian-Lance-Taylor) Ian Lance Taylor. How does the golang scheduler work? July 16, 2016.
 - [design/sched-preempt-austin](https://go.dev/design/24543-non-cooperative-preemption) Austin Clements. Proposal: Non-cooperative goroutine preemption. Jan 2019.
   + [cl/43050](https://go.dev/cl/43050) cmd/compile: loop preemption with fault branch on amd64. May 09, 2019.
@@ -1060,6 +1072,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/27732](https://go.dev/issue/27732) runtime: mark assist blocks GC microbenchmark for 7ms
 - [design/batch-wb](https://docs.google.com/document/d/1uXH_HKo2QlU2N2nE-0tm1ikibDT1stR56_-Ki7N-LUg/edit#heading=h.n0os25ndb49z) Keith Randall. Batching Write Barriers. 2022 Oct, 25.
 - [issue/31222](https://go.dev/issue/31222) runtime: long pauses STW (sweep termination) on massive block allocation
+- [doc/greenteagc](https://go.dev/blog/greenteagc) Michael Knyszek and Austin Clements. The Green Tea Garbage Collector. October 29, 2025. (experimental in Go 1.25, default in Go 1.26)
+  + [issue/73581](https://go.dev/issue/73581) runtime: green tea garbage collector
 
 [Back To Top](#top)
 
@@ -1307,6 +1321,10 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/19480](https://go.dev/issue/19480) encoding/xml: add decode from TokenReader, to enable stream transformers
 - [design/raw-xml](https://go.dev/design/26756-rawxml-token) Sam Whited. Proposal: Raw XML Token. Sep 1, 2018.
   + [issue/26756](https://go.dev/issue/26756) proposal: encoding/xml: add RawXML token
+- [discuss/63397](https://github.com/golang/go/discussions/63397) Joe Tsai. encoding/json/v2. October 2023.
+  + [issue/71497](https://go.dev/issue/71497) encoding/json/v2: new API for encoding/json
+  + [issue/71845](https://go.dev/issue/71845) encoding/json/v2: add new JSON API behind a GOEXPERIMENT=jsonv2 guard (Go 1.25)
+  + [repo/json-experiment](https://github.com/go-json-experiment/json) Experimental implementation of a proposed v2 encoding/json package
 
 [Back To Top](#top)
 
