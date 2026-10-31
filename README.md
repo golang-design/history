@@ -509,6 +509,8 @@ The historical release notes may helpful for general information:
   + [issue/18130](https://go.dev/issue/18130) all: support gradual code repair while moving a type between packages
 - [talk/refactor-video](https://www.youtube.com/watch?v=h6Cw9iCDVcU) Russ Cox. Codebase Refactoring (with help from Go). GothamGo 2016. November 18, 2016.
   + [doc/refactor](https://go.dev/talks/2016/refactor.article) Russ Cox. Codebase Refactoring (with help from Go).
+- [design/alias-decls](https://go.dev/design/16339-alias-decls) Robert Griesemer & Rob Pike. Proposal: Alias declarations for Go. July 18, 2016.
+- [issue/76472](https://go.dev/issue/76472) remove gotypesalias, asynctimerchan GODEBUG flag for 1.27
 
 [Back To Top](#top)
 
@@ -523,6 +525,7 @@ The historical release notes may helpful for general information:
   - [issue/26275](https://go.dev/issue/26275) runtime: document the behaviour of Caller and Callers when used in deferred functions
   - [issue/34530](https://go.dev/issue/34530) spec: clarify when calling recover stops a panic
   - [cl/189377](https://go.dev/cl/189377) spec: specify the behavior of recover and recursive panics in more detail
+- [issue/34481](https://go.dev/issue/34481) cmd/compile, runtime: a design for low-cost defers via inline code
 
 [Back To Top](#top)
 
@@ -661,6 +664,13 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/59338](https://go.dev/issue/59338) spec: infer type arguments from assignments of generic functions (reverse type inference)
 - [issue/58671](https://go.dev/issue/58671) spec: type inference should be more lenient about untyped numeric literals
 - [issue/57644](https://go.dev/issue/57644) proposal: spec: sum types based on general interfaces
+- [issue/70128](https://go.dev/issue/70128) spec: remove notion of core types
+  + [issue/60994](https://go.dev/issue/60994) proposal: go/types: add func CommonUnderlying(Type) Type, (formerly CoreType)
+- [issue/56548](https://go.dev/issue/56548) spec: allow basic interface types to instantiate comparable type parameters
+- [design/parameterized-go-types](https://go.dev/design/47916-parameterized-go-types) Rob Findley, Robert Griesemer. Additions to go/types to support type parameters. 2021-08-17.
+- [issue/12854](https://go.dev/issue/12854) spec: type inferred composite literals
+  + [issue/77245](https://go.dev/issue/77245) spec: function type inference should work in all assignment contexts
+- [issue/61035](https://go.dev/issue/61035) go/types, types2: fix SizesFor("gc", ...) to match actual gc behavior
 [Back To Top](#top)
 - [issue/60353](https://go.dev/issue/60353) spec: when unifying against interface types, consider common methods
 - [issue/57433](https://go.dev/issue/57433) slices: new standard library package based on x/exp/slices
@@ -698,6 +708,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/61900](https://go.dev/issue/61900) maps: add iterator-related functions
 - [issue/61901](https://go.dev/issue/61901) bytes, strings: add iterator forms of existing functions
 - [issue/65237](https://go.dev/issue/65237) spec: document range-over-func
+- [design/loopvar](https://go.dev/design/60078-loopvar) Proposal: Less Error-Prone Loop Variable Scoping.
 
 [Back To Top](#top)
 
@@ -711,6 +722,7 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/57001](https://go.dev/issue/57001) extended forwards compatibility for Go
   + [design/gotoolchain](https://go.dev/design/57001-gotoolchain) Proposal: Extended forwards compatibility in Go
 - [issue/33791](https://go.dev/issue/33791) proposal: add explicit decision doc for large changes
+- [issue/28221](https://go.dev/issue/28221) cmd/go, cmd/compile: record language version to support language transitions
 
 
 
@@ -779,6 +791,29 @@ Error handling includes two separate works: error values and error formatting. H
   - [doc/telemetry-design](https://research.swtch.com/telemetry-design) The Design of Transparent Telemetry.
   - [doc/telemetry-uses](https://research.swtch.com/telemetry-uses) Use Cases for Transparent Telemetry.
   - [doc/telemetry-optin](https://research.swtch.com/telemetry-opt-in) Opting In to Transparent Telemetry.
+- [discuss/reducing-gc-peak-memory](https://groups.google.com/g/golang-dev/c/iOF44IL_i1M/m/CWI9U8XFKsEJ) Reducing gc peak memory use (golang-dev)
+- [discuss/bug-in-new-amd64](https://groups.google.com/g/golang-dev/c/2oHi8t1s0Z8) Bug in new amd64 ABI (golang-dev)
+- [issue/51225](https://go.dev/issue/51225) cmd/compile: require build systems to specify -importcfg
+- [issue/18616](https://go.dev/issue/18616) math/bits: an integer bit twiddling library
+- [issue/74299](https://go.dev/issue/74299) runtime, cmd/compile: add runtime.freegc and runtime.freegcTracked to reduce GC work (GOEXPERIMENT=runtimefreegc)
+- [issue/62737](https://go.dev/issue/62737) cmd/compile: merge temporaries and named variables by GC shape
+- [discuss/jump-tables-in-6a](https://groups.google.com/g/golang-nuts/c/6M0BLgrKBRk) Jump Tables in 6a (golang-nuts)
+- [issue/61515](https://go.dev/issue/61515) testing: add testing.B.Loop for iteration
+  + [discuss/go-1-24-blooper](https://groups.google.com/g/golang-nuts/c/Z017c0f59vY) Go 1.24 BLooper (golang-nuts)
+- [discuss/get-rid-of-stack](https://groups.google.com/g/golang-nuts/c/DbmqfDlAR0U/m/elFowQ_z_UsJ) get rid of stack check prolog (golang-nuts)
+- [discuss/fused-multiply-add](https://groups.google.com/g/golang-dev/c/cVnE1K08Aks) Fused multiply-add? (golang-dev)
+- [discuss/rfc-go-assembly-for](https://groups.google.com/g/golang-dev/c/rWgDxCrL4GU) [RFC] Go assembly for ARM64 (golang-dev)
+- [discuss/x86-asm-source-of](https://groups.google.com/g/golang-dev/c/5fmxhPD3MwM/m/IMqWPRXJBAAJ) x86 asm source of truth (golang-dev)
+- [issue/71105](https://go.dev/issue/71105) cmd/compile: change GORISCV64=rva20u64 to include compressed instructions
+  + [issue/61476](https://go.dev/issue/61476) all: add GORISCV64 environment variable
+- [issue/46229](https://go.dev/issue/46229) all: port to linux/loong64
+- [design/wasmexport](https://go.dev/design/42372-wasmexport) Francesco Guardiani. Proposal: go:wasmexport directive. 2020-12-17.
+  + [issue/42372](https://go.dev/issue/42372) proposal: cmd/compile: go:wasmexport directive
+- [issue/60072](https://go.dev/issue/60072) cmd/go: add GOMIPS32, GOMIPS64 ISA levels (iii, r1, r2, r5, r6)
+- [issue/73787](https://go.dev/issue/73787) simd/archsimd: architecture-specific SIMD intrinsics under a GOEXPERIMENT
+  + [issue/79781](https://go.dev/issue/79781) simd/archsimd: support ARM64 SVE SIMD intrinsics under a GOEXPERIMENT
+- [issue/78979](https://go.dev/issue/78979) proposal: simd/archsimd: enable AMD64 architecture-specific SIMD by default
+  + [issue/76473](https://go.dev/issue/76473) simd: rename low-level SIMD package to simd/archsimd (GOEXPERIMENT)
 
 [Back To Top](#top)
 
@@ -790,6 +825,10 @@ in Go 1.15 and Go 1.16.
 
 - [design/go13linker](https://go.dev/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. Nov 2013.
 - [design/go116linker](https://go.dev/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
+- [issue/42681](https://go.dev/issue/42681) build: move GOEXPERIMENT knob from make.bash to cmd/go
+- [discuss/do-we-document-the](https://groups.google.com/g/golang-nuts/c/n5XSgDP5q2M) Do we document the history of .gosymtab and .gopclntab, and the differences with .symtab and .debug_line, .debug_frame? (golang-nuts)
+- [discuss/presence-of-pcln-table](https://groups.google.com/g/golang-nuts/c/oxseUnhRtXM) Presence of PCLN Table in CGo binaries (golang-nuts)
+- [issue/62577](https://go.dev/issue/62577) cmd/link, cmd/go: emit split DWARF on darwin
 
 [Back To Top](#top)
 
@@ -808,6 +847,8 @@ in Go 1.15 and Go 1.16.
 ### Race Detector
 
 - [issue/42598](https://go.dev/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
+- [issue/44853](https://go.dev/issue/44853) runtime: enable address sanitizer in Go
+  + [discuss/enable-address-sanitizer-in](https://groups.google.com/g/golang-dev/c/ACKO07YeeW8) Enable address sanitizer in Go (golang-dev)
 
 [Back To Top](#top)
 
@@ -817,6 +858,9 @@ in Go 1.15 and Go 1.16.
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@. Trace Event Format. October 2016.
 - [issue/54466](https://go.dev/issue/54466) runtime: rewrite gentraceback as an iterator API
 - [issue/57175](https://go.dev/issue/57175) runtime: diagnostics improvements tracking issue
+- [design/execution-tracer-overhaul](https://go.dev/design/60773-execution-tracer-overhaul) Execution tracer overhaul.
+  + [issue/60773](https://go.dev/issue/60773) runtime/trace: execution tracer overhaul
+- [issue/63185](https://go.dev/issue/63185) runtime/trace: flight recording
 
 [Back To Top](#top)
 
@@ -909,6 +953,8 @@ in Go 1.15 and Go 1.16.
 - [issue/67434](https://go.dev/issue/67434) proposal: testing/synctest: new package for testing concurrent code
 
 <!-- - Tool chain, benchseries/benchstat -->
+- [design/revamp-code-coverage](https://go.dev/design/51430-revamp-code-coverage) Than McIntosh. Proposal: extend code coverage testing to include applications. 2022-03-02.
+  + [issue/51430](https://go.dev/issue/51430) cmd/cover: extend coverage testing to include applications
 
 [Back To Top](#top)
 
@@ -943,6 +989,19 @@ in Go 1.15 and Go 1.16.
 - [issue/43997](https://go.dev/issue/43997) runtime: non-spinning Ms spin uselessly when work exists
 - [issue/44313](https://go.dev/issue/44313) runtime: stopped Ms can't become dedicated or fractional GC workers
 - [issue/51071](https://go.dev/issue/51071) runtime: investigate possible Go scheduler improvements inspired by Linux Kernel's CFS
+- [discuss/periodic-task-when-time](https://groups.google.com/g/golang-nuts/c/_XEuq69kUOY) Periodic task when time.Ticker and time.Sleep are pretty expensive (golang-nuts)
+- [discuss/why-there-is-a](https://groups.google.com/g/golang-nuts/c/WqVEThZnQkM) Why there is a so great performance penalty when the usage combines LockOSThread and channel? (golang-nuts)
+- [design/mutex-spinbit](https://go.dev/design/68578-mutex-spinbit) Rhys Hiltner. Proposal: Improve scalability of runtime.lock2. 2024-10-16.
+- [issue/61015](https://go.dev/issue/61015) runtime: change mutex profile to scale contention by number of blocked goroutines
+- [discuss/runtime-setting-gomaxprocs-in](https://groups.google.com/g/golang-nuts/c/he617hSABGo) runtime: Setting GOMAXPROCS in over-scheduled Contanier Environments (golang-nuts)
+- [discuss/concurrency-and-task-scheduler](https://groups.google.com/g/golang-nuts/c/Q4fgggATcTo) Concurrency and task scheduler scalability (golang-nuts)
+- [issue/69687](https://go.dev/issue/69687) testing/synctest: experimental package for testing concurrent code
+- [issue/45435](https://go.dev/issue/45435) sync: add Mutex.TryLock
+  + [issue/63796](https://go.dev/issue/63796) sync: add WaitGroup.Go
+  + [issue/61696](https://go.dev/issue/61696) sync: add Map.Clear method
+- [design/goroutine-leak-detection-gc](https://go.dev/design/74609-goroutine-leak-detection-gc) Georgian-Vlad Saioc, Milind Chabbi. Proposal: Goroutine leak detection via garbage collection. 14 Aug 2025.
+  + [issue/74609](https://go.dev/issue/74609) runtime/pprof,runtime: new goroutine leak profile
+  + [issue/38651](https://go.dev/issue/38651) runtime: add 'created by goroutine number' to stack traces
 
 [Back To Top](#top)
 
@@ -957,6 +1016,15 @@ in Go 1.15 and Go 1.16.
   + [cl/341990](https://go.dev/cl/341990) runtime: predict stack sizing
   + [cl/345889](https://go.dev/cl/345889) runtime: measure stack usage; start stacks larger if needed
 - [issue/26061](https://go.dev/issue/26061) runtime: g0 stack.lo is sometimes too low
+- [discuss/proposal-shared-libraries-in](https://groups.google.com/g/golang-nuts/c/zmjXkGrEx6Q) Proposal: Shared libraries in Go, take 2 (+linux/amd64 implementation) (golang-nuts)
+- [discuss/re-patch-rfc-go](https://groups.google.com/g/golang-nuts/c/P05BDjLcQ5k) Re: [PATCH] RFC: go shared libraries support (Linux/x64) (golang-nuts)
+- [issue/15403](https://go.dev/issue/15403) internal/cpu: new package to expose processor capabilities
+  + [issue/27218](https://go.dev/issue/27218) runtime: document (and support) cpu options in GODEBUG
+- [issue/30439](https://go.dev/issue/30439) all: remove nacl port
+- [issue/21865](https://go.dev/issue/21865) runtime/secret: add new package
+  + [issue/66450](https://go.dev/issue/66450) crypto/subtle: add WithDataIndependentTiming
+- [issue/45453](https://go.dev/issue/45453) all: add GOAMD64 environment variable
+  + [issue/60905](https://go.dev/issue/60905) all: add GOARM64=v8.1 and so on
 
 [Back To Top](#top)
 
@@ -1015,6 +1083,13 @@ to user threads, bitmap-based page allocator, scalable mcentral.
   - [repo/unsafe-assuming-no-moving-gc](https://github.com/go4org/unsafe-assume-no-moving-gc) go4.org/unsafe/assume-no-moving-gc
   - [cl/498121](https://go.dev/cl/498121) runtime: add heapObjectsCanMove
   - [cl/498261](https://go.dev/cl/498261) runtime: change heapObjectsCanMove to a func
+- [design/scaling-the-page-allocator](https://go.dev/design/35112-scaling-the-page-allocator) Michael Knyszek, Austin Clements. Proposal: Scaling the Go page allocator. 2019-10-18.
+- [design/smarter-scavenging](https://go.dev/design/30333-smarter-scavenging) Michael Knyszek. Proposal: Smarter Scavenging.
+- [design/heap-hugepage-util](https://go.dev/design/59960-heap-hugepage-util) Michael Knyszek, Michael Pratt. A more hugepage-aware Go heap.
+- [design/memory-regions](https://go.dev/design/70257-memory-regions) Memory regions.
+  + [discuss/70257](https://github.com/golang/go/discussions/70257) memory regions
+- [design/runtime-freegc](https://go.dev/design/74299-runtime-freegc) Directly freeing user memory to reduce GC work.
+  + [discuss/a-safe-free-of](https://groups.google.com/g/golang-nuts/c/cmpiArv10f4) a safe free of memory proposal, runtime.FreeMemory() (golang-nuts)
 
 
 [Back To Top](#top)
@@ -1079,6 +1154,11 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/31222](https://go.dev/issue/31222) runtime: long pauses STW (sweep termination) on massive block allocation
 - [doc/greenteagc](https://go.dev/blog/greenteagc) Michael Knyszek and Austin Clements. The Green Tea Garbage Collector. October 29, 2025. (experimental in Go 1.25, default in Go 1.26)
   + [issue/73581](https://go.dev/issue/73581) runtime: green tea garbage collector
+- [discuss/sub-millisecond-gc-pauses](https://groups.google.com/g/golang-dev/c/Ab1sFeoZg_8/m/_DaL0E8fAwAJ) Sub-millisecond GC pauses (golang-dev)
+- [issue/67535](https://go.dev/issue/67535) runtime: add AddCleanup
+  + [issue/71825](https://go.dev/issue/71825) runtime: allow cleanups to run concurrently
+- [issue/67552](https://go.dev/issue/67552) weak: new package providing weak pointers
+- [discuss/secure-go-binaries](https://groups.google.com/g/golang-nuts/c/Jd9tlNc6jUE/m/qp2oyfEEfjQJ) Secure Go binaries (golang-nuts)
 
 [Back To Top](#top)
 
@@ -1092,6 +1172,10 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/40459](https://go.dev/issue/40459) runtime: ReadMemStats called in a loop may prevent GC
 - [issue/50285](https://go.dev/issue/50285) proposal: runtime/metrics: define a recommended set of metrics
 - [issue/15490](https://go.dev/issue/15490) runtime/metrics: add goroutine state counts, total goroutines created, total threads
+- [design/go-runtime-stats](https://docs.google.com/spreadsheets/d/1PTJjoWdgKJvY2S63V2Lh3VgLJrXXW3wO_IXxy2rNA8s) Go runtime stats.
+- [issue/37112](https://go.dev/issue/37112) runtime: API for unstable metrics
+- [issue/47216](https://go.dev/issue/47216) runtime/metrics: add GOMAXPROCS, NumCgoCall, GC CPU time
+  + [issue/56857](https://go.dev/issue/56857) runtime/metrics: add /gc/heap/live:bytes
 
 [Back To Top](#top)
 
@@ -1130,6 +1214,8 @@ The Go memory model consists the following parts:
   + [doc/cpp-memory-model](https://www.hpl.hp.com/techreports/2008/HPL-2008-56.pdf) Hans-J. Boehm, Sarita V. Adve. Foundations of the C++ Concurrency Memory Model. May 21, 2008.
   + [cl/381315](https://github.com/golang/go/commit/865911424d509184d95d3f9fc6a8301927117fdc) doc: update Go memory model
   + [cl/381316](https://github.com/golang/go/commit/a71ca3dfbd32faf351ff68bcc26a4d5abd9b06d7) runtime, sync, sync/atomic: document happens-before guarantees
+- [discuss/align-64-bit-integers](https://groups.google.com/g/golang-dev/c/cUju6W3nWEU) align 64-bit integers on 32-bit platforms (golang-dev)
+- [issue/61395](https://go.dev/issue/61395) sync/atomic: add OR/AND operators for unsigned types
 
 
 [Back To Top](#top)
@@ -1147,6 +1233,7 @@ The Go memory model consists the following parts:
   + [cl/266638](https://go.dev/cl/266638) reflect,runtime: use internal ABI for selected ASM routines, attempt 2
   + [cl/259445](https://go.dev/cl/259445) cmd/compile,cmd/link: initial support for ABI wrappers
 - [design/internal-abi-spec](https://github.com/golang/go/blob/master/src/cmd/compile/abi-internal.md) Go internal ABI specification.
+- [issue/78902](https://go.dev/issue/78902) simd: architecture and vector-size agnostic SIMD intrinsics under a GOEXPERIMENT
 
 [Back To Top](#top)
 
@@ -1155,6 +1242,15 @@ The Go memory model consists the following parts:
 - [issue/20135](https://go.dev/issue/20135) runtime: shrink map as elements are deleted
 - [issue/48687](https://go.dev/issue/48687) runtime: enhance map cacheline efficiency
 - [issue/54766](https://go.dev/issue/54766) runtime: use SwissTable
+- [discuss/design-discuss-switch-hashmap](https://groups.google.com/g/golang-dev/c/R2O25Xz11zU/m/92mOve0eGy4J) Design discuss: Switch hashmap implementation to SipHash-2-4 (golang-dev)
+- [issue/14874](https://go.dev/issue/14874) proposal: cmd/compile: compiler-emitted itab symbols
+- [issue/61716](https://go.dev/issue/61716) math/rand/v2: revised API for math/rand
+  + [discuss/60751](https://github.com/golang/go/discussions/60751) math/rand/v2: a new API for math/rand and a first v2 for std
+- [issue/16093](https://go.dev/issue/16093) runtime/pprof: generate profiles in gzipped proto format
+- [issue/76349](https://go.dev/issue/76349) runtime: add runtime/pprof goroutine labels to tracebacks
+- [issue/42888](https://go.dev/issue/42888) runtime/debug: add SetCrashOutput(file *os.File)
+  + [issue/37475](https://go.dev/issue/37475) cmd/go: stamp git/vcs current HEAD hash/commit hash/dirty bit in binaries
+  + [issue/67182](https://go.dev/issue/67182) runtime/debug: add SetCrashOutput options
 
 ## Standard Library
 
