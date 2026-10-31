@@ -145,13 +145,21 @@ Rob was bothered by slow C++ compiling times, talked to Robert, and luckily
 Ken was in the next office.
 Later, Ian joined the project after showing interest, and
 wrote the [gccgo](https://github.com/golang/gofrontend).
-Rob and Ken are retired. Robert and Ian currently work on adding generics
-to Go. Russ is also one of the core authors of the project in the early stage.
+Rob and Ken are retired. Robert and Ian worked together for years on adding
+generics to Go, which shipped in Go 1.18 in 2022; Robert still works on the
+language and its type checker. Ian [left Google](https://www.airs.com/blog/archives/670)
+in May 2025 and has kept contributing to Go since.
+Russ is also one of the core authors of the project in the early stage.
 Back then, he was a newcomer at Google, and Rob invited Russ for joining
 the Go team since he knew Russ from way back because of the
 [Plan 9](https://9p.io/plan9/) project. Russ worked on the early Go compiler, runtime, as well as the leap of
 Go 1.5 bootstrap.
-Now, Russ is the tech leader of the Go team.
+Russ led the Go project for over 12 years. In August 2024 he
+[passed the torch](https://groups.google.com/g/golang-dev/c/0OqBkS2RzWw):
+since September 1, 2024, Austin Clements has been the tech lead of Go, and
+Cherry Mui leads Go core (the compiler toolchain, runtime, and releases).
+Russ stayed on the project, turning to Gaby and Oscar, tools that help
+maintainers work through the issue tracker.
 
 - Rob Pike. (Robert C. Pike, M. Sc.) [Website](http://herpolhode.com/rob/), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
   + Alma mater: University of Toronto (BS), California Institute of Technology
@@ -222,6 +230,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/ian2021a](https://www.youtube.com/watch?v=nr8EpUO9jhw) Using Generics in Go. Dec 6, 2021.
   + [talk/ian2021b](https://www.youtube.com/watch?v=Pa_e9EeCdy8) Generics! Dec 17, 2021.
   + [talk/ian2024](https://www.youtube.com/watch?v=i9zwUT9dlVc) Range Over Function Types. GopherCon 2024.
+  + [doc/ian2025](https://www.airs.com/blog/archives/670) Ian Lance Taylor. Leaving Google. May 10, 2025.
 
 - Russ Cox. (Dr. Russell Stensby Cox) [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc), [YouTube](https://www.youtube.com/channel/UC3P6PrEBAVH1UaiPOzZ-u-w)
   + Alma mater: MIT
@@ -247,6 +256,11 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2023b](https://www.youtube.com/watch?v=X4rxi9jStLo) Go Testing By Example. GopherCon Australia 2023. Nov 9, 2023.
   + [talk/russ2023c](https://www.youtube.com/watch?v=6H-V-0oQvCA) Open Source Supply Chain Security at Google. ACM SCORED. Nov 30, 2023.
   + [talk/russ2024](https://www.youtube.com/watch?v=3QL062vGbjQ) Go Telemetry Wins. GoLab. Dec 12, 2024.
+  + [doc/13years](https://go.dev/blog/13years) Russ Cox. Thirteen Years of Go. November 10, 2022.
+  + [doc/14years](https://go.dev/blog/14years) Russ Cox. Fourteen Years of Go. November 10, 2023.
+  + [doc/torches](https://groups.google.com/g/golang-dev/c/0OqBkS2RzWw) Russ Cox. passing torches to Austin and Cherry. golang-dev. August 1, 2024.
+  + [discuss/67901](https://github.com/golang/go/discussions/67901) Russ Cox. gabyhelp feedback. June 8, 2024.
+  + [discuss/68490](https://github.com/golang/go/discussions/68490) Russ Cox. x/oscar feedback. July 17, 2024.
 
 [Back To Top](#top)
 
@@ -276,10 +290,12 @@ his work is mainly in the runtime memory system such as the refactoring of memor
   + [talk/dmitry2018b](https://www.youtube.com/watch?v=qrBVXxZDVQY) Syzbot and the Tale of Thousand Kernel Bugs. Sep 1, 2018.
   + [talk/dmitry2019](https://www.youtube.com/watch?v=-K11rY57K7k) Go scheduler: Implementing language with lightweight concurrency. Oct 14, 2019.
   + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) syzkaller: Adventures in Continuous Coverage-guided Kernel Fuzzing. BlueHat IL 2020. Feb 13, 2020.
-- Austin Clements. (Dr. Austin T. Clements) [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+- Austin Clements. (Dr. Austin T. Clements) (Go tech lead since September 2024) [GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
   + Alma mater: MIT
   + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) The Scalable Commutativity Rule: Designing Scalable Software for Multicore Processors. Doctor Dissertation. May 21, 2014.
   + [talk/austin2020](https://www.gophercon.com/agenda/session/233441) Pardon the Interruption: Loop Preemption in Go 1.14. Nov 12, 2020.
+  + [doc/15years](https://go.dev/blog/15years) Austin Clements. Go Turns 15. November 11, 2024.
+  + [doc/16years](https://go.dev/blog/16years) Austin Clements. Go’s Sweet 16. November 14, 2025.
 - Richard Hudson. (Richard L. Hudson, M. Sc.) [GitHub](https://github.com/RLH) (Retired)
   + Alma mater: University of Massachusetts Amherst
   + [paper/rick](https://dl.acm.org/profile/81100566849/publications?Role=author) Research List
@@ -301,7 +317,7 @@ his work is mainly in the runtime memory system such as the refactoring of memor
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
   + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) Evolving the Go Memory Manager's RAM and CPU Efficiency. Nov 11, 2020
 - Than McIntosh. [GitHub](https://github.com/thanm)
-- Cherry Zhang. [GitHub](https://github.com/cherrymui)
+- Cherry Mui (formerly Cherry Zhang). (Go core lead since September 2024) [GitHub](https://github.com/cherrymui)
 
 [Back To Top](#top)
 
@@ -415,6 +431,7 @@ including internal changes that release notes leave out, see the
 | Go 1.24 | 2025.01.31 / 2025.02.12 | 182 (+12)  |
 | Go 1.25 | 2025.07.31 / 2025.08.12 | 181 (+12)  |
 | Go 1.26 | 2026.01.31 / 2026.02.10 | 182 (+10)  |
+| Go 1.27 | 2026.07.31 / 2026.08.19 | 190 (+19)  |
 
 The historical release notes may helpful for general information:
 
@@ -474,6 +491,8 @@ The historical release notes may helpful for general information:
 - [discuss/48305](https://go.dev/issue/48305) doc comment revisions: headings, lists, and links
 - [issue/12445](https://go.dev/issue/12445) spec: clarify how unsafe.Pointers may be used to determine offsets between addresses
 - [issue/45624](https://go.dev/issue/45624) spec: expression to create pointer to simple types (new(expr) in Go 1.26)
+- [issue/46505](https://go.dev/issue/46505) spec: allow conversion from slice to array
+- [issue/9859](https://go.dev/issue/9859) spec: direct reference to embedded fields in struct literals
 
 [Back To Top](#top)
 
@@ -515,6 +534,7 @@ The historical release notes may helpful for general information:
 - [issue/17487](https://go.dev/issue/17487) cmd/compile: support alias
 - [issue/67547](https://go.dev/issue/67547) go/types, types2: audit type assertions for potential Alias bugs
 - [issue/65294](https://go.dev/issue/65294) x/tools: get tests passing with GODEBUG=gotypesalias=1
+- [doc/alias-names](https://go.dev/blog/alias-names) Robert Griesemer. What's in an (Alias) Name? September 17, 2024.
 
 [Back To Top](#top)
 
@@ -564,6 +584,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/47811](https://go.dev/issue/47811) proposal: errors: add Errors as a standard way to represent multiple errors as a single error
 - [issue/53435](https://go.dev/issue/53435) proposal: wrapping multiple errors
 - [repo/try](https://github.com/dsnet/try) Try: Simplified Error Handling in Go
+- [discuss/71460](https://github.com/golang/go/discussions/71460) Ian Lance Taylor. discussion: spec: reduce error handling boilerplate using ? January 27, 2025.
 
 [Back To Top](#top)
 
@@ -696,6 +717,15 @@ Error handling includes two separate works: error values and error formatting. H
   + [issue/52190](https://go.dev/issue/52190) proposal: generics: self referencing type constraints
 - [issue/75526](https://go.dev/issue/75526) proposal: allow type parameters on methods (generic methods)
   + [issue/77273](https://go.dev/issue/77273) spec: generic methods for Go
+- [doc/comparable](https://go.dev/blog/comparable) Robert Griesemer. All your comparable types. February 17, 2023.
+- [doc/deconstructing-type-parameters](https://go.dev/blog/deconstructing-type-parameters) Ian Lance Taylor. Deconstructing Type Parameters. September 26, 2023.
+- [doc/type-inference](https://go.dev/blog/type-inference) Robert Griesemer. Everything You Always Wanted to Know About Type Inference - And a Little Bit More. October 9, 2023.
+- [doc/generic-slice-functions](https://go.dev/blog/generic-slice-functions) Valentin Deleplace. Robust generic functions on slices. February 22, 2024.
+- [doc/coretypes](https://go.dev/blog/coretypes) Robert Griesemer. Goodbye core types - Hello Go as we know and love it! March 26, 2025.
+- [doc/generic-interfaces](https://go.dev/blog/generic-interfaces) Axel Wagner. Generic interfaces. July 7, 2025.
+- [issue/75883](https://go.dev/issue/75883) spec: remove cycle restriction for type parameters
+- [doc/type-construction](https://go.dev/blog/type-construction-and-cycle-detection) Mark Freeman. Type Construction and Cycle Detection. March 24, 2026.
+- [doc/generic-methods](https://go.dev/blog/generic-methods) Mark Freeman. Generic Methods. August 26, 2026.
 
 ### Iterator
 
@@ -726,6 +756,9 @@ Error handling includes two separate works: error values and error formatting. H
 - [design/loopvar](https://go.dev/design/60078-loopvar) Proposal: Less Error-Prone Loop Variable Scoping.
 - [issue/57969](https://go.dev/issue/57969) cmd/compile: add GOEXPERIMENT=loopvar
 - [issue/61717](https://go.dev/issue/61717) cmd/compile: add new range behind GOEXPERIMENT=range
+- [doc/loopvar-preview](https://go.dev/blog/loopvar-preview) David Chase and Russ Cox. Fixing For Loops in Go 1.22. September 19, 2023.
+- [doc/range-functions](https://go.dev/blog/range-functions) Ian Lance Taylor. Range Over Function Types. August 20, 2024.
+- [issue/61902](https://go.dev/issue/61902) regexp: add iterator forms of matching methods
 
 [Back To Top](#top)
 
@@ -741,6 +774,11 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/33791](https://go.dev/issue/33791) proposal: add explicit decision doc for large changes
 - [issue/28221](https://go.dev/issue/28221) cmd/go, cmd/compile: record language version to support language transitions
 - [issue/31793](https://go.dev/issue/31793) go/types, types2: provide configuration support for different language versions
+- [doc/compat](https://go.dev/blog/compat) Russ Cox. Backward Compatibility, Go 1.21, and Go 2. August 14, 2023.
+- [doc/toolchain](https://go.dev/blog/toolchain) Russ Cox. Forward Compatibility and Toolchain Management in Go 1.21. August 14, 2023.
+- [issue/65573](https://go.dev/issue/65573) cmd/go: separate default GODEBUGs from go language version
+- [issue/76163](https://go.dev/issue/76163) policy for removing GODEBUG flags
+- [discuss/80580](https://github.com/golang/go/discussions/80580) Austin Clements. a more robust proposal process. July 27, 2026.
 
 
 
@@ -869,6 +907,15 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/44549](https://go.dev/issue/44549) cmd/asm,cmd/compile,cmd/link,cmd/objdump: ppc64 ISA 3.1 support
 - [issue/20104](https://go.dev/issue/20104) cmd/compile: move arch-specific rewrite rules and ops into arch-specific packages
 - [issue/81819](https://go.dev/issue/81819) simd: unify API generation around executable spec
+- [design/bce](https://docs.google.com/document/d/1vdAEAjYdzjnPA9WDOQ1e4e05cYVMpqSxJYZT33Cqw2g) Bounds Checking Elimination.
+- [discuss/checkptr](https://groups.google.com/g/golang-dev/c/SzwDoqoRVJA) Matthew Dempsky. Dynamic unsafe pointer checking available at master. golang-dev. October 17, 2019.
+- [doc/pgo-preview](https://go.dev/blog/pgo-preview) Michael Pratt. Profile-guided optimization preview. February 8, 2023.
+- [doc/pgo](https://go.dev/blog/pgo) Michael Pratt. Profile-guided optimization in Go 1.21. September 5, 2023.
+- [doc/gotelemetry](https://go.dev/blog/gotelemetry) Robert Findley. Telemetry in Go 1.23 and beyond. September 3, 2024.
+- [issue/67111](https://go.dev/issue/67111) cmd/go: add go telemetry subcommand
+- [doc/allocation-optimizations](https://go.dev/blog/allocation-optimizations) Keith Randall. Allocating on the Stack. February 27, 2026.
+- [doc/simd-experiment](https://go.dev/blog/simd-experiment) David Chase and Junyang Shao. Platform-independent SIMD in Go. September 24, 2026.
+- [doc/archsimd](https://go.dev/blog/archsimd) Junyang Shao and David Chase. Arch-specific SIMD in Go. October 2, 2026.
 
 [Back To Top](#top)
 
@@ -934,6 +981,8 @@ in Go 1.15 and Go 1.16.
   + [issue/60773](https://go.dev/issue/60773) runtime/trace: execution tracer overhaul
 - [issue/63185](https://go.dev/issue/63185) runtime/trace: flight recording
 - [issue/66703](https://go.dev/issue/66703) runtime/trace: set the v2 tracer as the default tracer
+- [doc/execution-traces-2024](https://go.dev/blog/execution-traces-2024) Michael Knyszek. More powerful Go execution traces. March 14, 2024.
+- [doc/flight-recorder](https://go.dev/blog/flight-recorder) Carlos Amedee and Michael Knyszek. Flight Recorder in Go 1.25. September 26, 2025.
 
 [Back To Top](#top)
 
@@ -970,6 +1019,20 @@ in Go 1.15 and Go 1.16.
   + [discuss/win2000-golang-nuts](https://go.dev/s/win2000-golang-nuts) objections to removing Go support for Windows 2000 (x86-32)?
 - [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol. WebAssembly architecture for Go. 28th February 2018.
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly assembly files
+- [issue/57631](https://go.dev/issue/57631) build: use a zero for third digit for major release, such as 'go1.21.0'
+- [issue/54265](https://go.dev/issue/54265) build: adopt Go 1.20 as bootstrap toolchain for Go 1.22
+- [issue/69315](https://go.dev/issue/69315) build: adopt Go 1.24 as bootstrap toolchain for Go 1.26
+- [doc/rebuild](https://go.dev/blog/rebuild) Russ Cox. Perfectly Reproducible, Verified Go Toolchains. August 28, 2023.
+- [issue/57179](https://go.dev/issue/57179) cmd/go: load $GOROOT/go.env before loading user go.env
+- [issue/59719](https://go.dev/issue/59719) cmd/go: add GOEXPERIMENT=cacheprog to let a child process implement the internal action/output cache
+- [issue/64876](https://go.dev/issue/64876) cmd/go: enable GOCACHEPROG by default
+- [issue/62067](https://go.dev/issue/62067) cmd/go: go build -json
+- [issue/38248](https://go.dev/issue/38248) cmd/compile: replace CallImport with go:wasmimport directive
+- [issue/58141](https://go.dev/issue/58141) all: add GOOS=wasip1 GOARCH=wasm port
+- [doc/wasi](https://go.dev/blog/wasi) Johan Brandhorst-Satzkorn, Julien Fabre, Damian Gryski, Evan Phoenix, and Achille Roussel. WASI support in Go. September 13, 2023.
+- [issue/65199](https://go.dev/issue/65199) cmd/compile: add go:wasmexport directive
+- [design/wasmexport-notes](https://docs.google.com/document/d/1R14wRHv_UjeFnemvV5hbp75cCRNzVH9ZZS-Yo_zITxg) Achille Roussel. go:wasmexport - implementation notes.
+- [doc/wasmexport](https://go.dev/blog/wasmexport) Cherry Mui. Extensible Wasm Applications with Go. February 13, 2025.
 
 [Back To Top](#top)
 
@@ -996,12 +1059,31 @@ in Go 1.15 and Go 1.16.
 - [design/lazy-gomod](https://go.dev/design/36460-lazy-module-loading) Bryan C. Mills. Proposal: Lazy Module Loading. Feb 20, 2020
 - [issue/45713](https://go.dev/issue/45713) proposal: cmd/go: add a workspace mode
   + [design/workspace](https://go.dev/design/45713-workspace) Proposal: Multi-Module Workspaces in cmd/go
+- [doc/vuln](https://go.dev/blog/vuln) Julie Qiu. Vulnerability Management for Go. September 6, 2022.
+- [doc/govulncheck](https://go.dev/blog/govulncheck) Julie Qiu. Govulncheck v1.0.0 is released! July 13, 2023.
+- [discuss/60696](https://github.com/golang/go/discussions/60696) Michael Matloob. cmd/go: add package forwarding. June 8, 2023.
+- [discuss/61669](https://github.com/golang/go/discussions/61669) Russ Cox. gonew: templates for new modules. July 31, 2023.
+- [doc/gonew](https://go.dev/blog/gonew) Cameron Balahan. Experimenting with project templates. July 31, 2023.
+- [issue/48429](https://go.dev/issue/48429) cmd/go: track tool dependencies in go.mod
+- [design/x-repo-continuous-go](https://go.dev/design/69095-x-repo-continuous-go) Dmitri Shuralyov. Proposal: all, x/build/cmd/relui: automate go directive maintenance in golang.org/x repositories. August 27, 2024.
+- [doc/pkgsite-api](https://go.dev/blog/pkgsite-api) Ethan Lee, Hana Kim, and Jonathan Amsterdam. Introducing the pkg.go.dev API. May 21, 2026.
 
 [Back To Top](#top)
 
 ### gopls
 
 - [design/gopls-workspace](https://go.dev/design/37720-gopls-workspaces) Heschi Kreinick, Rebecca Stambler. Proposal: Multi-project gopls workspaces. Mar 9, 2020.
+- [doc/gopls-scalability](https://go.dev/blog/gopls-scalability) Robert Findley and Alan Donovan. Scaling gopls for the growing Go ecosystem. September 8, 2023.
+- [issue/63501](https://go.dev/issue/63501) x/tools/cmd/deadcode: add new command
+- [doc/deadcode](https://go.dev/blog/deadcode) Alan Donovan. Finding unreachable functions with deadcode. December 12, 2023.
+- [issue/61324](https://go.dev/issue/61324) x/tools/go/analysis/checker: an importable analysis driver based on go/packages
+- [issue/32816](https://go.dev/issue/32816) cmd/fix: automate migrations for simple deprecations
+- [issue/73605](https://go.dev/issue/73605) cmd/fix: remove all functionality
+- [issue/71859](https://go.dev/issue/71859) cmd/go: fix: apply fixes from modernizers, inline, and other analyzers
+- [doc/gofix](https://go.dev/blog/gofix) Alan Donovan. Using go fix to modernize Go code. February 17, 2026.
+- [doc/inliner](https://go.dev/blog/inliner) Alan Donovan. //go:fix inline and the source-level inliner. March 10, 2026.
+- [design/lsp-interactive-refactoring](https://go.dev/design/76331-lsp-interactive-refactoring) Hongxiang Jiang. Proposal: Language Server Protocol (LSP) Interactive Code Actions. July 16, 2026.
+- [doc/interactive-refactoring](https://go.dev/blog/interactive-refactoring) Hongxiang Jiang. Interactive refactoring in gopls. October 16, 2026.
 
 [Back To Top](#top)
 
@@ -1028,6 +1110,12 @@ in Go 1.15 and Go 1.16.
 <!-- - Tool chain, benchseries/benchstat -->
 - [design/revamp-code-coverage](https://go.dev/design/51430-revamp-code-coverage) Than McIntosh. Proposal: extend code coverage testing to include applications. 2022-03-02.
   + [issue/51430](https://go.dev/issue/51430) cmd/cover: extend coverage testing to include applications
+- [doc/integration-test-coverage](https://go.dev/blog/integration-test-coverage) Than McIntosh. Code coverage for Go integration tests. March 8, 2023.
+- [doc/synctest](https://go.dev/blog/synctest) Damien Neil. Testing concurrent code with testing/synctest. February 19, 2025.
+- [doc/testing-b-loop](https://go.dev/blog/testing-b-loop) Junyang Shao. More predictable benchmarking with testing.B.Loop. April 2, 2025.
+- [issue/73567](https://go.dev/issue/73567) testing/synctest: replace Run with Test
+- [doc/testing-time](https://go.dev/blog/testing-time) Damien Neil. Testing Time (and other asynchronicities). August 26, 2025.
+- [issue/71287](https://go.dev/issue/71287) testing: store test artifacts
 
 [Back To Top](#top)
 
@@ -1086,6 +1174,7 @@ in Go 1.15 and Go 1.16.
 - [issue/13759](https://go.dev/issue/13759) proposal: Add a Partial Deadlock Detector For Go
 - [issue/21678](https://go.dev/issue/21678) runtime: provide a mechanism for debuggers to execute a function in the program being debugged
 - [issue/70089](https://go.dev/issue/70089) proposal: runtime/mainthread: add mainthread.Do for mediating access to the main thread
+- [doc/container-aware-gomaxprocs](https://go.dev/blog/container-aware-gomaxprocs) Michael Pratt and Carlos Amedee. Container-aware GOMAXPROCS. August 20, 2025.
 
 [Back To Top](#top)
 
@@ -1185,6 +1274,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/69327](https://go.dev/issue/69327) runtime: non-preemptible zeroing in clear, append, bytes.growSlice, etc
 - [design/go-pmem](https://go.dev/design/43810-go-pmem) Jerrin Shaji George, Mohit Verma, Rajesh Venkatasubramanian, Pratap Subrahmanyam. Proposal: Add support for Persistent Memory in Go. January 20, 2021.
   + [issue/43810](https://go.dev/issue/43810) proposal: spec: add native support for programming persistent memory in Go (declined)
+- [doc/unique](https://go.dev/blog/unique) Michael Knyszek. New unique package. August 27, 2024.
+- [doc/size-specialized-allocations](https://go.dev/blog/size-specialized-allocations) Michael Matloob. Size-Specialized Memory Allocation. September 16, 2026.
 
 
 [Back To Top](#top)
@@ -1257,6 +1348,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/11911](https://go.dev/issue/11911) runtime: unbounded heap growth with concurrent GC
 - [issue/12041](https://go.dev/issue/12041) runtime: redesign GC synchronization
 - [issue/27583](https://go.dev/issue/27583) runtime: feature request: Support for ASLR with the heap
+- [doc/go119runtime](https://go.dev/blog/go119runtime) Michael Knyszek. Go runtime: 4 years later. September 26, 2022.
+- [doc/cleanups-and-weak](https://go.dev/blog/cleanups-and-weak) Michael Knyszek. From unique to cleanups and weak: new low-level tools for efficiency. March 6, 2025.
 
 [Back To Top](#top)
 
@@ -1274,6 +1367,7 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/37112](https://go.dev/issue/37112) runtime: API for unstable metrics
 - [issue/47216](https://go.dev/issue/47216) runtime/metrics: add GOMAXPROCS, NumCgoCall, GC CPU time
   + [issue/56857](https://go.dev/issue/56857) runtime/metrics: add /gc/heap/live:bytes
+- [design/memlimits](https://docs.google.com/document/d/1zn4f3-XWmoHNj702mCCNvHqaS7p9rzqQGa74uOwOBKM) Memory Limits for Go (Public). Proposed in issue/16843.
 
 [Back To Top](#top)
 
@@ -1356,6 +1450,10 @@ The Go memory model consists the following parts:
 - [issue/2630](https://go.dev/issue/2630) runtime: hash function should be randomized to prevent DOS attacks
 - [issue/20505](https://go.dev/issue/20505) runtime: need a better itab table
 - [issue/75280](https://go.dev/issue/75280) runtime/pprof,runtime: add new goroutine leak profile as a GOEXPERIMENT
+- [doc/randv2](https://go.dev/blog/randv2) Russ Cox. Evolving the Go Standard Library with math/rand/v2. May 1, 2024.
+- [doc/chacha8rand](https://go.dev/blog/chacha8rand) Russ Cox and Filippo Valsorda. Secure Randomness in Go 1.22. May 2, 2024.
+- [doc/swisstable](https://go.dev/blog/swisstable) Michael Pratt. Faster Go maps with Swiss Tables. February 26, 2025.
+- [doc/goroutine-leak-profiles](https://go.dev/blog/goroutine-leak-profiles) Vlad Saioc. Goroutine Leak Profiles. September 2, 2026.
 
 ## Standard Library
 
@@ -1363,6 +1461,7 @@ The Go memory model consists the following parts:
 
 - [design/go14syscall](https://go.dev/s/go1.4-syscall) The syscall package.
 - [issue/51087](https://go.dev/issue/51087) runtime: clean up system call code
+- [issue/68595](https://go.dev/issue/68595) syscall: support process sandboxing using Landlock on Linux
 
 [Back To Top](#top)
 
@@ -1392,6 +1491,12 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
   + [issue/42322](https://go.dev/issue/42322) io/fs: add func Sub(fsys FS, dir string) FS
 - [issue/45757](https://go.dev/issue/45757) proposal: io/fs: add writable interfaces
 - [issue/9051](https://go.dev/issue/9051) io: no easy way to fan out to multiple readers
+- [issue/56219](https://go.dev/issue/56219) path/filepath: add IsLocal
+- [issue/57151](https://go.dev/issue/57151) path/filepath: add Localize to safely convert a slash-separated path into an operating system path
+- [issue/54898](https://go.dev/issue/54898) archive/zip: add (*Writer).AddFS
+- [issue/62484](https://go.dev/issue/62484) os: add CopyFS
+- [issue/67002](https://go.dev/issue/67002) os: safer file open functions
+- [doc/osroot](https://go.dev/blog/osroot) Damien Neil. Traversal-resistant file APIs. March 12, 2025.
 
 [Back To Top](#top)
 
@@ -1402,6 +1507,7 @@ In Go 1.16, tons of major rework and improvements surround the new `os/fs` packa
 Code Comprehension and Refactoring Tools. October 2, 2015.
 - [design/modular-interface](https://docs.google.com/document/d/1-azPLXaLgTCKeKDNg0HVMq2ovMlD-e7n1ZHzZVzOlJk/edit) Alan Donovan. Proposal: a common interface for modular static analyses for Go. 9 Sep 2018
   + [cl/134935](https://go.dev/cl/134935) go/analysis: a new API for analysis tools
+- [issue/62039](https://go.dev/issue/62039) go/version: package for handling Go version strings
 
 [Back To Top](#top)
 
@@ -1438,6 +1544,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   - [cl/166960](https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31) sync: use lock-free structure for Pool stealing.
   - [cl/166961](https://github.com/golang/go/commit/2dcbf8b3691e72d1b04e9376488cef3b6f93b286) 166961: sync: smooth out Pool behavior over GC with a victim cache.
 - [issue/24479](https://go.dev/issue/24479) sync: eliminate global Mutex in Pool operations
+- [discuss/pool-draining](https://groups.google.com/g/golang-dev/c/kJ_R6vYVYHU/m/LjoGriFTYxMJ) Russ Cox. gc-aware pool draining policy. golang-dev. November 27, 2013.
 
 [Back To Top](#top)
 
@@ -1531,6 +1638,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/71497](https://go.dev/issue/71497) encoding/json/v2: new API for encoding/json
   + [issue/71845](https://go.dev/issue/71845) encoding/json/v2: add new JSON API behind a GOEXPERIMENT=jsonv2 guard (Go 1.25)
   + [repo/json-experiment](https://github.com/go-json-experiment/json) Experimental implementation of a proposed v2 encoding/json package
+- [doc/jsonv2-exp](https://go.dev/blog/jsonv2-exp) Joe Tsai, Daniel Martí, Johan Brandhorst-Satzkorn, Roger Peppe, Chris Hines, and Damien Neil. A new experimental Go API for JSON. September 9, 2025.
 
 [Back To Top](#top)
 
@@ -1608,6 +1716,43 @@ These issues are discussion the current performance issue that exist in the curr
 - [issue/56345](https://go.dev/issue/56345) proposal: log/slog: structured, leveled logging
 - [issue/58243](https://go.dev/issue/58243) log/slog: make the current context easily available to loggers
 - [issue/59928](https://go.dev/issue/59928) proposal: testing: Add log/slog support
+- [doc/slog](https://go.dev/blog/slog) Jonathan Amsterdam. Structured Logging with slog. August 22, 2023.
+- [issue/62005](https://go.dev/issue/62005) log/slog: add `slog.DiscardHandler`
+
+### net, net/http
+
+- [discuss/47323](https://github.com/golang/go/discussions/47323) Russ Cox. proposal: net/netaddr: add new IP address type, netaddr package (discussion). July 21, 2021.
+- [issue/56539](https://go.dev/issue/56539) net: add support for MPTCP
+- [discuss/60227](https://github.com/golang/go/discussions/60227) Jonathan Amsterdam. net/http: add methods and path variables to ServeMux patterns. May 16, 2023.
+  + [issue/61410](https://go.dev/issue/61410) net/http: enhanced ServeMux routing
+- [doc/routing-enhancements](https://go.dev/blog/routing-enhancements) Jonathan Amsterdam. Routing Enhancements for Go 1.22. February 13, 2024.
+- [issue/66405](https://go.dev/issue/66405) net/http: expose matched pattern in Request
+- [discuss/60746](https://github.com/golang/go/discussions/60746) Damien Neil. net/http: move HTTP/2 into the standard library. June 12, 2023.
+- [issue/67813](https://go.dev/issue/67813) net/http: HTTP/2 configuration API
+- [issue/73626](https://go.dev/issue/73626) net/http: add CrossOriginForgeryHandler
+- [issue/75772](https://go.dev/issue/75772) net/http: client connection API
+- [doc/http-connection-reuse](https://go.dev/blog/http-connection-reuse) Nicholas Husin and Damien Neil. Better HTTP/1 connection reuse. October 14, 2026.
+- [issue/58547](https://go.dev/issue/58547) x/net/quic: add QUIC implementation
+
+[Back To Top](#top)
+
+### crypto
+
+- [issue/66821](https://go.dev/issue/66821) crypto/rand: crash process on error reading randomness
+- [issue/67057](https://go.dev/issue/67057) crypto/rand: add func Text
+- [issue/61477](https://go.dev/issue/61477) crypto/hkdf: add package
+- [issue/69488](https://go.dev/issue/69488) crypto/pbkdf2: add package
+- [issue/63369](https://go.dev/issue/63369) crypto/tls: support Encrypted Client Hello in clients
+- [issue/70122](https://go.dev/issue/70122) crypto/mlkem: new package
+- [issue/75300](https://go.dev/issue/75300) crypto/hpke: new package
+- [issue/77626](https://go.dev/issue/77626) crypto/mldsa: new package
+- [issue/70123](https://go.dev/issue/70123) crypto: mechanism to enable FIPS mode
+- [issue/70200](https://go.dev/issue/70200) cmd/go: add fips140 module selection mechanism
+- [doc/tob-crypto-audit](https://go.dev/blog/tob-crypto-audit) Roland Shoemaker and Filippo Valsorda. Go Cryptography Security Audit. May 19, 2025.
+- [doc/fips140](https://go.dev/blog/fips140) Filippo Valsorda (Geomys), Daniel McCarney (Geomys), and Roland Shoemaker (Google). The FIPS 140-3 Go Cryptographic Module. July 15, 2025.
+- [design/crypto-ssh-v2](https://go.dev/design/68723-crypto-ssh-v2) Nicola Murino, Filippo Valsorda. x/crypto/ssh/v2. August 19, 2024.
+
+[Back To Top](#top)
 
 ### misc
 
@@ -1626,6 +1771,14 @@ These issues are discussion the current performance issue that exist in the curr
 - [issue/46518](https://go.dev/issue/46518) net/netip: add new IP address package, use in net
 - [issue/53171](https://go.dev/issue/53171) proposal: add package for using SIMD instructions
 - [issue/54880](https://go.dev/issue/54880) math/rand: seed global generator randomly
+- [issue/60204](https://go.dev/issue/60204) cmp: add Or
+- [issue/60088](https://go.dev/issue/60088) reflect: add TypeFor
+- [issue/60370](https://go.dev/issue/60370) database/sql: add generic Null[T]
+- [issue/66408](https://go.dev/issue/66408) structs: add HostLayout "directive" type
+- [issue/54670](https://go.dev/issue/54670) hash/maphash: add func Comparable
+- [issue/70471](https://go.dev/issue/70471) hash/maphash: standardize the hash function
+- [issue/69264](https://go.dev/issue/69264) x/exp/stats: new package with Mean, Median, more
+- [issue/62026](https://go.dev/issue/62026) uuid: add API to generate and parse UUID
 
 [Back To Top](#top)
 
