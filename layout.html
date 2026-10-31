@@ -60,13 +60,15 @@
   {{- with .Next}}<a class="next" href="{{.URL}}"><small>{{$.Lang.UI.Next}}</small>{{.Title}}</a>{{end}}
 </nav>
 {{- end}}
-<footer class="foot">{{.Lang.UI.Updated}} {{.Updated}} · <a href="https://github.com/golang-design/history">{{.Lang.UI.Source}}</a> · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a></footer>
+<footer class="foot">{{.Lang.UI.Updated}} {{.Updated}} · <a href="https://github.com/golang-design/history">{{.Lang.UI.Source}}</a> · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
+  · <span class="stat">{{.Lang.UI.Views}} <span id="urlstat-page-pv">–</span></span> · <span class="stat">{{.Lang.UI.Visitors}} <span id="urlstat-page-uv">–</span></span></footer>
 </main>
 </div>
 <script src="{{.Base}}site.js"></script>
 {{- with .Script}}
 <script>{{.}}</script>
 {{- end}}
-<script async src="//changkun.de/urlstat/client.js"></script>
+{{- /* Count the page only if the script above did not send the reader elsewhere. */}}
+<script>if(!window.moved){var s=document.createElement('script');s.async=true;s.src='//changkun.de/urlstat/client.js';document.body.appendChild(s)}</script>
 </body>
 </html>

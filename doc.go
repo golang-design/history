@@ -65,7 +65,7 @@ type ui struct {
 	Name, Menu, Theme, Search, Count, More            string
 	Documentary, RuntimeCompiler, RuntimeCompilerLong string
 	RuntimeCompilerDesc, Contents, Entries, Also      string
-	Previous, Next, Updated, Source                   string
+	Previous, Next, Updated, Source, Views, Visitors  string
 }
 
 var en = &language{
@@ -78,6 +78,7 @@ var en = &language{
 		RuntimeCompilerDesc: "Go 1.0 to 1.28, reconstructed from commits: every topic, every release, and the paths not taken.",
 		Contents:            "Contents", Entries: "entries", Also: "Also on this site",
 		Previous: "Previous", Next: "Next", Updated: "Last updated", Source: "Source on GitHub",
+		Views: "Views", Visitors: "Visitors",
 	},
 }
 
@@ -91,6 +92,7 @@ var cn = &language{
 		RuntimeCompilerDesc: "从提交历史重建 Go 1.0 至 1.28 的演进：每个主题、每个版本，以及未选择的路。",
 		Contents:            "目录", Entries: "条", Also: "本站其他内容",
 		Previous: "上一页", Next: "下一页", Updated: "最后更新", Source: "GitHub 源码",
+		Views: "浏览", Visitors: "访客",
 	},
 }
 
@@ -419,7 +421,7 @@ func (d *doc) redirectScript(home *page) string {
 			m[h] = rel(home, p)
 		}
 	}
-	return fmt.Sprintf(`(function(m){var h=location.hash.slice(1);if(h&&!document.getElementById(h)&&m[h])location.replace(m[h]+'#'+h)})(%s);`, jsonString(m))
+	return fmt.Sprintf(`(function(m){var h=location.hash.slice(1);if(h&&!document.getElementById(h)&&m[h]){window.moved=true;location.replace(m[h]+'#'+h)}})(%s);`, jsonString(m))
 }
 
 // redirectPage replaces the old cn.html with a redirect to the page
