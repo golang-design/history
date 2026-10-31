@@ -164,8 +164,6 @@ maintainers work through the issue tracker.
 - Rob Pike. (Robert C. Pike, M. Sc.) [Website](http://herpolhode.com/rob/), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike). (Retired)
   + Alma mater: University of Toronto (BS), California Institute of Technology
   + [talk/rob2007](https://www.youtube.com/watch?v=hB05UFqOtFA) Advanced Topics in Programming Languages: Concurrency/message passing Newsqueak. May 9, 2007
-  </details>
-
   + [talk/rob2009](https://changelog.com/podcast/3) The Go Programming Language. Nov 27, 2009.
   + [talk/rob2010a](https://www.youtube.com/watch?v=jgVhBThJdXc) Go Programming. Google I/O 2010. May 20, 2010
   + [talk/rob2010b](https://www.youtube.com/watch?v=-_DKfAn4pFA) Origins of Go Concurrency style. Emerging Languages Camp 2010. July 21, 2010.
