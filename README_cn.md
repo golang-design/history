@@ -199,6 +199,7 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
     <p><b>总结：</b>在题为“GopherCon 2020：Robert Griesemer - Typing [Generic] Go”的视频节目中，Robert Griesemer 讨论了 Go 编程语言中泛型的最新进展。本集首先介绍泛型的概念及其在提高 Go 类型安全性、效率和性能方面的重要性。 Griesemer 解释说，Go 中泛型的设计草案引入了类型参数和约束的概念。这些类型参数简化了设计并确保向后兼容性。他接着讨论了如何在函数参数列表中使用类型参数和约束，并提供了标准库中通用 API 的具体示例。还解释了在 Go 中实现泛型的动机，Griesemer 强调了类型安全的需求以及在不牺牲性能的情况下处理不同类型的能力。他讨论了约束的概念以及如何将它们实现为接口以确保类型安全。本集深入探讨了 Go 中泛型函数和类型参数的细节。 Griesemer 解释说，类型参数在整个函数中都是可见的，并且可以在所有参数列表中使用。他强调了满足类型参数施加的约束的重要性，并解释了实例化的过程，其中类型参数替换了函数签名中的类型参数。还介绍了 Go 中的类型检查和实例化，Griesemer 提供了实例化通用排序函数的示例。他讨论了在 Go 中使用泛型类型和类型参数的好处，但也承认需要约束来确保类型安全。 本集进一步探讨了泛型函数中类型参数推断的概念，讨论了匹配类型结构的过程以及类型统一的使用。 Griesemer 提到了类型推断的局限性以及提供所需方法的必要性。还解释了在 Go 中使用类型列表来编写可以处理不同类型（包括派生类型）的泛型函数。 Griesemer 引入了约束的概念，例如“有序”约束，它确保函数中使用的类型支持某些运算符。总的来说，本集全面概述了 Go 编程语言中泛型的进展。 Griesemer 强调了采用泛型的重要性，并强调了它们给 Go 带来的好处。 Go 团队正在积极致力于实现泛型，并欢迎社区的反馈。当前的设计是向后兼容的，并且非常适合现有的 Go 代码，但应谨慎行事，以避免不必要的复杂性并考虑潜在的缺点。</p></details>
   + [talk/robert2021](https://www.youtube.com/watch?v=Pa_e9EeCdy8) <details><summary>泛型! Dec 17, 2021.</summary>
     <p><b>总结：</b>在题为“泛型！”的 GopherCon 2021 视频节目中，Go 团队成员 Robert Griesemer 和 Ian Lance Taylor 讨论了即将发布的 Go 1.18 及其对泛型函数和类型的支持。它们强调了泛型为 Go 编程语言带来的表达能力以及有效使用它们所带来的责任。 Go 1.18 中的新功能包括类型参数、更强大的接口类型和改进的类型推断。这些功能消除了对类型参数的需要，使得在 Go 中使用泛型进行编程更加高效。此更新还引入了类型约束（定义参数的有效类型）以及定义方法集的接口。 Griesemer 和 Taylor 提供了有关何时何地使用 Go 中通用功能的指南。他们建议从函数而不是类型参数开始，并将类型参数用于对特殊类型进行操作的函数，而不需要对元素类型进行假设。与反射或接口类型相比，它们强调类型参数的灵活性和效率，允许通用数据结构和完全类型检查的代码。演讲者还讨论了理解元类型和使用接口作为通用函数约束的重要性。他们提到了语法糖的引入以及切片类型的类型参数的使用。它们还涉及类型推断及其在从类型参数约束推导类型参数中的作用。 Griesemer 和 Taylor 强调在使用泛型时需要保持 Go 代码的可读性、可维护性和良好的性能。他们建议当多种类型共享具有相同实现的通用方法时使用类型参数，并使用接口类型进行泛型编程和从任何值读取数据。 他们提到，在类型参数没有帮助的情况下可以使用反射。总体而言，即将发布的支持泛型的 Go 1.18 为该语言带来了显着的表达能力。 Griesemer 和 Taylor 就如何有效使用泛型提供了宝贵的指导，强调了根据代码的具体要求选择适当方法的重要性。通过遵循他们的建议，开发人员可以利用泛型的优势，同时保持代码的可读性、可维护性和性能。</p></details>
+  + [talk/robert2023](https://www.youtube.com/watch?v=2putv2jOqdg) 关于类型推断你想知道的一切。GopherCon 2023，圣迭戈。2023年9月。
 - Ken Thompson（Kenneth Lane Thompson 科学硕士）（退休）
   + 毕业院校: 加州大学伯克利分校
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) <details><summary>UNIX 系统：提高计算机生产效率。1982年。</summary>
@@ -324,6 +325,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
   + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) 提升 Go 内存管理器的 RAM 和 CPU 效率。2020年11月11日。
+  + [talk/michael2025](https://www.youtube.com/watch?v=gPJkM95KpKo) 用 Green Tea 推进 Go 的垃圾回收。GopherCon 2025，纽约。2025年8月。
 
 - Than McIntosh. [GitHub](https://github.com/thanm)
 
@@ -399,9 +401,11 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - Steve Francia. [Website](https://spf13.com/), [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
   + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) 现代实用编程语言应该是什么样子。Langding Festival，2019年4月4日。
   + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) Go 的遗产。Go Lab，2019年10月22日。
+  + [talk/steve2022](https://www.youtube.com/watch?v=atv47M6kBYc) Go：从早期采用者到主流及更远的旅程。GopherCon 2022，芝加哥。2022年10月。
 
 - Jonathan Amsterdam.
   + [talk/jonathan2020](https://www.gophercon.com/agenda/session/233432) Errors 方面。2020年11月13日。
+  + [talk/jonathan2023](https://www.youtube.com/watch?v=rJfvv_c9mYU) 标准库的结构化日志。GopherCon 2023，圣迭戈。2023年9月。
 
 - Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
 
@@ -421,6 +425,18 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) 不使用 cgo，从 Go 到 Rust。
   + [talk/filo2018](https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018) 为什么 cgo 太慢。2018年 CapitalGo。
   + [talk/speakerdeck](https://speakerdeck.com/filosottile?page=1)
+  + [talk/filo2023](https://www.youtube.com/watch?v=lkEH3V3PkS0) 高可信的 Go 密码学。GopherCon 2023，圣迭戈。2023年9月。
+  + [talk/filo2024](https://www.youtube.com/watch?v=F3iDp6LZtyk) Go 密码学现状。GopherCon 2024，芝加哥。2024年7月。
+  + [talk/filo2025](https://www.youtube.com/watch?v=YnyeAQblUyA) Go 密码学现状。GopherCon 2025，纽约。2025年8月。
+- Alan Donovan. [GitHub](https://github.com/adonovan)
+  + [talk/alan2025](https://www.youtube.com/watch?v=_VePjjjV9JU) 用于 Go 代码库现代化的分析与转换工具。GopherCon 2025，纽约。2025年8月。
+- Cameron Balahan. [GitHub](https://github.com/cameronbalahan)
+  + [talk/cameron2022](https://www.youtube.com/watch?v=b7l0Qt8m6OQ) 整体的 Go 体验。GopherCon 2022，芝加哥。2022年10月。
+  + [talk/cameron2025](https://www.youtube.com/watch?v=M2gduDM-MT0) Go 的下一个前沿。GopherCon 2025，纽约。2025年8月。
+- Katie Hockman. [GitHub](https://github.com/katiehockman)
+  + [talk/katie2022](https://www.youtube.com/watch?v=7KWPiRq3ZYI) 让模糊测试变得简单。GopherCon 2022，芝加哥。2022年10月。
+- Julie Qiu. [GitHub](https://github.com/julieqiu)
+  + [talk/julie2023](https://www.youtube.com/watch?v=nJm2GP6kMJo) Go 的漏洞管理。GopherCon 2023，圣迭戈。2023年9月。
 
 > 更多人和谈话应该被添加……
 
@@ -696,6 +712,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/75883](https://go.dev/issue/75883) 规范：移除类型参数的循环限制
 - [doc/type-construction](https://go.dev/blog/type-construction-and-cycle-detection) Mark Freeman，类型构造与循环检测。2026年3月24日。
 - [doc/generic-methods](https://go.dev/blog/generic-methods) Mark Freeman，泛型方法。2026年8月26日。
+- [talk/axel2024](https://www.youtube.com/watch?v=dab3I-HcTVk) Axel Wagner，高级泛型模式。GopherCon 2024，芝加哥。2024年7月。
 
 [Back To Top](#top)
 
@@ -861,6 +878,8 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [doc/allocation-optimizations](https://go.dev/blog/allocation-optimizations) Keith Randall，在栈上分配。2026年2月27日。
 - [doc/simd-experiment](https://go.dev/blog/simd-experiment) David Chase、Junyang Shao，Go 中与平台无关的 SIMD。2026年9月24日。
 - [doc/archsimd](https://go.dev/blog/archsimd) Junyang Shao、David Chase，Go 中特定于架构的 SIMD。2026年10月2日。
+- [talk/jin2022](https://www.youtube.com/watch?v=fYB5uhyDi7c) Jin Lin，Go 编译器中的按配置文件优化。闪电演讲，GopherCon 2022，芝加哥。2022年10月。
+- [talk/jin2024](https://www.youtube.com/watch?v=58xVeeuXbKQ) Jin Lin，用按配置文件优化自动提升效率。GopherCon 2024，芝加哥。2024年7月。
 
 [Back To Top](#top)
 
@@ -902,6 +921,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
   + [issue/17280](https://go.dev/issue/17280) pprof：添加探查器标签支持
 - [issue/36821](https://go.dev/issue/36821) 提案：runtime/pprof：添加基于 PMU 的剖析
 - [issue/53286](https://go.dev/issue/53286) 提案：runtime/pprof：扩展剖析配置以支持 perf 事件
+- [talk/derek2024](https://www.youtube.com/watch?v=ZnrXDnhSmH0) Derek Parker，十年调试。GopherCon 2024，芝加哥。2024年7月。
 
 [Back To Top](#top)
 
@@ -924,6 +944,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/66703](https://go.dev/issue/66703) runtime/trace：将 v2 跟踪器设为默认跟踪器
 - [doc/execution-traces-2024](https://go.dev/blog/execution-traces-2024) Michael Knyszek，更强大的 Go 执行跟踪。2024年3月14日。
 - [doc/flight-recorder](https://go.dev/blog/flight-recorder) Carlos Amedee、Michael Knyszek，Go 1.25 中的飞行记录器。2025年9月26日。
+- [talk/felix2025](https://www.youtube.com/watch?v=BayZ3k-QkFw) Felix Geisendörfer，用关键路径分析剖析请求延迟。GopherCon 2025，纽约。2025年8月。
 
 [Back To Top](#top)
 
@@ -976,6 +997,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/65199](https://go.dev/issue/65199) cmd/compile：添加 go:wasmexport 指令
 - [design/wasmexport-notes](https://docs.google.com/document/d/1R14wRHv_UjeFnemvV5hbp75cCRNzVH9ZZS-Yo_zITxg) Achille Roussel，go:wasmexport 实现笔记。
 - [doc/wasmexport](https://go.dev/blog/wasmexport) Cherry Mui，用 Go 编写可扩展的 Wasm 应用。2025年2月13日。
+- [talk/johan2023](https://www.youtube.com/watch?v=BAFKruuvUN4) Johan Brandhorst-Satzkorn，Go 对 WASI/Wasm 的支持。闪电演讲，GopherCon 2023，圣迭戈。2023年9月。
 
 [Back To Top](#top)
 
@@ -1257,6 +1279,9 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/27583](https://go.dev/issue/27583) 运行时：功能请求：支持堆的 ASLR
 - [doc/go119runtime](https://go.dev/blog/go119runtime) Michael Knyszek，Go 运行时：四年之后。2022年9月26日。
 - [doc/cleanups-and-weak](https://go.dev/blog/cleanups-and-weak) Michael Knyszek，从 unique 到 cleanup 与 weak：提升效率的新底层工具。2025年3月6日。
+- [talk/madhav2022](https://www.youtube.com/watch?v=We-8RSk4eZA) Madhav Jivrajani，深入控制理论与并发垃圾回收。GopherCon 2022，芝加哥。2022年10月。
+- [talk/tarun2022](https://www.youtube.com/watch?v=iy0yzxAtuwY) Tarun Pothulapati，Go 1.19 中的软内存限制。闪电演讲，GopherCon 2022，芝加哥。2022年10月。
+- [talk/yifei2023](https://www.youtube.com/watch?v=DpQgJ06ZjGc) Yifei Zhang，Balanced GC：一个用于 Go 的复制式垃圾收集器。GopherCon 2023，圣迭戈。2023年9月。
 
 [Back To Top](#top)
 
@@ -1523,6 +1548,7 @@ Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
 - [design/raw-xml](https://go.dev/design/26756-rawxml-token) Sam Whited，提案：原始 XML 令牌，2018年9月1日。
   + [issue/26756](https://go.dev/issue/26756) 提案: encoding/xml: 添加 RawXML 令牌。
 - [doc/jsonv2-exp](https://go.dev/blog/jsonv2-exp) Joe Tsai、Daniel Martí、Johan Brandhorst-Satzkorn、Roger Peppe、Chris Hines、Damien Neil，一个新的实验性 Go JSON API。2025年9月9日。
+- [talk/joe2023](https://www.youtube.com/watch?v=avilmOcHKHE) Joe Tsai，Go 中 JSON 的未来。GopherCon 2023，圣迭戈。2023年9月。
 
 [Back To Top](#top)
 
@@ -1712,6 +1738,7 @@ x/image:
 - [调试Go程序中的性能问题，Dmitriy Vyukov。](https://software.intel.com/content/www/us/en/develop/blogs/debugging-performance-issues-in-go-programs.html)
 - [我想实现的有趣的论文（或者有部分实现）](https://github.com/dgryski/interesting-papers)
 - [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
+- [talk/jake2025](https://www.youtube.com/watch?v=PZm_YbE3fcA) Jake Bailey，将 TypeScript 编译器移植到 Go，获得 10 倍加速。GopherCon 2025，纽约。2025年8月。
 
 [Back To Top](#top)
 
