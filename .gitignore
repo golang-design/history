@@ -1,3 +1,4 @@
 index.html
 cn.html
 **/.DS_Store
+!public/runtime-compiler/index.html

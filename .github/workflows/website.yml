@@ -18,14 +18,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Set up Go 1.15
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.15
-        id: go
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+        id: go
 
       # Runs a single command using the runners shell
       - name: build

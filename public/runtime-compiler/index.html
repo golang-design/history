@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Go runtime &amp; compiler history, 2008 → 1.28-dev</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1d1b;--mut:#6b6b66;--line:#e4e2dc;--acc:#00758d;--code:#f1efe9;--int:#7a4fb5;--uv:#2f7d32;--dev:#b25a00;--side:#f4f3ef}
+@media (prefers-color-scheme:dark){:root{--bg:#16171a;--fg:#e6e4df;--mut:#9a9890;--line:#2c2d31;--acc:#4fc3dc;--code:#24262b;--int:#b394e6;--uv:#7cc47f;--dev:#f0a050;--side:#1c1d21}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:12px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+nav{position:fixed;top:0;left:0;bottom:0;width:290px;overflow-y:auto;background:var(--side);border-right:1px solid var(--line);padding:18px 14px 40px;font-size:13.5px;line-height:1.45}
+nav h1{font-size:15px;margin:0 0 4px}
+nav .sub{color:var(--mut);font-size:12px;margin-bottom:12px}
+nav ul{list-style:none;margin:0;padding:0}
+nav li{margin:0}
+nav a{color:var(--fg);text-decoration:none;display:block;padding:2px 6px;border-radius:4px}
+nav a:hover{background:var(--line)}
+nav a.top{font-weight:600;margin-top:8px}
+nav ul ul{padding-left:10px}
+nav ul ul a{color:var(--mut);font-size:12.5px}
+nav .ctrl{margin:10px 0 6px;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:12.5px}
+nav .ctrl label{display:block;cursor:pointer}
+main{margin-left:290px;padding:28px 48px 120px;max-width:1080px}
+h1,h2,h3,h4{line-height:1.25}
+main h1{font-size:32px;margin:64px 0 8px;padding-top:20px;border-top:4px solid var(--fg)}
+main h2{font-size:25px;margin:48px 0 6px;padding-top:12px;border-top:1px solid var(--fg)}
+.grid{font-size:12.5px;display:table;width:100%}.grid td,.grid th{padding:3px 5px}.grid td.on{text-align:center;background:color-mix(in srgb,var(--acc) 18%,transparent)}.grid td.on a{text-decoration:none}.grid tr.ga td{background:var(--side);font-weight:700;padding-top:8px}.grid td.tn{min-width:220px}.grid td.st{color:var(--mut);min-width:220px;font-size:11.5px;line-height:1.35}.grid th{position:sticky;top:0}
+.stage{height:0}
+.chap{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:700;margin:56px 0 -6px;border-top:3px solid var(--acc);padding-top:8px}
+.dg{color:var(--mut);font-style:italic;margin:2px 0 10px}
+.prov{color:var(--mut);font-size:13.5px;font-style:italic;border-left:3px solid var(--line);padding-left:10px;margin:4px 0 18px}
+sup.xr{font-size:10px;color:var(--dev);margin-left:1px}
+main{max-width:1200px}
+h3{font-size:21px;margin:34px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h4{font-size:16.5px;margin:24px 0 6px;color:var(--acc)}
+.meta{color:var(--mut);font-size:13.5px;margin:0 0 14px}
+.meta code{font-size:12.5px}
+p,li{max-width:84ch}
+ul{padding-left:22px}
+li{margin:7px 0}
+li li{margin:3px 0}
+code{overflow-wrap:anywhere;font:13.5px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 4px;border-radius:3px}
+pre{background:var(--code);padding:10px 12px;border-radius:6px;overflow-x:auto}
+pre code{background:none;padding:0}
+a{color:var(--acc)}
+a.h{text-decoration:none}
+a.h code{color:var(--acc);font-size:12px}
+a.h:hover code{text-decoration:underline}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.02em;padding:0 6px;border-radius:9px;border:1px solid currentColor;vertical-align:1px;line-height:17px}
+.tag.int{color:var(--int)} .tag.uv{color:var(--uv)} .tag.dev{color:var(--dev)}
+table{border-collapse:collapse;font-size:14px;margin:10px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
+th{background:var(--side)}
+body.only-int li.uvitem{opacity:.28}
+body.only-uv li.intitem{opacity:.28}
+blockquote{margin:12px 0;padding:6px 14px;border-left:3px solid var(--acc);color:var(--mut)}
+@media (max-width:900px){nav{position:static;width:auto;border-right:0;border-bottom:1px solid var(--line)}main{margin-left:0;padding:16px}}
+main>h1:first-child{margin-top:0;padding-top:0;border-top:0}
+nav a.cur{background:var(--line);font-weight:600;color:var(--fg)}
+nav .back{display:block;font-size:12.5px;margin:0 0 10px;color:var(--acc)}
+nav .top{display:block;padding:2px 6px}
+nav span.top{font-weight:600;margin-top:8px}
+nav li>ul{margin:2px 0 6px}
+nav .rels{display:flex;flex-wrap:wrap;gap:3px;padding:4px 6px}
+nav .rels a{display:inline-block;padding:1px 5px;border:1px solid var(--line);border-radius:4px;font-size:12px;color:var(--mut)}
+nav .rels a.cur{color:var(--fg);border-color:var(--fg)}
+#navt{display:none}
+.pn{display:flex;justify-content:space-between;margin:56px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+ul.toc{list-style:none;padding:0}ul.toc li{margin:0 0 10px}ul.rl li{margin:0 0 3px}
+.defines{font-size:16.5px;border-left:3px solid var(--acc);padding:4px 12px;margin:8px 0 16px}
+.from{color:var(--mut);font-size:13px;margin:-2px 0 8px}
+.osub{font-weight:600;margin:14px 0 0;color:var(--mut);font-size:14px}
+.oth{color:var(--mut);font-size:13.5px;margin:22px 0 0}
+details.dgl{margin:0 0 18px;font-size:14.5px}details.dgl summary{cursor:pointer;color:var(--acc)}
+footer{color:var(--mut);font-size:12.5px;margin-top:28px}
+@media (max-width:900px){#navt{display:block;margin:8px 0;padding:6px 10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px}nav .navbody{display:none}nav.open .navbody{display:block}.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="toc">
+<a class="back" href="../">← Go: A Documentary</a>
+<h1><a href="index.html" style="padding:0">Go runtime &amp; compiler history</a></h1>
+<div class="sub">Go 1.0 (2008) → 1.28-dev, reconstructed from commit history</div>
+<button id="navt" onclick="document.getElementById('toc').classList.toggle('open')">Menu</button>
+<div class="navbody">
+<div class="ctrl">
+<label><input type="radio" name="f" value="" checked> show all items</label>
+<label><input type="radio" name="f" value="only-int"> emphasize <span class="tag int">internal</span></label>
+<label><input type="radio" name="f" value="only-uv"> emphasize <span class="tag uv">user-visible</span></label>
+</div>
+<ul>
+<li><a class="top cur" href="index.html">About, contents &amp; overview</a><ul><li><a href="#intro">About this report</a></li><li><a href="#contents">Contents</a></li><li><a href="#overview">Overview</a></li></ul></li>
+<li><a class="top" href="map.html">Thread × release map</a></li>
+<li><a class="top" href="knobs.html">Experiments &amp; knobs</a></li>
+<li><span class="top">Part I — Topics</span><ul>
+<li><a class="" href="memory.html">Memory management</a></li>
+<li><a class="" href="scheduler.html">Scheduler and concurrency</a></li>
+<li><a class="" href="data-structures.html">Data structures and type metadata</a></li>
+<li><a class="" href="diagnostics.html">Diagnostics and knobs</a></li>
+<li><a class="" href="os-stacks.html">OS layer, stacks and panics</a></li>
+<li><a class="" href="frontend.html">Compiler frontend</a></li>
+<li><a class="" href="middle-end.html">Middle end and SSA optimizer</a></li>
+<li><a class="" href="backends.html">Backends and assemblers</a></li>
+<li><a class="" href="linker.html">Linker and object files</a></li>
+</ul></li><li><span class="top">Part II — Releases</span><div class="rels"><a class="" href="go1.0.html">1.0</a><a class="" href="go1.1.html">1.1</a><a class="" href="go1.2.html">1.2</a><a class="" href="go1.3.html">1.3</a><a class="" href="go1.4.html">1.4</a><a class="" href="go1.5.html">1.5</a><a class="" href="go1.6.html">1.6</a><a class="" href="go1.7.html">1.7</a><a class="" href="go1.8.html">1.8</a><a class="" href="go1.9.html">1.9</a><a class="" href="go1.10.html">1.10</a><a class="" href="go1.11.html">1.11</a><a class="" href="go1.12.html">1.12</a><a class="" href="go1.13.html">1.13</a><a class="" href="go1.14.html">1.14</a><a class="" href="go1.15.html">1.15</a><a class="" href="go1.16.html">1.16</a><a class="" href="go1.17.html">1.17</a><a class="" href="go1.18.html">1.18</a><a class="" href="go1.19.html">1.19</a><a class="" href="go1.20.html">1.20</a><a class="" href="go1.21.html">1.21</a><a class="" href="go1.22.html">1.22</a><a class="" href="go1.23.html">1.23</a><a class="" href="go1.24.html">1.24</a><a class="" href="go1.25.html">1.25</a><a class="" href="go1.26.html">1.26</a><a class="" href="go1.27.html">1.27</a><a class="" href="go1.28.html">1.28</a></div></li>
+</ul>
+</div>
+</nav>
+<main>
+<h1 id="intro">About this report</h1>
+<p>This page reconstructs how the Go <strong>runtime</strong> and <strong>compiler toolchain</strong> evolved, from the first compiler and runtime commits in 2008 to the current development tree (Go 1.28, unreleased as of 2026-10-30). It is built only from the <strong>commit history</strong>: commit subjects, commit messages (which often carry the design rationale and benchmark tables), and diffs. Release notes were deliberately <strong>not</strong> used. Internal changes they skip are included and tagged <span class="tag int">internal</span>; changes to user-facing API, behaviour or flags are tagged <span class="tag uv">user-visible</span>.</p>
+<p>The page covers 28,950 in-scope commits: 19,100 before Go 1.18 and 9,850 from Go 1.18 on. The two periods were read separately, with the same method, and are joined at the 1.17 → 1.18 seam.</p>
+<p><strong>Method (map → reduce).</strong></p>
+<ol type="1">
+<li><strong>Map.</strong> Every in-scope commit was tagged with topic areas by the files it touches. For example, <code>mgc*.go</code> goes to the GC, <code>internal/runtime/maps</code> to data structures, and <code>ssa/_gen/ARM64.rules</code> to backends. A commit can belong to more than one area. Historic paths were first mapped to their modern equivalents: <code>src/pkg/runtime/*.c</code>/<code>.goc</code> → runtime, <code>src/cmd/gc</code> → frontend, <code>5g/6g/8g/9g</code> → backends, <code>5l/6l/8l</code>, <code>src/cmd/ld</code> → linker, <code>src/liblink</code> → <code>cmd/internal/obj</code>. Files of the old monolithic <code>gc</code> package (<code>esc.go</code>, <code>inl.go</code>, <code>walk.go</code>, <code>ssa.go</code>, <code>plive.go</code>, <code>reflect.go</code>, …) were mapped by file name.</li>
+<li><strong>Reduce.</strong> For each area, a reader went through every non-noise commit subject in the area, plus the full messages of the design-heavy commits and, in some areas, the diffs. It picked the commits that matter and clustered them into <strong>threads</strong>: coherent bodies of work such as the concurrent GC, contiguous stacks, the SSA backend, the new linker, the GC pacer, Swiss maps or PGO. Each thread gets:
+<ul>
+<li>its <strong>design</strong>;</li>
+<li>a <strong>timeline</strong> listing, per release, what landed (<em>Done</em>) and what was still unfinished afterwards (<em>Left open</em>), based on TODOs, “for now”, “follow-up” and “disabled by default” notes in the messages, or on what the next stage had to fix;</li>
+<li>its <strong>status</strong>: at HEAD for 1.18+ threads, at go1.17 for earlier ones.</li>
+</ul>
+<em>Noise filter (pre-1.18 only).</em> Before the pre-1.18 readers started, a subject-line heuristic set aside 3,371 of the 19,100 commits as noise. These were tests-only changes, <code>[release-branch]</code> cherry-picks, and subjects matching patterns such as typo, comment, rename, clean up, skip, update, undo or revert. A later audit found 259 larger commits among them, each changing 30 or more lines, whose subjects matched only a weak pattern (for example “remove locks from netpoll hotpaths” or “replace func-based write barrier skipping”). A separate reader described those 259 and added them to the “Other notable changes” items. The remaining reverts, renames, clean-ups and test changes are not cited.</li>
+<li><strong>Eras and seams.</strong> Before 1.18, the large areas were split into era slices at the big rewrites: the compiler’s C → Go translation (1.5), the SSA backend (1.7), the new linker (1.15–1.16), and the register ABI and types2 work (1.17). Where a thread continues across a slice boundary, or into the 1.18+ report, the thread carries <em>Earlier history</em> and <em>Continues in</em> links.</li>
+<li><strong>Who read what.</strong> For 1.18+, the GC/allocator chapter and most of the compiler-optimization chapter were read by Claude Opus. The other 1.18+ areas, two gap passes, and all 16 pre-1.18 slices were read by Claude Sonnet. Each area in Part I opens with a short note giving its reader, how many of its commits it cites, and any caveats the reader reported. Every pre-1.18 slice cites all of its non-noise commits.</li>
+<li><strong>Views.</strong> The <strong>Thread × release maps</strong> (one for 1.0–1.17, one for 1.18–1.28) show at a glance which releases moved which thread. <strong>Part I</strong> reads thread by thread, area by area, oldest era first. <strong>Part II</strong> regroups the same stages by release, adding changes that don’t belong to any thread. For pre-1.18 releases it also opens each area with a one-line digest.</li>
+</ol>
+<p><strong>How releases are delimited: Go 1.18 onwards.</strong> A “release” is a <em>development cycle</em>: the commits on master between the <code>internal/goversion</code> bump that opened the cycle and the bump that opened the next one, which happens when the previous release branch is cut. Freeze-period fixes count toward the cycle they landed in. Point-release backports (cherry-picks onto <code>release-branch.go1.N</code>) are <strong>not</strong> covered. Work developed on feature branches (<code>dev.typeparams</code>, <code>dev.unified</code>, <code>dev.simd</code>, …) counts toward the cycle where it merged to master, so author dates can be older than the cycle.</p>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th>Commit range on master</th>
+<th>Cycle opened</th>
+<th>In-scope commits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go 1.18</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/46fd547d899286982971474b329d7a95da4f2a6b"><code>46fd547d89</code></a>..<a class="h" href="https://go.googlesource.com/go/+/936c7fbc1c154964b6e3e8a7523bdf0c29b4e1b3"><code>936c7fbc1c</code></a></td>
+<td>2021-08-12</td>
+<td>1,569</td>
+</tr>
+<tr>
+<td>Go 1.19</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/936c7fbc1c154964b6e3e8a7523bdf0c29b4e1b3"><code>936c7fbc1c</code></a>..<a class="h" href="https://go.googlesource.com/go/+/d723df76da3ee4c8f3c03fd03be29fba9bfeb02a"><code>d723df76da</code></a></td>
+<td>2022-02-28</td>
+<td>735</td>
+</tr>
+<tr>
+<td>Go 1.20</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/d723df76da3ee4c8f3c03fd03be29fba9bfeb02a"><code>d723df76da</code></a>..<a class="h" href="https://go.googlesource.com/go/+/83f8688915de59d974e74dd6accd7a3d54e9a6e7"><code>83f8688915</code></a></td>
+<td>2022-08-02</td>
+<td>953</td>
+</tr>
+<tr>
+<td>Go 1.21</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/83f8688915de59d974e74dd6accd7a3d54e9a6e7"><code>83f8688915</code></a>..<a class="h" href="https://go.googlesource.com/go/+/21ff9be0ebdbe5a96198db6478da8259f1491538"><code>21ff9be0eb</code></a></td>
+<td>2023-01-17</td>
+<td>967</td>
+</tr>
+<tr>
+<td>Go 1.22</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/21ff9be0ebdbe5a96198db6478da8259f1491538"><code>21ff9be0eb</code></a>..<a class="h" href="https://go.googlesource.com/go/+/165383381199de6632665f43561e8e0dfc96f067"><code>1653833811</code></a></td>
+<td>2023-07-18</td>
+<td>883</td>
+</tr>
+<tr>
+<td>Go 1.23</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/165383381199de6632665f43561e8e0dfc96f067"><code>1653833811</code></a>..<a class="h" href="https://go.googlesource.com/go/+/c622f5c341134f4164b2baf67632657862996029"><code>c622f5c341</code></a></td>
+<td>2024-01-19</td>
+<td>667</td>
+</tr>
+<tr>
+<td>Go 1.24</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/c622f5c341134f4164b2baf67632657862996029"><code>c622f5c341</code></a>..<a class="h" href="https://go.googlesource.com/go/+/9da530f11ac8331e9326290e42e9a39e7bd56d35"><code>9da530f11a</code></a></td>
+<td>2024-07-22</td>
+<td>718</td>
+</tr>
+<tr>
+<td>Go 1.25</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/9da530f11ac8331e9326290e42e9a39e7bd56d35"><code>9da530f11a</code></a>..<a class="h" href="https://go.googlesource.com/go/+/2696a11a9743a910faa6a46c572a3b1aa1f5f6e8"><code>2696a11a97</code></a></td>
+<td>2025-02-03</td>
+<td>650</td>
+</tr>
+<tr>
+<td>Go 1.26</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/2696a11a9743a910faa6a46c572a3b1aa1f5f6e8"><code>2696a11a97</code></a>..<a class="h" href="https://go.googlesource.com/go/+/83c44ec0326d90e75d4672f17630b348811a02ab"><code>83c44ec032</code></a></td>
+<td>2025-07-23</td>
+<td>1,082</td>
+</tr>
+<tr>
+<td>Go 1.27</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/83c44ec0326d90e75d4672f17630b348811a02ab"><code>83c44ec032</code></a>..<a class="h" href="https://go.googlesource.com/go/+/6c87434d24a30d91c75ada81ea3f82bfaa42271f"><code>6c87434d24</code></a></td>
+<td>2026-01-21</td>
+<td>861</td>
+</tr>
+<tr>
+<td>Go 1.28 (dev)</td>
+<td><a class="h" href="https://go.googlesource.com/go/+/6c87434d24a30d91c75ada81ea3f82bfaa42271f"><code>6c87434d24</code></a>..<a class="h" href="https://go.googlesource.com/go/+/4494c64f5ac60ef7fb26948ca4894bf45c84cf32"><code>4494c64f5a</code></a> (HEAD)</td>
+<td>2026-07-14</td>
+<td>766</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How releases are delimited: Go 1.0 – 1.17.</strong> Before Go 1.13 there was no <code>internal/goversion</code> bump to cut cycles on, and early release branches were often merged back into master. So for these releases a commit belongs to the <strong>first release tag that contains it</strong>: <code>git rev-list go1.N ^go1.(N-1)</code>. The 54 cherry-picks made on release branches (<code>[release-branch.go1.N]</code> subjects) are treated as noise. “Go 1.0” means everything up to the <code>go1</code> tag: the whole pre-release history, from the first compiler and runtime commits in June 2008, through the open-sourcing in November 2009 and the weekly snapshots, to Go 1. Joke commits dated 1972–1988 at the root of the repository are excluded. The two conventions meet without a gap: every in-scope commit reachable from the 1.18 cycle’s opening commit is contained in the <code>go1.17</code> tag.</p>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th>Commits</th>
+<th>Tagged</th>
+<th>In-scope commits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go 1.0</td>
+<td><code>go1</code> (2008-06 → 2012-03)</td>
+<td>2012-03-28</td>
+<td>3,138</td>
+</tr>
+<tr>
+<td>Go 1.1</td>
+<td><code>go1.1 ^go1</code></td>
+<td>2013-05-13</td>
+<td>967</td>
+</tr>
+<tr>
+<td>Go 1.2</td>
+<td><code>go1.2 ^go1.1</code></td>
+<td>2013-11-29</td>
+<td>531</td>
+</tr>
+<tr>
+<td>Go 1.3</td>
+<td><code>go1.3 ^go1.2</code></td>
+<td>2014-06-19</td>
+<td>599</td>
+</tr>
+<tr>
+<td>Go 1.4</td>
+<td><code>go1.4 ^go1.3</code></td>
+<td>2014-12-11</td>
+<td>644</td>
+</tr>
+<tr>
+<td>Go 1.5</td>
+<td><code>go1.5 ^go1.4</code></td>
+<td>2015-08-19</td>
+<td>1,617</td>
+</tr>
+<tr>
+<td>Go 1.6</td>
+<td><code>go1.6 ^go1.5</code></td>
+<td>2016-02-17</td>
+<td>719</td>
+</tr>
+<tr>
+<td>Go 1.7</td>
+<td><code>go1.7 ^go1.6</code></td>
+<td>2016-08-15</td>
+<td>1,594</td>
+</tr>
+<tr>
+<td>Go 1.8</td>
+<td><code>go1.8 ^go1.7</code></td>
+<td>2017-02-16</td>
+<td>1,012</td>
+</tr>
+<tr>
+<td>Go 1.9</td>
+<td><code>go1.9 ^go1.8</code></td>
+<td>2017-08-24</td>
+<td>1,136</td>
+</tr>
+<tr>
+<td>Go 1.10</td>
+<td><code>go1.10 ^go1.9</code></td>
+<td>2018-02-15</td>
+<td>793</td>
+</tr>
+<tr>
+<td>Go 1.11</td>
+<td><code>go1.11 ^go1.10</code></td>
+<td>2018-08-24</td>
+<td>991</td>
+</tr>
+<tr>
+<td>Go 1.12</td>
+<td><code>go1.12 ^go1.11</code></td>
+<td>2019-02-25</td>
+<td>659</td>
+</tr>
+<tr>
+<td>Go 1.13</td>
+<td><code>go1.13 ^go1.12</code></td>
+<td>2019-09-03</td>
+<td>567</td>
+</tr>
+<tr>
+<td>Go 1.14</td>
+<td><code>go1.14 ^go1.13</code></td>
+<td>2020-02-25</td>
+<td>826</td>
+</tr>
+<tr>
+<td>Go 1.15</td>
+<td><code>go1.15 ^go1.14</code></td>
+<td>2020-08-11</td>
+<td>963</td>
+</tr>
+<tr>
+<td>Go 1.16</td>
+<td><code>go1.16 ^go1.15</code></td>
+<td>2021-02-16</td>
+<td>862</td>
+</tr>
+<tr>
+<td>Go 1.17</td>
+<td><code>go1.17 ^go1.16</code></td>
+<td>2021-08-16</td>
+<td>1,482</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paths in scope:</strong></p>
+<ul>
+<li><code>src/runtime</code></li>
+<li><code>src/internal/{runtime,abi,goarch,goos,cpu,bytealg,buildcfg,goexperiment,trace,sync,chacha8rand,race,asan,msan,synctest,simd,reflectlite,pkgbits,types,coverage,profile}</code></li>
+<li><code>src/{unique,weak,sync,iter,simd,reflect}</code></li>
+<li><code>src/cmd/compile</code>, <code>src/cmd/internal/{obj,objabi,src,dwarf,goobj,goobj2,sys}</code>, <code>src/cmd/link</code>, <code>src/cmd/asm</code></li>
+<li>Historic equivalents:
+<ul>
+<li><code>src/pkg/{runtime,reflect,sync}</code>, <code>src/lib/{runtime,reflect,sync}</code></li>
+<li><code>src/cmd/gc</code>, <code>src/cmd/{5,6,8,9}{g,l,a,c}</code>, <code>src/cmd/cc</code>, <code>src/cmd/ld</code>, <code>src/liblink</code></li>
+<li><code>src/cmd/internal/{gc,ld,asm,arch}</code>, <code>src/cmd/new*</code>/<code>old*</code> (the transitional copies made during the C → Go translation)</li>
+</ul></li>
+</ul>
+<p><strong>Out of scope:</strong> <code>cmd/go</code>, <code>cmd/cgo</code>, <code>cmd/dist</code>, <code>go/types</code> (except as the mirror of <code>types2</code>), and the rest of the standard library.</p>
+<p><strong>Reading the citations.</strong> Every claim cites the commits it rests on, and each hash links to <code>go.googlesource.com</code>. A bullet often condenses dozens of commits. Benchmark figures are quoted from the commit messages and reflect the author’s measurement at the time. A small superscript after a hash (for example <sup class="xr">1.9</sup>) marks a commit that landed in a different release from the bullet that cites it, usually as context. About 160 of the roughly 23,000 pre-1.18 citations carry one, most of them off by a single release.</p>
+<h1 id="contents">Contents</h1><div class="cols"><div><h2 id="topics">Part I — Topics</h2><p class="meta">Thread by thread, oldest era first.</p><ul class="toc"><li><a href="memory.html"><strong>Memory management</strong></a> <span class="meta">· 38 threads</span><br><a href="memory.html#area-p-mem0">Go 1.0–1.17</a> · <a href="memory.html#area-mem">Go 1.18–1.28</a></li><li><a href="scheduler.html"><strong>Scheduler and concurrency</strong></a> <span class="meta">· 31 threads</span><br><a href="scheduler.html#area-p-sched0">Go 1.0–1.17</a> · <a href="scheduler.html#area-sched">Go 1.18–1.28</a></li><li><a href="data-structures.html"><strong>Data structures and type metadata</strong></a> <span class="meta">· 32 threads</span><br><a href="data-structures.html#area-p-data0">Go 1.0–1.17</a> · <a href="data-structures.html#area-data">Go 1.18–1.28</a></li><li><a href="diagnostics.html"><strong>Diagnostics and knobs</strong></a> <span class="meta">· 21 threads</span><br><a href="diagnostics.html#area-p-diag0">Go 1.0–1.17</a> · <a href="diagnostics.html#area-diag">Go 1.18–1.28</a></li><li><a href="os-stacks.html"><strong>OS layer, stacks and panics</strong></a> <span class="meta">· 48 threads</span><br><a href="os-stacks.html#area-p-os0">Go 1.0–1.4</a> · <a href="os-stacks.html#area-p-os1">Go 1.5–1.17</a> · <a href="os-stacks.html#area-os">Go 1.18–1.28</a></li><li><a href="frontend.html"><strong>Compiler frontend</strong></a> <span class="meta">· 81 threads</span><br><a href="frontend.html#area-p-fe0">Go 1.0: 2008–2012</a> · <a href="frontend.html#area-p-fe1">Go 1.1–1.9</a> · <a href="frontend.html#area-p-fe2">Go 1.10–1.17</a> · <a href="frontend.html#area-fe-types">Go 1.18–1.28 · types2</a> · <a href="frontend.html#area-fe-ir">Go 1.18–1.28 · syntax, IR, generics</a></li><li><a href="middle-end.html"><strong>Middle end and SSA optimizer</strong></a> <span class="meta">· 55 threads</span><br><a href="middle-end.html#area-p-opt0">Go 1.0–1.9</a> · <a href="middle-end.html#area-p-opt1">Go 1.10–1.17</a> · <a href="middle-end.html#area-opt">Go 1.18–1.28</a></li><li><a href="backends.html"><strong>Backends and assemblers</strong></a> <span class="meta">· 85 threads</span><br><a href="backends.html#area-p-be0">Go 1.0–1.6</a> · <a href="backends.html#area-p-be1">Go 1.7–1.11</a> · <a href="backends.html#area-p-be2">Go 1.12–1.17</a> · <a href="backends.html#area-backend">Go 1.18–1.28 · architectures, ABI</a> · <a href="backends.html#area-simd">Go 1.18–1.28 · SIMD</a></li><li><a href="linker.html"><strong>Linker and object files</strong></a> <span class="meta">· 45 threads</span><br><a href="linker.html#area-p-lk0">Go 1.0–1.9</a> · <a href="linker.html#area-p-lk1">Go 1.10–1.17</a> · <a href="linker.html#area-linker">Go 1.18–1.28</a></li></ul></div><div><h2 id="releases">Part II — Releases</h2><p class="meta">Release by release, every area.</p><ul class="toc rl"><li><a href="go1.0.html#rel0"><strong>Go 1.0 (2008–12)</strong></a> <span class="meta">· 3,138 commits</span></li><li><a href="go1.1.html#rel1"><strong>Go 1.1</strong></a> <span class="meta">· 967 commits</span></li><li><a href="go1.2.html#rel2"><strong>Go 1.2</strong></a> <span class="meta">· 531 commits</span></li><li><a href="go1.3.html#rel3"><strong>Go 1.3</strong></a> <span class="meta">· 599 commits</span></li><li><a href="go1.4.html#rel4"><strong>Go 1.4</strong></a> <span class="meta">· 644 commits</span></li><li><a href="go1.5.html#rel5"><strong>Go 1.5</strong></a> <span class="meta">· 1,617 commits</span></li><li><a href="go1.6.html#rel6"><strong>Go 1.6</strong></a> <span class="meta">· 719 commits</span></li><li><a href="go1.7.html#rel7"><strong>Go 1.7</strong></a> <span class="meta">· 1,594 commits</span></li><li><a href="go1.8.html#rel8"><strong>Go 1.8</strong></a> <span class="meta">· 1,012 commits</span></li><li><a href="go1.9.html#rel9"><strong>Go 1.9</strong></a> <span class="meta">· 1,136 commits</span></li><li><a href="go1.10.html#rel10"><strong>Go 1.10</strong></a> <span class="meta">· 793 commits</span></li><li><a href="go1.11.html#rel11"><strong>Go 1.11</strong></a> <span class="meta">· 991 commits</span></li><li><a href="go1.12.html#rel12"><strong>Go 1.12</strong></a> <span class="meta">· 659 commits</span></li><li><a href="go1.13.html#rel13"><strong>Go 1.13</strong></a> <span class="meta">· 567 commits</span></li><li><a href="go1.14.html#rel14"><strong>Go 1.14</strong></a> <span class="meta">· 826 commits</span></li><li><a href="go1.15.html#rel15"><strong>Go 1.15</strong></a> <span class="meta">· 963 commits</span></li><li><a href="go1.16.html#rel16"><strong>Go 1.16</strong></a> <span class="meta">· 862 commits</span></li><li><a href="go1.17.html#rel17"><strong>Go 1.17</strong></a> <span class="meta">· 1,482 commits</span></li><li><a href="go1.18.html#rel18"><strong>Go 1.18</strong></a> <span class="meta">· 1,569 commits</span></li><li><a href="go1.19.html#rel19"><strong>Go 1.19</strong></a> <span class="meta">· 735 commits</span></li><li><a href="go1.20.html#rel20"><strong>Go 1.20</strong></a> <span class="meta">· 953 commits</span></li><li><a href="go1.21.html#rel21"><strong>Go 1.21</strong></a> <span class="meta">· 967 commits</span></li><li><a href="go1.22.html#rel22"><strong>Go 1.22</strong></a> <span class="meta">· 883 commits</span></li><li><a href="go1.23.html#rel23"><strong>Go 1.23</strong></a> <span class="meta">· 667 commits</span></li><li><a href="go1.24.html#rel24"><strong>Go 1.24</strong></a> <span class="meta">· 718 commits</span></li><li><a href="go1.25.html#rel25"><strong>Go 1.25</strong></a> <span class="meta">· 650 commits</span></li><li><a href="go1.26.html#rel26"><strong>Go 1.26</strong></a> <span class="meta">· 1,082 commits</span></li><li><a href="go1.27.html#rel27"><strong>Go 1.27</strong></a> <span class="meta">· 861 commits</span></li><li><a href="go1.28.html#rel28"><strong>Go 1.28 (dev)</strong></a> <span class="meta">· 766 commits</span></li></ul><p><a href="map.html">Thread × release map</a> · <a href="knobs.html">Experiments and knobs</a></p></div></div><h1 id="overview">Overview</h1>
+<p>This section summarizes the 436 threads in Part I: 268 for Go 1.0–1.17 and 168 for Go 1.18 onwards. It covers two things: the big arcs that cut across the runtime and the compiler, and what defines each release. Each link jumps to the full thread, which has the design and the commit-by-commit timeline.</p>
+<h2>The big arcs</h2>
+<p>Each arc is a chain of the stages it went through. “→” separates releases, and <em>HEAD</em> means the development tree as of 2026-10-30. Arcs that began before 1.18 open with a <em>Before 1.18</em> line.</p>
+<p><strong>The toolchain rewrites itself (before 1.18).</strong></p>
+<ul>
+<li>The C frontend <a href="frontend.html#p-fe0-t1"><code>gc</code></a> with yacc grammar, <a href="backends.html#p-be0-t9">Plan 9 C compilers</a> for the runtime’s C code (1.0).</li>
+<li><a href="scheduler.html#p-sched0-t11">Runtime converted from C to Go</a>: the scheduler, channels, <a href="data-structures.html#p-data0-t18">maps and other data structures</a> and <a href="os-stacks.html#p-os0-t15">panics, symbol tables and locks</a> in 1.4; <a href="memory.html#p-mem0-t17">the allocator and GC</a> and the remaining <a href="os-stacks.html#p-os1-t1">OS, arch and signal layers</a> in 1.5.</li>
+<li><a href="backends.html#p-be0-t11">Compiler, linker and assemblers translated to Go</a>; <a href="frontend.html#p-fe1-t1"><code>cmd/compile</code></a> and <a href="linker.html#p-lk0-t9"><code>cmd/link</code></a> appear and the C compilers are deleted (1.5).</li>
+<li><a href="frontend.html#p-fe1-t2">Hand-written parser replaces yacc</a> (1.6) → <a href="frontend.html#p-fe1-t3"><code>syntax</code> package</a> (1.8) → <a href="frontend.html#p-fe2-t1">dev.regabi: <code>ir.Node</code> interface</a> and <a href="frontend.html#p-fe2-t2">the split of package gc</a> (1.17).</li>
+</ul>
+<p><strong>Generics, end to end.</strong></p>
+<ul>
+<li><p><em>Before 1.18:</em> <a href="frontend.html#p-fe1-t9">type aliases</a> (<code>=&gt;</code> experiment reverted in 1.8, <code>type A = B</code> in 1.9) → <a href="frontend.html#p-fe2-t5">types2, the port of go/types</a> and the <a href="frontend.html#p-fe2-t4">dev.typeparams bring-up</a>: type parameters in <code>syntax</code>, the <code>-G</code> flag, <code>irgen</code> and the first stenciling, all off by default (1.17).</p></li>
+<li><p><em>Compiler:</em> <a href="frontend.html#fe-ir-t1">shape stenciling + dictionaries</a> is built on the old typechecker with <code>-G=3</code> (1.18) → reimplemented on <a href="frontend.html#fe-ir-t2">unified IR</a>, which becomes the default (1.20) → unified IR is the only frontend and the knob is gone (1.21) → export data versions V2 (1.24), V4 (1.27, for generic methods) and V5 (1.28).</p></li>
+<li><p><em>Type checker:</em> <a href="frontend.html#fe-types-t1">bring-up</a> (1.18) → <a href="frontend.html#fe-types-t4">inference rewritten around the unifier</a>: reverse inference, interface inference, untyped-constant defaulting (1.21) → <a href="frontend.html#fe-types-t5"><code>Alias</code> nodes</a> (1.22, opt-in) → generic type aliases (1.24) → core types dropped from the checker (1.25) → <code>gotypesalias</code> removed (1.27) → <a href="frontend.html#fe-ir-t5">generic methods</a> (1.27).</p></li>
+</ul>
+<p><strong>GC: pacing, then the heap layout, then the marking algorithm.</strong></p>
+<ul>
+<li><p><em>Before 1.18:</em> <a href="memory.html#p-mem0-t1">stop-the-world mark-sweep, made parallel</a> (1.0–1.4) with <a href="memory.html#p-mem0-t8">precise heap scanning</a> (1.1 →) and <a href="memory.html#p-mem0-t6">precise stack scanning</a> (opt-in 1.2, default 1.3) → <a href="memory.html#p-mem0-t2">concurrent sweep</a> (1.3) → <a href="memory.html#p-mem0-t3">concurrent mark with write barriers</a> and the <a href="memory.html#p-mem0-t5">pacer with assists and 25% background utilisation</a> (1.5) → <a href="memory.html#p-mem0-t4">decentralised GC state machine</a> (1.6) → <a href="memory.html#p-mem0-t7">hybrid write barrier ends stack rescans</a> (1.8), buffered write barrier (1.10) → mark termination simplified (1.12) → pacer isolated as <code>gcControllerState</code> (1.17).</p></li>
+<li><p><a href="memory.html#mem-t1">Pacer redesign</a>: stacks and globals count toward the goal (1.18) → old pacer deleted (1.19) → cons/mark smoothing goes from a PI controller (1.18) to a 2-cycle average (1.20) to the max of 5 cycles (1.21).</p></li>
+<li><p><a href="memory.html#mem-t2">Soft memory limit + GC CPU limiter</a> (1.19), with the <a href="memory.html#mem-t6">scavenger</a> redesigned alongside it (1.18–1.22).</p></li>
+<li><p><a href="memory.html#mem-t4">Allocation headers</a> replace the heap bitmap (1.22 default → 1.23 only scheme → GC programs removed 1.24).</p></li>
+<li><p><a href="memory.html#mem-t3">Green Tea span-based marking</a>: experiment (1.25) → default with AVX-512 scan kernels (1.26) → kernel hardening (1.27). The <code>nogreenteagc</code> fallback still exists at HEAD.</p></li>
+</ul>
+<p><strong>Allocation fast path.</strong> <a href="memory.html#mem-t5">mallocgc split into specialized paths</a> (1.24) → generated size-specialized malloc (on in master during 1.26 but <strong>off in go1.26.0</strong> → on in 1.27 → flag removed in 1.28). Alongside it:</p>
+<ul>
+<li><em>Before 1.18:</em> <a href="memory.html#p-mem0-t10">tcmalloc-style size classes with mcache/mcentral/mheap</a> (1.0), per-P caches (1.2), tiny allocator (1.3) → <a href="memory.html#p-mem0-t9">allocating from mark bits</a> (1.7) → <a href="memory.html#p-mem0-t14">sparse heap arenas, no heap-size limit</a> (1.11) → <a href="memory.html#p-mem0-t13">background scavenger</a> (1.13) → <a href="memory.html#p-mem0-t12">bitmap page allocator</a> (1.14) → lock-free mcentral (1.15) → <a href="memory.html#p-mem0-t18">consistent sharded heap statistics</a> (1.16).</li>
+<li><a href="memory.html#mem-t12">compiler-directed <code>freegc</code></a> (1.26, opt-in);</li>
+<li><a href="middle-end.html#opt-t4">stack-allocated <code>make</code>/<code>append</code> backing stores</a> (1.25–1.26, with <code>move2heap</code> for slices that escape late).</li>
+</ul>
+<p><strong>Memory-management APIs.</strong> <a href="memory.html#mem-t9"><code>unique</code></a> (1.23) → public <code>weak</code> and <a href="memory.html#mem-t8"><code>AddCleanup</code></a> (1.24) → <code>checkfinalizer</code> and parallel cleanup goroutines (1.25). Also <a href="memory.html#mem-t10"><code>Pinner</code></a> (1.21) and <a href="memory.html#mem-t19">heap-base randomization</a> (1.26).</p>
+<p><strong>Concurrency runtime.</strong></p>
+<ul>
+<li><em>Before 1.18:</em>
+<ul>
+<li><a href="scheduler.html#p-sched0-t1">G-M-P scheduler</a>: global-lock M:N (1.0) → per-P run queues (1.1) → lock-free local run queue (1.3) → <code>GOMAXPROCS</code> defaults to <code>NumCPU</code>, <code>runnext</code> (1.5).</li>
+<li><a href="scheduler.html#p-sched0-t2">Preemption</a>: cooperative via <code>stackguard0</code> (1.2) → <a href="os-stacks.html#p-os1-t7">signal-based asynchronous preemption</a> (1.14).</li>
+<li><a href="scheduler.html#p-sched0-t4">Timers</a>: a <code>timerproc</code> goroutine → per-P timer buckets (1.10) → timers on Ps (1.14).</li>
+<li>Also <a href="scheduler.html#p-sched0-t3">the runtime-integrated netpoller</a> (1.1), <a href="scheduler.html#p-sched0-t8"><code>sync.Pool</code></a> (1.3), <a href="scheduler.html#p-sched0-t9"><code>sync.Map</code></a> (1.9) and <a href="scheduler.html#p-sched0-t10">static lock ranking</a> (1.15).</li>
+</ul></li>
+<li><a href="scheduler.html#sched-t1">Timers</a>: per-timer lock, per-P heap of <code>{timer, when}</code>, GC-able timer channels with synchronous semantics (1.23) → <code>asynctimerchan</code> removed (1.27).</li>
+<li><a href="scheduler.html#sched-t2">Runtime mutex</a>: first futex redesign reverted (1.23) → “spinbit” mutex behind an experiment (1.24) → only implementation (1.25).</li>
+<li><a href="scheduler.html#sched-t6">Container-aware GOMAXPROCS</a> (1.25).</li>
+<li><a href="scheduler.html#sched-t7">synctest bubbles</a>: experiment (1.24) → graduated (1.26).</li>
+<li><a href="scheduler.html#sched-t8">Coroutines for <code>iter.Pull</code></a> (1.22–1.23).</li>
+<li><a href="diagnostics.html#diag-t6">Goroutine-leak profile</a> found by the GC: experiment (1.26) → default (1.27).</li>
+</ul>
+<p><strong>Maps and hashing.</strong></p>
+<ul>
+<li><em>Before 1.18:</em> <a href="data-structures.html#p-data0-t1">hashmap</a> with 8-entry buckets, incremental growth and <a href="data-structures.html#p-data0-t4">AES hash</a> (1.1) → <a href="data-structures.html#p-data0-t2">same-size growth to bound overflow chains</a> (1.8) → <a href="data-structures.html#p-data0-t7">open-addressed itab table</a> (1.10); <a href="data-structures.html#p-data0-t6">type descriptors</a> shrunk with <code>nameOff</code>/<code>typeOff</code> (1.7); <a href="data-structures.html#p-data0-t8">reflect’s Type/Value redesign</a> (1.0).</li>
+<li><a href="data-structures.html#data-t1">Swiss tables</a>: experiment and default (1.24) → old maps deleted (1.26) → <code>mapsplitgroup</code> KKKKVVVV layout (1.27 experiment, 1.28 default).</li>
+<li><a href="data-structures.html#data-t2">Hashing</a>: moved into <code>internal/runtime/maps</code> (1.27) → wyhash for small keys (1.28).</li>
+<li><a href="data-structures.html#data-t11"><code>HashTrieMap</code></a> backs <code>unique</code> and <code>sync.Map</code> (1.24).</li>
+<li><a href="data-structures.html#data-t10">ChaCha8</a> runtime randomness (1.22).</li>
+<li><a href="data-structures.html#data-t4"><code>abi.Type</code> unification</a> (1.21).</li>
+</ul>
+<p><strong>Observability.</strong></p>
+<ul>
+<li><em>Before 1.18:</em> <a href="diagnostics.html#p-diag0-t3">CPU and heap profiling</a> (1.0) → <a href="diagnostics.html#p-diag0-t2">race detector</a> (1.1) → <a href="diagnostics.html#p-diag0-t1">execution tracer v1</a> (1.5) → pprof protobuf output (1.8) → <a href="diagnostics.html#p-diag0-t4">profile labels</a> (1.9) → <a href="diagnostics.html#p-diag0-t6"><code>runtime/metrics</code></a> (1.16).</li>
+<li><a href="diagnostics.html#diag-t1">Execution tracer v2</a>: groundwork (1.20–1.21) → new tracer default (1.22) → v1 deleted (1.23) → <a href="diagnostics.html#diag-t4">flight recorder</a> (1.25) → in-band end-of-generation (1.26).</li>
+<li><a href="diagnostics.html#diag-t2">Frame-pointer unwinding</a>: tracer (1.21) → block/mutex profilers and stack depth 128 (1.23).</li>
+<li><a href="diagnostics.html#diag-t3">Runtime-internal lock contention in the mutex profile</a> (1.22 behind a GODEBUG → unlocker blame and GODEBUG removed, 1.25).</li>
+<li><a href="diagnostics.html#diag-t8">Coverage redesign</a> (1.20).</li>
+</ul>
+<p><strong>Stacks and panics.</strong></p>
+<ul>
+<li><em>Before 1.18:</em>
+<ul>
+<li><a href="os-stacks.html#p-os0-t1">Segmented stacks → copied stacks</a> (1.3), the only mechanism from 1.4, with 2 KB minimum stacks → <a href="os-stacks.html#p-os1-t3">stack barriers, concurrent shrinking, stack objects</a> (1.5–1.12).</li>
+<li><a href="os-stacks.html#p-os1-t5">Defer</a>: heap records → stack-allocated defer records (1.13) → <a href="middle-end.html#p-opt1-t5">open-coded defers</a> (1.14) → go/defer wrapped into argument-less closures (1.17).</li>
+</ul></li>
+<li><a href="os-stacks.html#os-t2">Unwinder rewrite</a>: <code>gentraceback</code> → iterator (1.21) → pcvalue cache on the M (1.22).</li>
+<li><a href="os-stacks.html#os-t1">Defer/panic re-implementation</a>: argless-closure defers (1.18) → <code>PanicNilError</code> (1.21) → shared defer state machine (1.22) → recover via <code>deferreturn</code> PC and logical frames (1.25–1.26).</li>
+<li><a href="os-stacks.html#os-t4">Explicit frame pointers</a> (1.21 onward).</li>
+</ul>
+<p><strong>Compiler middle end.</strong></p>
+<ul>
+<li><em>Before 1.18:</em> <a href="middle-end.html#p-opt0-t6">escape analysis</a> and <a href="middle-end.html#p-opt0-t7">the first inliner</a> in C (1.0) → <a href="middle-end.html#p-opt0-t1">the SSA backend</a> on amd64 (1.7) → SSA on every architecture, with <a href="backends.html#p-be1-t8">the legacy backend deleted</a> (1.8) → <a href="middle-end.html#p-opt1-t1">prove reworked around a poset</a> (1.11) → <a href="middle-end.html#p-opt1-t2">the new escape analysis</a> (1.13) → <a href="middle-end.html#p-opt1-t3">mid-stack inlining</a> tuned (1.12) and extended to recursion cycles (1.15) → <a href="backends.html#p-be2-t2">late call expansion</a> (1.16).</li>
+<li><a href="middle-end.html#opt-t1">PGO</a>: hot-call inlining (1.20) → interface devirtualization (1.21) → function-value devirtualization (1.22) → <code>cmd/preprofile</code> (1.23) → Linux perf profiles (1.28).</li>
+<li><a href="middle-end.html#opt-t2">Inliner</a>: closures strongly favored and an interleaved inline/devirtualize driver (1.24). The <a href="middle-end.html#opt-t5">heuristic “new inliner”</a> has existed since 1.22 and was never enabled.</li>
+<li><a href="middle-end.html#opt-t6">prove</a>: from relations to a dense limit table (1.24) → induction-variable pairs (1.27).</li>
+<li>New passes:
+<ul>
+<li><a href="middle-end.html#opt-t16">SCCP</a>, 1.22;</li>
+<li><a href="middle-end.html#opt-t8">memcombine/DSE/mem2reg</a>, 1.20 onward;</li>
+<li><a href="middle-end.html#opt-t7">known-bits</a>, 1.27;</li>
+<li><a href="middle-end.html#opt-t17">LICM</a>, 1.27;</li>
+<li><a href="middle-end.html#opt-t11">switch lookup tables</a>, 1.27.</li>
+</ul></li>
+</ul>
+<p><strong>Backends.</strong></p>
+<ul>
+<li><em>Before 1.18:</em> <a href="backends.html#p-be0-t1">6g/8g/5g</a> with <a href="backends.html#p-be0-t2">reg.c/peep.c registerization</a> → <a href="backends.html#p-be0-t7">liblink</a> (1.3) → <a href="backends.html#p-be0-t11"><code>cmd/internal/obj</code> and <code>cmd/asm</code> in Go</a> (1.5) → <a href="backends.html#p-be1-t5">per-architecture SSA ports</a> (1.7–1.8) → <a href="backends.html#p-be2-t1">register ABI on amd64</a> with ABI wrappers (1.17). Ports: <a href="backends.html#p-be0-t12">ppc64</a> and <a href="backends.html#p-be0-t13">arm64</a> (1.5), <a href="backends.html#p-be0-t14">mips64</a> (1.6), <a href="backends.html#p-be1-t7">wasm</a> (1.11), <a href="backends.html#p-be2-t7">riscv64</a> (1.14).</li>
+<li><a href="backends.html#backend-t1">Register ABI ports</a>: arm64 and ppc64 (1.18) → riscv64 (1.19) → loong64 (1.22) → s390x (1.26). 386, arm and mips still use ABI0.</li>
+<li>Microarchitecture levels unlock instructions: <a href="backends.html#backend-t3">GOAMD64</a> (1.18), <a href="backends.html#backend-t5">GORISCV64</a> and GOARM64 (1.23).</li>
+<li><a href="backends.html#backend-t8">Duff’s device replaced by generated loops</a> and the <a href="backends.html#backend-t9"><code>panicBounds</code> scheme</a> (1.26).</li>
+<li><a href="backends.html#simd-t3">SIMD</a>: amd64 <code>archsimd</code> (1.26) → NEON, wasm and a <a href="backends.html#simd-t7">portable <code>simd</code> layer</a> (1.27) → <a href="backends.html#simd-t9">SVE</a> (1.28). Still behind <code>GOEXPERIMENT=simd</code> at HEAD.</li>
+</ul>
+<p><strong>Linker.</strong></p>
+<ul>
+<li><em>Before 1.18:</em> <a href="linker.html#p-lk0-t1">5l/6l/8l and <code>src/cmd/ld</code></a> → <a href="linker.html#p-lk0-t8">liblink moves instruction selection into the compilers</a> (1.3) → <a href="linker.html#p-lk0-t9"><code>cmd/link</code> in Go</a> (1.5) → <a href="linker.html#p-lk0-t7">build modes</a>: c-archive/c-shared/shared (1.5), plugin (1.8) → <a href="linker.html#p-lk1-t1">new object file format and loader</a> (1.14–1.16) → <a href="linker.html#p-lk1-t4">pclntab restructured</a> (1.16).</li>
+<li><a href="linker.html#linker-t1">pclntab without relocations</a> (1.18 → 1.26).</li>
+<li><a href="linker.html#linker-t3"><code>//go:linkname</code> lockdown</a> (1.23 onward).</li>
+<li><a href="linker.html#linker-t4">DWARF 5</a> (1.25; still off on darwin, ios and aix).</li>
+</ul>
+<h2>What defines each release</h2>
+<p>The links go to the release in Part II.</p>
+<ul>
+<li><p><strong><a href="go1.0.html#rel0">Go 1.0</a></strong> — Everything up to the <code>go1</code> tag, 2008–2012. 6g/8g/5g with the C frontend <code>gc</code>, Plan 9-derived C compilers and assemblers. Segmented stacks. A tcmalloc-style allocator with a stop-the-world mark-sweep collector. A global-lock M:N scheduler. <code>hashmap.c</code> and the 2009 and 2011 reflect redesigns. Escape analysis and a first inliner. ELF/Mach-O/PE linkers with DWARF and dead-code elimination. <code>runtime/pprof</code>.</p></li>
+<li><p><strong><a href="go1.1.html#rel1">Go 1.1</a></strong> — Per-P scheduler with local run queues. Runtime-integrated network poller. Parallel GC and the first precise heap scanning. 8-entry-bucket hashmap with incremental growth, plus AES hash. Race detector. External (host) linking. <code>int</code> is 64 bits on amd64. Method values.</p></li>
+<li><p><strong><a href="go1.2.html#rel2">Go 1.2</a></strong> — Cooperative preemption via <code>stackguard0</code>. Funcdata/pcdata and pointer maps; precise stack scanning built but shipped opt-in (<code>precisestack</code>). New in-memory symbol table and pclntab. Three-index slices. Per-P allocator caches and <code>persistentalloc</code>.</p></li>
+<li><p><strong><a href="go1.3.html#rel3">Go 1.3</a></strong> — Contiguous (copied) stacks. Precise stack scanning on by default. Concurrent sweep, tiny allocator, 8K pages. liblink: instruction selection moves from the linkers into the compilers and assemblers, with a new object format. <code>sync.Pool</code>. NaCl and Solaris.</p></li>
+<li><p><strong><a href="go1.4.html#rel4">Go 1.4</a></strong> — Most of the runtime converted from C to Go (scheduler, channels, maps, panics, signals). Stack copying is the only mechanism, with 2 KB minimum stacks. The compiler emits write barriers. <code>atomic.Value</code>. Android.</p></li>
+<li><p><strong><a href="go1.5.html#rel5">Go 1.5</a></strong> — The toolchain is Go: compilers, linker and assemblers translated (<code>cmd/compile</code>, <code>cmd/link</code>, <code>cmd/asm</code>, <code>cmd/internal/obj</code>), C compilers deleted. Concurrent GC with pacer, assists and stack barriers. <code>GOMAXPROCS</code> defaults to <code>NumCPU</code>. Execution tracer. Build modes c-archive, c-shared and shared. ppc64 and arm64 ports. Frame-pointer experiment.</p></li>
+<li><p><strong><a href="go1.6.html#rel6">Go 1.6</a></strong> — GC pause work: root jobs in workers, decentralised state machine. Hand-written parser replaces yacc. cgo pointer checks (<code>cgocheck</code>). mips64. PIE and shared libraries on more architectures. MSan. Concurrent-map-misuse detection.</p></li>
+<li><p><strong><a href="go1.7.html#rel7">Go 1.7</a></strong> — SSA backend for amd64: CSE, nil-check elimination, prove/BCE, a global register allocator. Mark-bit-based allocation (<code>allocBits</code>/<code>freeindex</code>). Smaller type descriptors (<code>nameOff</code>/<code>typeOff</code>). Binary export data by default. Linker speed and memory campaign. Frame pointers on by default on amd64.</p></li>
+<li><p><strong><a href="go1.8.html#rel8">Go 1.8</a></strong> — SSA is the only backend on every architecture, and the legacy backend is deleted. Hybrid write barrier, so no more STW stack rescans. New <code>syntax</code> package and noder. Plugins. Cheaper defers and cgo calls. pprof protobuf output. Mutex profile. Same-size map growth.</p></li>
+<li><p><strong><a href="go1.9.html#rel9">Go 1.9</a></strong> — Type aliases. <code>sync.Map</code>. <code>math/bits</code> intrinsics. Inline-aware tracebacks and <code>CallersFrames</code>. Stack barriers removed. Concurrent <code>runtime.GC()</code>. Profile labels. Write-barrier insertion moved into SSA. Devirtualization. Groundwork for the concurrent backend. Monotonic time.</p></li>
+<li><p><strong><a href="go1.10.html#rel10">Go 1.10</a></strong> — Buffered write barrier. Soft and hard heap goals. Per-P timer buckets. Threads can exit and <code>LockOSThread</code> nests. DWARF location lists. AVX/AVX2 in the assembler. Open-addressed itab table. Linker code-health refactor and content-based build IDs.</p></li>
+<li><p><strong><a href="go1.11.html#rel11">Go 1.11</a></strong> — Sparse heap arenas and no heap-size limit. Indexed export format. Concurrent compilation of all functions. Safepoints almost everywhere, with register liveness maps. Prove pass reworked. WebAssembly port. Darwin syscalls through libc. Trace user annotations. DWARF compression. <code>internal/bytealg</code>. Debugger call injection.</p></li>
+<li><p><strong><a href="go1.12.html#rel12">Go 1.12</a></strong> — Mark termination simplified, page reclaimer, more aggressive scavenger. Stack objects. ABI0/ABIInternal symbol split. Binary export removed; <code>-lang</code>. AIX port. <code>MADV_FREE</code>. macOS <code>syscall</code> via libSystem.</p></li>
+<li><p><strong><a href="go1.13.html#rel13">Go 1.13</a></strong> — New escape analysis on by default. Stack-allocated defer records. Background scavenger. Go 2 number literals and signed shift counts. Spec-compliant package init order. <code>sync.Pool</code> victim cache. <code>internal/reflectlite</code>.</p></li>
+<li><p><strong><a href="go1.14.html#rel14">Go 1.14</a></strong> — Asynchronous (signal-based) preemption. Timers on Ps. Open-coded defers. Bitmap page allocator. riscv64 port. First pieces of the new object file format. Overlapping interfaces. <code>checkptr</code>.</p></li>
+<li><p><strong><a href="go1.15.html#rel15">Go 1.15</a></strong> — The new linker: dev.link’s conversion to the loader is complete and the old object format is deleted. Static lock ranking. Lock-free mcentral. Typed aux and the rulegen rewrite. Small-integer interface conversions without allocation. darwin/386 and darwin/arm removed.</p></li>
+<li><p><strong><a href="go1.16.html#rel16">Go 1.16</a></strong> — <code>runtime/metrics</code>. Late call expansion. pclntab restructured and <code>sym.Symbol</code> deleted. <code>//go:embed</code>. 387 removed in favour of softfloat. <code>GOOS=ios</code>. <code>MADV_DONTNEED</code> by default again. Early devirtualization. Frame pointers no longer an experiment.</p></li>
+<li><p><strong><a href="go1.17.html#rel17">Go 1.17</a></strong> — Register-based ABI on amd64. The dev.regabi split of the compiler into packages. dev.typeparams: types2, <code>-G</code>, <code>irgen</code> and first stenciling, all off by default. Pacer extracted into <code>gcControllerState</code>. <code>unsafe.Add</code>/<code>unsafe.Slice</code>. Slice-to-array-pointer conversion. windows/arm64. go/defer wrapped into closures.</p></li>
+<li><p><strong><a href="go1.18.html#rel18">Go 1.18</a></strong> — Generics land: types2 plus GC-shape stenciling on the old typechecker. The register ABI spreads to arm64 and ppc64. The pacer is redesigned to count stacks and globals. <code>GOAMD64</code> levels appear. Defers become argless closures. pclntab starts losing relocations.</p></li>
+<li><p><strong><a href="go1.19.html#rel19">Go 1.19</a></strong> — Soft memory limit (<code>GOMEMLIMIT</code>) and GC CPU limiter. Scavenger index redesign. Jump tables for switches. riscv64 register ABI. linux/loong64 port. Unified IR gains full generics support.</p></li>
+<li><p><strong><a href="go1.20.html#rel20">Go 1.20</a></strong> — Unified IR becomes the default frontend with real dictionaries. PGO preview (hot-call inlining). Coverage redesign. Arenas experiment. 1-bit heap bitmap. Pacer smoothing via moving average. <code>clear</code> is type-checked here but gated to go1.21.</p></li>
+<li><p><strong><a href="go1.21.html#rel21">Go 1.21</a></strong> — Inference rewrite plus <code>min</code>/<code>max</code>/<code>clear</code>. Unified IR is the only frontend. <code>abi.Type</code> unification. Unwinder iterator replaces <code>gentraceback</code>. PGO devirtualization, and the compiler itself is built with PGO. <code>PanicNilError</code>. <code>Pinner</code>. wasip1. Tracer groundwork and FP unwinding.</p></li>
+<li><p><strong><a href="go1.22.html#rel22">Go 1.22</a></strong> — Per-iteration loop variables. Range over int. Range-over-func as an experiment with coroutines. Allocation headers. New execution tracer by default. ChaCha8 randomness. Type-switch and assertion caches. SCCP. loong64 register ABI.</p></li>
+<li><p><strong><a href="go1.23.html#rel23">Go 1.23</a></strong> — Timer rewrite with GC-able synchronous timer channels. Range-over-func ships. <code>unique</code> and internal weak pointers. Linkname lockdown. v1 tracer deleted. Profile stack depth 128. First spinbit attempt (reverted). Stack-slot merging. <code>GOARM64</code>/<code>GORISCV64</code>.</p></li>
+<li><p><strong><a href="go1.24.html#rel24">Go 1.24</a></strong> — Swiss-table maps. Spinbit mutex. <code>HashTrieMap</code>-backed <code>sync.Map</code>. <code>weak</code> and <code>AddCleanup</code>. synctest experiment. Generic type aliases. prove’s limit table. mallocgc specialization. vDSO <code>getrandom</code>. Closure-favoring inliner.</p></li>
+<li><p><strong><a href="go1.25.html#rel25">Go 1.25</a></strong> — Green Tea GC experiment. Container-aware GOMAXPROCS. Flight recorder. Spinbit everywhere. DWARF 5. Core types gone from the checker. Unlocker-blame runtime-lock profiling. Allocation-free interface conversions of constants and composite literals.</p></li>
+<li><p><strong><a href="go1.26.html#rel26">Go 1.26</a></strong> — Green Tea by default. SIMD (<code>archsimd</code>, amd64) lands behind an experiment. Old maps deleted. <code>move2heap</code> stack-allocated appends. <code>panicBounds</code>. Duff’s device removed. s390x register ABI. <code>runtime/secret</code>, heap-base randomization and <code>freegc</code> experiments. Goroutine-leak profile experiment. <code>new(expr)</code>. Size-specialized malloc: on in master, off in the release.</p></li>
+<li><p><strong><a href="go1.27.html#rel27">Go 1.27</a></strong> — Generic methods. Size-specialized malloc on. Goroutine-leak profile by default. <code>asynctimerchan</code> and <code>gotypesalias</code> removed. <code>mapsplitgroup</code> experiment. Known-bits and LICM passes. Switch lookup tables. NEON, wasm and portable SIMD. Promoted fields as composite-literal keys.</p></li>
+<li><p><strong><a href="go1.28.html#rel28">Go 1.28 (dev)</a></strong> — <code>mapsplitgroup</code> by default. SSA package split into <code>ssacompile</code> and others. ARM64 SVE. The size-specialized-malloc flag is removed. Wyhash for small keys. Inlinable <code>recover</code> callers. Composite-literal type elision in progress. <code>string(int)</code> restricted. Linux perf profiles accepted for PGO.</p></li>
+</ul>
+
+
+<footer>Built from the Go repository's commit history up to <code>4494c64f5a</code> (2026-10-30). Part of <a href="../">Go: A Documentary</a>.</footer>
+</main>
+<script>
+// tag list items by their own badge (first badge directly inside the item)
+document.querySelectorAll('main li').forEach(li=>{
+  const t=[...li.children].find(e=>e.classList&&e.classList.contains('tag'))||li.querySelector(':scope > p > .tag');
+  if(t){li.classList.add(t.classList.contains('int')?'intitem':t.classList.contains('uv')?'uvitem':'x')}
+});
+document.querySelectorAll('nav input[name=f]').forEach(r=>r.addEventListener('change',e=>{
+  document.body.classList.remove('only-int','only-uv'); if(e.target.value)document.body.classList.add(e.target.value);
+}));
+</script>
+<script async src="//changkun.de/urlstat/client.js"></script>
+</body>
+</html>

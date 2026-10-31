@@ -380,6 +380,11 @@ his work is mainly in the runtime memory system such as the refactoring of memor
 A timeline helps you identify the point in time about a document that is
 reflected in Go versions.
 
+For what changed in the runtime and compiler in each of these releases,
+including internal changes that release notes leave out, see the
+[runtime and compiler history reconstructed from commits](https://golang.design/history/runtime-compiler/)
+(Go 1.0 to 1.28).
+
 | Version | Release Expected/Actual Date | Days Since Last Release (+Delay) |
 |:--|:--|:--|
 | Go 1    | - / 2012.03.28 | - |
