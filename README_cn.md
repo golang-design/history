@@ -28,6 +28,8 @@
     * [错误值 (1.13)](#%E9%94%99%E8%AF%AF%E5%80%BC+%281.13%29)
     * [通道、选择器](#%E9%80%9A%E9%81%93%E3%80%81%E9%80%89%E6%8B%A9%E5%99%A8)
     * [泛型](#%E6%B3%9B%E5%9E%8B)
+    * [迭代器](#%E8%BF%AD%E4%BB%A3%E5%99%A8)
+    * [兼容性](#%E5%85%BC%E5%AE%B9%E6%80%A7)
   * [编译工具链](#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE)
     * [编译](#%E7%BC%96%E8%AF%91)
     * [连接器](#%E8%BF%9E%E6%8E%A5%E5%99%A8)
@@ -35,7 +37,7 @@
     * [竞争检测器](#%E7%AB%9E%E4%BA%89%E6%A3%80%E6%B5%8B%E5%99%A8)
     * [跟踪器](#%E8%B7%9F%E8%B8%AA%E5%99%A8)
     * [锁分析](#%E9%94%81%E5%88%86%E6%9E%90)
-    * [构建](#%E6%9E%84%E5%BB%BA)
+    * [构建器](#%E6%9E%84%E5%BB%BA%E5%99%A8)
     * [模块](#%E6%A8%A1%E5%9D%97)
     * [gopls](#gopls)
     * [测试，x/perf](#%E6%B5%8B%E8%AF%95%EF%BC%8Cx%2Fperf)
@@ -440,7 +442,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 时间线能帮助你确定关联到 Go 版本文档。
 
 关于每个版本中运行时与编译器的具体变化（包括发布说明中省略的内部改动），参见
-[基于提交历史重建的运行时与编译器演进史](https://golang.design/history/runtime-compiler/)（Go 1.0 至 1.28，英文）。
+[基于提交历史重建的运行时与编译器演进史](https://golang.design/history/runtime-compiler/)（Go 1.0 至 1.28，英文）。其中的[未选择的路（Paths not taken）](https://golang.design/history/runtime-compiler/paths.html)一页收录了曾经实现或设计、但最终没有以该形式合入的工作，例如面向请求的垃圾收集器（ROC）和无锁通道，并给出每项工作停下来的原因（英文）。
 
 | 版本 | 发布预期/实际时间 | 距离上一次发布天数 (+Delay) |
 |:--|:--|:--|
@@ -545,6 +547,11 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [talk/refactor-video](https://www.youtube.com/watch?v=h6Cw9iCDVcU) <details><summary>Russ Cox，重构代码库（在 Go 的帮助下）。2016年 GothamGo，2016年11月18日。</summary>
     <p><b>Summary:</b>在 Russ Cox 题为“GothamGo 2016 代码库重构（在 Go 的帮助下）”的播客节目中，讨论了在 Go 中使用大型代码库的挑战以及可扩展性的重要性。 Cox从早期就参与了Go编程语言的开发，他分享了他对Go如何更好地协助代码包结构重构的见解。这一集首先强调了处理大型代码库（例如 Google 的单一存储库）时所面临的挑战，并强调了高效导入和最小化不必要依赖项的必要性。 Cox 解释了将代码拆分为单独包的原因，其中包括提高可管理性和减少依赖性。 Cox 随后讨论了代码库重构的过程，建议将其分为三个阶段：进行初步更改、更新代码以使用新 API 以及删除旧 API。这种渐进的方法可以更轻松地审查和提交较小的提交，特别是在处理分布在多个存储库中的代码时。该播客还深入探讨了在 Go 编程中实现可互换性的挑战。虽然函数和类型可以定义为可互换的，但将类型从一个包移动到另一个包会带来限制。 Cox 提到了 2011 年实施的解决方案，但表示它可能并不理想。他还强调了 Kubernetes 项目在代码库中移动类型时面临的困难。 Cox 提议添加一种机制来为类型创建可互换的名称，并强调 Go 需要支持逐步代码修复以在包之间移动类型。 他对有关此事的意见表示感谢，并提到正在重新评估类型别名的包含，以确定适当的行动方案。总的来说，该播客提供了有关在 Go 中使用大型代码库的挑战的宝贵见解，并提供了改进代码库重构和实现可互换性的建议。</p></details>
   + [doc/refactor](https://talks.go.dev/2016/refactor.article) Russ Cox，重构代码库（在 Go 的帮助下）。
+- [design/alias-decls](https://go.dev/design/16339-alias-decls) Robert Griesemer、Rob Pike，提案：Go 的别名声明。2016年7月18日。
+- [issue/76472](https://go.dev/issue/76472) 在 1.27 中移除 gotypesalias 和 asynctimerchan 两个 GODEBUG 设置
+- [issue/17487](https://go.dev/issue/17487) cmd/compile：支持别名
+- [issue/67547](https://go.dev/issue/67547) go/types，types2：审查类型断言中潜在的 Alias 缺陷
+- [issue/65294](https://go.dev/issue/65294) x/tools：使测试在 GODEBUG=gotypesalias=1 下通过
 
 [Back To Top](#top)
 
@@ -559,6 +566,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [issue/26275](https://go.dev/issue/26275) 规范：在使用 defer 的函数中记录调用者的行为
   + [issue/34530](https://go.dev/issue/34530) 规范：澄清何时调用 recover 停止 panic
   + [cl/189377](https://go.dev/cl/189377) 规范：列举 recover 行为和递归 panic 的详情。
+- [issue/34481](https://go.dev/issue/34481) cmd/compile，运行时：通过内联代码实现低成本 defer 的设计
 
 [Back To Top](#top)
 
@@ -576,6 +584,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/err-handle-check](https://go.dev/design/go2draft-error-handling) Marcel van Lohuizen，错误处理——设计草稿。2018年8月27日。
 - [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer 提案：Go 内置错误检查函数 `try`, 2019年6月12日。
   + [issue/32437](https://go.dev/issue/32437#issuecomment-512035919) 提案：Go 内置错误检查函数 `try`。判定回复。
+- [issue/71203](https://go.dev/issue/71203) 提案：规范：用 `?` 减少错误处理的样板代码
 - [design/err-inspect](https://go.dev/design/go2draft-error-inspection) Jonathan Amsterdam、Damien Neil，错误检查——设计草稿，2018年8月27日。
 - [design/err-values-overview](https://go.dev/design/go2draft-error-values-overview) Russ Cox，错误处理——问题综述。2018年8月27日。
 - [design/error-values](https://go.dev/design/29934-error-values) Jonathan Amsterdam、Russ Cox、Marcel van Lohuizen、Damien Neil 提案：Go 2 错误检查。2019年1月25日。
@@ -647,6 +656,69 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [discuss/47331](https://github.com/golang/go/discussions/47331) 提案：容器/集合：提供泛型集合类型的新包（讨论）
   + [discuss/47330](https://github.com/golang/go/discussions/47330) 提案：maps：提供泛型 map 函数的新包（讨论）
   + [issue/47657](https://go.dev/issue/47657) 提案：sync，sync/atomic：添加 PoolOf, MapOf, ValueOf
+- [issue/70128](https://go.dev/issue/70128) 规范：移除核心类型（core type）的概念
+  + [issue/60994](https://go.dev/issue/60994) 提案：go/types：添加 func CommonUnderlying(Type) Type（原名 CoreType）
+- [issue/56548](https://go.dev/issue/56548) 规范：允许基本接口类型实例化 comparable 类型参数
+- [design/parameterized-go-types](https://go.dev/design/47916-parameterized-go-types) Rob Findley、Robert Griesemer，为支持类型参数而对 go/types 所做的扩展。2021年8月17日。
+- [issue/12854](https://go.dev/issue/12854) 规范：可推断类型的复合字面量
+  + [issue/77245](https://go.dev/issue/77245) 规范：函数类型推断应适用于所有赋值上下文
+- [issue/61035](https://go.dev/issue/61035) go/types，types2：修正 SizesFor("gc", ...)，使其与 gc 的实际行为一致
+- [issue/52728](https://go.dev/issue/52728) go/types：保证通过 API 可达的不同实例数量有限
+- [issue/57192](https://go.dev/issue/57192) 规范：方法集大小不同的接口永远无法合一（但其实可能可以）
+- [issue/63974](https://go.dev/issue/63974) go/types，types2：在编译器能够使用 go/version 后改用它
+- [issue/51343](https://go.dev/issue/51343) go/types，types2：简化带类型参数的方法接收者的类型检查
+- [issue/55326](https://go.dev/issue/55326) go/types，types2：消除类型检查器与编译器错误信息之间的差异
+- [issue/54511](https://go.dev/issue/54511) types2，go/types：共享测试
+- [issue/69673](https://go.dev/issue/69673) go/types：与位置无关的类型检查
+- [issue/57410](https://go.dev/issue/57410) cmd/compile：移除 GOEXPERIMENT=nounified
+- [issue/68778](https://go.dev/issue/68778) exportdata：支持带类型参数的别名
+
+[Back To Top](#top)
+
+### 迭代器
+
+- [issue/24282](https://go.dev/issue/24282) 提案：Go 2：改进 for 循环的易用性
+- [issue/40605](https://go.dev/issue/40605) 提案：Go 2：迭代器
+- [issue/43557](https://go.dev/issue/43557) 提案：Go 2：以函数值作为迭代器
+- [issue/47707](https://go.dev/issue/47707) 提案：Go 2：规范：对已定义类型使用 for range
+- [issue/48567](https://go.dev/issue/48567) 提案：使用通道作为迭代器
+- [issue/50112](https://go.dev/issue/50112) 提案：Go 的集合包与迭代器设计
+- [issue/54047](https://go.dev/issue/54047) 提案：Go 2：添加新的迭代器语法、包和接口
+- [discuss/54245](https://go.dev/issue/54245) 讨论：标准迭代器接口
+- [issue/20733](https://go.dev/issue/20733) 提案：规范：在每次迭代中重新定义 range 循环变量
+- [issue/56010](https://go.dev/issue/56010) 重新定义 for 循环变量的语义
+- [issue/60078](https://go.dev/issue/60078) 规范：不易出错的循环变量作用域
+- [discuss/56413](https://go.dev/issue/56413) 通过对函数值使用 range 实现用户自定义迭代
+- [issue/61405](https://go.dev/issue/61405) 提案：规范：添加对整数和函数的 range
+- [doc/coro](https://research.swtch.com/coro) Go 的协程
+- [doc/undefined-behavior](https://research.swtch.com/ub) C 和 C++ 将性能置于正确性之上
+- [issue/54650](https://go.dev/issue/54650) x/exp/slices：Delete 存在内存泄漏
+- [issue/66455](https://go.dev/issue/66455) 提案：errors：添加 All 和 AllAs 迭代器
+- [issue/61898](https://go.dev/issue/61898) 提案：x/exp/xiter：提供迭代器适配器的新包
+- [issue/65236](https://go.dev/issue/65236) 规范：允许对函数使用 range 时省略迭代变量
+- [issue/61899](https://go.dev/issue/61899) slices：添加迭代器相关函数
+- [issue/61897](https://go.dev/issue/61897) iter：用于迭代器的新包
+- [issue/61900](https://go.dev/issue/61900) maps：添加迭代器相关函数
+- [issue/61901](https://go.dev/issue/61901) bytes，strings：为现有函数添加迭代器形式
+- [issue/65237](https://go.dev/issue/65237) 规范：为对函数使用 range 编写文档
+- [design/loopvar](https://go.dev/design/60078-loopvar) 提案：不易出错的循环变量作用域。
+- [issue/57969](https://go.dev/issue/57969) cmd/compile：添加 GOEXPERIMENT=loopvar
+- [issue/61717](https://go.dev/issue/61717) cmd/compile：在 GOEXPERIMENT=range 下添加新的 range 语义
+
+[Back To Top](#top)
+
+### 兼容性
+
+- [doc/go1compat](https://go.dev/doc/go1compat) Go 1 与 Go 程序的未来
+- [discussion/55090](https://go.dev/issue/55090) 扩展 Go 的向后兼容性
+  + [issue/56986](https://go.dev/issue/56986) Go 的扩展向后兼容性
+  + [design/godebug](https://go.dev/design/56986-godebug) 提案：Go 的扩展向后兼容性
+- [discussion/55092](https://go.dev/issue/55092) 扩展 Go 的向前兼容性
+  + [issue/57001](https://go.dev/issue/57001) Go 的扩展向前兼容性
+  + [design/gotoolchain](https://go.dev/design/57001-gotoolchain) 提案：Go 的扩展向前兼容性
+- [issue/33791](https://go.dev/issue/33791) 提案：为重大变更添加明确的决策文档
+- [issue/28221](https://go.dev/issue/28221) cmd/go，cmd/compile：记录语言版本以支持语言过渡
+- [issue/31793](https://go.dev/issue/31793) go/types，types2：为不同的语言版本提供配置支持
 
 [Back To Top](#top)
 
@@ -685,9 +757,69 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/64align](https://go.dev/design/36606-64-bit-field-alignment) Dan Scales，提案：在32位系统上使64位字段作为64位对齐，添加 //go:packed，//go:align 指令，2020年6月8日。
   + [issue/599](https://go.dev/issue/599) cmd/compile: 在32位系统上使64位字段作为64位对齐
   + [issue/36606](https://go.dev/issue/36606) 提案：cmd/compile: 在32位系统上使64位字段作为64位对齐，在结构体上添加 //go:packed，//go:align 指令
+  + [issue/19057](https://go.dev/issue/19057) 提案：运行时：添加可用于提高对齐要求的 AlignedN 类型
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) <details><summary>gccgo 的简要概述，“另一个” Go 编译器。2015年8月6日。</summary>
     <p><b>Summary:</b>在本集中，来自 Google 核心 Go 语言团队的 Chris Manghane 简要概述了 gccgo，也称为“另一个 Go 编译器”。Gccgo 是一个 Go 编译器，利用 GCC 的强大功能进行编译和优化。它由 Ian Lance Taylor 编写并于 2009 年 11 月发布，并且仍然由他积极维护。 Manghane 解释说，之所以决定使用 C++ 并针对 GCC 来开发 gccgo，是因为 GCC 支持广泛的体系结构，并提供了代码分析、优化和生成方面的广泛功能。通过使用 GCC 作为编译器，可以促进技术诚实，因为它避免了对单一实现的依赖。此外，产品的多种实现有助于识别缺陷并改进设计。然而，gccgo 在实现与 go 编译器功能对等方面面临着挑战。它有一个过时的垃圾收集器，并且更新出现延迟。版本 1.4 对 C 运行时以及垃圾收集器期望类型信息的方式进行了更改。从分段堆栈到连续堆栈的转变也带来了挑战，因为当前的 C 编译器不支持堆栈刀的必要精确控制和使用。尽管面临这些挑战，gccgo 仍取得了重大改进，与 GCC 分离并提供了更大的灵活性。 LLVM 的实现带来了更高效的编译器。可移植本机客户端的使用允许在 Web 浏览器中运行本机代码，从而提高 Go 的采用率。 Manghane 强调了赶上 go 编译器并尝试泛型等功能的重要性。他还强调需要改进基本工具，特别是授权和书籍编译器。 最小化垃圾收集开销至关重要，并且提出了标记分析作为增强垃圾收集器性能的方法。最终目标是实现更高效、更通用的垃圾收集器。此外，语言的强大功能有可能改进二进制生成并激发 go 编译器的改进。</p></details>
 - [issue/28262](https://go.dev/issue/28262) cmd/compile：反馈导向优化
+- [discuss/reducing-gc-peak-memory](https://groups.google.com/g/golang-dev/c/iOF44IL_i1M/m/CWI9U8XFKsEJ) 降低 gc 的峰值内存占用（golang-dev）
+- [discuss/bug-in-new-amd64](https://groups.google.com/g/golang-dev/c/2oHi8t1s0Z8) 新 amd64 ABI 中的缺陷（golang-dev）
+- [issue/51225](https://go.dev/issue/51225) cmd/compile：要求构建系统指定 -importcfg
+- [issue/18616](https://go.dev/issue/18616) math/bits：整数位操作库
+- [issue/74299](https://go.dev/issue/74299) 运行时，cmd/compile：添加 runtime.freegc 和 runtime.freegcTracked 以减少 GC 工作（GOEXPERIMENT=runtimefreegc）
+- [issue/62737](https://go.dev/issue/62737) cmd/compile：按 GC 形状合并临时变量与具名变量
+- [discuss/jump-tables-in-6a](https://groups.google.com/g/golang-nuts/c/6M0BLgrKBRk) 6a 中的跳转表（golang-nuts）
+- [issue/61515](https://go.dev/issue/61515) testing：添加用于迭代的 testing.B.Loop
+  + [discuss/go-1-24-blooper](https://groups.google.com/g/golang-nuts/c/Z017c0f59vY) Go 1.24 BLooper（golang-nuts）
+- [discuss/get-rid-of-stack](https://groups.google.com/g/golang-nuts/c/DbmqfDlAR0U/m/elFowQ_z_UsJ) 去掉栈检查序言（golang-nuts）
+- [discuss/fused-multiply-add](https://groups.google.com/g/golang-dev/c/cVnE1K08Aks) 融合乘加？（golang-dev）
+- [discuss/rfc-go-assembly-for](https://groups.google.com/g/golang-dev/c/rWgDxCrL4GU) [RFC] ARM64 的 Go 汇编（golang-dev）
+- [discuss/x86-asm-source-of](https://groups.google.com/g/golang-dev/c/5fmxhPD3MwM/m/IMqWPRXJBAAJ) x86 汇编的唯一事实来源（golang-dev）
+- [issue/71105](https://go.dev/issue/71105) cmd/compile：让 GORISCV64=rva20u64 包含压缩指令
+  + [issue/61476](https://go.dev/issue/61476) 所有：添加 GORISCV64 环境变量
+- [issue/46229](https://go.dev/issue/46229) 所有：移植到 linux/loong64
+- [design/wasmexport](https://go.dev/design/42372-wasmexport) Francesco Guardiani，提案：go:wasmexport 指令。2020年12月17日。
+  + [issue/42372](https://go.dev/issue/42372) 提案：cmd/compile：go:wasmexport 指令
+- [issue/60072](https://go.dev/issue/60072) cmd/go：添加 GOMIPS32、GOMIPS64 指令集级别（iii、r1、r2、r5、r6）
+- [issue/73787](https://go.dev/issue/73787) simd/archsimd：在 GOEXPERIMENT 下提供架构相关的 SIMD 内建函数
+  + [issue/79781](https://go.dev/issue/79781) simd/archsimd：在 GOEXPERIMENT 下支持 ARM64 SVE SIMD 内建函数
+- [issue/78979](https://go.dev/issue/78979) 提案：simd/archsimd：默认启用 AMD64 架构相关的 SIMD
+  + [issue/76473](https://go.dev/issue/76473) simd：将底层 SIMD 包更名为 simd/archsimd（GOEXPERIMENT）
+- [issue/13241](https://go.dev/issue/13241) cmd/compile：切换到新的导出格式
+- [issue/14473](https://go.dev/issue/14473) cmd/compile：研究用切片替换 NodeList
+- [issue/15756](https://go.dev/issue/15756) cmd/compile：并行化编译
+- [issue/22326](https://go.dev/issue/22326) cmd/compile：规范示例中的包初始化顺序不正确
+- [issue/19683](https://go.dev/issue/19683) cmd/compile：消除 base.Pos 和 ir.CurFunc
+- [issue/51691](https://go.dev/issue/51691) cmd/compile：移除对“损坏”的 IR 和类型的支持
+- [issue/60234](https://go.dev/issue/60234) cmd/compile：更新编译器自身的 PGO 配置文件
+- [issue/15734](https://go.dev/issue/15734) cmd/go：导出数据就绪后立即构建依赖包
+- [issue/51734](https://go.dev/issue/51734) cmd/compile：在 -p 成为必需后清理不再需要的代码路径
+- [issue/17583](https://go.dev/issue/17583) cmd/compile：在 SSA 中插入写屏障
+- [issue/19361](https://go.dev/issue/19361) cmd/compile：当接口背后的具体类型可静态确定时，对调用去虚拟化
+- [issue/33981](https://go.dev/issue/33981) cmd/compile：提高逃逸分析的精度
+- [issue/15561](https://go.dev/issue/15561) cmd/compile：支持内联不逃逸的闭包
+- [issue/30810](https://go.dev/issue/30810) cmd/compile：重写 rulegen，使其不再直接生成纯文本 Go 代码
+- [issue/71359](https://go.dev/issue/71359) cmd/compile：更好地跟踪接口转换和 make 中的字面量，以避免分配
+- [issue/8618](https://go.dev/issue/8618) 运行时：不逃逸的 interface{} 转换不应分配内存
+- [issue/61502](https://go.dev/issue/61502) cmd/compile：全面改造内联器
+- [issue/78633](https://go.dev/issue/78633) cmd/compile：进行按位常量折叠
+- [issue/5496](https://go.dev/issue/5496) cmd/compile：将密集的纯整数 "switch" 编译为跳转表
+- [issue/34381](https://go.dev/issue/34381) cmd/compile：对 switch 语句使用哈希
+- [issue/73137](https://go.dev/issue/73137) testing：实现不阻止内联的 b.Loop keepalive（阻止内联可能导致堆分配）
+- [issue/71268](https://go.dev/issue/71268) cmd/compile：优化：为 || 和 && 条件生成条件比较指令
+- [issue/75203](https://go.dev/issue/75203) cmd/compile：将 reflect.TypeFor 内建化
+- [issue/80409](https://go.dev/issue/80409) cmd/compile/internal/ssa：拆分为子包
+- [issue/10587](https://go.dev/issue/10587) cmd/gc：栈分裂检查不符合现代 CPU 的静态分支预测规则
+- [issue/15365](https://go.dev/issue/15365) cmd/compile：ARM SSA 支持
+- [issue/16358](https://go.dev/issue/16358) cmd/compile：386 SSA 支持
+- [issue/16010](https://go.dev/issue/16010) cmd/compile：PowerPC（LE）SSA 支持
+- [issue/16359](https://go.dev/issue/16359) cmd/compile：MIPS64 的 SSA 后端
+- [issue/18892](https://go.dev/issue/18892) 所有：WebAssembly（"wasm"）支持
+- [issue/16357](https://go.dev/issue/16357) cmd/compile：删除旧的编译器后端
+- [issue/27532](https://go.dev/issue/27532) 所有：移植到 RISC-V
+- [issue/44734](https://go.dev/issue/44734) cmd/asm：重构 arm64 汇编器的框架
+- [issue/44549](https://go.dev/issue/44549) cmd/asm，cmd/compile，cmd/link，cmd/objdump：ppc64 ISA 3.1 支持
+- [issue/20104](https://go.dev/issue/20104) cmd/compile：将架构相关的重写规则和操作移入各架构自己的包
+- [issue/81819](https://go.dev/issue/81819) simd：围绕可执行规范统一 API 生成
 
 [Back To Top](#top)
 
@@ -697,6 +829,24 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 
 - [design/go13linker](https://go.dev/s/go13linker) Russ Cox，Go 1.3 连接器大修，2013年11月。
 - [design/go116linker](https://go.dev/s/better-linker) Austin Clements，构建更好的 Go 连接器，2019年9月12日。
+- [issue/52209](https://go.dev/issue/52209) cmd/compile，cmd/link：在编译器中生成 DWARF 类型信息
+- [design/go-dynamic-tls](https://go.dev/design/71953-go-dynamic-tls) Alexander Musman，提案：Go 通用动态 TLS。2025年1月28日。
+  + [issue/71953](https://go.dev/issue/71953) 提案：运行时：支持通用动态（general dynamic）线程局部存储模型
+- [issue/42681](https://go.dev/issue/42681) build：将 GOEXPERIMENT 开关从 make.bash 移至 cmd/go
+- [discuss/do-we-document-the](https://groups.google.com/g/golang-nuts/c/n5XSgDP5q2M) .gosymtab 与 .gopclntab 的历史，以及它们与 .symtab、.debug_line、.debug_frame 的区别，是否有文档记录？（golang-nuts）
+- [discuss/presence-of-pcln-table](https://groups.google.com/g/golang-nuts/c/oxseUnhRtXM) CGo 二进制文件中的 PCLN 表（golang-nuts）
+- [issue/62577](https://go.dev/issue/62577) cmd/link，cmd/go：在 darwin 上生成拆分的 DWARF
+- [issue/4069](https://go.dev/issue/4069) cmd/ld：为 Windows cgo 构建调用宿主连接器
+- [issue/11799](https://go.dev/issue/11799) cmd/link：压缩调试信息
+- [issue/38485](https://go.dev/issue/38485) 运行时：基于 ARM 的 macOS 及其 GOOS/GOARCH 取值（跟踪问题）
+- [issue/36439](https://go.dev/issue/36439) 所有：移植到 Windows/arm64
+- [issue/25893](https://go.dev/issue/25893) 所有：移植到 AIX/ppc64
+- [issue/76038](https://go.dev/issue/76038) cmd/link：重新整理编译器和连接器生成的数据，使其更清晰
+- [issue/67401](https://go.dev/issue/67401) cmd/link：限制 linkname 今后的使用
+- [issue/26379](https://go.dev/issue/26379) cmd/compile：考虑使用 DWARF 5
+- [issue/41004](https://go.dev/issue/41004) cmd/link：支持自动生成 .note.gnu.build-id
+- [issue/68678](https://go.dev/issue/68678) cmd/link：Go 连接器不生成 LC_UUID，导致 macOS 15 上无法访问本地网络
+- [issue/69536](https://go.dev/issue/69536) crypto：获得 FIPS 140-3 认证
 
 [Back To Top](#top)
 
@@ -709,12 +859,17 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
   + [issue/16410](https://go.dev/issue/16410) x/tools/cmd/heapdump：创建一个堆转储查看器
 - [design/profiler-labels](https://go.dev/design/17280-profile-labels) Michael Matloob，提案：支持 pprof 探查器标签，2017年3月15日。
   + [issue/17280](https://go.dev/issue/17280) pprof：添加探查器标签支持
+- [issue/36821](https://go.dev/issue/36821) 提案：runtime/pprof：添加基于 PMU 的剖析
+- [issue/53286](https://go.dev/issue/53286) 提案：runtime/pprof：扩展剖析配置以支持 perf 事件
 
 [Back To Top](#top)
 
 ### 竞争检测器
 
 - [issue/42598](https://go.dev/issue/42598) runtime: apparent false-positive race report for a buffered channel after CL 220419
+- [issue/44853](https://go.dev/issue/44853) 运行时：在 Go 中启用地址检测器（AddressSanitizer）
+  + [discuss/enable-address-sanitizer-in](https://groups.google.com/g/golang-dev/c/ACKO07YeeW8) 在 Go 中启用地址检测器（golang-dev）
+- [issue/64611](https://go.dev/issue/64611) 所有：添加 internal/asan 和 internal/msan 包
 
 [Back To Top](#top)
 
@@ -722,6 +877,10 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 
 - [design/go15trace](https://go.dev/s/go15trace) Dmitry Vyukov，Go 执行跟踪器，2014年10月。
 - [design/tracefmt](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.yr4qxyxotyw) nduca@, dsinclair@，跟踪事件格式，2016年10月。
+- [design/execution-tracer-overhaul](https://go.dev/design/60773-execution-tracer-overhaul) 执行跟踪器大修。
+  + [issue/60773](https://go.dev/issue/60773) runtime/trace：执行跟踪器大修
+- [issue/63185](https://go.dev/issue/63185) runtime/trace：飞行记录（flight recording）
+- [issue/66703](https://go.dev/issue/66703) runtime/trace：将 v2 跟踪器设为默认跟踪器
 
 [Back To Top](#top)
 
@@ -815,6 +974,8 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/43744](https://go.dev/issue/43744) 测试：基准测试单元属性
 - [issue/48803](https://go.dev/issue/48803) 所有：Go 编译/运行时性能监控系统。
 - [issue/49121](https://go.dev/issue/49121) x/perf/storage：支持 postgresql。
+- [design/revamp-code-coverage](https://go.dev/design/51430-revamp-code-coverage) Than McIntosh，提案：将代码覆盖率测试扩展到应用程序。2022年3月2日。
+  + [issue/51430](https://go.dev/issue/51430) cmd/cover：将覆盖率测试扩展到应用程序
 
 [Back To Top](#top)
 
@@ -845,6 +1006,30 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/28808](https://go.dev/issue/28808) 运行时：当 GOMAXPROCS 很高时调度器工作窃取很慢。
 - [issue/32113](https://go.dev/issue/32113) 运行时：减少P流失的优化。
 - [issue/44313](https://go.dev/issue/44313) 运行时：已停止的Ms不能成为专用或小数的GC工作者。
+- [discuss/periodic-task-when-time](https://groups.google.com/g/golang-nuts/c/_XEuq69kUOY) time.Ticker 和 time.Sleep 开销很大时，如何执行周期任务（golang-nuts）
+- [discuss/why-there-is-a](https://groups.google.com/g/golang-nuts/c/WqVEThZnQkM) 为什么 LockOSThread 与通道一起使用时，性能损失如此之大？（golang-nuts）
+- [design/mutex-spinbit](https://go.dev/design/68578-mutex-spinbit) Rhys Hiltner，提案：提高 runtime.lock2 的可扩展性。2024年10月16日。
+- [issue/61015](https://go.dev/issue/61015) 运行时：将互斥锁剖析改为按被阻塞的 goroutine 数量缩放争用
+- [discuss/runtime-setting-gomaxprocs-in](https://groups.google.com/g/golang-nuts/c/he617hSABGo) 运行时：在过度调度的容器环境中设置 GOMAXPROCS（golang-nuts）
+- [discuss/concurrency-and-task-scheduler](https://groups.google.com/g/golang-nuts/c/Q4fgggATcTo) 并发与任务调度器的可扩展性（golang-nuts）
+- [issue/69687](https://go.dev/issue/69687) testing/synctest：用于测试并发代码的实验性包
+- [issue/45435](https://go.dev/issue/45435) sync：添加 Mutex.TryLock
+  + [issue/63796](https://go.dev/issue/63796) sync：添加 WaitGroup.Go
+  + [issue/61696](https://go.dev/issue/61696) sync：添加 Map.Clear 方法
+- [design/goroutine-leak-detection-gc](https://go.dev/design/74609-goroutine-leak-detection-gc) Georgian-Vlad Saioc、Milind Chabbi，提案：通过垃圾收集检测 goroutine 泄漏。2025年8月14日。
+  + [issue/74609](https://go.dev/issue/74609) runtime/pprof，运行时：新的 goroutine 泄漏剖析
+  + [issue/38651](https://go.dev/issue/38651) 运行时：在栈跟踪中加入“created by goroutine 编号”
+- [issue/543](https://go.dev/issue/543) 运行时：抢占式调度
+- [issue/68578](https://go.dev/issue/68578) 运行时：改进 lock2 的可扩展性
+- [issue/66999](https://go.dev/issue/66999) 运行时：正确归因运行时内部的互斥锁争用
+- [issue/57071](https://go.dev/issue/57071) runtime/metrics：提供度量运行时内部锁争用的方法
+- [issue/49881](https://go.dev/issue/49881) runtime/metrics：添加争用指标
+- [issue/81657](https://go.dev/issue/81657) 运行时：加速 GC 阶段转换
+- [issue/65694](https://go.dev/issue/65694) 运行时：加强 G ↔ P ↔ M ↔ CPU 之间的亲和性？
+- [issue/53789](https://go.dev/issue/53789) 运行时：仿照 go/build/deps_test.go，将锁等级图表示为 DAG
+- [issue/13759](https://go.dev/issue/13759) 提案：为 Go 添加部分死锁检测器
+- [issue/21678](https://go.dev/issue/21678) 运行时：为调试器提供在被调试程序中执行函数的机制
+- [issue/70089](https://go.dev/issue/70089) 提案：runtime/mainthread：添加 mainthread.Do，用于协调对主线程的访问
 
 [Back To Top](#top)
 
@@ -857,6 +1042,20 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
   + [cl/341990](https://go.dev/cl/341990) 运行时：预测堆栈大小
   + [cl/345889](https://go.dev/cl/345889) 运行时：测量堆栈使用情况；需要的话就启动更大的堆栈
 - [issue/26061](https://go.dev/issue/26061) 运行时：g0 stack.lo 有时太慢
+- [discuss/proposal-shared-libraries-in](https://groups.google.com/g/golang-nuts/c/zmjXkGrEx6Q) 提案：Go 中的共享库，第二版（附 linux/amd64 实现）（golang-nuts）
+- [discuss/re-patch-rfc-go](https://groups.google.com/g/golang-nuts/c/P05BDjLcQ5k) Re: [PATCH] RFC：Go 共享库支持（Linux/x64）（golang-nuts）
+- [issue/15403](https://go.dev/issue/15403) internal/cpu：暴露处理器能力的新包
+  + [issue/27218](https://go.dev/issue/27218) 运行时：在 GODEBUG 中记录（并支持）cpu 选项
+- [issue/30439](https://go.dev/issue/30439) 所有：移除 nacl 移植
+- [issue/21865](https://go.dev/issue/21865) runtime/secret：添加新包
+  + [issue/66450](https://go.dev/issue/66450) crypto/subtle：添加 WithDataIndependentTiming
+- [issue/45453](https://go.dev/issue/45453) 所有：添加 GOAMD64 环境变量
+  + [issue/60905](https://go.dev/issue/60905) 所有：添加 GOARM64=v8.1 等取值
+- [issue/36435](https://go.dev/issue/36435) 所有：在 OpenBSD 上停止使用非 libc 的系统调用
+- [issue/17490](https://go.dev/issue/17490) cmd/link：在 macOS 上通过 libsystem_kernel.dylib 或 libSystem.dylib 进行系统调用
+- [issue/58378](https://go.dev/issue/58378) 运行时：支持使用帧指针展开跨 cgo 的逻辑栈切换
+- [issue/16638](https://go.dev/issue/16638) 运行时：使用帧指针获取调用者
+- [issue/69577](https://go.dev/issue/69577) crypto/rand：使用 Linux 新的 vDSO
 
 [Back To Top](#top)
 
@@ -898,6 +1097,19 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/40641](https://go.dev/issue/40641) 运行时：堆栈收缩和通道收发之前的竞争导致错误的 sudog 值
 - [issue/42330](https://go.dev/issue/42330) 运行时：在 Linux 上默认为 MADV_DONTNEED
   + [cl/267100](https://go.dev/cl/267100) 运行时：在 Linux 上默认为 MADV_DONTNEED
+- [design/scaling-the-page-allocator](https://go.dev/design/35112-scaling-the-page-allocator) Michael Knyszek、Austin Clements，提案：扩展 Go 页分配器。2019年10月18日。
+- [design/smarter-scavenging](https://go.dev/design/30333-smarter-scavenging) Michael Knyszek，提案：更智能的内存归还（scavenging）。
+- [design/heap-hugepage-util](https://go.dev/design/59960-heap-hugepage-util) Michael Knyszek、Michael Pratt，更能感知大页的 Go 堆。
+- [design/memory-regions](https://go.dev/design/70257-memory-regions) 内存区域（memory regions）。
+  + [discuss/70257](https://github.com/golang/go/discussions/70257) 内存区域（讨论）
+- [design/runtime-freegc](https://go.dev/design/74299-runtime-freegc) 直接释放用户内存以减少 GC 工作。
+  + [discuss/a-safe-free-of](https://groups.google.com/g/golang-nuts/c/cmpiArv10f4) 一个安全释放内存的提案：runtime.FreeMemory()（golang-nuts）
+- [issue/10460](https://go.dev/issue/10460) 运行时：512GB 内存限制
+- [issue/79286](https://go.dev/issue/79286) 运行时：sizespecializedmalloc 实验
+- [issue/40431](https://go.dev/issue/40431) 提案：runtime.Pin()，防范将来可能出现的移动式 GC
+- [issue/69327](https://go.dev/issue/69327) 运行时：clear、append、bytes.growSlice 等中的清零不可抢占
+- [design/go-pmem](https://go.dev/design/43810-go-pmem) Jerrin Shaji George、Mohit Verma、Rajesh Venkatasubramanian、Pratap Subrahmanyam，提案：在 Go 中添加对持久内存的支持。2021年1月20日。
+  + [issue/43810](https://go.dev/issue/43810) 提案：规范：在 Go 中原生支持持久内存编程（已拒绝）
 
 [Back To Top](#top)
 
@@ -950,6 +1162,14 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
   + [design/soft-memory-limit](https://go.dev/design/48409-soft-memory-limit) 软内存限制
 - [issue/45894](https://go.dev/issue/45894) 运行时：标记终止重启突变太慢。
 - [issue/45315](https://go.dev/issue/45315) 运行时：runtime.GC 无需完成扫描就能返回。
+- [discuss/sub-millisecond-gc-pauses](https://groups.google.com/g/golang-dev/c/Ab1sFeoZg_8/m/_DaL0E8fAwAJ) 亚毫秒级 GC 停顿（golang-dev）
+- [issue/67535](https://go.dev/issue/67535) 运行时：添加 AddCleanup
+  + [issue/71825](https://go.dev/issue/71825) 运行时：允许清理函数并发运行
+- [issue/67552](https://go.dev/issue/67552) weak：提供弱指针的新包
+- [discuss/secure-go-binaries](https://groups.google.com/g/golang-nuts/c/Jd9tlNc6jUE/m/qp2oyfEEfjQJ) 安全的 Go 二进制文件（golang-nuts）
+- [issue/11911](https://go.dev/issue/11911) 运行时：并发 GC 下堆无限增长
+- [issue/12041](https://go.dev/issue/12041) 运行时：重新设计 GC 同步
+- [issue/27583](https://go.dev/issue/27583) 运行时：功能请求：支持堆的 ASLR
 
 [Back To Top](#top)
 
@@ -961,6 +1181,10 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/19812](https://go.dev/issue/19812) 运行时：在GC期间无法 ReadMemStats。
 - [issue/38712](https://go.dev/issue/38712) 运行时：TestMemStats 很奇怪
 - [issue/40459](https://go.dev/issue/40459) 运行时：在循环中调用 ReadMemStats 可能阻止GC
+- [design/go-runtime-stats](https://docs.google.com/spreadsheets/d/1PTJjoWdgKJvY2S63V2Lh3VgLJrXXW3wO_IXxy2rNA8s) Go 运行时统计。
+- [issue/37112](https://go.dev/issue/37112) 运行时：用于不稳定指标的 API
+- [issue/47216](https://go.dev/issue/47216) runtime/metrics：添加 GOMAXPROCS、NumCgoCall、GC CPU 时间
+  + [issue/56857](https://go.dev/issue/56857) runtime/metrics：添加 /gc/heap/live:bytes
 
 [Back To Top](#top)
 
@@ -992,6 +1216,9 @@ Go 内存模型包含以下方面：
   + [doc/plmm](https://research.swtch.com/plmm) Russ Cox，编程语言内存模型。2021年7月6日。
   + [doc/gomm](https://research.swtch.com/gomm) Russ Cox，更新Go内存模型。2021年7月12日。
   + [discuss/47141](https://github.com/golang/go/discussions/47141) 更新Go内存模型。
+- [discuss/align-64-bit-integers](https://groups.google.com/g/golang-dev/c/cUju6W3nWEU) 在 32 位平台上对齐 64 位整数（golang-dev）
+- [issue/61395](https://go.dev/issue/61395) sync/atomic：为无符号类型添加 OR/AND 操作
+- [issue/53821](https://go.dev/issue/53821) 运行时：将原子值转换为 runtime/internal/atomic 类型
 
 [Back To Top](#top)
 
@@ -1008,12 +1235,28 @@ Go 内存模型包含以下方面：
   + [cl/266638](https://go.dev/cl/266638) 反射、运行时：为 ASM 例程使用内部 ABI，第二次尝试。
   + [cl/259445](https://go.dev/cl/259445) cmd/compile,cmd/link: 为ABI包装器的初始支持
 - [design/internal-abi-spec](https://github.com/golang/go/blob/master/src/cmd/compile/abi-internal.md) Go 内部ABI规范。
+- [issue/78902](https://go.dev/issue/78902) simd：在 GOEXPERIMENT 下提供与架构和向量长度无关的 SIMD 内建函数
+- [issue/44816](https://go.dev/issue/44816) cmd/compile：寄存器 ABI 启动阶段的测试用例失败（跟踪问题）
 
 [Back To Top](#top)
 
 ### Misc
 
 - [issue/20135](https://go.dev/issue/20135) 运行时：删除元素时map收缩。
+- [discuss/design-discuss-switch-hashmap](https://groups.google.com/g/golang-dev/c/R2O25Xz11zU/m/92mOve0eGy4J) 设计讨论：将哈希表实现切换为 SipHash-2-4（golang-dev）
+- [issue/14874](https://go.dev/issue/14874) 提案：cmd/compile：由编译器生成 itab 符号
+- [issue/61716](https://go.dev/issue/61716) math/rand/v2：修订后的 math/rand API
+  + [discuss/60751](https://github.com/golang/go/discussions/60751) math/rand/v2：math/rand 的新 API，也是标准库的第一个 v2 包（讨论）
+- [issue/16093](https://go.dev/issue/16093) runtime/pprof：以 gzip 压缩的 proto 格式生成剖析文件
+- [issue/76349](https://go.dev/issue/76349) 运行时：在回溯中加入 runtime/pprof 的 goroutine 标签
+- [issue/42888](https://go.dev/issue/42888) runtime/debug：添加 SetCrashOutput(file *os.File)
+  + [issue/37475](https://go.dev/issue/37475) cmd/go：在二进制文件中记录 git/vcs 当前的 HEAD 哈希、提交哈希和 dirty 标志
+  + [issue/67182](https://go.dev/issue/67182) runtime/debug：添加 SetCrashOutput 选项
+- [issue/3885](https://go.dev/issue/3885) 运行时：分析并调优 map 代码
+- [issue/25237](https://go.dev/issue/25237) 运行时：适时轮换 map 的键种子
+- [issue/2630](https://go.dev/issue/2630) 运行时：哈希函数应随机化，以防止 DoS 攻击
+- [issue/20505](https://go.dev/issue/20505) 运行时：需要更好的 itab 表
+- [issue/75280](https://go.dev/issue/75280) runtime/pprof，运行时：以 GOEXPERIMENT 形式添加新的 goroutine 泄漏剖析
 
 [Back To Top](#top)
 
