@@ -195,7 +195,6 @@ main { min-width: 0; max-width: 860px; padding: 40px 56px 96px; }
 .results a { padding: 6px 8px; color: var(--fg); }
 .results a .ref { margin-right: 4px; }
 .results small { display: block; color: var(--faint); font-size: 12px; margin-top: 1px; }
-.results mark { background: var(--acc-bg); color: inherit; border-radius: 2px; }
 
 /* Content */
 
