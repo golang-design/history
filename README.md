@@ -383,7 +383,7 @@ reflected in Go versions.
 For what changed in the runtime and compiler in each of these releases,
 including internal changes that release notes leave out, see the
 [runtime and compiler history reconstructed from commits](https://golang.design/history/runtime-compiler/)
-(Go 1.0 to 1.28).
+(Go 1.0 to 1.28). Its [paths not taken](https://golang.design/history/runtime-compiler/paths.html) page collects work that was built or designed but never landed in that form, such as the request-oriented collector and lock-free channels, with the reasons each one stopped.
 
 | Version | Release Expected/Actual Date | Days Since Last Release (+Delay) |
 |:--|:--|:--|
@@ -548,6 +548,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [design/err-handle-check](https://go.dev/design/go2draft-error-handling) Marcel van Lohuizen. Error Handling — Draft Design. August 27, 2018.
 - [design/err-try](https://go.dev/design/32437-try-builtin) Robert Griesemer. Proposal: A built-in Go error check function, "try". Jun 12, 2019.
   - [issue/32437](https://go.dev/issue/32437#issuecomment-512035919) Proposal: A built-in Go error check function, "try". Decision response.
+- [issue/71203](https://go.dev/issue/71203) proposal: spec: reduce error handling boilerplate using ?
 - [design/err-inspect](https://go.dev/design/go2draft-error-inspection) Jonathan Amsterdam, Damien Neil. Error Inspection — Draft Design. August 27, 2018.
 - [design/err-values-overview](https://go.dev/design/go2draft-error-values-overview) Russ Cox. Error Values — Problem Overview. August 27, 2018.
 - [design/error-values](https://go.dev/design/29934-error-values) Jonathan Amsterdam, Russ Cox, Marcel van Lohuizen, Damien Neil. Proposal: Go 2 Error Inspection. January 25, 2019
@@ -784,6 +785,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [design/64align](https://go.dev/design/36606-64-bit-field-alignment) Dan Scales. Proposal: Make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed, //go:align directives. 2020-06-08.
   + [issue/599](https://go.dev/issue/599) cmd/compile: make 64-bit fields 64-bit aligned on 32-bit systems
   + [issue/36606](https://go.dev/issue/36606) proposal: cmd/compile: make 64-bit fields be 64-bit aligned on 32-bit systems, add //go:packed directive on structs
+  + [issue/19057](https://go.dev/issue/19057) proposal: runtime: add AlignedN types that can be used to increase alignment
 - [talk/gccgo](https://www.youtube.com/watch?v=U0w9eFunkX4) Brief overview of gccgo, "the other" Go compiler. Aug 6, 2015.
 - [issue/54534](https://go.dev/issue/54534) cmd/compile: design doc explaining unified IR implementation
 - [discuss/53060](https://go.dev/issue/53060) discussion: clarify Go support policy for secondary ports
@@ -876,6 +878,9 @@ in Go 1.15 and Go 1.16.
 
 - [design/go13linker](https://go.dev/s/go13linker) Russ Cox. Go 1.3 Linker Overhaul. Nov 2013.
 - [design/go116linker](https://go.dev/s/better-linker) Austin Clements. Building a better Go linker. 2019-09-12.
+- [issue/52209](https://go.dev/issue/52209) cmd/compile, cmd/link: generate dwarf type info in compiler
+- [design/go-dynamic-tls](https://go.dev/design/71953-go-dynamic-tls) Alexander Musman. Proposal: Go general dynamic TLS. 2025-01-28.
+  + [issue/71953](https://go.dev/issue/71953) proposal: runtime: support general dynamic thread local storage model
 - [issue/42681](https://go.dev/issue/42681) build: move GOEXPERIMENT knob from make.bash to cmd/go
 - [discuss/do-we-document-the](https://groups.google.com/g/golang-nuts/c/n5XSgDP5q2M) Do we document the history of .gosymtab and .gopclntab, and the differences with .symtab and .debug_line, .debug_frame? (golang-nuts)
 - [discuss/presence-of-pcln-table](https://groups.google.com/g/golang-nuts/c/oxseUnhRtXM) Presence of PCLN Table in CGo binaries (golang-nuts)
@@ -903,6 +908,8 @@ in Go 1.15 and Go 1.16.
   + [issue/16410](https://go.dev/issue/16410) x/tools/cmd/heapdump: create a heap dump viewer
 - [design/profiler-labels](https://go.dev/design/17280-profile-labels) Michael Matloob. Proposal: Support for pprof profiler labels. May 15, 2017.
   + [issue/17280](https://go.dev/issue/17280) pprof: add support for profiler labels
+- [issue/36821](https://go.dev/issue/36821) proposal: runtime/pprof: add PMU-based profiles
+- [issue/53286](https://go.dev/issue/53286) proposal: runtime/pprof: extend profile configuration to support perf events
 
 [Back To Top](#top)
 
@@ -1076,6 +1083,7 @@ in Go 1.15 and Go 1.16.
 - [issue/53789](https://go.dev/issue/53789) runtime: express lock rank graph as a DAG like go/build/deps_test.go
 - [issue/13759](https://go.dev/issue/13759) proposal: Add a Partial Deadlock Detector For Go
 - [issue/21678](https://go.dev/issue/21678) runtime: provide a mechanism for debuggers to execute a function in the program being debugged
+- [issue/70089](https://go.dev/issue/70089) proposal: runtime/mainthread: add mainthread.Do for mediating access to the main thread
 
 [Back To Top](#top)
 
@@ -1173,6 +1181,8 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/79286](https://go.dev/issue/79286) runtime: sizespecializedmalloc experiment
 - [issue/40431](https://go.dev/issue/40431) proposal: runtime.Pin() to protect against hypothetical moving GC in the future
 - [issue/69327](https://go.dev/issue/69327) runtime: non-preemptible zeroing in clear, append, bytes.growSlice, etc
+- [design/go-pmem](https://go.dev/design/43810-go-pmem) Jerrin Shaji George, Mohit Verma, Rajesh Venkatasubramanian, Pratap Subrahmanyam. Proposal: Add support for Persistent Memory in Go. January 20, 2021.
+  + [issue/43810](https://go.dev/issue/43810) proposal: spec: add native support for programming persistent memory in Go (declined)
 
 
 [Back To Top](#top)
