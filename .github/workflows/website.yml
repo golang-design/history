@@ -37,4 +37,4 @@ jobs:
           ssh-keyscan -H $DOMAIN >> ~/.ssh/known_hosts
           scp -r public/* $USER@$DOMAIN:$TARGET
           # scp does not delete: remove what the old single-page site shipped.
-          ssh $USER@$DOMAIN "cd '$TARGET' && rm -f style.css dark.js bootstrap.css && { rmdir assets 2>/dev/null || true; }"
+          ssh $USER@$DOMAIN "cd '$TARGET' && rm -f style.css dark.js bootstrap.css assets/.gitkeep && { rmdir assets 2>/dev/null || true; }"
