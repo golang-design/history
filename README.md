@@ -208,6 +208,7 @@ maintainers work through the issue tracker.
   + [talk/robert2020a](https://changelog.com/gotime/140) The latest on Generics with Robert Griesemer and Ian Lance Taylor. Jul 21, 2020.
   + [talk/robert2020b](https://www.youtube.com/watch?v=TborQFPY2IM) Typing [Generic] Go. Nov 11, 2020.
   + [talk/robert2021](https://www.youtube.com/watch?v=Pa_e9EeCdy8) Generics! Dec 17, 2021.
+  + [talk/robert2023](https://www.youtube.com/watch?v=2putv2jOqdg) Everything You Always Wanted to Know About Type Inference. GopherCon 2023, San Diego. September 2023.
 - Ken Thompson. (Kenneth Lane Thompson, M. Sc.) (Retired)
   + Alma mater: UC Berkeley
   + [talk/ken1982a](https://www.youtube.com/watch?v=tc4ROCJYbm0) The UNIX System: Making Computers More Productive. 1982.
@@ -314,6 +315,7 @@ his work is mainly in the runtime memory system such as the refactoring of memor
   + [talk/dan2020](https://www.gophercon.com/agenda/session/233397) Implementing Faster Defers. Nov 11, 2020
 - Michael Knyszek. [Website](https://www.ocf.berkeley.edu/~mknyszek/), [GitHub](https://github.com/mknyszek)
   + [talk/michael2020](https://www.gophercon.com/agenda/session/233086) Evolving the Go Memory Manager's RAM and CPU Efficiency. Nov 11, 2020
+  + [talk/michael2025](https://www.youtube.com/watch?v=gPJkM95KpKo) Advancing Go Garbage Collection with Green Tea. GopherCon 2025, New York City. August 2025.
 - Than McIntosh. [GitHub](https://github.com/thanm)
 - Cherry Mui (formerly Cherry Zhang). (Go core lead since September 2024) [GitHub](https://github.com/cherrymui)
 
@@ -360,8 +362,10 @@ his work is mainly in the runtime memory system such as the refactoring of memor
 - Steve Francia. [Website](https://spf13.com/), [GitHub](https://github.com/spf13), [Twitter](https://twitter.com/spf13).
   + [talk/steve2019a](https://spf13.com/presentation/what-should-a-modern-practical-programming-language-look-like/) What Should A Modern Practical Programming Language Look Like. Landing Festival. April 4, 2019.
   + [talk/steve2019b](https://spf13.com/presentation/the-legacy-of-go/) The Legacy Of Go. Go Lab. Oct 22, 2019.
+  + [talk/steve2022](https://www.youtube.com/watch?v=atv47M6kBYc) Go: Our Journey from Early Adopter to Mainstream and Beyond. GopherCon 2022, Chicago. October 2022.
 - Jonathan Amsterdam.
   + [talk/jonathan2020](https://www.gophercon.com/agenda/session/233432) Working with Errors. Nov 13, 2020.
+  + [talk/jonathan2023](https://www.youtube.com/watch?v=rJfvv_c9mYU) Structured Logging for the Standard Library. GopherCon 2023, San Diego. September 2023.
 - Daniel Martí. [Website](https://mvdan.cc/), [GitHub](https://github.com/mvdan), [Twitter](https://twitter.com/mvdan_)
 - Nigel Tao. [GitHub](https://github.com/nigeltao), Twitter
 - Michael Matloob. [GitHub](https://github.com/matloob), [Twitter](https://twitter.com/matloob)
@@ -373,6 +377,18 @@ his work is mainly in the runtime memory system such as the refactoring of memor
   + [talk/filo2017](https://speakerdeck.com/filosottile/calling-rust-from-go-without-cgo-at-gothamgo-2017) From Go to Rust without cgo.
   + [talk/filo2018](https://speakerdeck.com/filosottile/why-cgo-is-slow-at-capitalgo-2018) Why cgo is slow. CapitalGo 2018.
   + [talk/speakerdeck](https://speakerdeck.com/filosottile?page=1)
+  + [talk/filo2023](https://www.youtube.com/watch?v=lkEH3V3PkS0) High-Assurance Go Cryptography. GopherCon 2023, San Diego. September 2023.
+  + [talk/filo2024](https://www.youtube.com/watch?v=F3iDp6LZtyk) The Go Cryptography State of the Union. GopherCon 2024, Chicago. July 2024.
+  + [talk/filo2025](https://www.youtube.com/watch?v=YnyeAQblUyA) The Go Cryptography State of the Union. GopherCon 2025, New York City. August 2025.
+- Alan Donovan. [GitHub](https://github.com/adonovan)
+  + [talk/alan2025](https://www.youtube.com/watch?v=_VePjjjV9JU) Analysis and Transformation Tools for Go Codebase Modernization. GopherCon 2025, New York City. August 2025.
+- Cameron Balahan. [GitHub](https://github.com/cameronbalahan)
+  + [talk/cameron2022](https://www.youtube.com/watch?v=b7l0Qt8m6OQ) A Holistic Go Experience. GopherCon 2022, Chicago. October 2022.
+  + [talk/cameron2025](https://www.youtube.com/watch?v=M2gduDM-MT0) Go's Next Frontier. GopherCon 2025, New York City. August 2025.
+- Katie Hockman. [GitHub](https://github.com/katiehockman)
+  + [talk/katie2022](https://www.youtube.com/watch?v=7KWPiRq3ZYI) Fuzz Testing Made Easy. GopherCon 2022, Chicago. October 2022.
+- Julie Qiu. [GitHub](https://github.com/julieqiu)
+  + [talk/julie2023](https://www.youtube.com/watch?v=nJm2GP6kMJo) Vulnerability Management for Go. GopherCon 2023, San Diego. September 2023.
 
 > more people and talks should be added...
 
@@ -724,6 +740,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/75883](https://go.dev/issue/75883) spec: remove cycle restriction for type parameters
 - [doc/type-construction](https://go.dev/blog/type-construction-and-cycle-detection) Mark Freeman. Type Construction and Cycle Detection. March 24, 2026.
 - [doc/generic-methods](https://go.dev/blog/generic-methods) Mark Freeman. Generic Methods. August 26, 2026.
+- [talk/axel2024](https://www.youtube.com/watch?v=dab3I-HcTVk) Axel Wagner. Advanced Generics Patterns. GopherCon 2024, Chicago. July 2024.
 
 ### Iterator
 
@@ -914,6 +931,8 @@ Error handling includes two separate works: error values and error formatting. H
 - [doc/allocation-optimizations](https://go.dev/blog/allocation-optimizations) Keith Randall. Allocating on the Stack. February 27, 2026.
 - [doc/simd-experiment](https://go.dev/blog/simd-experiment) David Chase and Junyang Shao. Platform-independent SIMD in Go. September 24, 2026.
 - [doc/archsimd](https://go.dev/blog/archsimd) Junyang Shao and David Chase. Arch-specific SIMD in Go. October 2, 2026.
+- [talk/jin2022](https://www.youtube.com/watch?v=fYB5uhyDi7c) Jin Lin. Profile-Guided Optimization in the Go Compiler. Lightning talk, GopherCon 2022, Chicago. October 2022.
+- [talk/jin2024](https://www.youtube.com/watch?v=58xVeeuXbKQ) Jin Lin. Automating Efficiency Improvement by Profile Guided Optimization. GopherCon 2024, Chicago. July 2024.
 
 [Back To Top](#top)
 
@@ -957,6 +976,7 @@ in Go 1.15 and Go 1.16.
   + [issue/17280](https://go.dev/issue/17280) pprof: add support for profiler labels
 - [issue/36821](https://go.dev/issue/36821) proposal: runtime/pprof: add PMU-based profiles
 - [issue/53286](https://go.dev/issue/53286) proposal: runtime/pprof: extend profile configuration to support perf events
+- [talk/derek2024](https://www.youtube.com/watch?v=ZnrXDnhSmH0) Derek Parker. A Decade of Debugging. GopherCon 2024, Chicago. July 2024.
 
 [Back To Top](#top)
 
@@ -981,6 +1001,7 @@ in Go 1.15 and Go 1.16.
 - [issue/66703](https://go.dev/issue/66703) runtime/trace: set the v2 tracer as the default tracer
 - [doc/execution-traces-2024](https://go.dev/blog/execution-traces-2024) Michael Knyszek. More powerful Go execution traces. March 14, 2024.
 - [doc/flight-recorder](https://go.dev/blog/flight-recorder) Carlos Amedee and Michael Knyszek. Flight Recorder in Go 1.25. September 26, 2025.
+- [talk/felix2025](https://www.youtube.com/watch?v=BayZ3k-QkFw) Felix Geisendörfer. Profiling Request Latency with Critical Path Analysis. GopherCon 2025, New York City. August 2025.
 
 [Back To Top](#top)
 
@@ -1031,6 +1052,7 @@ in Go 1.15 and Go 1.16.
 - [issue/65199](https://go.dev/issue/65199) cmd/compile: add go:wasmexport directive
 - [design/wasmexport-notes](https://docs.google.com/document/d/1R14wRHv_UjeFnemvV5hbp75cCRNzVH9ZZS-Yo_zITxg) Achille Roussel. go:wasmexport - implementation notes.
 - [doc/wasmexport](https://go.dev/blog/wasmexport) Cherry Mui. Extensible Wasm Applications with Go. February 13, 2025.
+- [talk/johan2023](https://www.youtube.com/watch?v=BAFKruuvUN4) Johan Brandhorst-Satzkorn. Go Support for WASI/Wasm. Lightning talk, GopherCon 2023, San Diego. September 2023.
 
 [Back To Top](#top)
 
@@ -1348,6 +1370,9 @@ to user threads, bitmap-based page allocator, scalable mcentral.
 - [issue/27583](https://go.dev/issue/27583) runtime: feature request: Support for ASLR with the heap
 - [doc/go119runtime](https://go.dev/blog/go119runtime) Michael Knyszek. Go runtime: 4 years later. September 26, 2022.
 - [doc/cleanups-and-weak](https://go.dev/blog/cleanups-and-weak) Michael Knyszek. From unique to cleanups and weak: new low-level tools for efficiency. March 6, 2025.
+- [talk/madhav2022](https://www.youtube.com/watch?v=We-8RSk4eZA) Madhav Jivrajani. Control Theory and Concurrent Garbage Collection Deep Dive. GopherCon 2022, Chicago. October 2022.
+- [talk/tarun2022](https://www.youtube.com/watch?v=iy0yzxAtuwY) Tarun Pothulapati. Soft Memory Limit in Go 1.19. Lightning talk, GopherCon 2022, Chicago. October 2022.
+- [talk/yifei2023](https://www.youtube.com/watch?v=DpQgJ06ZjGc) Yifei Zhang. Balanced GC: A Copying Garbage Collector for Golang. GopherCon 2023, San Diego. September 2023.
 
 [Back To Top](#top)
 
@@ -1637,6 +1662,7 @@ Code Comprehension and Refactoring Tools. October 2, 2015.
   + [issue/71845](https://go.dev/issue/71845) encoding/json/v2: add new JSON API behind a GOEXPERIMENT=jsonv2 guard (Go 1.25)
   + [repo/json-experiment](https://github.com/go-json-experiment/json) Experimental implementation of a proposed v2 encoding/json package
 - [doc/jsonv2-exp](https://go.dev/blog/jsonv2-exp) Joe Tsai, Daniel Martí, Johan Brandhorst-Satzkorn, Roger Peppe, Chris Hines, and Damien Neil. A new experimental Go API for JSON. September 9, 2025.
+- [talk/joe2023](https://www.youtube.com/watch?v=avilmOcHKHE) Joe Tsai. The Future of JSON in Go. GopherCon 2023, San Diego. September 2023.
 
 [Back To Top](#top)
 
@@ -1800,6 +1826,7 @@ These issues are discussion the current performance issue that exist in the curr
 - [golang/wiki/ResearchPapers](https://github.com/golang/go/wiki/ResearchPapers)
 - John Ousterhout. Open Decision-Making. June, 2021. https://web.stanford.edu/~ouster/cgi-bin/decisions.php.
 - [Go’s Version Control History](https://research.swtch.com/govcs)
+- [talk/jake2025](https://www.youtube.com/watch?v=PZm_YbE3fcA) Jake Bailey. Porting the TypeScript Compiler to Go for a 10x Speedup. GopherCon 2025, New York City. August 2025.
 
 [Back To Top](#top)
 
