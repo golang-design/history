@@ -117,7 +117,7 @@ Go 的起源很吸引人。通过这些人举办的讲座，您可以了解到�
 
 ### 核心作者
 
-Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编译时间， 而 Ken 刚好在隔壁办公室。之后 Ian 因为兴趣加入了这个项目，编写了 [gccgo](https://github.com/golang/gofrontend)。Rob 和 Ken 退休后，Robert 和 Ian 目前为 Go 添加泛型。Russ 也是早期的核心贡献者，那时候他是谷歌的新人，Rob 在 [Plan 9](https://9p.io/plan9/) 项目就认识了 Russ，并邀请他加入 Go 团队。Russ 做了很多基础工作，包括早期的 Go 编译器、运行时以及 Go 1.5 启动时的巨大提升。Russ 现在是 Go 团队的 Tech Lead。
+Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编译时间， 而 Ken 刚好在隔壁办公室。之后 Ian 因为兴趣加入了这个项目，编写了 [gccgo](https://github.com/golang/gofrontend)。Rob 和 Ken 已经退休。Robert 和 Ian 多年来一起为 Go 设计泛型，泛型最终在 2022 年的 Go 1.18 中发布；Robert 仍在从事语言和类型检查器的工作。Ian 于 2025 年 5 月[离开了谷歌](https://www.airs.com/blog/archives/670)，此后仍在为 Go 做贡献。Russ 也是早期的核心贡献者，那时候他是谷歌的新人，Rob 在 [Plan 9](https://9p.io/plan9/) 项目就认识了 Russ，并邀请他加入 Go 团队。Russ 做了很多基础工作，包括早期的 Go 编译器、运行时以及 Go 1.5 启动时的巨大提升。Russ 领导 Go 项目超过 12 年。2024 年 8 月，他[把火炬交了出去](https://groups.google.com/g/golang-dev/c/0OqBkS2RzWw)：自 2024 年 9 月 1 日起，Austin Clements 担任 Go 的技术负责人，Cherry Mui 负责 Go core（编译工具链、运行时和发布）。Russ 仍留在项目中，转而开发 Gaby 和 Oscar，这些工具帮助维护者处理 issue。
 
 - Rob Pike. (Robert C. Pike 科学硕士) [Website](http://herpolhode.com/rob/), [Blog](https://commandcenter.blogspot.com/), [GitHub](https://github.com/robpike), [Twitter](https://twitter.com/rob_pike), [Reddit](https://www.reddit.com/user/robpike).（退休）
   + 毕业院校：多伦多大学（理学学士），加州理工
@@ -231,6 +231,7 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
     <p><b>总结：</b>在题为“Google Open Source Live 上的 Go Day 2021 | 在 Go 中使用泛型”的视频节目中，Ian Lance Taylor 介绍了 Go 编程中的泛型概念，并讨论了如何有效地使用这一新的语言功能。他首先解释了泛型的基础知识，包括类型参数和约束。 Taylor 强调了在定义类型之前编写代码的重要性，并提供了何时使用泛型以及何时不使用泛型的指南。他强调，使用泛型应该是为了代码清晰而不是效率。他还提到，类型参数可用于创建更通用的数据结构并实现更有效的数据存储。演讲者提供了使用泛型创建函数并实现不同类型的通用方法的示例。他解释说，类型参数在实现所有相关类型都相同的方法时特别有用，但在接口类型可以提供所需功能时则不然。 Taylor 在结束本集时提到，Go 1.18 预计将包含对泛型的支持，这将为开发者带来新的可能性。他提到了在 Go 的未来版本中用于对切片进行排序的通用函数的可能性。总的来说，视频节目全面概述了 Go 编程中的泛型。它强调了使用类型参数的好处并提供了其实现的实际示例。演讲者强调了使用泛型来保证代码清晰和避免重复代码的重要性。本集最后提到 Go 1.18 即将支持泛型，这无疑将增强 Go 开发人员的编程体验。 有关 Go 编程的更多信息并了解最新进展，视频建议访问该团队的 golang 网站。组织。此外，该集鼓励听众查看 Go Day 2021 活动页面上提供的所有游戏日会议。</p></details>
   + [talk/ian2021b](https://www.youtube.com/watch?v=Pa_e9EeCdy8) <details><summary>Generics! Dec 17, 2021.</summary>
     <p><b>总结：</b>在题为“泛型！”的 GopherCon 2021 视频节目中，Go 团队成员 Robert Griesemer 和 Ian Lance Taylor 讨论了即将发布的 Go 1.18 及其对泛型函数和类型的支持。它们强调了泛型为 Go 编程语言带来的表达能力以及有效使用它们所带来的责任。 Go 1.18 中的新功能包括类型参数、更强大的接口类型和改进的类型推断。这些功能消除了对类型参数的需要，使得在 Go 中使用泛型进行编程更加高效。此更新还引入了类型约束（定义参数的有效类型）以及定义方法集的接口。 Griesemer 和 Taylor 提供了有关何时何地使用 Go 中通用功能的指南。他们建议从函数而不是类型参数开始，并将类型参数用于对特殊类型进行操作的函数，而不需要对元素类型进行假设。与反射或接口类型相比，它们强调类型参数的灵活性和效率，允许通用数据结构和完全类型检查的代码。演讲者还讨论了理解元类型和使用接口作为通用函数约束的重要性。他们提到了语法糖的引入以及切片类型的类型参数的使用。它们还涉及类型推断及其在从类型参数约束推导类型参数中的作用。 Griesemer 和 Taylor 强调在使用泛型时需要保持 Go 代码的可读性、可维护性和良好的性能。他们建议当多种类型共享具有相同实现的通用方法时使用类型参数，并使用接口类型进行泛型编程和从任何值读取数据。 他们提到，在类型参数没有帮助的情况下可以使用反射。总体而言，即将发布的支持泛型的 Go 1.18 为该语言带来了显着的表达能力。 Griesemer 和 Taylor 就如何有效使用泛型提供了宝贵的指导，强调了根据代码的具体要求选择适当方法的重要性。通过遵循他们的建议，开发人员可以利用泛型的优势，同时保持代码的可读性、可维护性和性能。</p></details>
+  + [doc/ian2025](https://www.airs.com/blog/archives/670) Ian Lance Taylor，离开谷歌。2025年5月10日。
 
 - Russ Cox（Russell Stensby Cox 博士） [Website](https://swtch.com/~rsc/), [Blog](https://research.swtch.com/), [GitHub](https://github.com/rsc), [Twitter](https://twitter.com/_rsc), [Reddit](https://old.reddit.com/user/rsc)
   + 毕业院校：麻省理工学院
@@ -262,6 +263,11 @@ Go 最初由 Rob, Robert 和 Ken 创建。Rob 跟 Robert 谈论 C++ 缓慢的编
   + [talk/russ2021](https://www.twitch.tv/videos/1203523364) #PLTalk: Russ Cox 的 12 年 Go 经历。 2021年11月12日。
   + [talk/russ2022](https://youtube.com/watch?v=v24wrd3RwGo) <details><summary>Compatibility: How Go Programs Keep Working. GopherCon 2022. Oct 28, 2022.</summary>
     <p><b>Summary:</b>在题为“GopherCon 2022：Russ Cox - 兼容性：Go 程序如何保持工作”的视频中，Russ Cox 讨论了 Go 编程中兼容性的重要性以及 Go 团队为确保新版本的稳定性和可预测性而采用的策略。 Cox 首先解释了 Go1 兼容性承诺，该承诺保证可以在不破坏现有代码的情况下添加新的 API。他强调了维护 API 兼容性的重要性，并讨论了用于检查兼容性问题的工具和测试方法。本集重点介绍了 Go 1.1 版本准备过程中遇到的两个微妙问题，揭示了维护兼容性的挑战，包括输出更改、输入更改和协议更改。 Cox 还深入研究了 Go 1.6 中的更改和兼容性，包括选择退出更改的能力以及取消对 sha-1 证书的支持。讨论进一步探讨了向后、向前和语言兼容性，以及与输出和输入变化相关的挑战。提供示例来说明输出更改不兼容性以及输入更改引起的问题。 Cox 强调编写可接受任何有效行为的代码和测试的重要性。他还使用由于数据格式和 HTTP 版本之间的通信问题而导致的代码破坏示例，讨论了输入更改不兼容性和协议更改。该集还涉及 Goatee bug 设置和 Go 编程中的兼容性，强调了破坏现有程序的兼容更改将持续至少两年的保证。 Go 命令正在考虑改进以更有效地处理版本不匹配。 最后，本集讨论了如何利用 Go 模块来删除或修复 Go 语言中的有问题的功能。识别出代码中的错误，并建议潜在的修复方案。总的来说，这一集强调了在 Go 1.x 开发中优先考虑兼容性以及为开发人员保持稳定性和可预测性的重要性。</p></details>
+  + [doc/13years](https://go.dev/blog/13years) Russ Cox，Go 的十三年。2022年11月10日。
+  + [doc/14years](https://go.dev/blog/14years) Russ Cox，Go 的十四年。2023年11月10日。
+  + [doc/torches](https://groups.google.com/g/golang-dev/c/0OqBkS2RzWw) Russ Cox，把火炬交给 Austin 和 Cherry。golang-dev，2024年8月1日。
+  + [discuss/67901](https://github.com/golang/go/discussions/67901) Russ Cox，gabyhelp 反馈。2024年6月8日。
+  + [discuss/68490](https://github.com/golang/go/discussions/68490) Russ Cox，x/oscar 反馈。2024年7月17日。
   
 [Back To Top](#top)
 
@@ -286,10 +292,12 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
   + [talk/dmitry2020](https://www.youtube.com/watch?v=YwX4UyXnhz0) <details><summary>syzkaller：连续覆盖引导内核模糊器。2020年 BlueHat IL。2020年2月13日。</summary>
     <p><b>Summary:</b>在题为“BlueHat IL 2020 - Dmitry Vyukov - syzkaller：连续覆盖引导的内核模糊测试中的冒险”的视频中，Dmitry Vyukov 讨论了 syzkaller 项目，这是一个开源、覆盖引导、结构感知的内核模糊器。他首先解释了该项目背后的历史和动机，强调了内核模糊测试与用户空间模糊测试相比的挑战，例如覆盖范围薄弱、测试隔离和巨大的输入空间。然后，维尤科夫深入研究了使 syzkaller 项目能够克服这些挑战的主要设计决策。他讨论了接口描述语言的使用、syzkaller 程序符号和解释以及代码覆盖支持的实现。事实证明，这些设计决策可以有效地发现各种操作系统中的数千个错误。该播客节目还谈到了对动态工具进行良好测试的重要性，并介绍了无害模糊测试的概念，作为检测内核中更多错误的技术。传统的模糊测试技术是有限的，Vyukov 引入了代码覆盖率引导的模糊测试作为一种更有效的方法。此外，本集探讨了编程中系统调用和阻塞的概念，强调了系统调用的优先级和分派以处理阻塞情况的重要性。讨论还包括对管理系统调用和处理阻塞场景的见解。 Vyukov 还讨论了 Sis Bot 的实施，这是一个在 syzkaller 项目之上实现自动化并提供更高级别自动化的系统。 Sis Bot 提供持续的内核和调用者构建，提供更新和自动化以提高效率。 该系统已报告上游 Linux 内核中约 2, 900 个错误，其中 2, 000 个已修复，800 个未解决。总体而言，本视频全面概述了 syzkaller 项目及其对持续覆盖引导的内核模糊测试的影响。 Vyukov 的见解和经验揭示了内核模糊测试的挑战和成功，并强调了动态工具和测试在开发安全可靠的操作系统中的重要性。</p></details>
 
-- Austin Clements（Austin T. Clements 博士）[GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
+- Austin Clements（Austin T. Clements 博士）（自 2024 年 9 月起任 Go 技术负责人）[GitHub](https://github.com/aclements), [Scholar](https://scholar.google.com/citations?user=MKDtxN4AAAAJ)
   + 毕业院校：麻省理工学院
   + [paper/autin2014](https://pdos.csail.mit.edu/papers/aclements-phd.pdf) 可伸缩交换规则：为多核处理器设计可伸缩软件。博士论文。2014年5月21日
   + [talk/austin2020](https://www.gophercon.com/agenda/session/233441) 原谅中断：Go 1.14 中的循环抢占。2020年11月12日。
+  + [doc/15years](https://go.dev/blog/15years) Austin Clements，Go 十五岁了。2024年11月11日。
+  + [doc/16years](https://go.dev/blog/16years) Austin Clements，Go 的甜蜜十六岁。2025年11月14日。
 
 - Richard Hudson（Richard L. Hudson 理学硕士）[GitHub](https://github.com/RLH)（退休）
   + 毕业院校：马萨诸塞大学阿默斯特分校
@@ -319,7 +327,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 
 - Than McIntosh. [GitHub](https://github.com/thanm)
 
-- Cherry Zhang. [GitHub](https://github.com/cherrymui)
+- Cherry Mui（曾用名 Cherry Zhang）（自 2024 年 9 月起负责 Go core）[GitHub](https://github.com/cherrymui)
 
 ### 仓库、工具、安全、社区
 
@@ -471,6 +479,9 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 | Go 1.22 | 2024.01.31 / 2024.02.07 | 184 (+7)  |
 | Go 1.23 | 2024.07.31 / 2024.08.14 | 189 (+14)  |
 | Go 1.24 | 2025.01.31 / 2025.02.12 | 182 (+12)  |
+| Go 1.25 | 2025.07.31 / 2025.08.12 | 181 (+12)  |
+| Go 1.26 | 2026.01.31 / 2026.02.10 | 182 (+10)  |
+| Go 1.27 | 2026.07.31 / 2026.08.19 | 190 (+19)  |
 
 历史版本说明可以提供一些大概信息：
 
@@ -511,6 +522,8 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/19623](https://go.dev/issue/19623) 提案：规范：更改 int 为任意精度
 - [issue/19367](https://go.dev/issue/19367) unsafe：添加 `Slice(ptr *T, len anyIntegerType) []T`
 - [issue/40481](https://go.dev/issue/40481) unsafe：添加函数
+- [issue/46505](https://go.dev/issue/46505) 规范：允许从切片转换为数组
+- [issue/9859](https://go.dev/issue/9859) 规范：在结构体字面量中直接引用嵌入字段
 
 [Back To Top](#top)
 
@@ -552,6 +565,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/17487](https://go.dev/issue/17487) cmd/compile：支持别名
 - [issue/67547](https://go.dev/issue/67547) go/types，types2：审查类型断言中潜在的 Alias 缺陷
 - [issue/65294](https://go.dev/issue/65294) x/tools：使测试在 GODEBUG=gotypesalias=1 下通过
+- [doc/alias-names](https://go.dev/blog/alias-names) Robert Griesemer，（别名）名字里有什么？2024年9月17日。
 
 [Back To Top](#top)
 
@@ -596,6 +610,7 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/40432](https://go.dev/issue/40432) 语言：Go 2: 错误处理的讨论
 - [issue/40776](https://go.dev/issue/40776) 提案：动态错误忽略的检测器
 - [issue/41198](https://go.dev/issue/41198) 提案：errors：添加 ErrUnimplemented 作为失败接口方法的标准方式。
+- [discuss/71460](https://github.com/golang/go/discussions/71460) Ian Lance Taylor，讨论：规范：使用 ? 减少错误处理的样板代码。2025年1月27日。
 
 [Back To Top](#top)
 
@@ -672,6 +687,15 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/69673](https://go.dev/issue/69673) go/types：与位置无关的类型检查
 - [issue/57410](https://go.dev/issue/57410) cmd/compile：移除 GOEXPERIMENT=nounified
 - [issue/68778](https://go.dev/issue/68778) exportdata：支持带类型参数的别名
+- [doc/comparable](https://go.dev/blog/comparable) Robert Griesemer，所有可比较的类型。2023年2月17日。
+- [doc/deconstructing-type-parameters](https://go.dev/blog/deconstructing-type-parameters) Ian Lance Taylor，解构类型参数。2023年9月26日。
+- [doc/type-inference](https://go.dev/blog/type-inference) Robert Griesemer，关于类型推断你想知道的一切，以及更多。2023年10月9日。
+- [doc/generic-slice-functions](https://go.dev/blog/generic-slice-functions) Valentin Deleplace，健壮的切片泛型函数。2024年2月22日。
+- [doc/coretypes](https://go.dev/blog/coretypes) Robert Griesemer，再见核心类型，你好，我们熟悉和喜爱的 Go！2025年3月26日。
+- [doc/generic-interfaces](https://go.dev/blog/generic-interfaces) Axel Wagner，泛型接口。2025年7月7日。
+- [issue/75883](https://go.dev/issue/75883) 规范：移除类型参数的循环限制
+- [doc/type-construction](https://go.dev/blog/type-construction-and-cycle-detection) Mark Freeman，类型构造与循环检测。2026年3月24日。
+- [doc/generic-methods](https://go.dev/blog/generic-methods) Mark Freeman，泛型方法。2026年8月26日。
 
 [Back To Top](#top)
 
@@ -704,6 +728,9 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [design/loopvar](https://go.dev/design/60078-loopvar) 提案：不易出错的循环变量作用域。
 - [issue/57969](https://go.dev/issue/57969) cmd/compile：添加 GOEXPERIMENT=loopvar
 - [issue/61717](https://go.dev/issue/61717) cmd/compile：在 GOEXPERIMENT=range 下添加新的 range 语义
+- [doc/loopvar-preview](https://go.dev/blog/loopvar-preview) David Chase、Russ Cox，修复 Go 1.22 中的 for 循环。2023年9月19日。
+- [doc/range-functions](https://go.dev/blog/range-functions) Ian Lance Taylor，对函数类型的 range。2024年8月20日。
+- [issue/61902](https://go.dev/issue/61902) regexp：为匹配方法添加迭代器形式
 
 [Back To Top](#top)
 
@@ -719,6 +746,11 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/33791](https://go.dev/issue/33791) 提案：为重大变更添加明确的决策文档
 - [issue/28221](https://go.dev/issue/28221) cmd/go，cmd/compile：记录语言版本以支持语言过渡
 - [issue/31793](https://go.dev/issue/31793) go/types，types2：为不同的语言版本提供配置支持
+- [doc/compat](https://go.dev/blog/compat) Russ Cox，向后兼容、Go 1.21 与 Go 2。2023年8月14日。
+- [doc/toolchain](https://go.dev/blog/toolchain) Russ Cox，Go 1.21 的向前兼容与工具链管理。2023年8月14日。
+- [issue/65573](https://go.dev/issue/65573) cmd/go：将默认 GODEBUG 与 go 语言版本分离
+- [issue/76163](https://go.dev/issue/76163) 移除 GODEBUG 标志的策略
+- [discuss/80580](https://github.com/golang/go/discussions/80580) Austin Clements，更健全的提案流程。2026年7月27日。
 
 [Back To Top](#top)
 
@@ -820,6 +852,15 @@ Dmitry 来自谷歌动态测试工具团队而不是 Go 团队。他编写了可
 - [issue/44549](https://go.dev/issue/44549) cmd/asm，cmd/compile，cmd/link，cmd/objdump：ppc64 ISA 3.1 支持
 - [issue/20104](https://go.dev/issue/20104) cmd/compile：将架构相关的重写规则和操作移入各架构自己的包
 - [issue/81819](https://go.dev/issue/81819) simd：围绕可执行规范统一 API 生成
+- [design/bce](https://docs.google.com/document/d/1vdAEAjYdzjnPA9WDOQ1e4e05cYVMpqSxJYZT33Cqw2g) 边界检查消除。
+- [discuss/checkptr](https://groups.google.com/g/golang-dev/c/SzwDoqoRVJA) Matthew Dempsky，master 分支已支持动态 unsafe 指针检查。golang-dev，2019年10月17日。
+- [doc/pgo-preview](https://go.dev/blog/pgo-preview) Michael Pratt，按配置文件优化（PGO）预览。2023年2月8日。
+- [doc/pgo](https://go.dev/blog/pgo) Michael Pratt，Go 1.21 中的按配置文件优化（PGO）。2023年9月5日。
+- [doc/gotelemetry](https://go.dev/blog/gotelemetry) Robert Findley，Go 1.23 及以后的遥测。2024年9月3日。
+- [issue/67111](https://go.dev/issue/67111) cmd/go：添加 go telemetry 子命令
+- [doc/allocation-optimizations](https://go.dev/blog/allocation-optimizations) Keith Randall，在栈上分配。2026年2月27日。
+- [doc/simd-experiment](https://go.dev/blog/simd-experiment) David Chase、Junyang Shao，Go 中与平台无关的 SIMD。2026年9月24日。
+- [doc/archsimd](https://go.dev/blog/archsimd) Junyang Shao、David Chase，Go 中特定于架构的 SIMD。2026年10月2日。
 
 [Back To Top](#top)
 
@@ -881,6 +922,8 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
   + [issue/60773](https://go.dev/issue/60773) runtime/trace：执行跟踪器大修
 - [issue/63185](https://go.dev/issue/63185) runtime/trace：飞行记录（flight recording）
 - [issue/66703](https://go.dev/issue/66703) runtime/trace：将 v2 跟踪器设为默认跟踪器
+- [doc/execution-traces-2024](https://go.dev/blog/execution-traces-2024) Michael Knyszek，更强大的 Go 执行跟踪。2024年3月14日。
+- [doc/flight-recorder](https://go.dev/blog/flight-recorder) Carlos Amedee、Michael Knyszek，Go 1.25 中的飞行记录器。2025年9月26日。
 
 [Back To Top](#top)
 
@@ -919,6 +962,20 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
   + [discuss/win2000-golang-nuts](https://go.dev/s/win2000-golang-nuts) 反对删除对 Windows 2000(x86-32)的支持
 - [design/wasm](https://docs.google.com/document/d/131vjr4DH6JFnb-blm_uRdaC0_Nv3OUwjEY5qVCxCup4/edit#heading=h.mjo1bish3xni) Richard Musiol，Go WebAssembly 的架构。2018年2月28日。
 - [design/wasm2](https://docs.google.com/document/d/1GRmy3rA4DiYtBlX-I1Jr_iHykbX8EixC3Mq0TCYqbKc/edit#heading=h.q4c21ihutzk0) WebAssembly 程序文件
+- [issue/57631](https://go.dev/issue/57631) 构建：主版本号的第三位使用零，例如 'go1.21.0'
+- [issue/54265](https://go.dev/issue/54265) 构建：采用 Go 1.20 作为 Go 1.22 的引导工具链
+- [issue/69315](https://go.dev/issue/69315) 构建：采用 Go 1.24 作为 Go 1.26 的引导工具链
+- [doc/rebuild](https://go.dev/blog/rebuild) Russ Cox，完全可重现、可验证的 Go 工具链。2023年8月28日。
+- [issue/57179](https://go.dev/issue/57179) cmd/go：在加载用户 go.env 之前加载 $GOROOT/go.env
+- [issue/59719](https://go.dev/issue/59719) cmd/go：添加 GOEXPERIMENT=cacheprog，让子进程实现内部的动作/输出缓存
+- [issue/64876](https://go.dev/issue/64876) cmd/go：默认启用 GOCACHEPROG
+- [issue/62067](https://go.dev/issue/62067) cmd/go：go build -json
+- [issue/38248](https://go.dev/issue/38248) cmd/compile：用 go:wasmimport 指令替代 CallImport
+- [issue/58141](https://go.dev/issue/58141) 所有：添加 GOOS=wasip1 GOARCH=wasm 移植
+- [doc/wasi](https://go.dev/blog/wasi) Johan Brandhorst-Satzkorn、Julien Fabre、Damian Gryski、Evan Phoenix、Achille Roussel，Go 对 WASI 的支持。2023年9月13日。
+- [issue/65199](https://go.dev/issue/65199) cmd/compile：添加 go:wasmexport 指令
+- [design/wasmexport-notes](https://docs.google.com/document/d/1R14wRHv_UjeFnemvV5hbp75cCRNzVH9ZZS-Yo_zITxg) Achille Roussel，go:wasmexport 实现笔记。
+- [doc/wasmexport](https://go.dev/blog/wasmexport) Cherry Mui，用 Go 编写可扩展的 Wasm 应用。2025年2月13日。
 
 [Back To Top](#top)
 
@@ -948,12 +1005,31 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [design/lazy-gomod](https://go.dev/design/36460-lazy-module-loading) Bryan C. Mills，提案：模块的延迟加载。2020年2月20日。
 - [issue/45713](https://go.dev/issue/45713) 提案：cmd/go: 添加工作区模式
   + [design/workspace](https://go.dev/design/45713-workspace) 提案：cmd/go 多模块工作区
+- [doc/vuln](https://go.dev/blog/vuln) Julie Qiu，Go 的漏洞管理。2022年9月6日。
+- [doc/govulncheck](https://go.dev/blog/govulncheck) Julie Qiu，Govulncheck v1.0.0 发布了！2023年7月13日。
+- [discuss/60696](https://github.com/golang/go/discussions/60696) Michael Matloob，cmd/go：添加包转发。2023年6月8日。
+- [discuss/61669](https://github.com/golang/go/discussions/61669) Russ Cox，gonew：新模块的模板。2023年7月31日。
+- [doc/gonew](https://go.dev/blog/gonew) Cameron Balahan，试验项目模板。2023年7月31日。
+- [issue/48429](https://go.dev/issue/48429) cmd/go：在 go.mod 中跟踪工具依赖
+- [design/x-repo-continuous-go](https://go.dev/design/69095-x-repo-continuous-go) Dmitri Shuralyov，提案：所有、x/build/cmd/relui：自动维护 golang.org/x 仓库中的 go 指令。2024年8月27日。
+- [doc/pkgsite-api](https://go.dev/blog/pkgsite-api) Ethan Lee、Hana Kim、Jonathan Amsterdam，pkg.go.dev API 介绍。2026年5月21日。
 
 [Back To Top](#top)
 
 ### gopls
 
 - [design/gopls-workspace](https://go.dev/design/37720-gopls-workspaces) Heschi Kreinick, Rebecca Stambler，提案：多项目 gopls 工作区，2020年3月9日。
+- [doc/gopls-scalability](https://go.dev/blog/gopls-scalability) Robert Findley、Alan Donovan，为不断壮大的 Go 生态扩展 gopls。2023年9月8日。
+- [issue/63501](https://go.dev/issue/63501) x/tools/cmd/deadcode：添加新命令
+- [doc/deadcode](https://go.dev/blog/deadcode) Alan Donovan，用 deadcode 找出不可达的函数。2023年12月12日。
+- [issue/61324](https://go.dev/issue/61324) x/tools/go/analysis/checker：基于 go/packages 的可导入分析驱动
+- [issue/32816](https://go.dev/issue/32816) cmd/fix：自动迁移简单的弃用
+- [issue/73605](https://go.dev/issue/73605) cmd/fix：移除所有功能
+- [issue/71859](https://go.dev/issue/71859) cmd/go：fix：应用现代化器（modernizer）、内联和其他分析器给出的修复
+- [doc/gofix](https://go.dev/blog/gofix) Alan Donovan，使用 go fix 使 Go 代码现代化。2026年2月17日。
+- [doc/inliner](https://go.dev/blog/inliner) Alan Donovan，//go:fix inline 与源码级内联器。2026年3月10日。
+- [design/lsp-interactive-refactoring](https://go.dev/design/76331-lsp-interactive-refactoring) Hongxiang Jiang，提案：语言服务器协议（LSP）的交互式代码操作。2026年7月16日。
+- [doc/interactive-refactoring](https://go.dev/blog/interactive-refactoring) Hongxiang Jiang，gopls 中的交互式重构。2026年10月16日。
 
 [Back To Top](#top)
 
@@ -976,6 +1052,12 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/49121](https://go.dev/issue/49121) x/perf/storage：支持 postgresql。
 - [design/revamp-code-coverage](https://go.dev/design/51430-revamp-code-coverage) Than McIntosh，提案：将代码覆盖率测试扩展到应用程序。2022年3月2日。
   + [issue/51430](https://go.dev/issue/51430) cmd/cover：将覆盖率测试扩展到应用程序
+- [doc/integration-test-coverage](https://go.dev/blog/integration-test-coverage) Than McIntosh，Go 集成测试的代码覆盖率。2023年3月8日。
+- [doc/synctest](https://go.dev/blog/synctest) Damien Neil，用 testing/synctest 测试并发代码。2025年2月19日。
+- [doc/testing-b-loop](https://go.dev/blog/testing-b-loop) Junyang Shao，用 testing.B.Loop 让基准测试更可预测。2025年4月2日。
+- [issue/73567](https://go.dev/issue/73567) testing/synctest：用 Test 替代 Run
+- [doc/testing-time](https://go.dev/blog/testing-time) Damien Neil，测试时间（以及其他异步性）。2025年8月26日。
+- [issue/71287](https://go.dev/issue/71287) testing：保存测试产物
 
 [Back To Top](#top)
 
@@ -1030,6 +1112,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 - [issue/13759](https://go.dev/issue/13759) 提案：为 Go 添加部分死锁检测器
 - [issue/21678](https://go.dev/issue/21678) 运行时：为调试器提供在被调试程序中执行函数的机制
 - [issue/70089](https://go.dev/issue/70089) 提案：runtime/mainthread：添加 mainthread.Do，用于协调对主线程的访问
+- [doc/container-aware-gomaxprocs](https://go.dev/blog/container-aware-gomaxprocs) Michael Pratt、Carlos Amedee，感知容器的 GOMAXPROCS。2025年8月20日。
 
 [Back To Top](#top)
 
@@ -1110,6 +1193,8 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/69327](https://go.dev/issue/69327) 运行时：clear、append、bytes.growSlice 等中的清零不可抢占
 - [design/go-pmem](https://go.dev/design/43810-go-pmem) Jerrin Shaji George、Mohit Verma、Rajesh Venkatasubramanian、Pratap Subrahmanyam，提案：在 Go 中添加对持久内存的支持。2021年1月20日。
   + [issue/43810](https://go.dev/issue/43810) 提案：规范：在 Go 中原生支持持久内存编程（已拒绝）
+- [doc/unique](https://go.dev/blog/unique) Michael Knyszek，新的 unique 包。2024年8月27日。
+- [doc/size-specialized-allocations](https://go.dev/blog/size-specialized-allocations) Michael Matloob，按大小特化的内存分配。2026年9月16日。
 
 [Back To Top](#top)
 
@@ -1170,6 +1255,8 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/11911](https://go.dev/issue/11911) 运行时：并发 GC 下堆无限增长
 - [issue/12041](https://go.dev/issue/12041) 运行时：重新设计 GC 同步
 - [issue/27583](https://go.dev/issue/27583) 运行时：功能请求：支持堆的 ASLR
+- [doc/go119runtime](https://go.dev/blog/go119runtime) Michael Knyszek，Go 运行时：四年之后。2022年9月26日。
+- [doc/cleanups-and-weak](https://go.dev/blog/cleanups-and-weak) Michael Knyszek，从 unique 到 cleanup 与 weak：提升效率的新底层工具。2025年3月6日。
 
 [Back To Top](#top)
 
@@ -1185,6 +1272,7 @@ Go 内存分配的实力简述：Russ Cox 在 Go 1 上首次实现了基于 tcma
 - [issue/37112](https://go.dev/issue/37112) 运行时：用于不稳定指标的 API
 - [issue/47216](https://go.dev/issue/47216) runtime/metrics：添加 GOMAXPROCS、NumCgoCall、GC CPU 时间
   + [issue/56857](https://go.dev/issue/56857) runtime/metrics：添加 /gc/heap/live:bytes
+- [design/memlimits](https://docs.google.com/document/d/1zn4f3-XWmoHNj702mCCNvHqaS7p9rzqQGa74uOwOBKM) Go 的内存限制（公开版）。在 issue/16843 中提出，
 
 [Back To Top](#top)
 
@@ -1257,6 +1345,10 @@ Go 内存模型包含以下方面：
 - [issue/2630](https://go.dev/issue/2630) 运行时：哈希函数应随机化，以防止 DoS 攻击
 - [issue/20505](https://go.dev/issue/20505) 运行时：需要更好的 itab 表
 - [issue/75280](https://go.dev/issue/75280) runtime/pprof，运行时：以 GOEXPERIMENT 形式添加新的 goroutine 泄漏剖析
+- [doc/randv2](https://go.dev/blog/randv2) Russ Cox，用 math/rand/v2 演进 Go 标准库。2024年5月1日。
+- [doc/chacha8rand](https://go.dev/blog/chacha8rand) Russ Cox、Filippo Valsorda，Go 1.22 中的安全随机数。2024年5月2日。
+- [doc/swisstable](https://go.dev/blog/swisstable) Michael Pratt，用 Swiss Table 实现更快的 Go map。2025年2月26日。
+- [doc/goroutine-leak-profiles](https://go.dev/blog/goroutine-leak-profiles) Vlad Saioc，Goroutine 泄漏分析。2026年9月2日。
 
 [Back To Top](#top)
 
@@ -1265,6 +1357,7 @@ Go 内存模型包含以下方面：
 ### syscall
 
 - [design/go14syscall](https://go.dev/s/go1.4-syscall) syscal 包。
+- [issue/68595](https://go.dev/issue/68595) syscall：在 Linux 上支持使用 Landlock 进行进程沙箱隔离
 
 [Back To Top](#top)
 
@@ -1292,6 +1385,12 @@ Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
   + [issue/43218](https://go.dev/issue/43218) embed: 对 string, []byte 讨论的决定
   + [issue/44166](https://go.dev/issue/44166) io/fs,os: 使用 os.DirFS 的 fs.ReadDir 会造成错误的路径
   + [issue/42322](https://go.dev/issue/42322) io/fs: 添加函数 `Sub(fsys FS, dir string) FS`
+- [issue/56219](https://go.dev/issue/56219) path/filepath：添加 IsLocal
+- [issue/57151](https://go.dev/issue/57151) path/filepath：添加 Localize，将斜杠分隔的路径安全地转换为操作系统路径
+- [issue/54898](https://go.dev/issue/54898) archive/zip：添加 (*Writer).AddFS
+- [issue/62484](https://go.dev/issue/62484) os：添加 CopyFS
+- [issue/67002](https://go.dev/issue/67002) os：更安全的文件打开函数
+- [doc/osroot](https://go.dev/blog/osroot) Damien Neil，防目录遍历的文件 API。2025年3月12日。
 
 [Back To Top](#top)
 
@@ -1301,6 +1400,7 @@ Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
 - [talk/gotypes](https://docs.google.com/presentation/d/13OvHYozAUBeISPRoLgG7kMBuja1NsU1D_mMlmbaYojk/view) Alan Donovan. 使用 go/types 作为代码理解和重构工具。2015年12月2日。
 - [design/modular-interface](https://docs.google.com/document/d/1-azPLXaLgTCKeKDNg0HVMq2ovMlD-e7n1ZHzZVzOlJk/edit) Alan Donovan. 提案：用于Go模块化静态分析的通用接口。2018年9月9日。
   + [cl/134935](https://go.dev/cl/134935) go/analysis: 分析工具的新的应用接口
+- [issue/62039](https://go.dev/issue/62039) go/version：处理 Go 版本字符串的包
 
 [Back To Top](#top)
 
@@ -1334,6 +1434,7 @@ Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
   + [cl/166960](https://github.com/golang/go/commit/d5fd2dd6a17a816b7dfd99d4df70a85f1bf0de31) sync: 使用无锁结构进行池窃取。
   + [cl/166961](https://github.com/golang/go/commit/2dcbf8b3691e72d1b04e9376488cef3b6f93b286) sync: 使用受害者缓存在GC上进行平缓的池操作。
 - [issue/24479](https://go.dev/issue/24479) sync: 在池操作里去除全部 Mutex。
+- [discuss/pool-draining](https://groups.google.com/g/golang-dev/c/kJ_R6vYVYHU/m/LjoGriFTYxMJ) Russ Cox，感知 GC 的池清空策略。golang-dev，2013年11月27日。
 
 [Back To Top](#top)
 
@@ -1421,6 +1522,7 @@ Go 1.16 中，对新的 os/fs 包进行了大量返工和改进。
   + [issue/19480](https://go.dev/issue/19480) encoding/xml: 从 TokenReader 添加解码，启用流转换器。
 - [design/raw-xml](https://go.dev/design/26756-rawxml-token) Sam Whited，提案：原始 XML 令牌，2018年9月1日。
   + [issue/26756](https://go.dev/issue/26756) 提案: encoding/xml: 添加 RawXML 令牌。
+- [doc/jsonv2-exp](https://go.dev/blog/jsonv2-exp) Joe Tsai、Daniel Martí、Johan Brandhorst-Satzkorn、Roger Peppe、Chris Hines、Damien Neil，一个新的实验性 Go JSON API。2025年9月9日。
 
 [Back To Top](#top)
 
@@ -1519,6 +1621,53 @@ x/image:
 
 [Back To Top](#top)
 
+### log
+
+- [discussion/54763](https://go.dev/issue/54763) 讨论：结构化、分级的日志
+- [design/structured-logging](https://go.dev/design/56345-structured-logging) 提案：结构化日志
+- [issue/56345](https://go.dev/issue/56345) 提案：log/slog：结构化、分级的日志
+- [issue/58243](https://go.dev/issue/58243) log/slog：让日志记录器方便地获取当前 context
+- [issue/59928](https://go.dev/issue/59928) 提案：testing：添加 log/slog 支持
+- [doc/slog](https://go.dev/blog/slog) Jonathan Amsterdam，用 slog 进行结构化日志记录。2023年8月22日。
+- [issue/62005](https://go.dev/issue/62005) log/slog：添加 `slog.DiscardHandler`
+
+[Back To Top](#top)
+
+### net, net/http
+
+- [discuss/47323](https://github.com/golang/go/discussions/47323) Russ Cox，提案：net/netaddr：添加新的 IP 地址类型和 netaddr 包（讨论）。2021年7月21日。
+- [issue/56539](https://go.dev/issue/56539) net：支持 MPTCP
+- [discuss/60227](https://github.com/golang/go/discussions/60227) Jonathan Amsterdam，net/http：为 ServeMux 模式添加方法和路径变量。2023年5月16日。
+  + [issue/61410](https://go.dev/issue/61410) net/http：增强的 ServeMux 路由
+- [doc/routing-enhancements](https://go.dev/blog/routing-enhancements) Jonathan Amsterdam，Go 1.22 的路由增强。2024年2月13日。
+- [issue/66405](https://go.dev/issue/66405) net/http：在 Request 中暴露匹配到的模式
+- [discuss/60746](https://github.com/golang/go/discussions/60746) Damien Neil，net/http：将 HTTP/2 移入标准库。2023年6月12日。
+- [issue/67813](https://go.dev/issue/67813) net/http：HTTP/2 配置 API
+- [issue/73626](https://go.dev/issue/73626) net/http：添加 CrossOriginForgeryHandler
+- [issue/75772](https://go.dev/issue/75772) net/http：客户端连接 API
+- [doc/http-connection-reuse](https://go.dev/blog/http-connection-reuse) Nicholas Husin、Damien Neil，更好的 HTTP/1 连接复用。2026年10月14日。
+- [issue/58547](https://go.dev/issue/58547) x/net/quic：添加 QUIC 实现
+
+[Back To Top](#top)
+
+### crypto
+
+- [issue/66821](https://go.dev/issue/66821) crypto/rand：读取随机数出错时让进程崩溃
+- [issue/67057](https://go.dev/issue/67057) crypto/rand：添加函数 Text
+- [issue/61477](https://go.dev/issue/61477) crypto/hkdf：添加包
+- [issue/69488](https://go.dev/issue/69488) crypto/pbkdf2：添加包
+- [issue/63369](https://go.dev/issue/63369) crypto/tls：在客户端支持加密的 Client Hello（ECH）
+- [issue/70122](https://go.dev/issue/70122) crypto/mlkem：新包
+- [issue/75300](https://go.dev/issue/75300) crypto/hpke：新包
+- [issue/77626](https://go.dev/issue/77626) crypto/mldsa：新包
+- [issue/70123](https://go.dev/issue/70123) crypto：启用 FIPS 模式的机制
+- [issue/70200](https://go.dev/issue/70200) cmd/go：添加 fips140 模块选择机制
+- [doc/tob-crypto-audit](https://go.dev/blog/tob-crypto-audit) Roland Shoemaker、Filippo Valsorda，Go 密码学安全审计。2025年5月19日。
+- [doc/fips140](https://go.dev/blog/fips140) Filippo Valsorda (Geomys)、Daniel McCarney (Geomys)、Roland Shoemaker (Google)，FIPS 140-3 Go 密码模块。2025年7月15日。
+- [design/crypto-ssh-v2](https://go.dev/design/68723-crypto-ssh-v2) Nicola Murino、Filippo Valsorda，x/crypto/ssh/v2。2024年8月19日。
+
+[Back To Top](#top)
+
 ### misc
 
 - [design/mobile-audio](https://go.dev/design/13432-mobile-audio) Jaana Burcu Dogan，提案：手机音频。2015年11月30日。
@@ -1533,6 +1682,14 @@ x/image:
   + [issue/16704](https://go.dev/issue/16704) net/http: 考虑在 no_proxy 环境变量添加 CIDR 表示法
 - [design/dns](https://go.dev/design/26160-dns-based-vanity-imports) Sam Whited，提案：基于DNS的虚导入。2018年6月30日。
   + [issue/26160](https://go.dev/issue/26160) 提案：将 DNS 文本记录用于虚导入路径
+- [issue/60204](https://go.dev/issue/60204) cmp：添加 Or
+- [issue/60088](https://go.dev/issue/60088) reflect：添加 TypeFor
+- [issue/60370](https://go.dev/issue/60370) database/sql：添加泛型的 Null[T]
+- [issue/66408](https://go.dev/issue/66408) structs：添加 HostLayout “指令”类型
+- [issue/54670](https://go.dev/issue/54670) hash/maphash：添加函数 Comparable
+- [issue/70471](https://go.dev/issue/70471) hash/maphash：标准化哈希函数
+- [issue/69264](https://go.dev/issue/69264) x/exp/stats：包含 Mean、Median 等函数的新包
+- [issue/62026](https://go.dev/issue/62026) uuid：添加生成和解析 UUID 的 API
 
 [Back To Top](#top)
 
