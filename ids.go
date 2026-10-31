@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"net/url"
+
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/util"
-	"net/url"
 )
 
-// HistoryIDs custom implementation of goldmark/parser.IDs
+// HistoryIDs generates the heading ids of README_cn.md: the query-escaped
+// heading text. It implements goldmark/parser.IDs. Changing it would
+// break existing links to the Chinese pages.
 type HistoryIDs struct {
 	values map[string]bool
 }
