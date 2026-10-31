@@ -4,95 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Go 1.13 · Go runtime &amp; compiler history, 2008 → 1.28-dev</title>
+<meta name="description" content="How the Go runtime and compiler evolved from Go 1.0 to 1.28, reconstructed from the commit history.">
+<link rel="stylesheet" href="../site.css">
+<script>try{var t=localStorage.getItem('theme')||(localStorage.getItem('darkSwitch')==='dark'?'dark':'');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
-:root{--bg:#fbfbf9;--fg:#1d1d1b;--mut:#6b6b66;--line:#e4e2dc;--acc:#00758d;--code:#f1efe9;--int:#7a4fb5;--uv:#2f7d32;--dev:#b25a00;--side:#f4f3ef}
-@media (prefers-color-scheme:dark){:root{--bg:#16171a;--fg:#e6e4df;--mut:#9a9890;--line:#2c2d31;--acc:#4fc3dc;--code:#24262b;--int:#b394e6;--uv:#7cc47f;--dev:#f0a050;--side:#1c1d21}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:12px}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
-nav{position:fixed;top:0;left:0;bottom:0;width:290px;overflow-y:auto;background:var(--side);border-right:1px solid var(--line);padding:18px 14px 40px;font-size:13.5px;line-height:1.45}
-nav h1{font-size:15px;margin:0 0 4px}
-nav .sub{color:var(--mut);font-size:12px;margin-bottom:12px}
-nav ul{list-style:none;margin:0;padding:0}
-nav li{margin:0}
-nav a{color:var(--fg);text-decoration:none;display:block;padding:2px 6px;border-radius:4px}
-nav a:hover{background:var(--line)}
-nav a.top{font-weight:600;margin-top:8px}
-nav ul ul{padding-left:10px}
-nav ul ul a{color:var(--mut);font-size:12.5px}
-nav .ctrl{margin:10px 0 6px;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:12.5px}
-nav .ctrl label{display:block;cursor:pointer}
-main{margin-left:290px;padding:28px 48px 120px;max-width:1080px}
-h1,h2,h3,h4{line-height:1.25}
-main h1{font-size:32px;margin:64px 0 8px;padding-top:20px;border-top:4px solid var(--fg)}
-main h2{font-size:25px;margin:48px 0 6px;padding-top:12px;border-top:1px solid var(--fg)}
-.grid{font-size:12.5px;display:table;width:100%}.grid td,.grid th{padding:3px 5px}.grid td.on{text-align:center;background:color-mix(in srgb,var(--acc) 18%,transparent)}.grid td.on a{text-decoration:none}.grid tr.ga td{background:var(--side);font-weight:700;padding-top:8px}.grid td.tn{min-width:220px}.grid td.st{color:var(--mut);min-width:220px;font-size:11.5px;line-height:1.35}.grid th{position:sticky;top:0}
+:root{--int:#7a4fb5;--uv:#2f7d32;--dev:#b25a00}
+:root[data-theme="dark"]{--int:#b394e6;--uv:#7cc47f;--dev:#f0a050}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--int:#b394e6;--uv:#7cc47f;--dev:#f0a050}}
+main{max-width:1200px}
+main p,main li{max-width:84ch}
+main h1:not(:first-child){margin-top:72px;padding-top:24px;border-top:2px solid var(--fg)}
+main h2{border-top-color:var(--fg)}
+main h3{font-size:1.25rem;margin:40px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+main h4{color:var(--acc)}
+main table{font-size:14px;margin:10px 0}
+main th,main td{border:1px solid var(--line);padding:5px 9px}
+main th{background:var(--side);color:var(--fg)}
+.side .title{display:block;padding:0 8px;color:var(--fg);font-weight:650;font-size:15px}
+.side .sub{color:var(--mut);font-size:12.5px;margin:2px 8px 12px}
+.side .ctrl{margin:0 0 10px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-size:13px}
+.side .ctrl label{display:flex;align-items:center;gap:6px;cursor:pointer;padding:1px 0}
+.side .ctrl input{margin:0;accent-color:var(--acc)}
+.side .top{display:block;font-weight:600;margin-top:10px}
+.side span.top{padding:4px 8px;color:var(--faint);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-top:18px}
+.side a.cur{color:var(--acc);font-weight:600}
+.side li>ul{margin:2px 0 6px 8px;padding-left:8px;border-left:1px solid var(--line)}
+.side li>ul a{color:var(--mut);font-size:13px;padding:2px 8px}
+.side li>ul a.cur{color:var(--acc)}
+.side .rels{display:flex;flex-wrap:wrap;gap:4px;padding:4px 8px}
+.side .rels a{display:inline-block;min-width:38px;text-align:center;padding:1px 0;border:1px solid var(--line);border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums;color:var(--mut);background:var(--bg)}
+.side .rels a:hover{border-color:var(--acc);color:var(--fg)}
+.side .rels a.cur{color:var(--acc);border-color:var(--acc);font-weight:600}
+.grid{font-size:12.5px;display:block;overflow:auto;max-width:100%;max-height:calc(100vh - var(--hdr) - 40px);border:1px solid var(--line);border-radius:6px}.grid table{border-collapse:collapse}main table.grid{margin:12px 0 24px}.grid td,.grid th{padding:3px 5px}.grid td.on{text-align:center;background:color-mix(in srgb,var(--acc) 18%,transparent)}.grid td.on a{text-decoration:none}.grid tr.ga td{background:var(--side);font-weight:700;padding-top:8px}.grid td.tn{min-width:220px}.grid td.st{color:var(--mut);min-width:220px;font-size:11.5px;line-height:1.35}.grid th{position:sticky;top:0;z-index:1}
 .stage{height:0}
-.chap{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:700;margin:56px 0 -6px;border-top:3px solid var(--acc);padding-top:8px}
+.chap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:700;margin:64px 0 -6px;border-top:2px solid var(--acc);padding-top:8px}
 .dg{color:var(--mut);font-style:italic;margin:2px 0 10px}
 .prov{color:var(--mut);font-size:13.5px;font-style:italic;border-left:3px solid var(--line);padding-left:10px;margin:4px 0 18px}
 sup.xr{font-size:10px;color:var(--dev);margin-left:1px}
-main{max-width:1200px}
-h3{font-size:21px;margin:34px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
-h4{font-size:16.5px;margin:24px 0 6px;color:var(--acc)}
 .meta{color:var(--mut);font-size:13.5px;margin:0 0 14px}
 .meta code{font-size:12.5px}
-p,li{max-width:84ch}
-ul{padding-left:22px}
-li{margin:7px 0}
-li li{margin:3px 0}
-code{overflow-wrap:anywhere;font:13.5px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 4px;border-radius:3px}
-pre{background:var(--code);padding:10px 12px;border-radius:6px;overflow-x:auto}
-pre code{background:none;padding:0}
-a{color:var(--acc)}
-a.h{text-decoration:none}
+a.h:hover{text-decoration:none}
 a.h code{color:var(--acc);font-size:12px}
 a.h:hover code{text-decoration:underline}
 .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.02em;padding:0 6px;border-radius:9px;border:1px solid currentColor;vertical-align:1px;line-height:17px}
-.tag.int{color:var(--int)} .tag.uv{color:var(--uv)} .tag.dev{color:var(--dev)}
-table{border-collapse:collapse;font-size:14px;margin:10px 0;display:block;overflow-x:auto}
-th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
-th{background:var(--side)}
+.tag.int{color:var(--int)}.tag.uv{color:var(--uv)}.tag.dev{color:var(--dev)}
 body.only-int li.uvitem{opacity:.28}
 body.only-uv li.intitem{opacity:.28}
-blockquote{margin:12px 0;padding:6px 14px;border-left:3px solid var(--acc);color:var(--mut)}
-@media (max-width:900px){nav{position:static;width:auto;border-right:0;border-bottom:1px solid var(--line)}main{margin-left:0;padding:16px}}
-main>h1:first-child{margin-top:0;padding-top:0;border-top:0}
-nav a.cur{background:var(--line);font-weight:600;color:var(--fg)}
-nav .back{display:block;font-size:12.5px;margin:0 0 10px;color:var(--acc)}
-nav .top{display:block;padding:2px 6px}
-nav span.top{font-weight:600;margin-top:8px}
-nav li>ul{margin:2px 0 6px}
-nav .rels{display:flex;flex-wrap:wrap;gap:3px;padding:4px 6px}
-nav .rels a{display:inline-block;padding:1px 5px;border:1px solid var(--line);border-radius:4px;font-size:12px;color:var(--mut)}
-nav .rels a.cur{color:var(--fg);border-color:var(--fg)}
-#navt{display:none}
-.pn{display:flex;justify-content:space-between;margin:56px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.pn{display:flex;justify-content:space-between;gap:16px;margin:64px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:15px;font-weight:600}
 .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
 ul.toc{list-style:none;padding:0}ul.toc li{margin:0 0 10px}ul.rl li{margin:0 0 3px}
 .defines{font-size:16.5px;border-left:3px solid var(--acc);padding:4px 12px;margin:8px 0 16px}
 .from{color:var(--mut);font-size:13px;margin:-2px 0 8px}
 .osub{font-weight:600;margin:14px 0 0;color:var(--mut);font-size:14px}
 .oth{color:var(--mut);font-size:13.5px;margin:22px 0 0}
-details.dgl{margin:0 0 18px;font-size:14.5px}details.dgl summary{cursor:pointer;color:var(--acc)}
+details.dgl{margin:0 0 18px;font-size:14.5px}details.dgl summary{color:var(--acc)}
 .refs{margin:10px 0 16px;padding:8px 12px;border-left:3px solid var(--acc);background:var(--side);border-radius:0 6px 6px 0;font-size:14px}.refs .rh{font-weight:600;font-size:13px;color:var(--acc);margin-bottom:2px}.refs ul{margin:0;padding-left:0;list-style:none}.refs li{margin:3px 0;max-width:none}.refs .role{display:inline-block;min-width:104px;font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.03em}.refs .src{color:var(--mut);font-size:12.5px}
-footer{color:var(--mut);font-size:12.5px;margin-top:28px}
-@media (max-width:900px){#navt{display:block;margin:8px 0;padding:6px 10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px}nav .navbody{display:none}nav.open .navbody{display:block}.cols{grid-template-columns:1fr}}
-.pmeta{font-size:13.5px;color:var(--mut);margin:-4px 0 10px}.pst{display:inline-block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;padding:1px 7px;border-radius:9px;margin-right:6px;border:1px solid currentColor}.pst.never-landed{color:#b4442c}.pst.superseded{color:#3a6ea5}.pst.partially-landed{color:#7a6a12}.pst.dormant{color:#7d5aa6}.pst.landed-later{color:#2f7d32}.pst.still-open{color:#b25a00}table.pt{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0 20px}table.pt th,table.pt td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}table.pt th{font-size:12px;color:var(--mut);font-weight:600}table.pt td:first-child{min-width:260px}table.pt .meta{font-size:12.5px}
+.pmeta{font-size:13.5px;color:var(--mut);margin:-4px 0 10px}.pst{display:inline-block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;padding:1px 7px;border-radius:9px;margin-right:6px;border:1px solid currentColor}.pst.never-landed{color:#b4442c}.pst.superseded{color:#3a6ea5}.pst.partially-landed{color:#7a6a12}.pst.dormant{color:#7d5aa6}.pst.landed-later{color:#2f7d32}.pst.still-open{color:#b25a00}
+main table.pt{display:table;border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0 20px}table.pt th,table.pt td{border:0;border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left;background:none}table.pt th{font-size:12px;color:var(--mut);font-weight:600}table.pt td:first-child{min-width:260px}table.pt .meta{font-size:12.5px}
+@media (max-width:900px){.cols{grid-template-columns:1fr}main table.pt{display:block;overflow-x:auto}}
 </style>
 </head>
-<body>
-<nav id="toc">
-<a class="back" href="../">← Go: A Documentary</a>
-<h1><a href="index.html" style="padding:0">Go runtime &amp; compiler history</a></h1>
+<body data-base="../">
+<header class="site">
+  <button class="icon menu" data-menu aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../">Go: A Documentary</a>
+  <nav class="tabs">
+    <a href="../">Documentary</a>
+    <a href="index.html" aria-current="true">Runtime &amp; compiler</a>
+  </nav>
+  <div class="tools">
+    <button class="icon theme" data-theme-toggle data-label="Theme" aria-label="Theme"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7z"/></svg></button>
+    <a class="icon" href="https://github.com/golang-design/history" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  </div>
+</header>
+<div class="layout">
+<aside class="side">
+<a class="title" href="index.html">Go runtime &amp; compiler history</a>
 <div class="sub">Go 1.0 (2008) → 1.28-dev, reconstructed from commit history</div>
-<button id="navt" onclick="document.getElementById('toc').classList.toggle('open')">Menu</button>
-<div class="navbody">
-<div class="ctrl">
+<div class="ctrl" role="radiogroup" aria-label="Emphasis">
 <label><input type="radio" name="f" value="" checked> show all items</label>
 <label><input type="radio" name="f" value="only-int"> emphasize <span class="tag int">internal</span></label>
 <label><input type="radio" name="f" value="only-uv"> emphasize <span class="tag uv">user-visible</span></label>
 </div>
+<nav class="toc">
 <ul>
 <li><a class="top" href="index.html">About, contents &amp; overview</a></li>
 <li><a class="top" href="map.html">Thread × release map</a></li>
@@ -111,8 +105,8 @@ footer{color:var(--mut);font-size:12.5px;margin-top:28px}
 </ul></li><li><span class="top">Part II — Releases</span><div class="rels"><a class="" href="go1.0.html">1.0</a><a class="" href="go1.1.html">1.1</a><a class="" href="go1.2.html">1.2</a><a class="" href="go1.3.html">1.3</a><a class="" href="go1.4.html">1.4</a><a class="" href="go1.5.html">1.5</a><a class="" href="go1.6.html">1.6</a><a class="" href="go1.7.html">1.7</a><a class="" href="go1.8.html">1.8</a><a class="" href="go1.9.html">1.9</a><a class="" href="go1.10.html">1.10</a><a class="" href="go1.11.html">1.11</a><a class="" href="go1.12.html">1.12</a><a class="cur" href="go1.13.html">1.13</a><a class="" href="go1.14.html">1.14</a><a class="" href="go1.15.html">1.15</a><a class="" href="go1.16.html">1.16</a><a class="" href="go1.17.html">1.17</a><a class="" href="go1.18.html">1.18</a><a class="" href="go1.19.html">1.19</a><a class="" href="go1.20.html">1.20</a><a class="" href="go1.21.html">1.21</a><a class="" href="go1.22.html">1.22</a><a class="" href="go1.23.html">1.23</a><a class="" href="go1.24.html">1.24</a><a class="" href="go1.25.html">1.25</a><a class="" href="go1.26.html">1.26</a><a class="" href="go1.27.html">1.27</a><a class="" href="go1.28.html">1.28</a></div><ul><li><a href="#rel13-p-mem0">Memory management</a></li><li><a href="#rel13-p-sched0">Scheduler and concurrency</a></li><li><a href="#rel13-p-data0">Data structures and type metadata</a></li><li><a href="#rel13-p-diag0">Diagnostics and knobs</a></li><li><a href="#rel13-p-os1">OS layer, stacks and panics</a></li><li><a href="#rel13-p-fe2">Compiler frontend</a></li><li><a href="#rel13-p-opt1">Middle end and SSA optimizer</a></li><li><a href="#rel13-p-be2">Backends and assemblers</a></li><li><a href="#rel13-p-lk1">Linker and object files</a></li></ul></li>
 <li><span class="top">Part III</span><ul><li><a class="" href="paths.html">Paths not taken</a></li></ul></li>
 </ul>
-</div>
 </nav>
+</aside>
 <main>
 <h1 id="rel13">Go 1.13</h1>
 <div class="meta">
@@ -630,15 +624,17 @@ Other changes
 </ul>
 
 <div class="pn"><a href="go1.12.html">← Go 1.12</a><a href="go1.14.html">Go 1.14 →</a></div>
-<footer>Built from the Go repository's commit history up to <code>4494c64f5a</code> (2026-10-30). Part of <a href="../">Go: A Documentary</a>.</footer>
+<footer class="foot">Built from the Go repository's commit history up to <code>4494c64f5a</code> (2026-10-30). Part of <a href="../">Go: A Documentary</a>.</footer>
 </main>
+</div>
+<script src="../site.js"></script>
 <script>
 // tag list items by their own badge (first badge directly inside the item)
 document.querySelectorAll('main li').forEach(li=>{
   const t=[...li.children].find(e=>e.classList&&e.classList.contains('tag'))||li.querySelector(':scope > p > .tag');
   if(t){li.classList.add(t.classList.contains('int')?'intitem':t.classList.contains('uv')?'uvitem':'x')}
 });
-document.querySelectorAll('nav input[name=f]').forEach(r=>r.addEventListener('change',e=>{
+document.querySelectorAll('.side input[name=f]').forEach(r=>r.addEventListener('change',e=>{
   document.body.classList.remove('only-int','only-uv'); if(e.target.value)document.body.classList.add(e.target.value);
 }));
 </script>
