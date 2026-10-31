@@ -247,6 +247,7 @@ Now, Russ is the tech leader of the Go team.
   + [talk/russ2023b](https://www.youtube.com/watch?v=X4rxi9jStLo) Go Testing By Example. GopherCon Australia 2023. Nov 9, 2023.
   + [talk/russ2023c](https://www.youtube.com/watch?v=6H-V-0oQvCA) Open Source Supply Chain Security at Google. ACM SCORED. Nov 30, 2023.
   + [talk/russ2024](https://www.youtube.com/watch?v=3QL062vGbjQ) Go Telemetry Wins. GoLab. Dec 12, 2024.
+
 [Back To Top](#top)
 
 ### Compiler/Runtime Team
@@ -684,6 +685,7 @@ Error handling includes two separate works: error values and error formatting. H
 - [issue/69673](https://go.dev/issue/69673) go/types: position-independent type checking
 - [issue/57410](https://go.dev/issue/57410) cmd/compile: remove GOEXPERIMENT=nounified
 - [issue/68778](https://go.dev/issue/68778) exportdata: support type parameterized aliases
+
 [Back To Top](#top)
 - [issue/60353](https://go.dev/issue/60353) spec: when unifying against interface types, consider common methods
 - [issue/57433](https://go.dev/issue/57433) slices: new standard library package based on x/exp/slices
@@ -975,7 +977,7 @@ in Go 1.15 and Go 1.16.
 
 - [design/go-dep](https://docs.google.com/document/d/18tNd8r5DV0yluCR7tPvkMTsWD_lYcRO7NhpNSDymRr8) Go Packaging Proposal Process
 - [design/go-dep2](https://docs.google.com/document/d/1qnmjwfMmvSCDaY4jxPmLAccaaUI5FfySNE90gB0pTKQ/edit) Dependency Management Tool
-  - [doc/go-dep](6https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer. The Saga of Go Dependency Management. Dec 13, 201
+  - [doc/go-dep](https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer. The Saga of Go Dependency Management. Dec 13, 201
   - [talk/go-dep](https://www.youtube.com/watch?v=5LtMb090AZI) GopherCon 2017: Sam Boyer - The New Era of Go Package Management. Jul 24, 2017
   - [talk/go-dep-design](https://www.youtube.com/watch?v=wBTGd_dvnO8) dotGo 2017 - sam boyer - The Functional Design of Dep. Dec 8, 2017
   - [discuss/go-dep](https://www.youtube.com/watch?v=sbrZfPgNmfw) Building Predictability into Your Pipeline :: Russ Cox; Jess Frazelle, Sam Boyer, Pete Garcin. Feb 22, 2018

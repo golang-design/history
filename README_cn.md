@@ -926,7 +926,7 @@ Ken Thompson 编写了 Go 连接器，Russ 在 Go 1.3 中进行了一些大修�
 
 - [design/go-dep](https://docs.google.com/document/d/18tNd8r5DV0yluCR7tPvkMTsWD_lYcRO7NhpNSDymRr8) Go 打包的建议流程
 - [design/go-dep2](https://docs.google.com/document/d/1qnmjwfMmvSCDaY4jxPmLAccaaUI5FfySNE90gB0pTKQ/edit) 依赖管理工具
-  + [doc/go-dep](https://golang.design/history/6https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer，Go 依赖管理事迹。2016年12月13日。
+  + [doc/go-dep](https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/) Sam Boyer，Go 依赖管理事迹。2016年12月13日。
   + [talk/go-dep](https://www.youtube.com/watch?v=5LtMb090AZI) <details><summary>GopherCon 2017：Sam Boyer，Go 依赖管理的新时代。2017年7月24日。</summary>
     <p><b>Summary:</b>在 GopherCon 2017 题为“Go 包管理的新时代”的一集中，Sam Boyer 讨论了包管理在软件开发中的重要性以及向官方工具的过渡。他强调软件生态系统需要一种通用语言来有效共享代码并改善协作。 Boyer 承认 Go 编程中依赖管理的挑战，例如缺乏对发布的重视以及与 go get 工具的潜在冲突。然而，他强调了 Go 社区在处理依赖关系时的谨慎和深思熟虑的文化。人们开发了各种工具（包括 Goep、Glide 和 GB）来解决再现性和版本控制问题。 2015 年供应商目录的引入改进了依赖管理，但也带来了新的挑战。为了解决这些问题，成立了一个委员会，并引入了 GitHub Depp 作为依赖管理的官方实验。 Depp 严重依赖社区参与，并遵循使用 Toml 文件声明规则和约束的双文件系统。它生成一个锁定文件以实现可重复性并遵循语义版本控制。 Boyer 还提到了 Digby，这是一个包管理 gopher，旨在将相关行为集成到工具链中。 Go 工具链的开发涉及实验和映射，以确保清晰的过渡。博耶强调社区参与和支持对于这些工具的成功的重要性。总的来说，Go 编程语言提供了有效的依赖管理工具，并将其成功归功于社区的贡献和支持。</p></details>
   + [talk/go-dep-design](https://www.youtube.com/watch?v=wBTGd_dvnO8) <details><summary>dotGo 2017：sam boyer， 依赖的功能设计。2017年12月8日。</summary>
