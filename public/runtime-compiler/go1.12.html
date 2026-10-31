@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go 1.12 · Go runtime &amp; compiler history, 2008 → 1.28-dev</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1d1b;--mut:#6b6b66;--line:#e4e2dc;--acc:#00758d;--code:#f1efe9;--int:#7a4fb5;--uv:#2f7d32;--dev:#b25a00;--side:#f4f3ef}
+@media (prefers-color-scheme:dark){:root{--bg:#16171a;--fg:#e6e4df;--mut:#9a9890;--line:#2c2d31;--acc:#4fc3dc;--code:#24262b;--int:#b394e6;--uv:#7cc47f;--dev:#f0a050;--side:#1c1d21}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:12px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+nav{position:fixed;top:0;left:0;bottom:0;width:290px;overflow-y:auto;background:var(--side);border-right:1px solid var(--line);padding:18px 14px 40px;font-size:13.5px;line-height:1.45}
+nav h1{font-size:15px;margin:0 0 4px}
+nav .sub{color:var(--mut);font-size:12px;margin-bottom:12px}
+nav ul{list-style:none;margin:0;padding:0}
+nav li{margin:0}
+nav a{color:var(--fg);text-decoration:none;display:block;padding:2px 6px;border-radius:4px}
+nav a:hover{background:var(--line)}
+nav a.top{font-weight:600;margin-top:8px}
+nav ul ul{padding-left:10px}
+nav ul ul a{color:var(--mut);font-size:12.5px}
+nav .ctrl{margin:10px 0 6px;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:12.5px}
+nav .ctrl label{display:block;cursor:pointer}
+main{margin-left:290px;padding:28px 48px 120px;max-width:1080px}
+h1,h2,h3,h4{line-height:1.25}
+main h1{font-size:32px;margin:64px 0 8px;padding-top:20px;border-top:4px solid var(--fg)}
+main h2{font-size:25px;margin:48px 0 6px;padding-top:12px;border-top:1px solid var(--fg)}
+.grid{font-size:12.5px;display:table;width:100%}.grid td,.grid th{padding:3px 5px}.grid td.on{text-align:center;background:color-mix(in srgb,var(--acc) 18%,transparent)}.grid td.on a{text-decoration:none}.grid tr.ga td{background:var(--side);font-weight:700;padding-top:8px}.grid td.tn{min-width:220px}.grid td.st{color:var(--mut);min-width:220px;font-size:11.5px;line-height:1.35}.grid th{position:sticky;top:0}
+.stage{height:0}
+.chap{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:700;margin:56px 0 -6px;border-top:3px solid var(--acc);padding-top:8px}
+.dg{color:var(--mut);font-style:italic;margin:2px 0 10px}
+.prov{color:var(--mut);font-size:13.5px;font-style:italic;border-left:3px solid var(--line);padding-left:10px;margin:4px 0 18px}
+sup.xr{font-size:10px;color:var(--dev);margin-left:1px}
+main{max-width:1200px}
+h3{font-size:21px;margin:34px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h4{font-size:16.5px;margin:24px 0 6px;color:var(--acc)}
+.meta{color:var(--mut);font-size:13.5px;margin:0 0 14px}
+.meta code{font-size:12.5px}
+p,li{max-width:84ch}
+ul{padding-left:22px}
+li{margin:7px 0}
+li li{margin:3px 0}
+code{overflow-wrap:anywhere;font:13.5px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 4px;border-radius:3px}
+pre{background:var(--code);padding:10px 12px;border-radius:6px;overflow-x:auto}
+pre code{background:none;padding:0}
+a{color:var(--acc)}
+a.h{text-decoration:none}
+a.h code{color:var(--acc);font-size:12px}
+a.h:hover code{text-decoration:underline}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.02em;padding:0 6px;border-radius:9px;border:1px solid currentColor;vertical-align:1px;line-height:17px}
+.tag.int{color:var(--int)} .tag.uv{color:var(--uv)} .tag.dev{color:var(--dev)}
+table{border-collapse:collapse;font-size:14px;margin:10px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
+th{background:var(--side)}
+body.only-int li.uvitem{opacity:.28}
+body.only-uv li.intitem{opacity:.28}
+blockquote{margin:12px 0;padding:6px 14px;border-left:3px solid var(--acc);color:var(--mut)}
+@media (max-width:900px){nav{position:static;width:auto;border-right:0;border-bottom:1px solid var(--line)}main{margin-left:0;padding:16px}}
+main>h1:first-child{margin-top:0;padding-top:0;border-top:0}
+nav a.cur{background:var(--line);font-weight:600;color:var(--fg)}
+nav .back{display:block;font-size:12.5px;margin:0 0 10px;color:var(--acc)}
+nav .top{display:block;padding:2px 6px}
+nav span.top{font-weight:600;margin-top:8px}
+nav li>ul{margin:2px 0 6px}
+nav .rels{display:flex;flex-wrap:wrap;gap:3px;padding:4px 6px}
+nav .rels a{display:inline-block;padding:1px 5px;border:1px solid var(--line);border-radius:4px;font-size:12px;color:var(--mut)}
+nav .rels a.cur{color:var(--fg);border-color:var(--fg)}
+#navt{display:none}
+.pn{display:flex;justify-content:space-between;margin:56px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+ul.toc{list-style:none;padding:0}ul.toc li{margin:0 0 10px}ul.rl li{margin:0 0 3px}
+.defines{font-size:16.5px;border-left:3px solid var(--acc);padding:4px 12px;margin:8px 0 16px}
+.from{color:var(--mut);font-size:13px;margin:-2px 0 8px}
+.osub{font-weight:600;margin:14px 0 0;color:var(--mut);font-size:14px}
+.oth{color:var(--mut);font-size:13.5px;margin:22px 0 0}
+details.dgl{margin:0 0 18px;font-size:14.5px}details.dgl summary{cursor:pointer;color:var(--acc)}
+footer{color:var(--mut);font-size:12.5px;margin-top:28px}
+@media (max-width:900px){#navt{display:block;margin:8px 0;padding:6px 10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px}nav .navbody{display:none}nav.open .navbody{display:block}.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="toc">
+<a class="back" href="../">← Go: A Documentary</a>
+<h1><a href="index.html" style="padding:0">Go runtime &amp; compiler history</a></h1>
+<div class="sub">Go 1.0 (2008) → 1.28-dev, reconstructed from commit history</div>
+<button id="navt" onclick="document.getElementById('toc').classList.toggle('open')">Menu</button>
+<div class="navbody">
+<div class="ctrl">
+<label><input type="radio" name="f" value="" checked> show all items</label>
+<label><input type="radio" name="f" value="only-int"> emphasize <span class="tag int">internal</span></label>
+<label><input type="radio" name="f" value="only-uv"> emphasize <span class="tag uv">user-visible</span></label>
+</div>
+<ul>
+<li><a class="top" href="index.html">About, contents &amp; overview</a></li>
+<li><a class="top" href="map.html">Thread × release map</a></li>
+<li><a class="top" href="knobs.html">Experiments &amp; knobs</a></li>
+<li><span class="top">Part I — Topics</span><ul>
+<li><a class="" href="memory.html">Memory management</a></li>
+<li><a class="" href="scheduler.html">Scheduler and concurrency</a></li>
+<li><a class="" href="data-structures.html">Data structures and type metadata</a></li>
+<li><a class="" href="diagnostics.html">Diagnostics and knobs</a></li>
+<li><a class="" href="os-stacks.html">OS layer, stacks and panics</a></li>
+<li><a class="" href="frontend.html">Compiler frontend</a></li>
+<li><a class="" href="middle-end.html">Middle end and SSA optimizer</a></li>
+<li><a class="" href="backends.html">Backends and assemblers</a></li>
+<li><a class="" href="linker.html">Linker and object files</a></li>
+</ul></li><li><span class="top">Part II — Releases</span><div class="rels"><a class="" href="go1.0.html">1.0</a><a class="" href="go1.1.html">1.1</a><a class="" href="go1.2.html">1.2</a><a class="" href="go1.3.html">1.3</a><a class="" href="go1.4.html">1.4</a><a class="" href="go1.5.html">1.5</a><a class="" href="go1.6.html">1.6</a><a class="" href="go1.7.html">1.7</a><a class="" href="go1.8.html">1.8</a><a class="" href="go1.9.html">1.9</a><a class="" href="go1.10.html">1.10</a><a class="" href="go1.11.html">1.11</a><a class="cur" href="go1.12.html">1.12</a><a class="" href="go1.13.html">1.13</a><a class="" href="go1.14.html">1.14</a><a class="" href="go1.15.html">1.15</a><a class="" href="go1.16.html">1.16</a><a class="" href="go1.17.html">1.17</a><a class="" href="go1.18.html">1.18</a><a class="" href="go1.19.html">1.19</a><a class="" href="go1.20.html">1.20</a><a class="" href="go1.21.html">1.21</a><a class="" href="go1.22.html">1.22</a><a class="" href="go1.23.html">1.23</a><a class="" href="go1.24.html">1.24</a><a class="" href="go1.25.html">1.25</a><a class="" href="go1.26.html">1.26</a><a class="" href="go1.27.html">1.27</a><a class="" href="go1.28.html">1.28</a></div><ul><li><a href="#rel12-p-mem0">Memory management</a></li><li><a href="#rel12-p-sched0">Scheduler and concurrency</a></li><li><a href="#rel12-p-data0">Data structures and type metadata</a></li><li><a href="#rel12-p-diag0">Diagnostics and knobs</a></li><li><a href="#rel12-p-os1">OS layer, stacks and panics</a></li><li><a href="#rel12-p-fe2">Compiler frontend</a></li><li><a href="#rel12-p-opt1">Middle end and SSA optimizer</a></li><li><a href="#rel12-p-be2">Backends and assemblers</a></li><li><a href="#rel12-p-lk1">Linker and object files</a></li></ul></li>
+</ul>
+</div>
+</nav>
+<main>
+<h1 id="rel12">Go 1.12</h1>
+<div class="meta">
+Part II · commits first contained in tag <code>go1.12 ^go1.11</code> (tagged 2019-02-25) · 659 in-scope commits
+</div>
+<p class="defines">
+Mark termination simplified, page reclaimer, more aggressive scavenger. Stack objects. ABI0/ABIInternal symbol split. Binary export removed; <code>-lang</code>. AIX port. <code>MADV_FREE</code>. macOS <code>syscall</code> via libSystem.
+</p>
+<p>Each area lists the stage every thread reached in this release (with what was left open afterwards), then changes that are not part of a thread. Thread names link to the full thread on its topic page.</p>
+<h2 id="rel12-p-mem0">Memory management</h2>
+<p class="from">
+From <a href="memory.html#area-p-mem0">Memory management: GC and allocator (Go 1.0–1.17)</a>
+</p>
+<p class="dg">
+Mark termination simplification (mark 2, gchelper, gctrace=2 removed), page reclaimer, treap-only span tracking, aggressive scavenger with fixes.
+</p>
+<div id="rel12-p-mem0-t2" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="memory.html#p-mem0-t2">Concurrent sweep and proportional sweep</a></strong> — <em>Done:</em> sweepone simplified and <code>gosweepone</code> removed (<a class="h" href="https://go.googlesource.com/go/+/06afc8b152bc01e1b4f5dce074bae531dd29a9b9"><code>06afc8b152</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f3bb4cbfd5a02b14a8660aa7e6a08801bcb9fbaf"><code>f3bb4cbfd5</code></a>), span mark bit (<a class="h" href="https://go.googlesource.com/go/+/ba1698e9632d2d21fb45302e0f1356d23031aeb1"><code>ba1698e963</code></a>), arena slice and in-use page bitmap (<a class="h" href="https://go.googlesource.com/go/+/e500ffd88cb906014320607c6a03a5fd05ee84cf"><code>e500ffd88c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/69e666e4f758cb5431e94aa90dc01a72ab806080"><code>69e666e4f7</code></a>), efficient page reclaimer (<a class="h" href="https://go.googlesource.com/go/+/5333550bdc1f4d3814c9dd0d66151ea331c39682"><code>5333550bdc</code></a>), large-allocation sampling fix (<a class="h" href="https://go.googlesource.com/go/+/dc889025c714313fbe912ad1253f0ec748a6e58c"><code>dc889025c7</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-mem0-t4" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t4">Decentralized GC state machine and mark termination simplification</a></strong> — <em>Done:</em> mark-termination cleanup listed above (<a class="h" href="https://go.googlesource.com/go/+/9c634ea889fdfa41aec9183bd5693c155374ba76"><code>9c634ea889</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a2a2901b252c089e737a1ddf8117f3f6698cb958"><code>a2a2901b25</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9108ae775145a4ecd086f04eb5c45155d8636298"><code>9108ae7751</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d398dbdfc38838b63e39cd8ee2c9d30a09b5989f"><code>d398dbdfc3</code></a>, <a class="h" href="https://go.googlesource.com/go/+/918ed88e475d39e40baf9cd6539b618e05d12e5e"><code>918ed88e47</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1678b2c580584fa1ea8de3c14df0d8d77b6f7387"><code>1678b2c580</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e25ef35254cc4372256d0c7f4521df3cf3d092bf"><code>e25ef35254</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ecc365960ba7ff72f650b32190f40a1f1b6ff992"><code>ecc365960b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/edc2d17086a6d21039f45506459cf1b9f40eb95c"><code>edc2d17086</code></a>, <a class="h" href="https://go.googlesource.com/go/+/198440cc3d3453d349fbc7894a5d91dd7b16e6a0"><code>198440cc3d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/457c8f4fe9e4d45f97d0a3f3c4a80789c6616fd6"><code>457c8f4fe9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/550dfc8ae1651eb954274045e31f8ef2e95f6c6c"><code>550dfc8ae1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/873bd47dfb34ba4416d4df30180905250b91f137"><code>873bd47dfb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/0906d648aa173f65aaafd6296d43247b426f05f3"><code>0906d648aa</code></a>, <a class="h" href="https://go.googlesource.com/go/+/578667f4b534974f28909dbc34bce7fe1686c5d3"><code>578667f4b5</code></a> preemptible mark termination goroutine); <code>gList</code> types for G queues (<a class="h" href="https://go.googlesource.com/go/+/3578918b6614effaeaa581687d810b74e342e0f8"><code>3578918b66</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d02169d380a762863147d57b7665cb31de0a4ee7"><code>d02169d380</code></a>, <a class="h" href="https://go.googlesource.com/go/+/083938df14c0602a44d055bd3f4427980cf51c27"><code>083938df14</code></a>). <em>Left open:</em> “P has cached GC work” cause not found, only worked around (<a class="h" href="https://go.googlesource.com/go/+/95a6f112c6db064d3394f9f66aa569e9bbeb3617"><code>95a6f112c6</code></a>).
+<div id="rel12-p-mem0-t6" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t6">Stack scanning: conservative, precise by frames, stack barriers, hybrid barrier, async safe points</a></strong> — <em>Done:</em> <code>gcrescanstacks</code> removed (<a class="h" href="https://go.googlesource.com/go/+/198440cc3d3453d349fbc7894a5d91dd7b16e6a0"><code>198440cc3d</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-mem0-t7" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t7">Hybrid write barrier and buffered write barrier</a></strong> — <em>Done:</em> barrier buffer flush creates GC work (<a class="h" href="https://go.googlesource.com/go/+/9c634ea889fdfa41aec9183bd5693c155374ba76"><code>9c634ea889</code></a>), poisoning (<a class="h" href="https://go.googlesource.com/go/+/fe2feb978e0c4324047f749c3fcfb9cecaafcfdc"><code>fe2feb978e</code></a>), growslice bulk barrier (<a class="h" href="https://go.googlesource.com/go/+/96dcc4457b9aad418abc0eb4316c21fefdbf08e1"><code>96dcc4457b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4363c98f62e9e315ed20b12d2ce47021fd2bf7bc"><code>4363c98f62</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-mem0-t9" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t9">Allocating from mark bits: allocBits, freeindex and ctz</a></strong> — <em>Done:</em> span mark bit set whenever any object on the span is marked (<a class="h" href="https://go.googlesource.com/go/+/ba1698e9632d2d21fb45302e0f1356d23031aeb1"><code>ba1698e963</code></a>). <em>Left open:</em> gcmarknewobject path missed it, fixed in 1.15 (<a class="h" href="https://go.googlesource.com/go/+/886caba73ca3d895ecb8f17ea6866b34f2f7e8c1"><code>886caba73c</code></a><sup class="xr" title="this commit landed in the Go 1.15 cycle">1.15</sup>).
+<div id="rel12-p-mem0-t10" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t10">Size classes, tiny allocator and mcache/mcentral</a></strong> — <em>Done:</em> mcache refill simplified (<a class="h" href="https://go.googlesource.com/go/+/2d23ece135076698ea4724b02f07d71d1f2145fb"><code>2d23ece135</code></a>, <a class="h" href="https://go.googlesource.com/go/+/01e6cfc2a0b2f9e363c6e305b14f3393d06b13b8"><code>01e6cfc2a0</code></a>), unneeded span tracking in mcentral dropped (<a class="h" href="https://go.googlesource.com/go/+/70d7e96c7850d141ae48e99f02a397aed1bc474b"><code>70d7e96c78</code></a>), <code>newarray</code> uses multiplication with overflow check (<a class="h" href="https://go.googlesource.com/go/+/1e50dd02a98bce8901cf10634ee0b2c8bbe4da81"><code>1e50dd02a9</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-mem0-t11" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t11">Span lifecycle in mheap: free lists, treaps, first-fit and the page reclaimer</a></strong> — <em>Done:</em> treap-only heap, separated scavenged spans, iterator, coalescing refactor (<a class="h" href="https://go.googlesource.com/go/+/07e738ec32025da458cdf968e4f991972471e6e9"><code>07e738ec32</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b00a6d8bfe749f90043ced2d7efb1f0b8f387ba3"><code>b00a6d8bfe</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b46bf0240c0663222f837c78644fe90da932d852"><code>b46bf0240c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e508a5f072c6e3c8449007bf7ca87142c6746404"><code>e508a5f072</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3651476075bad3d21d4dbaddc9a7d298d3d97e24"><code>3651476075</code></a>, <a class="h" href="https://go.googlesource.com/go/+/79ac638e41abed1d8f46762ecd6d63a93d9bb382"><code>79ac638e41</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2f99e889f02df9ef88fb1d26194eb2e8e725fda5"><code>2f99e889f0</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6e9f664b9a68f2de84be9697c6ac851c7c7e1c26"><code>6e9f664b9a</code></a>, <a class="h" href="https://go.googlesource.com/go/+/689fae2d7861fe14032762479011f9e48562e1e0"><code>689fae2d78</code></a>, <a class="h" href="https://go.googlesource.com/go/+/011b8eb6bb9783ec6b22697810863f30ca7bda1f"><code>011b8eb6bb</code></a>). <em>Left open:</em> best-fit by size led to fragmentation; first-fit adopted in 1.13.
+<div id="rel12-p-mem0-t13" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t13">Scavenger: returning memory to the OS</a></strong> — <em>Done:</em> scavenged/unscavenged separation and credit (<a class="h" href="https://go.googlesource.com/go/+/b46bf0240c0663222f837c78644fe90da932d852"><code>b46bf0240c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e508a5f072c6e3c8449007bf7ca87142c6746404"><code>e508a5f072</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c803ffc67d0c90b24eb5a60a7d573eecc39e7753"><code>c803ffc67d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/06be7cbf3c27168172f1f89dd4f55cb07a37ec38"><code>06be7cbf3c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/064842450bd904d2519d723a0109b33007ad00e9"><code>064842450b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6e9f664b9a68f2de84be9697c6ac851c7c7e1c26"><code>6e9f664b9a</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8e093e7a1cd8a092f23717cb8f34bca489a3eee5"><code>8e093e7a1c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/faf187fb8e2ca074711ed254c72ffbaed4383c64"><code>faf187fb8e</code></a>). <em>Left open:</em> scavenging still inline with allocation.
+<div id="rel12-p-mem0-t14" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t14">Heap address space: contiguous arena to sparse arenas</a></strong> — <em>Done:</em> arenas slice (<a class="h" href="https://go.googlesource.com/go/+/e500ffd88cb906014320607c6a03a5fd05ee84cf"><code>e500ffd88c</code></a>), race-mode <code>MAP_FIXED</code> (<a class="h" href="https://go.googlesource.com/go/+/7ef718f16fa05cd07bb0f7d22aa4bc57067de1f2"><code>7ef718f16f</code></a>, from Dec 2018). <em>Left open:</em> nothing noted.
+<div id="rel12-p-mem0-t16" class="stage">
+
+</div></li>
+<li><strong><a href="memory.html#p-mem0-t16">Mark work distribution: parfor, work buffers, gcWork and root jobs</a></strong> — <em>Done:</em> work-flush debugging (<a class="h" href="https://go.googlesource.com/go/+/9098d1d85494810a21c6342c8f501dae8fc757d6"><code>9098d1d854</code></a>, <a class="h" href="https://go.googlesource.com/go/+/438b9544a079576c539cdc040cbf337966a0b25d"><code>438b9544a0</code></a>, <a class="h" href="https://go.googlesource.com/go/+/bae1e70ac4a963bfb167136fc6b40988bc9cd546"><code>bae1e70ac4</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8e6396115e56d8e0cbecd6904f94c8d893db1724"><code>8e6396115e</code></a>). <em>Left open:</em> nothing noted.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Misc</strong> <span class="tag int">internal</span> — <code>treap</code> nodes not zeroed twice (<a class="h" href="https://go.googlesource.com/go/+/011b8eb6bb9783ec6b22697810863f30ca7bda1f"><code>011b8eb6bb</code></a>), table of arena sizes (<a class="h" href="https://go.googlesource.com/go/+/4c1c839a3d2270d846f5a6d1cd1287e8560f0265"><code>4c1c839a3d</code></a>), sysUsed fixes (<a class="h" href="https://go.googlesource.com/go/+/213845f7b932c72c5e49445224166d0ae14dfac9"><code>213845f7b9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/db82a1bc12c54f1b6d32a3d41c4422605b16b7e8"><code>db82a1bc12</code></a>), TestArenaCollision (<a class="h" href="https://go.googlesource.com/go/+/6fcab648af59faab639f3453354a7a14c888e75c"><code>6fcab648af</code></a>).</li>
+<li><strong>Misc</strong> <span class="tag int">internal</span> — <code>sysStat</code> alignment for <code>arenas</code> (<a class="h" href="https://go.googlesource.com/go/+/c823155828e5e6f4f7aa5683edb6f9e5dfd31d28"><code>c823155828</code></a><sup class="xr" title="this commit landed in the Go 1.11 cycle">1.11</sup>), <code>mheap.freeSpan</code> and free-count tidy-ups (<a class="h" href="https://go.googlesource.com/go/+/3f86d7cc6762a5f6745cdcda4bd50031bfafc92f"><code>3f86d7cc67</code></a>, <a class="h" href="https://go.googlesource.com/go/+/416804f3e24b25cf3e291fbbe5857cc28644a852"><code>416804f3e2</code></a>), <code>mbits.setMarked</code> inlining undone (<a class="h" href="https://go.googlesource.com/go/+/1d09433ec072c2acff27335c2d05ce44bb501ecc"><code>1d09433ec0</code></a>), <code>npreleased</code> as boolean (<a class="h" href="https://go.googlesource.com/go/+/78bb91cbd34a8f2f3784ba5df94c0e56c44fc751"><code>78bb91cbd3</code></a>), non-in-use span check (<a class="h" href="https://go.googlesource.com/go/+/7d2f46dacddba279c5b6b7520c7f6a475e6fffbc"><code>7d2f46dacd</code></a>), <code>os.File.Fd</code> doc (<a class="h" href="https://go.googlesource.com/go/+/7bb6fed9b53494e9846689520b41b8e679bd121d"><code>7bb6fed9b5</code></a><sup class="xr" title="this commit landed in the Go 1.16 cycle">1.16</sup>).</li>
+<li><strong>Skip persistent memory writes in cgo checker</strong> <span class="tag int">internal</span> — The cgo pointer checker now skips writes to persistent memory. (<a class="h" href="https://go.googlesource.com/go/+/0d6a2d5f9a0cd3c7111f38abd12a2255363bbd51"><code>0d6a2d5f9a</code></a>)</li>
+</ul>
+<h2 id="rel12-p-sched0">Scheduler and concurrency</h2>
+<p class="from">
+From <a href="scheduler.html#area-p-sched0">Scheduler and concurrency runtime (Go 1.0–1.17)</a>
+</p>
+<p class="dg">
+gList, gchelper removed, netpoll timer merging, scheduling by class; threads: scheduler, netpoll.
+</p>
+<div id="rel12-p-sched0-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="scheduler.html#p-sched0-t1">The G-M-P scheduler: from global-lock M:N to per-P run queues, spinning Ms and work stealing</a></strong> — <em>Done:</em> manually managed G dequeues replaced by <code>gList</code> <a class="h" href="https://go.googlesource.com/go/+/3578918b6614effaeaa581687d810b74e342e0f8"><code>3578918b66</code></a> (used in netpoll <a class="h" href="https://go.googlesource.com/go/+/de990545c3ce65926491c123bb2536168cd21cf3"><code>de990545c3</code></a>, gfree <a class="h" href="https://go.googlesource.com/go/+/8e8cc9db0fe3c30852d4fc9ad82c9922bff7d26f"><code>8e8cc9db0f</code></a>, closechan <a class="h" href="https://go.googlesource.com/go/+/a034f310b040a4252843683f59555ded07016eae"><code>a034f310b0</code></a>); gchelper eliminated <a class="h" href="https://go.googlesource.com/go/+/0906d648aa173f65aaafd6296d43247b426f05f3"><code>0906d648aa</code></a>; scheduling disabled by class <a class="h" href="https://go.googlesource.com/go/+/6e9fb11b3a314b78f9c2cdb35e3d71a5cce4e06b"><code>6e9fb11b3a</code></a>; <code>m.p</code> never stale <a class="h" href="https://go.googlesource.com/go/+/8e0ec5ec09f92464730f89ff1f05e847b881a58a"><code>8e0ec5ec09</code></a>.
+<div id="rel12-p-sched0-t3" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t3">Network poller: from the netFD select loop to the runtime-integrated epoll/kqueue/IOCP poller</a></strong> — <em>Done:</em> deadline timers merged: <code>modtimer</code> used by netpoll <a class="h" href="https://go.googlesource.com/go/+/a86f549703c107c8b4d83d8e7527521c9e215d9a"><code>a86f549703</code></a>, no re-creation of unchanged timers <a class="h" href="https://go.googlesource.com/go/+/86d375498fa377c7d81c5b93750e8dce2389500e"><code>86d375498f</code></a>, memory barrier only if a timer fired <a class="h" href="https://go.googlesource.com/go/+/31e7842f3d3f85f7aec5ca72f59befce9f58a3b6"><code>31e7842f3d</code></a>, <code>StorepNoWB</code> <a class="h" href="https://go.googlesource.com/go/+/56421f26ef8526427e034639510a162f3b40d825"><code>56421f26ef</code></a>, no runtimeNano on the common path (negative duration = expired) <a class="h" href="https://go.googlesource.com/go/+/21f7f01289577698eb70a4558d588bd00b6fed01"><code>21f7f01289</code></a>; nanotime wrappers moved to time/poll <a class="h" href="https://go.googlesource.com/go/+/ff51353c3887b9d83130d958fb503ff1f2291fde"><code>ff51353c38</code></a>.
+<div id="rel12-p-sched0-t4" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t4">Timers: timerproc goroutine → per-bucket heaps → timers on Ps</a></strong> — <em>Done:</em> timerproc not woken needlessly <a class="h" href="https://go.googlesource.com/go/+/a9280fa2de5b9dc13f75dd3aebdf4a218fca451e"><code>a9280fa2de</code></a>; <code>startNano</code> refactor <a class="h" href="https://go.googlesource.com/go/+/a1ee0a21cfd3d44f4585c1eb57698460abbfc7f1"><code>a1ee0a21cf</code></a>.
+<div id="rel12-p-sched0-t5" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t5">Channels and select</a></strong> — <em>Done:</em> races between close and len/cap ignored <a class="h" href="https://go.googlesource.com/go/+/83dfc3b001245f0b725afdc94c0b540fe1952d21"><code>83dfc3b001</code></a>; makechan overflow multiplication check <a class="h" href="https://go.googlesource.com/go/+/286c7ae10c71a8faeba22e29928afe7fce7e2750"><code>286c7ae10c</code></a>.
+<div id="rel12-p-sched0-t9" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t9">sync.Map, atomic.Value and sync/atomic</a></strong> — <em>Done:</em> 32-bit MIPS alignment <a class="h" href="https://go.googlesource.com/go/+/ca7c12d4c9eb4a19ca5103ec5763537cccbcc13b"><code>ca7c12d4c9</code></a>; Map simplification <a class="h" href="https://go.googlesource.com/go/+/756c352963f4decbf898f244876855aab747afdc"><code>756c352963</code></a>.
+<div id="rel12-p-sched0-t12" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t12">Goroutine and M lifecycle: caches, ids, LockOSThread, Goexit, cgo extra Ms, deadlock detection</a></strong> — <em>Done:</em> <code>lockedExt</code> stays when G exits <a class="h" href="https://go.googlesource.com/go/+/d0f8a7517ab0b33c8e3dd49294800dd6144e4cee"><code>d0f8a7517a</code></a>.
+<div id="rel12-p-sched0-t13" class="stage">
+
+</div></li>
+<li><strong><a href="scheduler.html#p-sched0-t13">Stop-the-world, safe points and GC–scheduler interaction</a></strong> — <em>Done:</em> gchelper eliminated <a class="h" href="https://go.googlesource.com/go/+/0906d648aa173f65aaafd6296d43247b426f05f3"><code>0906d648aa</code></a>; scheduling disabled by class <a class="h" href="https://go.googlesource.com/go/+/6e9fb11b3a314b78f9c2cdb35e3d71a5cce4e06b"><code>6e9fb11b3a</code></a>.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>js/wasm sync callbacks</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/6dd70fc5e391eb7a47be5eb6353107f38b73f161"><code>6dd70fc5e3</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f4f65941246bfee2ef742a5a4920f86d80ab4762"><code>f4f6594124</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3879ea54ed1f5c266657ffe593e2a8e1b63401ec"><code>3879ea54ed</code></a>, <a class="h" href="https://go.googlesource.com/go/+/eae5fc88c13d6902a7fe9c595fb02155eb037cbe"><code>eae5fc88c1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/0f0b10818bd00b1c5778f7c2fbed72bb06defbba"><code>0f0b10818b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/688667716ede8b133d361db0a1d47eab24ced7f7"><code>688667716e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a361ef36af4812815c02dd026c4672837442bf44"><code>a361ef36af</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2de53906e199a744605ca6a0c6cc81653c6e4f89"><code>2de53906e1</code></a> (GODEBUGCPU moved into <code>GODEBUG=cpu.*</code>), <a class="h" href="https://go.googlesource.com/go/+/5ee06f547122b7417b70ada55bb0d633e2094d88"><code>5ee06f5471</code></a>.</li>
+<li><strong>timediv bitsets</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/178a609fed5fba5abaeead485f7b2795b8c4ea3c"><code>178a609fed</code></a>.</li>
+</ul>
+<h2 id="rel12-p-data0">Data structures and type metadata</h2>
+<p class="from">
+From <a href="data-structures.html#area-p-data0">Runtime data structures and type metadata (Go 1.0–1.17)</a>
+</p>
+<p class="dg">
+emptyOne/emptyRest early exit in map scans, overflow-checked multiplication in make/growslice/makemap, growslice bulk barrier, reflect return-value scanning fix, MapRange.
+</p>
+<div id="rel12-p-data0-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="data-structures.html#p-data0-t1">Hash map core: from the first hashmap.c to the 8-entry bucket design</a></strong> — <em>Done:</em> <code>emptyOne</code>/<code>emptyRest</code> markers let bucket scans stop early (<a class="h" href="https://go.googlesource.com/go/+/4b05c01f9ce4740e801937af9062ee0a9a96b772"><code>4b05c01f9c</code></a>, <code>MegOneMap</code> 8.91→5.53 ns), delete updates entries after the new last element (<a class="h" href="https://go.googlesource.com/go/+/df2bb9817b2184256886d9d9458753b2273c202d"><code>df2bb9817b</code></a>), multiplication-with-overflow-check in <code>makemap</code> (<a class="h" href="https://go.googlesource.com/go/+/e85b8db604bd6dd84502708434a19596b54468b5"><code>e85b8db604</code></a>), panic on uncomparable key type even for empty maps without growing the header (<a class="h" href="https://go.googlesource.com/go/+/ed15e82413c7b16e21a493f5a647f68b46e965ee"><code>ed15e82413</code></a>).
+<div id="rel12-p-data0-t2" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t2">Map growth, iteration order, overflow buckets and GC interaction</a></strong> — <em>Done:</em> early exit on <code>emptyRest</code> (<a class="h" href="https://go.googlesource.com/go/+/4b05c01f9ce4740e801937af9062ee0a9a96b772"><code>4b05c01f9c</code></a>), delete re-marks trailing empties (<a class="h" href="https://go.googlesource.com/go/+/df2bb9817b2184256886d9d9458753b2273c202d"><code>df2bb9817b</code></a>), <code>bucketCnt</code> bounded scanning. <em>Left open:</em> delete used the “safe but non-optimal” choice of emptyOne in some cases (message of <a class="h" href="https://go.googlesource.com/go/+/4b05c01f9ce4740e801937af9062ee0a9a96b772"><code>4b05c01f9c</code></a>).
+<div id="rel12-p-data0-t10" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t10">reflect.Call, MakeFunc, method values and argument-frame GC precision</a></strong> — <em>Done:</em> results scanning fix (<a class="h" href="https://go.googlesource.com/go/+/ef5037398385ff52b17af325a0ad82017bd65820"><code>ef50373983</code></a>), method-func write barriers (<a class="h" href="https://go.googlesource.com/go/+/e35a41261b19589f40d32bd66274c23ab4b9b32e"><code>e35a41261b</code></a>), s390x method calls (<a class="h" href="https://go.googlesource.com/go/+/0b994a9037b8972fd1cec8a170cea58cb2f93232"><code>0b994a9037</code></a>), no write barrier copying results (<a class="h" href="https://go.googlesource.com/go/+/7e987b7b332fb21b56418351ce942d892f07481b"><code>7e987b7b33</code></a>).
+<div id="rel12-p-data0-t12" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t12">reflect performance, caches and API additions</a></strong> — <em>Done:</em> <code>MapRange</code> (<a class="h" href="https://go.googlesource.com/go/+/ede59583858bd64a09479f624e989e7c35df0c52"><code>ede5958385</code></a>), UnsafePointer <code>IsNil</code> fix (<a class="h" href="https://go.googlesource.com/go/+/3b66c00857ff77f8acfc3e6e9491dda3677858a4"><code>3b66c00857</code></a>).
+<div id="rel12-p-data0-t13" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t13">memmove, memclr, duff routines and pointer-write atomicity</a></strong> — <em>Done:</em> ppc64x VSX memclr/memmove (<a class="h" href="https://go.googlesource.com/go/+/aa9bcea3907a74f45303b3bdb603b9952cc72b7b"><code>aa9bcea390</code></a>).
+<div id="rel12-p-data0-t14" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t14">internal/bytealg and string/byte comparison primitives</a></strong> — <em>Done:</em> arm64 Equal (<a class="h" href="https://go.googlesource.com/go/+/de28555c0b33fcaa02779d55ea9289135280ae9f"><code>de28555c0b</code></a>), ppc64x asm (<a class="h" href="https://go.googlesource.com/go/+/a0fad982b17b8c49c8567867160dee9f021cf1ba"><code>a0fad982b1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6994731ec2babb6a4f2bbbb08dbe649767a25942"><code>6994731ec2</code></a>, <a class="h" href="https://go.googlesource.com/go/+/23f75541946884167364a5cc513699661dcfe8ff"><code>23f7554194</code></a>), linknames and trampolines (<a class="h" href="https://go.googlesource.com/go/+/ef7ce57ac2da02aeceada27761c282e0718c6e14"><code>ef7ce57ac2</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ad4a58e31501bce5de2aad90a620eaecdc1eecb8"><code>ad4a58e315</code></a>).
+<div id="rel12-p-data0-t15" class="stage">
+
+</div></li>
+<li><strong><a href="data-structures.html#p-data0-t15">Slices and append: growslice, makeslice and string/slice conversions</a></strong> — <em>Done:</em> bulk barrier in growslice, no barrier on new slice, overflow-checked multiplication (<a class="h" href="https://go.googlesource.com/go/+/96dcc4457b9aad418abc0eb4316c21fefdbf08e1"><code>96dcc4457b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4363c98f62e9e315ed20b12d2ce47021fd2bf7bc"><code>4363c98f62</code></a>, <a class="h" href="https://go.googlesource.com/go/+/05166bf54d053fcc833cf862b7cfb1fbf05b42ba"><code>05166bf54d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e85b8db604bd6dd84502708434a19596b54468b5"><code>e85b8db604</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3b091bf6cceca868e2063a2c8b3cec90411ea18e"><code>3b091bf6cc</code></a>).</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Internal/cpu, panic and wrappers</strong> <span class="tag int">internal</span> — <code>internal/cpu</code> variables in assembly (<a class="h" href="https://go.googlesource.com/go/+/c15c04d9e85a6a2c46ae57cb830192e0eee276dc"><code>c15c04d9e8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/05c02444eb2d8b8d3ecd949c4308d8e2323ae087"><code>05c02444eb</code></a>), concurrent stack detection (<a class="h" href="https://go.googlesource.com/go/+/37ea182660e31f4e21b2bc34d2438455269e5f78"><code>37ea182660</code></a>), <code>compiling_wrappers</code> removed (<a class="h" href="https://go.googlesource.com/go/+/41c0b9eb88fa0e161d7564539a8beb3f79247f44"><code>41c0b9eb88</code></a>), preallocated in/out arrays in <code>methodfunc</code> (<a class="h" href="https://go.googlesource.com/go/+/72f099c36bf2599ce73d054d463fc2950cfdcb05"><code>72f099c36b</code></a>), no write barrier in <code>startpanic_m</code> (<a class="h" href="https://go.googlesource.com/go/+/9ed9df6ca27850704133de1ceb94407c635beb82"><code>9ed9df6ca2</code></a>).</li>
+</ul>
+<h2 id="rel12-p-diag0">Diagnostics and knobs</h2>
+<p class="from">
+From <a href="diagnostics.html#area-p-diag0">Diagnostics and knobs (Go 1.0–1.17)</a>
+</p>
+<p class="dg">
+Race on arm64, debug.ReadBuildInfo, GODEBUG=madvdontneed, mid-stack inlining traceback work, gctrace=2 removed.
+</p>
+<div id="rel12-p-diag0-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="diagnostics.html#p-diag0-t1">Execution tracer (trace v1): events, per-goroutine sequencing, annotations</a></strong> — <em>Done:</em> only maintenance: <code>internal/traceparser</code> reverted in <code>cmd/trace</code> (<a class="h" href="https://go.googlesource.com/go/+/6d5caf38e37bf9aeba3291f1f0b0081f934b1187"><code>6d5caf38e3</code></a>, Go 1.12). <em>Left open:</em> no new tracer features; the v1 design stays through 1.17.
+<div id="rel12-p-diag0-t2" class="stage">
+
+</div></li>
+<li><strong><a href="diagnostics.html#p-diag0-t2">Race detector integration</a></strong> — <em>Done:</em> <span class="tag uv">user-visible</span> <span class="tag uv">user-visible</span> arm64 (<a class="h" href="https://go.googlesource.com/go/+/978cfa8e46d71992395d67382e96036596520cb6"><code>978cfa8e46</code></a>, 1.12) with arg maps for sync/atomic functions (<a class="h" href="https://go.googlesource.com/go/+/c6e698d5dd0d3a309c2d93368dcc451820deb66d"><code>c6e698d5dd</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-diag0-t3" class="stage">
+
+</div></li>
+<li><strong><a href="diagnostics.html#p-diag0-t3">CPU profiler and runtime/pprof writers (legacy format to compressed protobuf)</a></strong> — <em>Done:</em> memory profile block size computed from sampled values (<a class="h" href="https://go.googlesource.com/go/+/f9a4ae018d99c5afb0e4f128545ff26e01d7b498"><code>f9a4ae018d</code></a>); “deleted” suffix stripped from maps (<a class="h" href="https://go.googlesource.com/go/+/73b8e5f81b992597462d39978bad09c0f88a530e"><code>73b8e5f81b</code></a>).
+<div id="rel12-p-diag0-t7" class="stage">
+
+</div></li>
+<li><strong><a href="diagnostics.html#p-diag0-t7">GODEBUG, runtime/debug, debug log and traceback knobs</a></strong> — <em>Done:</em> <span class="tag uv">user-visible</span> <code>debug.ReadBuildInfo</code> returns module information (<a class="h" href="https://go.googlesource.com/go/+/45e9c5538b3956d98ef0337fc19ed8d45eb17090"><code>45e9c5538b</code></a>); <code>GODEBUG=madvdontneed=1</code> (<a class="h" href="https://go.googlesource.com/go/+/22738f07c88ac9dd1159da15675fedeeba80c45d"><code>22738f07c8</code></a>); <code>gctrace=2</code> removed (<a class="h" href="https://go.googlesource.com/go/+/edc2d17086a6d21039f45506459cf1b9f40eb95c"><code>edc2d17086</code></a>); proper panic tracebacks with mid-stack inlining and <code>FuncForPC</code> returning the innermost frame (<a class="h" href="https://go.googlesource.com/go/+/af134b17da99344812344bba65247e45fa22d53b"><code>af134b17da</code></a>, <a class="h" href="https://go.googlesource.com/go/+/956879dd0bf31b26d2425c2eadbeb19b90812187"><code>956879dd0b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/232c9793092115870a430ef3c9ef9ae04f9e25c9"><code>232c979309</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-diag0-t10" class="stage">
+
+</div></li>
+<li><strong><a href="diagnostics.html#p-diag0-t10">Traceback correctness and inlining (diagnostic output)</a></strong> — <em>Done:</em> <code>getArgInfo</code> fixes (<a class="h" href="https://go.googlesource.com/go/+/d5bd797ee55d36b07b388d0b8ca2393dc186bea1"><code>d5bd797ee5</code></a><sup class="xr" title="this commit landed in the Go 1.8 cycle">1.8</sup> 1.8; fast path <a class="h" href="https://go.googlesource.com/go/+/13cd0061390af0621516ec22b1a3987712b4da3b"><code>13cd006139</code></a><sup class="xr" title="this commit landed in the Go 1.11 cycle">1.11</sup>, 1.11), defers on LR machines (<a class="h" href="https://go.googlesource.com/go/+/e391faded721cdb136102d4e00725f9d775dc168"><code>e391faded7</code></a><sup class="xr" title="this commit landed in the Go 1.11 cycle">1.11</sup>), <code>isSystemGoroutine</code> stable mode (<a class="h" href="https://go.googlesource.com/go/+/29b21ec4c371061a99dfaac356e54b3c62c5853f"><code>29b21ec4c3</code></a>), <code>gentraceback</code> wrong g and morestack transition (<a class="h" href="https://go.googlesource.com/go/+/c9986d1452f3ef226bfd044fb0f128175a7dff03"><code>c9986d1452</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ae6361e4bd78b85c284881a16b9b3f81133db1bb"><code>ae6361e4bd</code></a>), inline-aware panic tracebacks (<a class="h" href="https://go.googlesource.com/go/+/af134b17da99344812344bba65247e45fa22d53b"><code>af134b17da</code></a>) and encouragement of single-call-body inlining (<a class="h" href="https://go.googlesource.com/go/+/13baf4b2cd34dfb41c570e35b48ec287713f4d7f"><code>13baf4b2cd</code></a>). <em>Left open:</em> <code>systemstack</code> frame not included in the traceback (<a class="h" href="https://go.googlesource.com/go/+/ae6361e4bd78b85c284881a16b9b3f81133db1bb"><code>ae6361e4bd</code></a>).</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Runtime math helper</strong> <span class="tag int">internal</span> — <code>MulUintptr</code> with overflow check (<a class="h" href="https://go.googlesource.com/go/+/c9130cae9a9cd59178e842851f3f30b1d97ab0bd"><code>c9130cae9a</code></a>); misc cleanups (<a class="h" href="https://go.googlesource.com/go/+/fd7d3259c93e8901f5645fd5de620cd75053c7ca"><code>fd7d3259c9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/fa6639d62664ecd710b112eb1c1e759104c9193c"><code>fa6639d626</code></a>, <a class="h" href="https://go.googlesource.com/go/+/68527ff4fb32c98b1f15367c65c526c2b2b3a57a"><code>68527ff4fb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/da0d1a44bac379f5acedb1933f85400de08f4ac6"><code>da0d1a44ba</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e47c11d8b1bc26ce3283df6bc04f8ca4cf1b074b"><code>e47c11d8b1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1ba74448f25fa9e69c4f9ed155dd43eb496cfa70"><code>1ba74448f2</code></a>, <a class="h" href="https://go.googlesource.com/go/+/084f2eafcdc55392cf8d32f58b417b9575de001d"><code>084f2eafcd</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8962b71c4947cdc915ae6dd837e644e03d2e7435"><code>8962b71c49</code></a>).</li>
+</ul>
+<h2 id="rel12-p-os1">OS layer, stacks and panics</h2>
+<p class="from">
+From <a href="os-stacks.html#area-p-os1">OS interface, stacks and panics (Go 1.5–1.17)</a>
+</p>
+<p class="dg">
+stack objects, windows/arm and AIX ports, GODEBUG=cpu., libSystem-backed syscall on macOS, MADV_FREE, ABI hygiene for runtime symbols.
+</p>
+<div id="rel12-p-os1-t2" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="os-stacks.html#p-os1-t2">New and ported OS/arch targets, 1.5–1.17</a></strong> — <em>Done:</em> windows/arm (<a class="h" href="https://go.googlesource.com/go/+/d24ec86e4f64302e91d8062eabfcd21296bb9b04"><code>d24ec86e4f</code></a>, QPC time <a class="h" href="https://go.googlesource.com/go/+/e3b4b7baad555f74b6fbc0ddc00d46ed0ac03a0a"><code>e3b4b7baad</code></a>, <a class="h" href="https://go.googlesource.com/go/+/84066f1b0b68761a75ce9064f4c412f751ee2168"><code>84066f1b0b</code></a>, traceback/profile fixes <a class="h" href="https://go.googlesource.com/go/+/9ab2ffe8e92f9660cbde1a18921ae864c64f280b"><code>9ab2ffe8e9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6764d7aeacd24f48875ce88a8e3c789cedfb2e28"><code>6764d7aeac</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1ca84deeb048ac8ab850f68eb84ee7811d957676"><code>1ca84deeb0</code></a>), AIX (<a class="h" href="https://go.googlesource.com/go/+/bf8e6b70276ddfd3e070964542020fe782c1eec8"><code>bf8e6b7027</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9f78aa77443389d61a3ef910a1c3d4628999d82c"><code>9f78aa7744</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ff99a61e5e892dedb88f9f80bce9cc102d2f50b2"><code>ff99a61e5e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8f9902da269c08ad9a741d828d7f6781f56a7a42"><code>8f9902da26</code></a>, <a class="h" href="https://go.googlesource.com/go/+/49be65eeba37a3d29a8a33379794e7a84df6cca1"><code>49be65eeba</code></a>, <a class="h" href="https://go.googlesource.com/go/+/18b84cbd42f4b86cb551b0ccd70154a8bbe30a8a"><code>18b84cbd42</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3855fe7254cbce964a53efdf6d8c9fdde9b4419c"><code>3855fe7254</code></a>, <a class="h" href="https://go.googlesource.com/go/+/976bab6003bdc72ca25954d048f340a34d8e717a"><code>976bab6003</code></a>), openbsd/arm cgo (<a class="h" href="https://go.googlesource.com/go/+/c52beb108779b8d983136fa5200ab91005c6de49"><code>c52beb1087</code></a>, <a class="h" href="https://go.googlesource.com/go/+/47a71d9d77e1a8a76cb5bdc951df182789bf7165"><code>47a71d9d77</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f95578cd5fa6035e2b253bcb1af3a18ad7352251"><code>f95578cd5f</code></a>), initial cgo for ppc64 (<a class="h" href="https://go.googlesource.com/go/+/1135071b47b1c9c0069d384c136e94d2883282bc"><code>1135071b47</code></a>), FreeBSD 12 ino64 syscall types (<a class="h" href="https://go.googlesource.com/go/+/dc6eb200dd59dfedaa5259565b8ef1aa96a39271"><code>dc6eb200dd</code></a>).
+<div id="rel12-p-os1-t3" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t3">Goroutine stack growth, shrinking, GC stack barriers and stack objects</a></strong> — <em>Done:</em> stack objects (<a class="h" href="https://go.googlesource.com/go/+/cbafcc55e80d5b444e659a892b739c04a27980d3"><code>cbafcc55e8</code></a>), reduced <code>pcvalue</code> linear search with a 2x8 associative cache (<a class="h" href="https://go.googlesource.com/go/+/7d6b5e340c9c89416ffbf3e0bc997b77304c31f7"><code>7d6b5e340c</code></a>).
+<div id="rel12-p-os1-t4" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t4">Tracebacks, symbol tables and <code>runtime.Callers</code>/<code>CallersFrames</code></a></strong> — <em>Done:</em> traceback marks freshly allocated <code>_defer</code> (<a class="h" href="https://go.googlesource.com/go/+/db1e8a9e1f1b019dd7928ea239d5b0e4af66d9a6"><code>db1e8a9e1f</code></a>), <code>FuncForPC</code> no longer crashes between functions (<a class="h" href="https://go.googlesource.com/go/+/462e90259af39af9e23c9d919e002913042c2faa"><code>462e90259a</code></a>), refined <code>pcvalue</code> cache (<a class="h" href="https://go.googlesource.com/go/+/7d6b5e340c9c89416ffbf3e0bc997b77304c31f7"><code>7d6b5e340c</code></a>), <code>windows/arm</code> sigpanic tracebacks (<a class="h" href="https://go.googlesource.com/go/+/9ab2ffe8e92f9660cbde1a18921ae864c64f280b"><code>9ab2ffe8e9</code></a>).
+<div id="rel12-p-os1-t5" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t5">Defer, panic, recover and Goexit (runtime side)</a></strong> — <em>Done:</em> traceback shows whether a <code>_defer</code> was just allocated (<a class="h" href="https://go.googlesource.com/go/+/db1e8a9e1f1b019dd7928ea239d5b0e4af66d9a6"><code>db1e8a9e1f</code></a>), no write barrier in <code>startpanic_m</code> (<a class="h" href="https://go.googlesource.com/go/+/9ed9df6ca27850704133de1ceb94407c635beb82"><code>9ed9df6ca2</code></a>).
+<div id="rel12-p-os1-t6" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t6">Signals: masks, forwarding, sigaltstack and the unified Unix signal layer</a></strong> — <em>Done:</em> <code>sigInitIgnored</code> nosplit (<a class="h" href="https://go.googlesource.com/go/+/97f153528513e9a7ededf7e0aca7a4e30a3f4fe7"><code>97f1535285</code></a>), tgkill for <code>raise</code> (<a class="h" href="https://go.googlesource.com/go/+/43f54c8d2e3bddfc6ad7887286eb6564986cb6ad"><code>43f54c8d2e</code></a>), abort check on Windows (<a class="h" href="https://go.googlesource.com/go/+/9be01c2eab928f9899c67eb7bcdb164728f85a2c"><code>9be01c2eab</code></a>).
+<div id="rel12-p-os1-t10" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t10">vDSO, time sources and process-wide randomness</a></strong> — <em>Done:</em> ppc64x vDSO (<a class="h" href="https://go.googlesource.com/go/+/dbd8af74723d2c98cbdcc70f7e2801f69b57ac5b"><code>dbd8af7472</code></a>), refactored <code>startNano</code> (<a class="h" href="https://go.googlesource.com/go/+/a1ee0a21cfd3d44f4585c1eb57698460abbfc7f1"><code>a1ee0a21cf</code></a>).
+<div id="rel12-p-os1-t11" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t11">Darwin and OpenBSD move to libc; Solaris and AIX libcall; syscall wrapper layer</a></strong> — <em>Done:</em> libSystem for package syscall (<a class="h" href="https://go.googlesource.com/go/+/a3b01440fef3d2833909f6651455924a1c86d192"><code>a3b01440fe</code></a>, <a class="h" href="https://go.googlesource.com/go/+/be5f646dabf5de85e128f46f102e8c9acdd8fe90"><code>be5f646dab</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9eb383e8f0be692df68ac6cbc3c9f1ccf991d342"><code>9eb383e8f0</code></a>), Solaris syscall to libc files (<a class="h" href="https://go.googlesource.com/go/+/49be65eeba37a3d29a8a33379794e7a84df6cca1"><code>49be65eeba</code></a>).
+<div id="rel12-p-os1-t12" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t12">Windows runtime</a></strong> — <em>Done:</em> windows/arm (<a class="h" href="https://go.googlesource.com/go/+/d24ec86e4f64302e91d8062eabfcd21296bb9b04"><code>d24ec86e4f</code></a>), <code>Syscall18</code> (<a class="h" href="https://go.googlesource.com/go/+/e8df7df68f8d3b182570049879e780fec57a1878"><code>e8df7df68f</code></a>), case-insensitive env (<a class="h" href="https://go.googlesource.com/go/+/f08352bd16e03555112154781afe84c3b5d6e0c8"><code>f08352bd16</code></a>), unminit/profile race (<a class="h" href="https://go.googlesource.com/go/+/c216c3aa9fe34cd81e9d4bcc28c64257064eddc9"><code>c216c3aa9f</code></a>).
+<div id="rel12-p-os1-t13" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t13">CPU feature detection (<code>internal/cpu</code>), auxv parsing and <code>GODEBUG=cpu.*</code></a></strong> — <em>Done:</em> <code>GODEBUG</code> cpu options (<a class="h" href="https://go.googlesource.com/go/+/2de53906e199a744605ca6a0c6cc81653c6e4f89"><code>2de53906e1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4fb8b1de3cf629c94910c5389220a07963bd44e2"><code>4fb8b1de3c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3e0227f6a055fff2ceab18ed1ac6bd583a7f94a5"><code>3e0227f6a0</code></a>, <a class="h" href="https://go.googlesource.com/go/+/980340ade7acb057c2e0e244a4002c96274f8a77"><code>980340ade7</code></a>), ARM hw divide (<a class="h" href="https://go.googlesource.com/go/+/2e8c31b3d2afce1c1c7b0c6af9cc4a9f296af299"><code>2e8c31b3d2</code></a>), cache-line padding (<a class="h" href="https://go.googlesource.com/go/+/7b9c2c1950c167b16f8b3cda179363ca8df2c1b2"><code>7b9c2c1950</code></a>, <a class="h" href="https://go.googlesource.com/go/+/961eb13b6781907b5bfe4a7b22f68206020c4468"><code>961eb13b67</code></a>, <a class="h" href="https://go.googlesource.com/go/+/60f83621fc357f9e838bee9811230339b9da493a"><code>60f83621fc</code></a>), AIX detection (<a class="h" href="https://go.googlesource.com/go/+/cb07f492db5eae374901f94d8e55d8aeda1fca58"><code>cb07f492db</code></a>), z14 (<a class="h" href="https://go.googlesource.com/go/+/897e0807c30a7b1860c15d4c05d68907fbba9262"><code>897e0807c3</code></a>), constants typed (<a class="h" href="https://go.googlesource.com/go/+/2556df0ac0bf7ddb39ece91856ad94f5676b1b07"><code>2556df0ac0</code></a>, <a class="h" href="https://go.googlesource.com/go/+/21ac81192483e6b8135cec4c47e6f9fce890fb05"><code>21ac811924</code></a>, <a class="h" href="https://go.googlesource.com/go/+/bb3bf5bb538df67d3939974854c99608be21e135"><code>bb3bf5bb53</code></a>).
+<div id="rel12-p-os1-t14" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t14">Assembly-level runtime entry points: memequal/cmp/IndexByte, hashing, atomics and ABI wrappers</a></strong> — <em>Done:</em> <code>internal/math.MulUintptr</code> (<a class="h" href="https://go.googlesource.com/go/+/c9130cae9a9cd59178e842851f3f30b1d97ab0bd"><code>c9130cae9a</code></a>), whitespace in asm (<a class="h" href="https://go.googlesource.com/go/+/b8ac64a581b1e8e033cd7c9919d7dcf8fb16d17b"><code>b8ac64a581</code></a>), Go prototypes in amd64 asm (<a class="h" href="https://go.googlesource.com/go/+/3879ea54ed1f5c266657ffe593e2a8e1b63401ec"><code>3879ea54ed</code></a>), ppc64x lightweight atomics (<a class="h" href="https://go.googlesource.com/go/+/5c472132bf88cc04c85ad5f848d8a2f77f21b228"><code>5c472132bf</code></a>), CALLFN 8-byte copies (<a class="h" href="https://go.googlesource.com/go/+/e945623930d2c85b9a81476203451ca8f4092875"><code>e945623930</code></a>), ABI information (<a class="h" href="https://go.googlesource.com/go/+/af1bfe0aa39091a4103bd29d8659f6267aad9df0"><code>af1bfe0aa3</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4f3604d3f2b25905907742f48cd0feeec5b458e1"><code>4f3604d3f2</code></a>), <code>MADV_FREE</code> (<a class="h" href="https://go.googlesource.com/go/+/77f9b2728eb08456899e6500328e00ec4829dddf"><code>77f9b2728e</code></a>), <code>runtime.cputicks</code> ppc64x (<a class="h" href="https://go.googlesource.com/go/+/cfbe3cfbeb6b2de561fc709b8644d4d7a4e182bb"><code>cfbe3cfbeb</code></a>), arm64 8.1 atomics off on Android (<a class="h" href="https://go.googlesource.com/go/+/efd229238aceefdee6a00ea28b61c924c2b5f1a5"><code>efd229238a</code></a>), <code>iscgo</code> unsigned load (<a class="h" href="https://go.googlesource.com/go/+/e41fbc79ccfedc5bf4d07356c20de0731bd9cfd9"><code>e41fbc79cc</code></a>), explicit argmap <code>arglen</code> (<a class="h" href="https://go.googlesource.com/go/+/0098f8aeaceb5feec7462ae64f8ce91a473360c1"><code>0098f8aeac</code></a>), REFLECTMETHOD (<a class="h" href="https://go.googlesource.com/go/+/204a8f55dc2e0ac8d27a781dab0da609b98560da"><code>204a8f55dc</code></a>), no TLS before setup on iOS (<a class="h" href="https://go.googlesource.com/go/+/a889aaf8bfcf803eaed411ebae672cc6c52252bc"><code>a889aaf8bf</code></a>), race with retaken P (<a class="h" href="https://go.googlesource.com/go/+/e496e612b7f45a09209f8f4e1c7c1d0db378dc18"><code>e496e612b7</code></a>), cgo panic alias (<a class="h" href="https://go.googlesource.com/go/+/6096b85b1326c22ec07c2aed2d78f3bef513ea69"><code>6096b85b13</code></a>).
+<div id="rel12-p-os1-t16" class="stage">
+
+</div></li>
+<li><strong><a href="os-stacks.html#p-os1-t16">Thread lifecycle, physical page size and scheduler-facing OS hooks</a></strong> — <em>Done:</em> <code>MADV_FREE</code> (<a class="h" href="https://go.googlesource.com/go/+/77f9b2728eb08456899e6500328e00ec4829dddf"><code>77f9b2728e</code></a>), semasleep timeouts (<a class="h" href="https://go.googlesource.com/go/+/42257a262c94d839364113f2dbf4057731971fc1"><code>42257a262c</code></a>).</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>other runtime/OS plumbing</strong> <span class="tag int">internal</span> — all: use consistent shebang line across all shell scripts (<a class="h" href="https://go.googlesource.com/go/+/c92354f46e468f89fcf1497e7c9e2f3c66025dfa"><code>c92354f46e</code></a>)</li>
+<li><strong>Linux, vDSO, time and auxv</strong> <span class="tag int">internal</span> — <span class="tag uv">user-visible</span> runtime: replace calls to hasprefix with hasPrefix (<a class="h" href="https://go.googlesource.com/go/+/b0dc54697ba34494a4d77e8d3e446070fc7b223b"><code>b0dc54697b</code></a>); <span class="tag uv">user-visible</span> runtime: don’t use linkname to refer to internal/cpu (<a class="h" href="https://go.googlesource.com/go/+/cd7cb86d8e56d28bfe9bd522baa44c95127028d7"><code>cd7cb86d8e</code></a>); <span class="tag uv">user-visible</span> runtime: fix heap pointer invariant rules in HACKING.md (<a class="h" href="https://go.googlesource.com/go/+/d029058b5912312963225c40ae4bf44e3cb4be76"><code>d029058b59</code></a>)</li>
+<li><strong>cgo and C interop</strong> <span class="tag int">internal</span> — runtime/cgo: added missing includes for errno.h to the windows gcc stubs (<a class="h" href="https://go.googlesource.com/go/+/595bc63e8fb9636bb89c0cff3f879467d3c06988"><code>595bc63e8f</code></a>)</li>
+</ul>
+<h2 id="rel12-p-fe2">Compiler frontend</h2>
+<p class="from">
+From <a href="frontend.html#area-p-fe2">Compiler frontend (Go 1.10–1.17)</a>
+</p>
+<p class="dg">
+Binary export removed, -lang introduced, constant folding restricted to Go constants, typechecker tracing and new node dumper.
+</p>
+<div id="rel12-p-fe2-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="frontend.html#p-fe2-t1">dev.regabi: from <code>*Node</code> struct to the <code>ir.Node</code> interface and concrete node types</a></strong> — <em>Done:</em> <code>OCMPIFACE</code>/<code>OCMPSTR</code> ops removed (<a class="h" href="https://go.googlesource.com/go/+/28fbbf41119a75498cc5e81d06af5ca1ad0010c9"><code>28fbbf4111</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a0d6420d8be2ae7164797051ec74fa2a2df466a1"><code>a0d6420d8b</code></a>); alternative node dumper for debugging (<a class="h" href="https://go.googlesource.com/go/+/5d444e36a664e7f0c4b6e4e53bb76f964028bd22"><code>5d444e36a6</code></a>); labels represented as bare <code>Sym</code>s (<a class="h" href="https://go.googlesource.com/go/+/2dda040f19aa6a7551f090d8c5a3941e416b21df"><code>2dda040f19</code></a>); <code>TPTR32</code>/<code>TPTR64</code> merged into <code>TPTR</code> (<a class="h" href="https://go.googlesource.com/go/+/62e5215a2a12d95d1ce08cb6c996c3667e346779"><code>62e5215a2a</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t3" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t3">Indexed export format and the export-data lifecycle</a></strong> — <em>Done:</em> the old binary export is disabled then removed (<a class="h" href="https://go.googlesource.com/go/+/d546bebe34960952d8555bd5b19b32f5a90476d8"><code>d546bebe34</code></a>, <a class="h" href="https://go.googlesource.com/go/+/433496615ff0ec5c2235279dddbe01adf1701fa2"><code>433496615f</code></a>), the <code>-iexport</code>-style flags <code>-i</code> (<a class="h" href="https://go.googlesource.com/go/+/b4150f76144808bf0015fe23be0e2ade32a14599"><code>b4150f7614</code></a>) and <code>-dolinkobj</code> (<a class="h" href="https://go.googlesource.com/go/+/965fa3b191270bbc23a040a520ce43406ba29343"><code>965fa3b191</code></a>) go; export of <code>Func.Endlineno</code> (<a class="h" href="https://go.googlesource.com/go/+/c374984e99888bb2e2dd6c331a1328275debe19d"><code>c374984e99</code></a>); inlining of <code>(*T).M</code> wrappers re-enabled (<a class="h" href="https://go.googlesource.com/go/+/fa913a36a2793524a65972c7c65f4a0578cb3392"><code>fa913a36a2</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t7" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t7">Constants: Go 2 number literals, evconst, untyped conversion and go/constant</a></strong> — <em>Done:</em> index-bounds error (<a class="h" href="https://go.googlesource.com/go/+/a37d95c74a68da299073ff5a5bb077aa60aeab39"><code>a37d95c74a</code></a>); non-Go constants not folded (<a class="h" href="https://go.googlesource.com/go/+/1602e497012a27071e200d54ebfe13ca23d1f8af"><code>1602e49701</code></a>, <a class="h" href="https://go.googlesource.com/go/+/eb6c433eb38d9a0e9ecfcc1604f9ff8e035768f6"><code>eb6c433eb3</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t8" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t8">Language version gating (<code>-lang</code>) and language changes implemented in the frontend</a></strong> — <em>Done:</em> <span class="tag uv">user-visible</span> <code>-lang</code> flag <a class="h" href="https://go.googlesource.com/go/+/2e9f0817f070a3979afc580c740670690acab672"><code>2e9f0817f0</code></a>, validity check <a class="h" href="https://go.googlesource.com/go/+/7ebe35093dbac03f86f7471590a18bf4ddd4b29c"><code>7ebe35093d</code></a>, default accept-all <a class="h" href="https://go.googlesource.com/go/+/69397422c0ac74f9f9ec8e2b3e6d0b0b7ab1b697"><code>69397422c0</code></a>; <code>//go:linkname</code> allows bodyless functions (<a class="h" href="https://go.googlesource.com/go/+/ca3749230b5a7d43b3292226fdb2b6f3de5d653b"><code>ca3749230b</code></a>). <em>Left open:</em> “no consistent support for changes made before 1.12” (<a class="h" href="https://go.googlesource.com/go/+/2e9f0817f070a3979afc580c740670690acab672"><code>2e9f0817f0</code></a>).
+<div id="rel12-p-fe2-t9" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t9">Package initialization order, static initialisation and init functions</a></strong> — <em>Done:</em> sparse slice literals (<a class="h" href="https://go.googlesource.com/go/+/6fff980cf1f9af9f4b11e7fc7ead4987cc5fc560"><code>6fff980cf1</code></a>), static copy fix (<a class="h" href="https://go.googlesource.com/go/+/4a1a783ddafd1ac2349d07292f7a00816e50a4e5"><code>4a1a783dda</code></a>), hidden init in tracebacks (<a class="h" href="https://go.googlesource.com/go/+/eafe9a186c84dcfb7db1038cc43d1f0dfd1ea781"><code>eafe9a186c</code></a>), early <code>init</code> symbol (<a class="h" href="https://go.googlesource.com/go/+/b52db19b983d9b92c013184f7699bba2d0166c10"><code>b52db19b98</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t12" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t12">Inlining-related frontend work: export of bodies, type switches, closures, devirtualization</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/fa913a36a2793524a65972c7c65f4a0578cb3392"><code>fa913a36a2</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t13" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t13">The legacy typechecker: error quality, alias/recursive-type handling and type checking order</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/e6305380a067c51223a59baf8a77575595a5f1e6"><code>e6305380a0</code></a>, <a class="h" href="https://go.googlesource.com/go/+/62c52a5ee19279a2151bdf178eee11b95c188a91"><code>62c52a5ee1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a37d95c74a68da299073ff5a5bb077aa60aeab39"><code>a37d95c74a</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5538ecadca6b500f3ccd428f247f7502c12ae246"><code>5538ecadca</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6761b1eb1b9fdbe5e2b865d683167dd5af3e5c0b"><code>6761b1eb1b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e25823edcea364df70b8db7462f53e7dac2b8fca"><code>e25823edce</code></a> (typecheck tracing). <em>Left open:</em> “the more general problem remains” for alias cycles (<a class="h" href="https://go.googlesource.com/go/+/e6305380a067c51223a59baf8a77575595a5f1e6"><code>e6305380a0</code></a>).
+<div id="rel12-p-fe2-t14" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t14">Lowering in order/walk and the shape of runtime calls emitted by the frontend</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/0e9f8a21f8b6534931f1ab50909161a289a0da3c"><code>0e9f8a21f8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5848b6c9b854546473814c8752ee117a71bb8b54"><code>5848b6c9b8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/389e942745ddd7eef44b71571c463b0dfc3dcac2"><code>389e942745</code></a>, <a class="h" href="https://go.googlesource.com/go/+/020a18c545bf49ffc087ca93cd238195d8dcc411"><code>020a18c545</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t15" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t15">checkptr instrumentation and compiler debugging flags</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/e25823edcea364df70b8db7462f53e7dac2b8fca"><code>e25823edce</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e34f660a52b810e7f4d4a186c7502324c67390ea"><code>e34f660a52</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c68e3bcb035d25ce2df34618bd3ca2d1063dcad3"><code>c68e3bcb03</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5185744962d402df083d118036f9bef8c2e2d3b6"><code>5185744962</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t16" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t16">Types package internals and type printing</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/62e5215a2a12d95d1ce08cb6c996c3667e346779"><code>62e5215a2a</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2d58fbac2f4c5c77b219e4d94b89c218ffa6f98f"><code>2d58fbac2f</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9e619739fdc4cbaeb00a10ef95ce3e5d6996e8a7"><code>9e619739fd</code></a>, <a class="h" href="https://go.googlesource.com/go/+/99e4ddd053fada36038f7fd4e7220d789e30e48a"><code>99e4ddd053</code></a>, <a class="h" href="https://go.googlesource.com/go/+/16e6cd9a4dc499db164624a048f25e2f382ac016"><code>16e6cd9a4d</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-fe2-t17" class="stage">
+
+</div></li>
+<li><strong><a href="frontend.html#p-fe2-t17">Register-ABI plumbing in the frontend</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/16e6cd9a4dc499db164624a048f25e2f382ac016"><code>16e6cd9a4d</code></a>. <em>Left open:</em> ABI info not yet used.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Compiler flags cleanup</strong> <span class="tag uv">user-visible</span> — <a class="h" href="https://go.googlesource.com/go/+/b4150f76144808bf0015fe23be0e2ade32a14599"><code>b4150f7614</code></a>, <a class="h" href="https://go.googlesource.com/go/+/965fa3b191270bbc23a040a520ce43406ba29343"><code>965fa3b191</code></a>, <a class="h" href="https://go.googlesource.com/go/+/7e64377903b3abd922150e35601e0df597a8af9f"><code>7e64377903</code></a> (-race/-msan only where supported).</li>
+<li><strong>Intrinsify math/bits.Div on amd64</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/319787a528284aefe23424056a19bda71f7cc2b1"><code>319787a528</code></a>.</li>
+<li><strong>Runtime capability variables</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/75798e8ada7fcb286f633618ac2f55ad5240ed97"><code>75798e8ada</code></a>.</li>
+<li><strong>Soft-float OMUL</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/c92e73b70253f5d88c473a7ad6c5b8d61b2debb7"><code>c92e73b702</code></a>.</li>
+<li><strong>Walk/typecheck overflow and ICE fixes</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/42cc4ca30a7729a4c6d1bb0bbbc3e4a736ef91c8"><code>42cc4ca30a</code></a> (walkinrange called Int64() on constants over 2^63 producing bad rewrites), <a class="h" href="https://go.googlesource.com/go/+/d397d4bffc0fa917fa53970ded4b4d3524f88a5b"><code>d397d4bffc</code></a>, <a class="h" href="https://go.googlesource.com/go/+/706b54bb85df2eb9a21da9e049fd1dff77342d25"><code>706b54bb85</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c03d0e4fec6b02c09d286dae5df2f63164d74ea1"><code>c03d0e4fec</code></a> (samesafeexpr handles arithmetic), <a class="h" href="https://go.googlesource.com/go/+/e3e043bea4d7547edf004a9e202f66a4d69b5899"><code>e3e043bea4</code></a> (OSLICEHEADER), <a class="h" href="https://go.googlesource.com/go/+/95a4f793c077ab7b13fdb7505b65ff19a97a07f9"><code>95a4f793c0</code></a> (labels not removed by deadcode), <a class="h" href="https://go.googlesource.com/go/+/b2c397e53798fad7395fa8c67f66d9200d663ae0"><code>b2c397e537</code></a> (string to notinheap slice rejected), <a class="h" href="https://go.googlesource.com/go/+/f2cd0fa7b773eabcce1b99874188aedcf9acb1ab"><code>f2cd0fa7b7</code></a>.</li>
+<li><strong>Wrapper line numbers and -dynlink</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/f64385b720e59d0cddfe5e05e830665f6ade8083"><code>f64385b720</code></a>, <a class="h" href="https://go.googlesource.com/go/+/debca779719a72929932c589fe7ed3fea5341e53"><code>debca77971</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a1aafd8b28ada0d40e2cb25fb0762ae171eec558"><code>a1aafd8b28</code></a> (wrapper for <code>error.Error</code> method expression), <a class="h" href="https://go.googlesource.com/go/+/1ac3b0618170279474fcdf9c625b2e237bf2881c"><code>1ac3b06181</code></a>.</li>
+<li><strong>Housekeeping</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/02b444bc1d5f87f36a7726d0474358fb51fec13f"><code>02b444bc1d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c5d38b896df504e3354d7a27f7ad86fa9661ce6b"><code>c5d38b896d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/34c58fe184fa73ecff0e7142fcf567b1a9abc01b"><code>34c58fe184</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ef7212e2cfc786e5b81a0d3ac55371628177e013"><code>ef7212e2cf</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5ddb20912043ff7ad722a27cc93a7e68d1c5ec78"><code>5ddb209120</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e7f59f02841361cbeb75241df6cecb697f47a989"><code>e7f59f0284</code></a>, <a class="h" href="https://go.googlesource.com/go/+/7b88b22acf8cb5e32f34e2a396d797c5c0125566"><code>7b88b22acf</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9a8372f8bd5a39d2476bfa9247407b51f9193b9e"><code>9a8372f8bd</code></a> (ambiguously-live logic removed), <a class="h" href="https://go.googlesource.com/go/+/5b2030cbcacf0c1b5ea46230323595ab20fa8099"><code>5b2030cbca</code></a>, <a class="h" href="https://go.googlesource.com/go/+/41c0b9eb88fa0e161d7564539a8beb3f79247f44"><code>41c0b9eb88</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3f485e14b2ca9d6e74471f2c3c9aa0b732971d51"><code>3f485e14b2</code></a>, <a class="h" href="https://go.googlesource.com/go/+/cc36b835e4488103fc3e8972f9d8bcb1282a75bf"><code>cc36b835e4</code></a> (expanded stack-frame errors), <a class="h" href="https://go.googlesource.com/go/+/bc4a10d16ca8582eaa92e5b834616df55c777503"><code>bc4a10d16c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e4c1feef74d7415ba134aa0950f7f285a3e1902a"><code>e4c1feef74</code></a>, <a class="h" href="https://go.googlesource.com/go/+/57c8eb92b78785d2bb8303b0ee7a7771d5df1be6"><code>57c8eb92b7</code></a> (CLOBBERDEAD experiment removed, later resurrected as a flag by <a class="h" href="https://go.googlesource.com/go/+/8628bf9a972993bdb978b7d6fa7a6bb1ca2cddbe"><code>8628bf9a97</code></a><sup class="xr" title="this commit landed in the Go 1.17 cycle">1.17</sup>), <a class="h" href="https://go.googlesource.com/go/+/8b7cf898af3ab21c9e07e5b24d59c16b9fcf295a"><code>8b7cf898af</code></a>.</li>
+<li><strong>gc cleanups: fconv, evconst, noder</strong> <span class="tag int">internal</span> — Minor cleanups in gc, removal of the flag argument from fconv, better names for conf functions, major evconst cleanup and a more direct noder.nod. (<a class="h" href="https://go.googlesource.com/go/+/3b7b9dce43613d22ac58cc61b19268b32a157df0"><code>3b7b9dce43</code></a>, <a class="h" href="https://go.googlesource.com/go/+/919d5aee22d3a56952f936dab63854aa1f141473"><code>919d5aee22</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9c2e5f297136f4fa31e1731313b8c09b7aead108"><code>9c2e5f2971</code></a>, <a class="h" href="https://go.googlesource.com/go/+/48dc42b6afe7ad13102c55b8200c9f4577a88c84"><code>48dc42b6af</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f6f27bfb97b8dcaa2350829dd043d7c5a5f341ab"><code>f6f27bfb97</code></a>)</li>
+<li><strong>AIX cgo_import_dynamic</strong> <span class="tag int">internal</span> — Updated cgo_import_dynamic handling for AIX. (<a class="h" href="https://go.googlesource.com/go/+/e1978a2d7a6deac29aa778a17a1cbea25586abc6"><code>e1978a2d7a</code></a>)</li>
+<li><strong>Bulk rename</strong> <span class="tag int">internal</span> — A bulk rename across the compiler. (<a class="h" href="https://go.googlesource.com/go/+/bc43889566d442b2596b1e6d8d3fce61b4aa3bec"><code>bc43889566</code></a>)</li>
+</ul>
+<h2 id="rel12-p-opt1">Middle end and SSA optimizer</h2>
+<p class="from">
+From <a href="middle-end.html#area-p-opt1">Middle end and SSA optimizer (Go 1.10–1.17)</a>
+</p>
+<p class="dg">
+Argument stack construction moved from walk to SSA, write barriers eliminated for non-heap stores, inlining cost tuned (57, single-call bodies, wrappers), ssa.html gained sources and CFGs, and bits intrinsics expanded (threads: Late call expansion, Write barriers, Inlining, Diagnostics, Arithmetic).
+</p>
+<div id="rel12-p-opt1-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="middle-end.html#p-opt1-t1">Prove pass: unsatisfiability, partial-order facts, loop bounds-check elimination</a></strong> — <em>Done:</em> fix fence-post implications for the unsigned domain (<a class="h" href="https://go.googlesource.com/go/+/09ea3c08e8fd1915515383f8cb4c0bb237d2b87d"><code>09ea3c08e8</code></a>); negative upper bound check for <code>IsSliceInBounds</code> (<a class="h" href="https://go.googlesource.com/go/+/ea6259d5e9d57f247b7d877d4d04602b74ae5155"><code>ea6259d5e9</code></a>); overflow fix when deriving from <code>x+d &gt;= w</code> (<a class="h" href="https://go.googlesource.com/go/+/2e217fa726a624093eea5b099d1531c79e27a423"><code>2e217fa726</code></a>); avoid implicit bounds checks after explicit append checks (<a class="h" href="https://go.googlesource.com/go/+/9f66b41beea82cc613cad9138c10a50f2b3ea137"><code>9f66b41bee</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t2" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t2">Escape analysis: the esc.go fixes, the escape.go rewrite, and the move to package escape</a></strong> — <em>Done:</em> self-assignment handling unified in <code>esc.go</code> (<a class="h" href="https://go.googlesource.com/go/+/ff468a43be1740890a0f3b64a6ab920ea92c2c17"><code>ff468a43be</code></a>, <a class="h" href="https://go.googlesource.com/go/+/859cf7fc0f4535ab3cdec15c81860f5fd2ae5b01"><code>859cf7fc0f</code></a>, <a class="h" href="https://go.googlesource.com/go/+/499fbb1a8ae20a69aa7f49287c65eec845963a30"><code>499fbb1a8a</code></a>), <code>mayAffectMemory</code> fixes (<a class="h" href="https://go.googlesource.com/go/+/4cf33e361ada37d8fee9443a258abd167e31d033"><code>4cf33e361a</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2d82465d18520820c52fea6b5e400a692ffdb92a"><code>2d82465d18</code></a>), sink-node positions (<a class="h" href="https://go.googlesource.com/go/+/67ac554d7978eb93f3dfe7a819c67948dd291d88"><code>67ac554d79</code></a>), unnamed parameters (<a class="h" href="https://go.googlesource.com/go/+/be09bdf589a5c25e5d8b68a546e9b84bc1a1977b"><code>be09bdf589</code></a>). <em>Left open:</em> esc.go’s encoding limits, fixed by the rewrite.
+<div id="rel12-p-opt1-t3" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t3">Inlining: budget, mid-stack inlining, closures, and what became inlinable</a></strong> — <em>Done:</em> single-call bodies encouraged (<a class="h" href="https://go.googlesource.com/go/+/13baf4b2cd34dfb41c570e35b48ec287713f4d7f"><code>13baf4b2cd</code></a>), call cost 57 (<a class="h" href="https://go.googlesource.com/go/+/624e197c71b673f0b3ebc57f774536131b4f0f26"><code>624e197c71</code></a>), budget hacks removed (<a class="h" href="https://go.googlesource.com/go/+/555d8c455a420df4a2bd024a5cafdaa60ac3ae55"><code>555d8c455a</code></a>), autogenerated wrappers inlined (<a class="h" href="https://go.googlesource.com/go/+/fa913a36a2793524a65972c7c65f4a0578cb3392"><code>fa913a36a2</code></a>), mid-stack tracebacks (<a class="h" href="https://go.googlesource.com/go/+/69c2c56453cdea1ad32d50fc82193f06b1b33f93"><code>69c2c56453</code></a>). <em>Left open:</em> the mid-stack-inlining flag and its default are outside this unit.
+<div id="rel12-p-opt1-t6" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t6">Late call expansion and the SSA side of the register ABI</a></strong> — <em>Done:</em> argument construction moved to SSA (<a class="h" href="https://go.googlesource.com/go/+/2578ac54eb417488c70324e7f3fc25565ec3f03d"><code>2578ac54eb</code></a>). <em>Left open:</em> calls still fully expanded at SSA build.
+<div id="rel12-p-opt1-t8" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t8">DWARF location lists from SSA</a></strong> — <em>Done:</em> params get slots (<a class="h" href="https://go.googlesource.com/go/+/fa31093ec4e9bbfce51c11c8ab90dd9b711d0052"><code>fa31093ec4</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t10" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t10">Range loops, append and map idioms in walk</a></strong> — <em>Done:</em> <code>[]byte("...")</code> (<a class="h" href="https://go.googlesource.com/go/+/ceb0c371d9a535826497289ac7d0b206a59526e6"><code>ceb0c371d9</code></a>), struct/array key literals (<a class="h" href="https://go.googlesource.com/go/+/a0f57c3fd0cff8b92ffb4257a6d1b56467bf30f1"><code>a0f57c3fd0</code></a>), copyRet allocs (<a class="h" href="https://go.googlesource.com/go/+/5dbc67a99a99011fce1c1b7c983d2aa35247b950"><code>5dbc67a99a</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t11" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t11">Rewrite-rule generator, typed Aux/AuxInt, and rule syntax</a></strong> — <em>Done:</em> randomized value order for testing (<a class="h" href="https://go.googlesource.com/go/+/2b4f24a2d2cbdefe3cb578ef37804cf05c1f5b00"><code>2b4f24a2d2</code></a>), <code>v.Pos.line</code> warnRule (<a class="h" href="https://go.googlesource.com/go/+/25b84c01555645ccdc8ca83fe11461f1b450c286"><code>25b84c0155</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t12" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t12">Write-barrier elision and the writebarrier pass</a></strong> — <em>Done:</em> non-heap pointer elision (<a class="h" href="https://go.googlesource.com/go/+/2140975ebde164ea1eaa70fc72775c03567f2bc9"><code>2140975ebd</code></a>), memclrHasPointers (<a class="h" href="https://go.googlesource.com/go/+/c8ca793176cfae8a9fc501d6e37896304f483f2e"><code>c8ca793176</code></a>), slice-clear notinheap (<a class="h" href="https://go.googlesource.com/go/+/6454a09a97ff583bd81d59733777a000caf8b79a"><code>6454a09a97</code></a>). <em>Left open:</em> only freshly-allocated objects.
+<div id="rel12-p-opt1-t13" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t13">Memory-op optimizations: memmove, Move/Zero, dead stores, nil checks</a></strong> — <em>Done:</em> amd64 disjoint memmove (<a class="h" href="https://go.googlesource.com/go/+/c292b32f33d4c466abb769782d9cdfacdb76688b"><code>c292b32f33</code></a>), Move chain with VarDef (<a class="h" href="https://go.googlesource.com/go/+/8607b2e825da5bbd91929080ccfdbc20ed9aef96"><code>8607b2e825</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a98bb7e244954f1e035e9b9b6868a92cff04089c"><code>a98bb7e244</code></a>), nil-check use in dead-auto (<a class="h" href="https://go.googlesource.com/go/+/54f9c0416a588963cb5a1c10ffb6a88f3956858c"><code>54f9c0416a</code></a>), AIX nilcheck (<a class="h" href="https://go.googlesource.com/go/+/9fe9853ae5641eda4cfa58015bd0bcedb99c12cb"><code>9fe9853ae5</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t14" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t14">Arithmetic strength reduction, divisibility and intrinsics</a></strong> — <em>Done:</em> <code>bits.Mul</code>, <code>bits.Div</code>, RotateLeft, <a class="h" href="https://go.googlesource.com/go/+/c6118af55864916c2c3b1bca8e216e627f232bf3"><code>c6118af558</code></a>, <a class="h" href="https://go.googlesource.com/go/+/379d2dea72e475288da97ad6c665105fb731a34d"><code>379d2dea72</code></a>. <em>Left open:</em> Div intrinsic amd64-only.
+<div id="rel12-p-opt1-t15" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t15">CFG and control-flow passes: branchelim, fuse, shortcircuit, phiopt</a></strong> — <em>Done:</em> fuse before branchelim (<a class="h" href="https://go.googlesource.com/go/+/a55f3ee46dda090131afba3018856e19bd0f426d"><code>a55f3ee46d</code></a>), CMOV load addresses (<a class="h" href="https://go.googlesource.com/go/+/0b79dde1128462963db740efd3c9ed98eda2735e"><code>0b79dde112</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t16" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t16">Compiler front of walk/order: ordering fixes and the dev.regabi IR refactor (package walk)</a></strong> — <em>Done:</em> arg stack in SSA (<a class="h" href="https://go.googlesource.com/go/+/2578ac54eb417488c70324e7f3fc25565ec3f03d"><code>2578ac54eb</code></a>), order temporaries reuse (<a class="h" href="https://go.googlesource.com/go/+/389e942745ddd7eef44b71571c463b0dfc3dcac2"><code>389e942745</code></a>, <a class="h" href="https://go.googlesource.com/go/+/63e964e1741277c4da004e366111243f9ec942a2"><code>63e964e174</code></a>), <a class="h" href="https://go.googlesource.com/go/+/fe2c588b1c70ed8c6de45a601855a107968a327d"><code>fe2c588b1c</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-opt1-t17" class="stage">
+
+</div></li>
+<li><strong><a href="middle-end.html#p-opt1-t17">Diagnostics for the optimizer: ssa.html, GOSSAFUNC and optimizer logging</a></strong> — <em>Done:</em> sources, CFGs, AST. <em>Left open:</em> nothing noted.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Frontend/race fixes</strong> <span class="tag int">internal</span> — racy <code>Config.Race</code> (<a class="h" href="https://go.googlesource.com/go/+/c1807989563e0bafc14c56dba3eb405a099f4495"><code>c180798956</code></a>), symFunc init race (<a class="h" href="https://go.googlesource.com/go/+/5cf2b4c2d39e0490b235822f5ea7fa105280b9f2"><code>5cf2b4c2d3</code></a>), constant string symbols emitted before parallel phase (<a class="h" href="https://go.googlesource.com/go/+/df459d5e6cc14532961875058f5d4ba3d04b5ed4"><code>df459d5e6c</code></a>), <code>racefuncentry/exit</code> omitted when unneeded (<a class="h" href="https://go.googlesource.com/go/+/4201c2077ec3446a4fea5ed768c82aa96df69233"><code>4201c2077e</code></a>), racewalk removal (<a class="h" href="https://go.googlesource.com/go/+/14bdcc76fd9aa3edda64ef07a526fbeeed8b4326"><code>14bdcc76fd</code></a>), <code>Deferproc</code>/<code>Newproc</code> unexported (<a class="h" href="https://go.googlesource.com/go/+/e7f59f02841361cbeb75241df6cecb697f47a989"><code>e7f59f0284</code></a>).</li>
+<li><strong>Rule and codegen fixes</strong> <span class="tag int">internal</span> — OffPtr rule types (<a class="h" href="https://go.googlesource.com/go/+/c96e3bcc97a965b3e2947cc1d8d831b8d39c1d73"><code>c96e3bcc97</code></a>), <code>a == a</code> typo (<a class="h" href="https://go.googlesource.com/go/+/9850ad045fced1346a049df4baec7d4b7ab0db8c"><code>9850ad045f</code></a>), sNaN store-to-load forwarding (<a class="h" href="https://go.googlesource.com/go/+/48af3a8be593d349d7af8e831e26b5b2798a464e"><code>48af3a8be5</code></a>), softfloat store types (<a class="h" href="https://go.googlesource.com/go/+/63a3993a336714f95400e3e614064d4ae72995de"><code>63a3993a33</code></a>), load+op with SymAddr (<a class="h" href="https://go.googlesource.com/go/+/05bbec7357a22e2ddd238c2f8741f0f4c779eb80"><code>05bbec7357</code></a>), OpArg decomposition order (<a class="h" href="https://go.googlesource.com/go/+/04105ef1da9e23dc78d0a68b089ea8bdcb120d20"><code>04105ef1da</code></a>), nil-check removal (<a class="h" href="https://go.googlesource.com/go/+/669fa8f36a298cc0e2d1f817ca30c8d613ce7483"><code>669fa8f36a</code></a>), walkinrange overflow (<a class="h" href="https://go.googlesource.com/go/+/42cc4ca30a7729a4c6d1bb0bbbc3e4a736ef91c8"><code>42cc4ca30a</code></a>), append length overflow (<a class="h" href="https://go.googlesource.com/go/+/38e7177c949016c3d74411fa7ea1c300ae85c0fa"><code>38e7177c94</code></a>), 0-size comparisons (<a class="h" href="https://go.googlesource.com/go/+/f14067f3c10e15343f29aed439ff60af856eb323"><code>f14067f3c1</code></a>), memmove with wrong arg types (<a class="h" href="https://go.googlesource.com/go/+/8f854244ad5165c4ef9aa5760316b13233514e06"><code>8f854244ad</code></a>), <code>convnop</code>/appendslice refactors (<a class="h" href="https://go.googlesource.com/go/+/c5d38b896df504e3354d7a27f7ad86fa9661ce6b"><code>c5d38b896d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c907a75494f0d828a9afa5f849684f3c09c4afa2"><code>c907a75494</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d6e80069f3007d5bc03750f0a83e213bbac8c86e"><code>d6e80069f3</code></a>), <code>VARDEF</code> at top level (<a class="h" href="https://go.googlesource.com/go/+/6933d76a7eec7a197c3416ea9f15b508ac931477"><code>6933d76a7e</code></a>), <code>append(f())</code> conversion (<a class="h" href="https://go.googlesource.com/go/+/dca769dca9bac81a242cb52654b3fe6b7819f759"><code>dca769dca9</code></a>), <a class="h" href="https://go.googlesource.com/go/+/15c45752935a13fcb9f8f9528ac062da3a9d6cdb"><code>15c4575293</code></a>, <a class="h" href="https://go.googlesource.com/go/+/7a634034c89c653bccd451e417db7034b34402b7"><code>7a634034c8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5e8beed149c77ee8f0bc4eee6a97faa4cec23027"><code>5e8beed149</code></a> (remove pointer arithmetic), source cleanups (<a class="h" href="https://go.googlesource.com/go/+/0a8720580983c3a39c6c46fe08a2136a04bc118f"><code>0a87205809</code></a>, <a class="h" href="https://go.googlesource.com/go/+/713edf8b31de04dce26f603576f074133e95de47"><code>713edf8b31</code></a>, <a class="h" href="https://go.googlesource.com/go/+/88c1fd642ea0944b50962e1498273fee79d00e5f"><code>88c1fd642e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/85066acca144625e239294e2ce07bb2cfbc800c2"><code>85066acca1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/78c0e1f81d4052f8ca5a50e4e7c5bb35ddec6519"><code>78c0e1f81d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3813edf26edb78620632dc9c7d66096e5b2b5019"><code>3813edf26e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8c5c2b71f4124eb5e72cde327d740a8dbdd4eeb8"><code>8c5c2b71f4</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c35069d6428d29b12088731aab35cbff1e504a28"><code>c35069d642</code></a>, <a class="h" href="https://go.googlesource.com/go/+/de31f637a9edec8a94c8fb6124bb30ff1d6ee1ee"><code>de31f637a9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c8b2ac68906a154c470a845172f133aceae7c5c7"><code>c8b2ac6890</code></a>, <a class="h" href="https://go.googlesource.com/go/+/0c706fddce2066fa0f72df364dd393f74027d753"><code>0c706fddce</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d924c3336c39a256c832512ecd24fcdeed0ca266"><code>d924c3336c</code></a>).</li>
+</ul>
+<h2 id="rel12-p-be2">Backends and assemblers</h2>
+<p class="from">
+From <a href="backends.html#area-p-be2">Backends and assemblers (Go 1.12–1.17)</a>
+</p>
+<p class="dg">
+Dominated by incremental lowering work (amd64/386/ARM/arm64/ppc64/s390x peepholes), arm64 constants without the literal pool, arm64 frame pointers and the first symabis plumbing for the future register ABI.
+</p>
+<div id="rel12-p-be2-t1" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="backends.html#p-be2-t1">Register-based ABI (ABIInternal) and ABI wrappers</a></strong> — <em>Done:</em> <code>-symabis</code> collection mode in cmd/asm (<a class="h" href="https://go.googlesource.com/go/+/ba2e8a629b36e43cc27b23470b631a1dfee0900f"><code>ba2e8a629b</code></a>), compiler parsing of symabis (<a class="h" href="https://go.googlesource.com/go/+/97e4010fd4b8094aa0b4498ad751e4c07ea8a1aa"><code>97e4010fd4</code></a>), separation of data and function LSyms (<a class="h" href="https://go.googlesource.com/go/+/a2e79571a9d3dbe3cf10dcaeb1f9c01732219869"><code>a2e79571a9</code></a>). <em>Left open:</em> the information is parsed but “doesn’t yet do anything” (<a class="h" href="https://go.googlesource.com/go/+/97e4010fd4b8094aa0b4498ad751e4c07ea8a1aa"><code>97e4010fd4</code></a>).
+<div id="rel12-p-be2-t5" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t5">amd64 lowering: read-modify-write, load-op, addressing modes pass, intrinsic-friendly rules</a></strong> — <em>Done:</em> RMW/loadop work above (<a class="h" href="https://go.googlesource.com/go/+/705f3c74e6af802fcf54f402e6d0862832249712"><code>705f3c74e6</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b75c5c5992686a7eac1a33383e8b9b14b579556e"><code>b75c5c5992</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3bc34385faacbcbefb2b4abc0e280b709aab03c9"><code>3bc34385fa</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c6bf9a81095bdbd3631cedc66ce690fa070d1a38"><code>c6bf9a8109</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5f5ea3fd4d40ba16a58a3c6678da2f3f6d2fb8eb"><code>5f5ea3fd4d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b40db514382b2efc19c793810185d3d7ceea8b25"><code>b40db51438</code></a>, <a class="h" href="https://go.googlesource.com/go/+/24e51bbe64b4a534b096a3b0c6bfae6a732eea59"><code>24e51bbe64</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b1f656b1ceb09124f2d8ad63ceceb8df20a581c2"><code>b1f656b1ce</code></a>, <a class="h" href="https://go.googlesource.com/go/+/623c772814cdae562afb4c63c62d51a228bc672e"><code>623c772814</code></a>), MULQ overflow intrinsics (<a class="h" href="https://go.googlesource.com/go/+/a1ca4893ff755d6b0b3bf4b026196d55251ea846"><code>a1ca4893ff</code></a>), <code>RotateLeft</code> (<a class="h" href="https://go.googlesource.com/go/+/5ac247674884a93f3a7630649ee00923724e7961"><code>5ac2476748</code></a>), simplify asm generators (<a class="h" href="https://go.googlesource.com/go/+/4545fea4fc845d481d97e7dac7d6fe0b37048ce2"><code>4545fea4fc</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d17ac291584f6f518430ea3123e0ec9a7658c950"><code>d17ac29158</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2294e3ebd374e18b191d0e8d8d32c46b0a1ef961"><code>2294e3ebd3</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ccc337d8eeedbf94f56adb7ab22ce009056d0973"><code>ccc337d8ee</code></a>), correction of load-compare combination (<a class="h" href="https://go.googlesource.com/go/+/9f291d1fc38c25726c683becf8844fb8f81fb81b"><code>9f291d1fc3</code></a>). <em>Left open:</em> address mode rules are order-sensitive.
+<div id="rel12-p-be2-t6" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t6">arm64 backend and assembler</a></strong> — <em>Done:</em> constant synthesis (<a class="h" href="https://go.googlesource.com/go/+/644ddaa842696506832fc55cad67d2490be20d14"><code>644ddaa842</code></a>, <a class="h" href="https://go.googlesource.com/go/+/86ce1cb060446bcee2454080c7f55e754dbf7f82"><code>86ce1cb060</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c430adf1362dbe4c150cba98214fd521d0e9933a"><code>c430adf136</code></a>, <a class="h" href="https://go.googlesource.com/go/+/808186203b9786c11073c7056767fdf82f49def6"><code>808186203b</code></a>), indexed FP and atomics (<a class="h" href="https://go.googlesource.com/go/+/84feb4bbb76c4317652a79f45e3ad2d7c46c5761"><code>84feb4bbb7</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1018a80fe85746aa440001d5a514ad2ff8abf0d1"><code>1018a80fe8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/26d62b4ca9bb8f7342d337ba43b0cc1aedaf7852"><code>26d62b4ca9</code></a>), FRINTND/Abs/Copysign/Float bits (<a class="h" href="https://go.googlesource.com/go/+/8149db4f64aa72407d8be2184d0b414b535cd124"><code>8149db4f64</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2e5c32518ce6facc507862f4156d4e6ac776754f"><code>2e5c32518c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a19a83c8ef8283e4eacef846823c23ef9f50cf32"><code>a19a83c8ef</code></a>), madd (<a class="h" href="https://go.googlesource.com/go/+/b444215116e8d4a63f70f1a1b5a31f60a41a7f75"><code>b444215116</code></a>), frame pointer (<a class="h" href="https://go.googlesource.com/go/+/8f4fd3f34e8e218cb90435b5a8c6ba9be23a1e1e"><code>8f4fd3f34e</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t8" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t8">PPC64 / POWER backend and assembler</a></strong> — <em>Done:</em> rule improvements, indexed addressing, record-form compare avoidance, Mul/TrailingZeros/OnesCount intrinsics (see hashes above), float zero (<a class="h" href="https://go.googlesource.com/go/+/f776d51bf7fe90926f8b929aee65d802a9091d5e"><code>f776d51bf7</code></a>), PCALIGN (<a class="h" href="https://go.googlesource.com/go/+/bdba55653fa56eb119099a3efbff187a97e8cf44"><code>bdba55653f</code></a>), AIX 64-bit addressing (<a class="h" href="https://go.googlesource.com/go/+/041526c6ef669743afc6c4b757b95011f1475d1a"><code>041526c6ef</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4295ed9bef1f2b15837bdeb52766952c464f225d"><code>4295ed9bef</code></a>, <a class="h" href="https://go.googlesource.com/go/+/503091a77c43263a5ce86f9358de3445524627b7"><code>503091a77c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/20ac64a2dd1f7993101d7e069eab3b84ab2c0bd2"><code>20ac64a2dd</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t9" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t9">s390x backend: compare-and-branch, intrinsics, assembler</a></strong> — <em>Done:</em> OnesCount, RotateLeft, <a class="h" href="https://go.googlesource.com/go/+/6f9b94ab6658bbebe4c89791dc3e5ebe53be3d82"><code>6f9b94ab66</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f94de9c9fbed2a8d52a84b565c54da6efb015c4d"><code>f94de9c9fb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4f15b54780af7159732794f9d67c9a8a455bbf61"><code>4f15b54780</code></a> (int32 overflow in moves), <a class="h" href="https://go.googlesource.com/go/+/abd1dde1f717f86f94774ce9ab56053947f2d175"><code>abd1dde1f7</code></a> (no-op), VMSLG (<a class="h" href="https://go.googlesource.com/go/+/3f3142ad99155424007b8e8182265b5b716b44ee"><code>3f3142ad99</code></a>). <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t10" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t10">386, ARM (32-bit), MIPS/MIPS64 and the 387 removal</a></strong> — <em>Done:</em> the 386 and ARM items listed through <a class="h" href="https://go.googlesource.com/go/+/a0a7e9fc0c9139053c9ae02b85f03e78fb9cd550"><code>a0a7e9fc0c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/393330255024d77c963910b2e2de918b5027a17f"><code>3933302550</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2b69ad0b3c9770b6b67c4057c565d6f4c4444d26"><code>2b69ad0b3c</code></a>, MIPS fix <a class="h" href="https://go.googlesource.com/go/+/6a64efc25004175e198e75191e215a7b1a08a2fa"><code>6a64efc250</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t11" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t11">WebAssembly backend</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/6c631ae227cb6f15d5b0b8cc39c1715b8f4e9187"><code>6c631ae227</code></a>, <a class="h" href="https://go.googlesource.com/go/+/52cae2763ee59ea63e885e9a41708e3ce677039a"><code>52cae2763e</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t12" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t12">math/bits, atomic and runtime intrinsics (cross-architecture)</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/a1ca4893ff755d6b0b3bf4b026196d55251ea846"><code>a1ca4893ff</code></a>, <a class="h" href="https://go.googlesource.com/go/+/899f3a2892b0a6e06a2e5f54c0a196d15944b99e"><code>899f3a2892</code></a>, <a class="h" href="https://go.googlesource.com/go/+/dd789550a74817e88466cdb583ae86c4c1426380"><code>dd789550a7</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5ac247674884a93f3a7630649ee00923724e7961"><code>5ac2476748</code></a>, <a class="h" href="https://go.googlesource.com/go/+/6f9b94ab6658bbebe4c89791dc3e5ebe53be3d82"><code>6f9b94ab66</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f94de9c9fbed2a8d52a84b565c54da6efb015c4d"><code>f94de9c9fb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9aed4cc3956117d3d435bcd90e69d5e1820f8ad3"><code>9aed4cc395</code></a>, <a class="h" href="https://go.googlesource.com/go/+/23578f9d00bb0d6e92f18d7d6ea961d7c6c52260"><code>23578f9d00</code></a>, <a class="h" href="https://go.googlesource.com/go/+/8149db4f64aa72407d8be2184d0b414b535cd124"><code>8149db4f64</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t13" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t13">SSA infrastructure passes: layout, regalloc, scheduling, flagalloc, block shape</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/bce1f12225b9a2a3d8e59f3b1f1776e5baec9edf"><code>bce1f12225</code></a>, <a class="h" href="https://go.googlesource.com/go/+/13d5cd784748f8849c75ec23ed6e3d40dc7d2ce7"><code>13d5cd7847</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3068fcfa0d6535d081a6fe3fb3dc8dd30bff370f"><code>3068fcfa0d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ff9481ec0d684b4f00670d40e869b5d40c54f162"><code>ff9481ec0d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5403b8ecebc37da227dae170f01b6004a66bf2e6"><code>5403b8eceb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/f493e557232e223e313b4641d12e502c69bfe632"><code>f493e55723</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a3593685cf4d385bf9edf5306022e001e1eb6586"><code>a3593685cf</code></a>. <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t14" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t14">Safepoints, unsafe points and stack maps for asynchronous preemption</a></strong> — <em>Done:</em> only call-site clobbering experiment (<a class="h" href="https://go.googlesource.com/go/+/c8545722a105f4a21583aeee00adcbd01436b98b"><code>c8545722a1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/360771e422ff0e586963e1dc0818c427b5444379"><code>360771e422</code></a>). <em>Left open:</em> “stack maps at non-call safepoints are still imprecise” (<a class="h" href="https://go.googlesource.com/go/+/c8545722a105f4a21583aeee00adcbd01436b98b"><code>c8545722a1</code></a>).
+<div id="rel12-p-be2-t15" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t15">Debug info generated by the backend: statements, location lists, line tables</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/7b88b22acf8cb5e32f34e2a396d797c5c0125566"><code>7b88b22acf</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2b58ca6e3de3d93817a4e6cc55378015eb3c2040"><code>2b58ca6e3d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b3294d9491b898396e134bad5412d85337c37b64"><code>b3294d9491</code></a>, <a class="h" href="https://go.googlesource.com/go/+/321a3d6e85e6440b5c753b3fd6a0e028dcc08143"><code>321a3d6e85</code></a>, <a class="h" href="https://go.googlesource.com/go/+/72496e35ce13af04564d10bad3a566901eda867a"><code>72496e35ce</code></a>, <a class="h" href="https://go.googlesource.com/go/+/01a1eaa10c95dbbb1decad79334a2d6f34dc6832"><code>01a1eaa10c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9a7e70e34f98a8eea5d18083634b6e908b23e619"><code>9a7e70e34f</code></a> (OpArg scheduled earlier for debugging). <em>Left open:</em> nothing noted.
+<div id="rel12-p-be2-t17" class="stage">
+
+</div></li>
+<li><strong><a href="backends.html#p-be2-t17">Assembler directives and tooling: PCALIGN/ALIGN, FuncInfo flags, prologue handling</a></strong> — <em>Done:</em> PCALIGN on ppc64 (<a class="h" href="https://go.googlesource.com/go/+/bdba55653fa56eb119099a3efbff187a97e8cf44"><code>bdba55653f</code></a>), parse refactor (<a class="h" href="https://go.googlesource.com/go/+/52b222055908a3ae23c2a9185e53919fe56b54db"><code>52b2220559</code></a>). <em>Left open:</em> nothing noted.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Cleanups and fixes folded from the uncited list</strong> <span class="tag int">internal</span> — ppc64 VPERMXOR in the assembler (<a class="h" href="https://go.googlesource.com/go/+/048580d341a530bb8d9ca891f95ce79aace4151f"><code>048580d341</code></a>); regalloc-neutral OpArg scheduling for debugging (<a class="h" href="https://go.googlesource.com/go/+/9a7e70e34f98a8eea5d18083634b6e908b23e619"><code>9a7e70e34f</code></a>).</li>
+<li><strong>amd64/386/ARM micro-optimizations</strong> <span class="tag int">internal</span> — many Ben Shi and others peepholes: <a class="h" href="https://go.googlesource.com/go/+/b40db514382b2efc19c793810185d3d7ceea8b25"><code>b40db51438</code></a>, <a class="h" href="https://go.googlesource.com/go/+/24e51bbe64b4a534b096a3b0c6bfae6a732eea59"><code>24e51bbe64</code></a>, <a class="h" href="https://go.googlesource.com/go/+/0a382e0b7f9abb39644adcfe65013df200989324"><code>0a382e0b7f</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d17ac291584f6f518430ea3123e0ec9a7658c950"><code>d17ac29158</code></a>.</li>
+<li><strong>-race/-msan restriction</strong> <span class="tag uv">user-visible</span> — only supported where they work (<a class="h" href="https://go.googlesource.com/go/+/7e64377903b3abd922150e35601e0df597a8af9f"><code>7e64377903</code></a>).</li>
+<li><strong>AIX/ppc64 addressing</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/041526c6ef669743afc6c4b757b95011f1475d1a"><code>041526c6ef</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4295ed9bef1f2b15837bdeb52766952c464f225d"><code>4295ed9bef</code></a>, <a class="h" href="https://go.googlesource.com/go/+/503091a77c43263a5ce86f9358de3445524627b7"><code>503091a77c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/20ac64a2dd1f7993101d7e069eab3b84ab2c0bd2"><code>20ac64a2dd</code></a>.</li>
+<li><strong>Compiler</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/8aee193fb8b61d474a7e3e6d43625f4e746c5b65"><code>8aee193fb8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9e277f7d554455e16ba3762541c53e9bfc1d8188"><code>9e277f7d55</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c3304edf10223364bc1989bc1daa6908dbdd9c03"><code>c3304edf10</code></a>, <a class="h" href="https://go.googlesource.com/go/+/ed2f84a94e1d0903bc16974dca308a9382b596b6"><code>ed2f84a94e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e7f5f3eca42a98340e4eb4fc5d490a9aa4bd5054"><code>e7f5f3eca4</code></a>, <a class="h" href="https://go.googlesource.com/go/+/7ab4b5586d37513bfa48f769773007ff8e9b732d"><code>7ab4b5586d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/441cb988b4c63f4232edd7930758eb0e8cc8599b"><code>441cb988b4</code></a>, <a class="h" href="https://go.googlesource.com/go/+/84374d4de52827147b475c481cf2a00b6d6dfc6b"><code>84374d4de5</code></a>, <a class="h" href="https://go.googlesource.com/go/+/477b7e5f4d143c2e8d68e9ef9d4db8ebe84a8489"><code>477b7e5f4d</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c0281afd870f15f117ad1bcb2c46a3a3c3fffb0b"><code>c0281afd87</code></a>, <a class="h" href="https://go.googlesource.com/go/+/15265ec4217f8d9497d8d5079ac8996302dfd007"><code>15265ec421</code></a>, <a class="h" href="https://go.googlesource.com/go/+/0ad332d80cf3e2bbeef5f1e5f5eb50272bbde92e"><code>0ad332d80c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/69c2c56453cdea1ad32d50fc82193f06b1b33f93"><code>69c2c56453</code></a> (mid-stack inlining tracebacks), <a class="h" href="https://go.googlesource.com/go/+/69c5830c2b74b9bf0701352f2e5773227cb6f304"><code>69c5830c2b</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3a3b98fdf96a93191d6c14f3b3cd2b757b961ec0"><code>3a3b98fdf9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c5414457c62fc11f299946a46f6c868c4f0bf2ab"><code>c5414457c6</code></a>, <a class="h" href="https://go.googlesource.com/go/+/abd1dde1f717f86f94774ce9ab56053947f2d175"><code>abd1dde1f7</code></a>, <a class="h" href="https://go.googlesource.com/go/+/05bbec7357a22e2ddd238c2f8741f0f4c779eb80"><code>05bbec7357</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1fb596143cd47145c8cee0c1c5ed5e871feeb2b1"><code>1fb596143c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/5403b8ecebc37da227dae170f01b6004a66bf2e6"><code>5403b8eceb</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3bab4373c7bcff8415da8f4560a3297d1c158e16"><code>3bab4373c7</code></a>, <a class="h" href="https://go.googlesource.com/go/+/653a4bd8d46a8a329f37e8a9fc909c3bb92b02bc"><code>653a4bd8d4</code></a>, <a class="h" href="https://go.googlesource.com/go/+/95dda75bde8a6625b857b5f8013eed5e9563fd02"><code>95dda75bde</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4b78fe57a81fe4fd9a1c370c65e3a694066ac1ab"><code>4b78fe57a8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9774fa6f4020dba924d63991f572aa89325e1c9c"><code>9774fa6f40</code></a>, <a class="h" href="https://go.googlesource.com/go/+/096229b2ec60c51b65746dfd1a5bf443ac8e5a0f"><code>096229b2ec</code></a>, <a class="h" href="https://go.googlesource.com/go/+/2db1a7f929892695696eebf685fc484841c08cb4"><code>2db1a7f929</code></a>, <a class="h" href="https://go.googlesource.com/go/+/891f99eb43ad86814662549e4121e4e8c30e8b40"><code>891f99eb43</code></a>, <a class="h" href="https://go.googlesource.com/go/+/e546ef123e6e3a28dc7722fb6bbf1161b7024163"><code>e546ef123e</code></a>, <a class="h" href="https://go.googlesource.com/go/+/bd483592a23c5c8964d1af5ca85792db031229ad"><code>bd483592a2</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1fb596143cd47145c8cee0c1c5ed5e871feeb2b1"><code>1fb596143c</code></a>, <a class="h" href="https://go.googlesource.com/go/+/7b88b22acf8cb5e32f34e2a396d797c5c0125566"><code>7b88b22acf</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4545fea4fc845d481d97e7dac7d6fe0b37048ce2"><code>4545fea4fc</code></a>, <a class="h" href="https://go.googlesource.com/go/+/a2e79571a9d3dbe3cf10dcaeb1f9c01732219869"><code>a2e79571a9</code></a>, <a class="h" href="https://go.googlesource.com/go/+/d0cbf9bf53ceb989f79addf4b91346840b3b8a57"><code>d0cbf9bf53</code></a><sup class="xr" title="this commit landed in the Go 1.13 cycle">1.13</sup>.</li>
+</ul>
+<h2 id="rel12-p-lk1">Linker and object files</h2>
+<p class="from">
+From <a href="linker.html#area-p-lk1">Linker and object files (Go 1.10–1.17)</a>
+</p>
+<p class="dg">
+AIX/XCOFF port, stable ABI0 vs ABIInternal separation and ABI aliases in the object file, linker memory slimming (cold Symbol fields), deadcode-before-mangling.
+</p>
+<div id="rel12-p-lk1-t3" class="stage">
+
+</div>
+<ul>
+<li><strong><a href="linker.html#p-lk1-t3">Linker performance and memory engineering</a></strong> — <em>Done:</em> fewer allocs in <code>Archreloc</code> by returning the value instead of an out pointer (<a class="h" href="https://go.googlesource.com/go/+/328adf9d62b681bf4f7cb0c41a3f16272cf5f4a2"><code>328adf9d62</code></a>: 1.8%), avoiding <code>Reloc</code> copies in range loops (<a class="h" href="https://go.googlesource.com/go/+/bc276c585b24a5e3adb9c6cdfebc4d69d910cc2e"><code>bc276c585b</code></a>, 48-byte struct), cold-field splitting (above), <a class="h" href="https://go.googlesource.com/go/+/3d72ca9908ba2696e1acafa7d7f8fee21131fe5e"><code>3d72ca9908</code></a> direct max-pc in findfunctab. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t4" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t4">pclntab, funcdata and pc tables</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/3d72ca9908ba2696e1acafa7d7f8fee21131fe5e"><code>3d72ca9908</code></a> simplifies findfunctab max-pc; <a class="h" href="https://go.googlesource.com/go/+/af134b17da99344812344bba65247e45fa22d53b"><code>af134b17da</code></a> proper tracebacks with mid-stack inlining (runtime reads inline tree funcdata that the linker lays out); <a class="h" href="https://go.googlesource.com/go/+/9dac0a8132d7db5225b27bdd8faeb3158e624159"><code>9dac0a8132</code></a> sets the traceback address to a deferreturn call on signals, <a class="h" href="https://go.googlesource.com/go/+/eafe9a186c84dcfb7db1038cc43d1f0dfd1ea781"><code>eafe9a186c</code></a> hides compiler-generated init functions from tracebacks via a funcID wrapper class. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t5" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t5">Dead-code elimination and method pruning</a></strong> — <em>Done:</em> type-name mangling moved after deadcode (<a class="h" href="https://go.googlesource.com/go/+/618bfb28dc02c410659312f38cd3500352ba15ed"><code>618bfb28dc</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9c833831b2bdaa465349194797cf3894cb85f9c4"><code>9c833831b2</code></a>) so fewer symbols get renamed, <a class="h" href="https://go.googlesource.com/go/+/ffbf479ae1cc8d85022fd74b6ad35b419279b162"><code>ffbf479ae1</code></a> removes statictmp variables from the symbol table. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t6" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t6">DWARF generation in the linker</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/a0f5d5f8830e578892c47f7704e6a2616273aac1"><code>a0f5d5f883</code></a> refs point at the typedef entry, global variable DIEs moved to their compile unit (<a class="h" href="https://go.googlesource.com/go/+/1c8943bd59157878141faab0c93848f45d3d51d1"><code>1c8943bd59</code></a>), <a class="h" href="https://go.googlesource.com/go/+/ec4ae29f52cee3f6e448d8279708ea47d553f35f"><code>ec4ae29f52</code></a> abstracts DWARF metadata symbol lookup, <a class="h" href="https://go.googlesource.com/go/+/75a0b9dbf37117d6bfcc9dacf89f817954f3aeb7"><code>75a0b9dbf3</code></a> DWARF64 for AIX. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t8" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t8">Symbol ABIs: stable ABI0 vs ABIInternal in the linker and object files</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/c5718b6b261a66aa47312037f17281d3d810c98c"><code>c5718b6b26</code></a>, <a class="h" href="https://go.googlesource.com/go/+/685aca45dc8435df7b7e8059a42a8a98efdaf22c"><code>685aca45dc</code></a>, <a class="h" href="https://go.googlesource.com/go/+/1794ee682994ed2efbb9371060856cd7b146f405"><code>1794ee6829</code></a>, <a class="h" href="https://go.googlesource.com/go/+/c0281afd870f15f117ad1bcb2c46a3a3c3fffb0b"><code>c0281afd87</code></a> (obj writer stops de-duplicating symbols). <em>Left open:</em> the ABIs are identical; wrappers are aliases “until the ABIs diverge”.
+<div id="rel12-p-lk1-t9" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t9">Mach-O and Darwin support</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/66bb8ddb956c5ee55b471a019fac2c6817c08ef5"><code>66bb8ddb95</code></a> silences a bogus Xcode <code>.tbd</code> warning, <a class="h" href="https://go.googlesource.com/go/+/cfac65bf2fc103411aab9d6913c777f5e78e065a"><code>cfac65bf2f</code></a> omits deprecated linker arg for iOS. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t10" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t10">PE / Windows</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/aa311fecda008d26f97af0a8e7f57dcd04cae6ae"><code>aa311fecda</code></a> windows/arm, <a class="h" href="https://go.googlesource.com/go/+/8256bcdae0da68644db1e33c0db86f5ac4395c4b"><code>8256bcdae0</code></a> moves .rel into .text, <a class="h" href="https://go.googlesource.com/go/+/41fd4c88ad900765716d17c14eb1b48b553589e2"><code>41fd4c88ad</code></a> no <code>_GLOBAL_OFFSET_TABLE_</code> on windows/386. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t11" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t11">AIX / XCOFF</a></strong> — <em>Done:</em> initial port (<a class="h" href="https://go.googlesource.com/go/+/a3a69afff85c94be8b6419b03efd5dc14f2425f9"><code>a3a69afff8</code></a>, <a class="h" href="https://go.googlesource.com/go/+/269e5319172bfb8774d19538e8dfc8ae0650ffec"><code>269e531917</code></a>), XCOFF fixes (<a class="h" href="https://go.googlesource.com/go/+/63ac89bfb15b2036741e40b2167d1d2f70af3e40"><code>63ac89bfb1</code></a>, <a class="h" href="https://go.googlesource.com/go/+/3f9efe750058308bc499c5eb22bc84193fedb6b3"><code>3f9efe7500</code></a>, <a class="h" href="https://go.googlesource.com/go/+/b41cdc4a591b19e09c09f062e785f2b7af06863d"><code>b41cdc4a59</code></a>, <a class="h" href="https://go.googlesource.com/go/+/4295ed9bef1f2b15837bdeb52766952c464f225d"><code>4295ed9bef</code></a>, <a class="h" href="https://go.googlesource.com/go/+/9a3c1a1bc8ec81925925d6699577ff7812be3d58"><code>9a3c1a1bc8</code></a>), <a class="h" href="https://go.googlesource.com/go/+/cebf9d47cf16e9ccc550d3895f5f9074ae2477a0"><code>cebf9d47cf</code></a>. <em>Left open:</em> only internal linking (external linking disabled).
+<div id="rel12-p-lk1-t12" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t12">WebAssembly</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/48e22da1d24dc5b038bd83a78553173af5474e76"><code>48e22da1d2</code></a> fixes the deferreturn location on wasm. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t14" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t14">Host object loading and external linking</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/484fc06849fa54d168af1d513c37d1b22bf38e7c"><code>484fc06849</code></a> doesn’t link sections not named .o, <a class="h" href="https://go.googlesource.com/go/+/281ce28c5048416dce9379405cc061b2f3662c84"><code>281ce28c50</code></a> in-package syso linking, <a class="h" href="https://go.googlesource.com/go/+/35435b27c406cdbe506a2eef56c6a10f208e3b9c"><code>35435b27c4</code></a> closes input files, <a class="h" href="https://go.googlesource.com/go/+/1135071b47b1c9c0069d384c136e94d2883282bc"><code>1135071b47</code></a> initial cgo support for ppc64. <em>Left open:</em> nothing noted.
+<div id="rel12-p-lk1-t18" class="stage">
+
+</div></li>
+<li><strong><a href="linker.html#p-lk1-t18">Linker restructuring (1.10 code health and error reporting)</a></strong> — <em>Done:</em> <a class="h" href="https://go.googlesource.com/go/+/66065c3115861c73b8804037a6d9d5986ffa9913"><code>66065c3115</code></a> clearer unresolved-symbol error, <a class="h" href="https://go.googlesource.com/go/+/14560da7e469aff46a6f1270ce84204bbd6ffdb3"><code>14560da7e4</code></a> file-local symbols start at version 10, <a class="h" href="https://go.googlesource.com/go/+/9555769aa5f706075dc5930f3dba2e3a31c110c3"><code>9555769aa5</code></a>. <em>Left open:</em> nothing noted.</li>
+</ul>
+<p class="osub">
+Other changes
+</p>
+<ul>
+<li><strong>Small items</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/aa4fc0e73654c0a8741d970bfca47c25125633cf"><code>aa4fc0e736</code></a>, <a class="h" href="https://go.googlesource.com/go/+/da0d1a44bac379f5acedb1933f85400de08f4ac6"><code>da0d1a44ba</code></a> (library idiom sweeps), <a class="h" href="https://go.googlesource.com/go/+/94f7795d05937fdf6187c7f850f8902c0f7a6d81"><code>94f7795d05</code></a> (experiment isolation in cache key), <a class="h" href="https://go.googlesource.com/go/+/bed88f4e81013433ff47fb2661a329530b57ede6"><code>bed88f4e81</code></a> (error messages for external linking on ppc64).</li>
+<li><strong>GODEBUGCPU</strong> <span class="tag uv">user-visible</span> — <a class="h" href="https://go.googlesource.com/go/+/a5248acd91dcf0e90a68c1ff88ca389dc034557c"><code>a5248acd91</code></a> enables <code>GODEBUGCPU</code> in non-experimental builds.</li>
+<li><strong>Statictmp symbols</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/ffbf479ae1cc8d85022fd74b6ad35b419279b162"><code>ffbf479ae1</code></a> removes statictmp variables from the symbol table.</li>
+<li><strong>Mid-stack inlining tracebacks</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/af134b17da99344812344bba65247e45fa22d53b"><code>af134b17da</code></a>; <a class="h" href="https://go.googlesource.com/go/+/eafe9a186c84dcfb7db1038cc43d1f0dfd1ea781"><code>eafe9a186c</code></a> hide init functions.</li>
+<li><strong>Silence Xcode warning</strong> <span class="tag uv">user-visible</span> — <a class="h" href="https://go.googlesource.com/go/+/66bb8ddb956c5ee55b471a019fac2c6817c08ef5"><code>66bb8ddb95</code></a>.</li>
+<li><strong>Flag docs</strong> <span class="tag uv">user-visible</span> — <a class="h" href="https://go.googlesource.com/go/+/8b7cf898af3ab21c9e07e5b24d59c16b9fcf295a"><code>8b7cf898af</code></a> documents more compiler/linker flags.</li>
+<li><strong>.init_array</strong> <span class="tag int">internal</span> — <a class="h" href="https://go.googlesource.com/go/+/a11aa2aaecff98d6b46035704d587920c10788f9"><code>a11aa2aaec</code></a> only when non-empty.</li>
+<li><strong>Dedup pctab, mid-stack</strong> — see threads.</li>
+<li><strong>relocsym comments</strong> <span class="tag int">internal</span> — Improved relocsym comments. (<a class="h" href="https://go.googlesource.com/go/+/c7271c0c258634982ac4e18cdac287fcc43f93e1"><code>c7271c0c25</code></a>)</li>
+</ul>
+
+<div class="pn"><a href="go1.11.html">← Go 1.11</a><a href="go1.13.html">Go 1.13 →</a></div>
+<footer>Built from the Go repository's commit history up to <code>4494c64f5a</code> (2026-10-30). Part of <a href="../">Go: A Documentary</a>.</footer>
+</main>
+<script>
+// tag list items by their own badge (first badge directly inside the item)
+document.querySelectorAll('main li').forEach(li=>{
+  const t=[...li.children].find(e=>e.classList&&e.classList.contains('tag'))||li.querySelector(':scope > p > .tag');
+  if(t){li.classList.add(t.classList.contains('int')?'intitem':t.classList.contains('uv')?'uvitem':'x')}
+});
+document.querySelectorAll('nav input[name=f]').forEach(r=>r.addEventListener('change',e=>{
+  document.body.classList.remove('only-int','only-uv'); if(e.target.value)document.body.classList.add(e.target.value);
+}));
+</script>
+<script async src="//changkun.de/urlstat/client.js"></script>
+</body>
+</html>
